@@ -2,7 +2,7 @@
 # Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu> 2018/02/17
 # Under the GNU GPL v2
 # Translated by Daniel Campos Ramos
-# Last update 2018/02/18
+# Last update 2020/05/11
 LOCAL1="Nome"
 LOCAL2="Descrição"
 LOCAL3="Sair"
@@ -17,6 +17,7 @@ LOCAL12="Devo fazer o download novamente?"
 LOCAL13="Sim"
 LOCAL14="Não"
 LOCAL15="Os seguintes certificados foram baixados e instalados:"
+LOCAL16="Google Chrome certificados Raiz"
 ### .desktop file to be translated too
 # Name[pt_BR]=PJeOffice - Instalador de Certificados CA
 # Comment[pt_BR]=PJeOffice - Instalador de Certificados CA

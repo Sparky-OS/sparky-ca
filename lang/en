@@ -1,7 +1,7 @@
 # English localization file for Sparky CA.
 # Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu> 2018/02/17
 # Under the GNU GPL v2
-# Last update 2018/02/17
+# Last update 2020/05/11
 LOCAL1="Name"
 LOCAL2="Description"
 LOCAL3="Exit"
@@ -16,6 +16,7 @@ LOCAL12="Should I re-download it?"
 LOCAL13="Yes"
 LOCAL14="No"
 LOCAL15="Following certificates have been downloaded and installed:"
+LOCAL16="Google Chrome root"
 ### .desktop file to be translated too
 # Name[en_US]=PJeOffice CA Certificates Installer
 # Comment[en_US]=PJeOffice CA Certificates Installer
