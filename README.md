@@ -35,3 +35,16 @@ Uninstall:
 -------------
 su (or sudo)
 ./install.sh uninstall
+
+Usage:
+-------------
+After installation run `sparky-ca` as root or use the provided desktop
+launcher. The application will download selected CA certificates and
+install them into `/usr/local/share/ca-certificates`.
+
+Project structure:
+-------------
+* `bin/sparky-ca` - main installer script
+* `install.sh` - helper script for installation and removal
+* `lang/` - localization files
+* `share/` - desktop entry for graphical launch
