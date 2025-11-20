@@ -75,6 +75,10 @@ BRCA17="/v5/AC_OAB_G3.crt"
 BRCA18="/v2/p/Autoridade_Certificadora_da_Justica_v4.crt"
 BRCA19="/v5/p/Autoridade_Certificadora_da_Justica_v5.crt"
 
+#
+# Displays the main menu of the application and calls the appropriate
+# function based on user selection.
+#
 mainmenu () {
 
 CHOICES=`$DIALOG $TITLE"$TITLETEXT" $MENU $OKEXIT $TEXT"$LOCAL5:" \
@@ -108,6 +112,9 @@ else
 fi
 }
 
+#
+# Downloads and installs the ICP-Brasil root certificates.
+#
 br1menu () {
 if [ -f $BRCA1 ]; then
 	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA1 $LOCAL11\n$LOCAL12"
@@ -236,6 +243,9 @@ $DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA1CHECK\n$BRCA2CHECK\n
 mainmenu
 }
 
+#
+# Downloads and installs the Google Chrome root certificate.
+#
 br2menu () {
 if [ -f $BRCA9 ]; then
 	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA9 $LOCAL11\n$LOCAL12"
@@ -259,6 +269,9 @@ $DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA9CHECK"
 mainmenu
 }
 
+#
+# Downloads and installs the CertSign chains.
+#
 br3menu () {
 if [ -f $BRCA10 ]; then
 	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA10 $LOCAL11\n$LOCAL12"
@@ -372,6 +385,9 @@ $DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA10CHECK\n$BRCA11CHECK
 mainmenu
 }
 
+#
+# Downloads and installs the OAB chains.
+#
 br4menu () {
 if [ -f $BRCA17 ]; then
 	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA17 $LOCAL11\n$LOCAL12"
@@ -395,6 +411,9 @@ $DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA17CHECK"
 mainmenu
 }
 
+#
+# Downloads and installs the Justice chains.
+#
 br5menu () {
 if [ -f $BRCA18 ]; then
 	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA18 $LOCAL11\n$LOCAL12"
