@@ -1,0 +1,21 @@
+# ta localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="பெயர்"
+LOCAL2="விளக்கம்"
+LOCAL3="வெளியேறு"
+LOCAL4="சான்றிதழ் நிறுவி"
+LOCAL5="இது உங்கள் இயக்க முறைமையில் CA சான்றிதழ்களை நிறுவுகிறது. \n\nஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்"
+LOCAL11="சான்றிதழ் ஏற்கனவே உள்ளது."
+LOCAL12="நான் அதை மீண்டும் பதிவிறக்க வேண்டுமா?"
+LOCAL13="ஆம்"
+LOCAL14="இல்லை"
+LOCAL15="பின்வரும் சான்றிதழ்கள் பதிவிறக்கம் செய்யப்பட்டு நிறுவப்பட்டுள்ளன:"
+LOCAL_MUST_BE_ROOT="ரூட்டாக இருக்க வேண்டும்... வெளியேறுகிறது..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm காணவில்லை... வெளியேறுகிறது..."
+LOCAL_ALL_CERTIFICATES="அனைத்து ICP-பிரேசில் ரூட் சான்றிதழ்கள்"
+### .desktop file to be translated too
+# Name[ta]=PJeOffice CA Certificates Installer
+# Comment[ta]=PJeOffice CA Certificates Installer

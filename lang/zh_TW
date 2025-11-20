@@ -1,0 +1,21 @@
+# zh_TW localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="名稱"
+LOCAL2="描述"
+LOCAL3="離開"
+LOCAL4="憑證安裝程式"
+LOCAL5="它會在您的作業系統內安裝 CA 憑證。 \n\n請選擇一個選項"
+LOCAL11="憑證已存在。"
+LOCAL12="我應該重新下載嗎？"
+LOCAL13="是"
+LOCAL14="否"
+LOCAL15="以下憑證已下載並安裝："
+LOCAL_MUST_BE_ROOT="必須是 root... 正在離開..."
+LOCAL_SPARKY_XTERM_MISSING="缺少 sparky-xterm... 正在離開..."
+LOCAL_ALL_CERTIFICATES="所有 ICP-Brasil 根憑證"
+### .desktop file to be translated too
+# Name[zh_TW]=PJeOffice CA Certificates Installer
+# Comment[zh_TW]=PJeOffice CA Certificates Installer

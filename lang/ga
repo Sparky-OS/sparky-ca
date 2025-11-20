@@ -1,0 +1,21 @@
+# ga localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Ainm"
+LOCAL2="Cur síos"
+LOCAL3="Scoir"
+LOCAL4="Suiteálaí Teastais"
+LOCAL5="Suiteálann sé teastais CA taobh istigh de do chóras oibriúcháin. \n\nRoghnaigh rogha le do thoil"
+LOCAL11="tá an teastas ann cheana."
+LOCAL12="Ar cheart dom é a íoslódáil arís?"
+LOCAL13="Tá"
+LOCAL14="Níl"
+LOCAL15="Tá na teastais seo a leanas íoslódáilte agus suiteáilte:"
+LOCAL_MUST_BE_ROOT="Caithfidh a bheith fréamh... Ag fágáil..."
+LOCAL_SPARKY_XTERM_MISSING="tá sparky-xterm ar iarraidh... Ag fágáil..."
+LOCAL_ALL_CERTIFICATES="Gach teastas fréimhe ICP-Brasil"
+### .desktop file to be translated too
+# Name[ga]=PJeOffice CA Certificates Installer
+# Comment[ga]=PJeOffice CA Certificates Installer

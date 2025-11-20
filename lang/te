@@ -1,0 +1,21 @@
+# te localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="పేరు"
+LOCAL2="వివరణ"
+LOCAL3="నిష్క్రమించు"
+LOCAL4="సర్టిఫికేట్ ఇన్‌స్టాలర్"
+LOCAL5="ఇది మీ ఆపరేటింగ్ సిస్టమ్‌లో CA సర్టిఫికేట్‌లను ఇన్‌స్టాల్ చేస్తుంది. \n\nదయచేసి ఒక ఎంపికను ఎంచుకోండి"
+LOCAL11="సర్టిఫికేట్ ఇప్పటికే ఉంది."
+LOCAL12="నేను దాన్ని మళ్లీ డౌన్‌లోడ్ చేయాలా?"
+LOCAL13="అవును"
+LOCAL14="కాదు"
+LOCAL15="కింది సర్టిఫికేట్‌లు డౌన్‌లోడ్ చేయబడి, ఇన్‌స్టాల్ చేయబడ్డాయి:"
+LOCAL_MUST_BE_ROOT="రూట్ అయి ఉండాలి... నిష్క్రమిస్తోంది..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm కనబడలేదు... నిష్క్రమిస్తోంది..."
+LOCAL_ALL_CERTIFICATES="అన్ని ICP-బ్రెజిల్ రూట్ సర్టిఫికేట్‌లు"
+### .desktop file to be translated too
+# Name[te]=PJeOffice CA Certificates Installer
+# Comment[te]=PJeOffice CA Certificates Installer

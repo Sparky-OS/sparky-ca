@@ -1,0 +1,21 @@
+# mr localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="नाव"
+LOCAL2="वर्णन"
+LOCAL3="बाहेर पडा"
+LOCAL4="प्रमाणपत्र इंस्टॉलर"
+LOCAL5="हे तुमच्या ऑपरेटिंग सिस्टममध्ये CA प्रमाणपत्रे स्थापित करते. \n\nकृपया एक पर्याय निवडा"
+LOCAL11="प्रमाणपत्र आधीच अस्तित्वात आहे."
+LOCAL12="मी ते पुन्हा डाउनलोड करावे का?"
+LOCAL13="होय"
+LOCAL14="नाही"
+LOCAL15="खालील प्रमाणपत्रे डाउनलोड आणि स्थापित केली आहेत:"
+LOCAL_MUST_BE_ROOT="रूट असणे आवश्यक आहे... बाहेर पडत आहे..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm गहाळ आहे... बाहेर पडत आहे..."
+LOCAL_ALL_CERTIFICATES="सर्व ICP-ब्राझील मूळ प्रमाणपत्रे"
+### .desktop file to be translated too
+# Name[mr]=PJeOffice CA Certificates Installer
+# Comment[mr]=PJeOffice CA Certificates Installer

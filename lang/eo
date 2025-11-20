@@ -1,0 +1,21 @@
+# eo localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Nomo"
+LOCAL2="Priskribo"
+LOCAL3="Eliri"
+LOCAL4="Instalilo de Atestiloj"
+LOCAL5="Ĝi instalas CA-atestilojn en via operaciumo. \n\nBonvolu elekti opcion"
+LOCAL11="atestilo jam ekzistas."
+LOCAL12="Ĉu mi elŝutu ĝin denove?"
+LOCAL13="Jes"
+LOCAL14="Ne"
+LOCAL15="La jenaj atestiloj estis elŝutitaj kaj instalitaj:"
+LOCAL_MUST_BE_ROOT="Devas esti radiko... Elirante..."
+LOCAL_SPARKY_XTERM_MISSING="mankas sparky-xterm... Elirante..."
+LOCAL_ALL_CERTIFICATES="Ĉiuj radikaj atestiloj de ICP-Brasil"
+### .desktop file to be translated too
+# Name[eo]=PJeOffice CA Certificates Installer
+# Comment[eo]=PJeOffice CA Certificates Installer

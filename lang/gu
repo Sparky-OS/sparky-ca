@@ -1,0 +1,21 @@
+# gu localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="નામ"
+LOCAL2="વર્ણન"
+LOCAL3="બહાર નીકળો"
+LOCAL4="પ્રમાણપત્ર ઇન્સ્ટોલર"
+LOCAL5="તે તમારી ઓપરેટિંગ સિસ્ટમમાં CA પ્રમાણપત્રો ઇન્સ્ટોલ કરે છે. \n\nકૃપા કરીને એક વિકલ્પ પસંદ કરો"
+LOCAL11="પ્રમાણપત્ર પહેલેથી અસ્તિત્વમાં છે."
+LOCAL12="શું મારે તેને ફરીથી ડાઉનલોડ કરવું જોઈએ?"
+LOCAL13="હા"
+LOCAL14="ના"
+LOCAL15="નીચેના પ્રમાણપત્રો ડાઉનલોડ અને ઇન્સ્ટોલ કરવામાં આવ્યા છે:"
+LOCAL_MUST_BE_ROOT="રૂટ હોવું જ જોઈએ... બહાર નીકળી રહ્યું છે..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm ખૂટે છે... બહાર નીકળી રહ્યું છે..."
+LOCAL_ALL_CERTIFICATES="બધા ICP-બ્રાઝિલ રુટ પ્રમાણપત્રો"
+### .desktop file to be translated too
+# Name[gu]=PJeOffice CA Certificates Installer
+# Comment[gu]=PJeOffice CA Certificates Installer

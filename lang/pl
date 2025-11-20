@@ -1,22 +1,21 @@
-# Polish localization file for Sparky CA.
-# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu> 2018/02/17
+# pl localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
 # Under the GNU GPL v2
-# Last update 2020/05/11
+# Last update 2025/11/19
 LOCAL1="Nazwa"
 LOCAL2="Opis"
-LOCAL3="Zakończ"
-LOCAL4="Instalator Certyfikatów PJeOffice CA"
-LOCAL5="Instalacja certyfikatów PJeOffice CA w Twoim systemie operacyjnym. \n\nProszę wybrać opcję"
-LOCAL6="ICP root"
-LOCAL7="CertSign Chains"
-LOCAL8="OAB chains"
-LOCAL9="Justice chains"
+LOCAL3="Wyjdź"
+LOCAL4="Instalator certyfikatów"
+LOCAL5="Instaluje certyfikaty CA w twoim systemie operacyjnym. \n\nWybierz opcję"
 LOCAL11="certyfikat już istnieje."
-LOCAL12="Czy mam go ponownie pobrać?"
+LOCAL12="Czy mam go pobrać ponownie?"
 LOCAL13="Tak"
 LOCAL14="Nie"
-LOCAL15="Następujące certyfikaty zostały pobrane i zainstalowane:"
-LOCAL16="Google Chrome root"
+LOCAL15="Pobrano i zainstalowano następujące certyfikaty:"
+LOCAL_MUST_BE_ROOT="Musi być root... Zamykanie..."
+LOCAL_SPARKY_XTERM_MISSING="brakuje sparky-xterm... Zamykanie..."
+LOCAL_ALL_CERTIFICATES="Wszystkie certyfikaty główne ICP-Brasil"
 ### .desktop file to be translated too
-# Name[pl_PL]=Instalator Certyfikatów PJeOffice CA
-# Comment[pl_PL]=Instalacja certyfikatów PJeOffice CA
+# Name[pl]=PJeOffice CA Certificates Installer
+# Comment[pl]=PJeOffice CA Certificates Installer

@@ -1,0 +1,21 @@
+# el localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Όνομα"
+LOCAL2="Περιγραφή"
+LOCAL3="Έξοδος"
+LOCAL4="Εγκαταστάτης Πιστοποιητικών"
+LOCAL5="Εγκαθιστά πιστοποιητικά CA στο λειτουργικό σας σύστημα. \n\nΠαρακαλώ επιλέξτε μια επιλογή"
+LOCAL11="το πιστοποιητικό υπάρχει ήδη."
+LOCAL12="Να το κατεβάσω ξανά;"
+LOCAL13="Ναι"
+LOCAL14="Όχι"
+LOCAL15="Τα ακόλουθα πιστοποιητικά έχουν ληφθεί και εγκατασταθεί:"
+LOCAL_MUST_BE_ROOT="Πρέπει να είστε root... Έξοδος..."
+LOCAL_SPARKY_XTERM_MISSING="λείπει το sparky-xterm... Έξοδος..."
+LOCAL_ALL_CERTIFICATES="Όλα τα ριζικά πιστοποιητικά ICP-Brasil"
+### .desktop file to be translated too
+# Name[el]=PJeOffice CA Certificates Installer
+# Comment[el]=PJeOffice CA Certificates Installer

@@ -1,0 +1,21 @@
+# Arabic localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="الاسم"
+LOCAL2="الوصف"
+LOCAL3="خروج"
+LOCAL4="مثبت الشهادات"
+LOCAL5="يقوم بتثبيت شهادات CA داخل نظام التشغيل الخاص بك. \n\nيرجى تحديد خيار"
+LOCAL11="الشهادة موجودة بالفعل."
+LOCAL12="هل يجب علي إعادة تنزيلها؟"
+LOCAL13="نعم"
+LOCAL14="لا"
+LOCAL15="تم تنزيل وتثبيت الشهادات التالية:"
+LOCAL_MUST_BE_ROOT="يجب أن تكون المستخدم الجذر... الخروج..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm مفقود... الخروج..."
+LOCAL_ALL_CERTIFICATES="جميع شهادات جذر ICP-Brasil"
+### .desktop file to be translated too
+# Name[ar]=PJeOffice CA Certificates Installer
+# Comment[ar]=PJeOffice CA Certificates Installer

@@ -1,0 +1,21 @@
+# fr localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Nom"
+LOCAL2="Description"
+LOCAL3="Quitter"
+LOCAL4="Installateur de certificats"
+LOCAL5="Installe les certificats de l'AC dans votre système d'exploitation. \n\nVeuillez sélectionner une option"
+LOCAL11="le certificat existe déjà."
+LOCAL12="Dois-je le télécharger à nouveau ?"
+LOCAL13="Oui"
+LOCAL14="Non"
+LOCAL15="Les certificats suivants ont été téléchargés et installés :"
+LOCAL_MUST_BE_ROOT="Doit être root... Sortie..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm est manquant... Sortie..."
+LOCAL_ALL_CERTIFICATES="Tous les certificats racines d'ICP-Brasil"
+### .desktop file to be translated too
+# Name[fr]=PJeOffice CA Certificates Installer
+# Comment[fr]=PJeOffice CA Certificates Installer

@@ -1,0 +1,21 @@
+# hu localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Név"
+LOCAL2="Leírás"
+LOCAL3="Kilépés"
+LOCAL4="Tanúsítványtelepítő"
+LOCAL5="CA-tanúsítványokat telepít az operációs rendszerébe. \n\nKérjük, válasszon egy lehetőséget"
+LOCAL11="a tanúsítvány már létezik."
+LOCAL12="Újra le kell töltenem?"
+LOCAL13="Igen"
+LOCAL14="Nem"
+LOCAL15="A következő tanúsítványok lettek letöltve és telepítve:"
+LOCAL_MUST_BE_ROOT="Rootnak kell lennie... Kilépés..."
+LOCAL_SPARKY_XTERM_MISSING="hiányzik a sparky-xterm... Kilépés..."
+LOCAL_ALL_CERTIFICATES="Az összes ICP-Brasil gyökértanúsítvány"
+### .desktop file to be translated too
+# Name[hu]=PJeOffice CA Certificates Installer
+# Comment[hu]=PJeOffice CA Certificates Installer

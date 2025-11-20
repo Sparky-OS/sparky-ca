@@ -1,0 +1,21 @@
+# eu localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Izena"
+LOCAL2="Deskribapena"
+LOCAL3="Irten"
+LOCAL4="Ziurtagiri-instalatzailea"
+LOCAL5="CA ziurtagiriak instalatzen ditu zure sistema eragilean. \n\nAukeratu aukera bat"
+LOCAL11="ziurtagiria lehendik dago."
+LOCAL12="Berriro deskargatu behar al dut?"
+LOCAL13="Bai"
+LOCAL14="Ez"
+LOCAL15="Ziurtagiri hauek deskargatu eta instalatu dira:"
+LOCAL_MUST_BE_ROOT="Errorea izan behar du... Irteten..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm falta da... Irteten..."
+LOCAL_ALL_CERTIFICATES="ICP-Brasil erroko ziurtagiri guztiak"
+### .desktop file to be translated too
+# Name[eu]=PJeOffice CA Certificates Installer
+# Comment[eu]=PJeOffice CA Certificates Installer

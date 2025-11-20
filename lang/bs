@@ -1,0 +1,21 @@
+# bs localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Ime"
+LOCAL2="Opis"
+LOCAL3="Izlaz"
+LOCAL4="Instalater certifikata"
+LOCAL5="Instalira CA certifikate unutar vašeg operativnog sistema. \n\nMolimo odaberite opciju"
+LOCAL11="certifikat već postoji."
+LOCAL12="Da li da ga ponovo preuzmem?"
+LOCAL13="Da"
+LOCAL14="Ne"
+LOCAL15="Sljedeći certifikati su preuzeti i instalirani:"
+LOCAL_MUST_BE_ROOT="Mora biti root... Izlazim..."
+LOCAL_SPARKY_XTERM_MISSING="nedostaje sparky-xterm... Izlazim..."
+LOCAL_ALL_CERTIFICATES="Svi ICP-Brasil korijenski certifikati"
+### .desktop file to be translated too
+# Name[bs]=PJeOffice CA Certificates Installer
+# Comment[bs]=PJeOffice CA Certificates Installer

@@ -1,0 +1,21 @@
+# cy localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Enw"
+LOCAL2="Disgrifiad"
+LOCAL3="Allan"
+LOCAL4="Gosodwr Tystysgrifau"
+LOCAL5="Mae'n gosod tystysgrifau CA y tu mewn i'ch system weithredu. \n\nDewiswch opsiwn"
+LOCAL11="mae'r dystysgrif eisoes yn bodoli."
+LOCAL12="A ddylwn i ei ail-lwytho i lawr?"
+LOCAL13="Ie"
+LOCAL14="Na"
+LOCAL15="Mae'r tystysgrifau canlynol wedi'u llwytho i lawr a'u gosod:"
+LOCAL_MUST_BE_ROOT="Rhaid bod yn root... Allan..."
+LOCAL_SPARKY_XTERM_MISSING="mae sparky-xterm ar goll... Allan..."
+LOCAL_ALL_CERTIFICATES="Holl dystysgrifau gwraidd ICP-Brasil"
+### .desktop file to be translated too
+# Name[cy]=PJeOffice CA Certificates Installer
+# Comment[cy]=PJeOffice CA Certificates Installer

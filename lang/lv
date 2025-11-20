@@ -1,0 +1,21 @@
+# lv localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Nosaukums"
+LOCAL2="Apraksts"
+LOCAL3="Iziet"
+LOCAL4="Sertifikātu instalētājs"
+LOCAL5="Tas instalē CA sertifikātus jūsu operētājsistēmā. \n\nLūdzu, atlasiet opciju"
+LOCAL11="sertifikāts jau pastāv."
+LOCAL12="Vai man to vajadzētu lejupielādēt vēlreiz?"
+LOCAL13="Jā"
+LOCAL14="Nē"
+LOCAL15="Ir lejupielādēti un instalēti šādi sertifikāti:"
+LOCAL_MUST_BE_ROOT="Jābūt root... Iziet..."
+LOCAL_SPARKY_XTERM_MISSING="trūkst sparky-xterm... Iziet..."
+LOCAL_ALL_CERTIFICATES="Visi ICP-Brasil saknes sertifikāti"
+### .desktop file to be translated too
+# Name[lv]=PJeOffice CA Certificates Installer
+# Comment[lv]=PJeOffice CA Certificates Installer

@@ -1,22 +1,21 @@
 # English localization file for Sparky CA.
-# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu> 2018/02/17
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
 # Under the GNU GPL v2
-# Last update 2020/05/11
+# Last update 2025/11/19
 LOCAL1="Name"
 LOCAL2="Description"
 LOCAL3="Exit"
 LOCAL4="Certificate Installer"
 LOCAL5="It installs CA certificates inside your operating system. \n\nPlease select an option"
-LOCAL6="ICP root"
-LOCAL7="CertSign Chains"
-LOCAL8="OAB chains"
-LOCAL9="Justice chains"
 LOCAL11="certificate already exists."
 LOCAL12="Should I re-download it?"
 LOCAL13="Yes"
 LOCAL14="No"
 LOCAL15="Following certificates have been downloaded and installed:"
-LOCAL16="Google Chrome root"
+LOCAL_MUST_BE_ROOT="Must be root... Exiting..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm is missing... Exiting..."
+LOCAL_ALL_CERTIFICATES="All ICP-Brasil root certificates"
 ### .desktop file to be translated too
 # Name[en_US]=PJeOffice CA Certificates Installer
 # Comment[en_US]=PJeOffice CA Certificates Installer
