@@ -1,0 +1,21 @@
+# ka localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="სახელი"
+LOCAL2="აღწერა"
+LOCAL3="გასვლა"
+LOCAL4="სერთიფიკატის ინსტალერი"
+LOCAL5="ის აყენებს CA სერთიფიკატებს თქვენს ოპერაციულ სისტემაში. \n\nგთხოვთ, აირჩიოთ ვარიანტი"
+LOCAL11="სერთიფიკატი უკვე არსებობს."
+LOCAL12="ხელახლა უნდა გადმოვწერო?"
+LOCAL13="დიახ"
+LOCAL14="არა"
+LOCAL15="შემდეგი სერთიფიკატები გადმოწერილი და დაინსტალირებულია:"
+LOCAL_MUST_BE_ROOT="უნდა იყოს root... გასვლა..."
+LOCAL_SPARKY_XTERM_MISSING="აკლია sparky-xterm... გასვლა..."
+LOCAL_ALL_CERTIFICATES="ყველა ICP-Brasil ძირეული სერთიფიკატი"
+### .desktop file to be translated too
+# Name[ka]=PJeOffice CA Certificates Installer
+# Comment[ka]=PJeOffice CA Certificates Installer

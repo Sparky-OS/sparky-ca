@@ -1,0 +1,21 @@
+# sk localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Názov"
+LOCAL2="Popis"
+LOCAL3="Koniec"
+LOCAL4="Inštalátor certifikátov"
+LOCAL5="Nainštaluje certifikáty CA do vášho operačného systému. \n\nVyberte si možnosť"
+LOCAL11="certifikát už existuje."
+LOCAL12="Mám ho stiahnuť znova?"
+LOCAL13="Áno"
+LOCAL14="Nie"
+LOCAL15="Nasledujúce certifikáty boli stiahnuté a nainštalované:"
+LOCAL_MUST_BE_ROOT="Musí byť root... Končím..."
+LOCAL_SPARKY_XTERM_MISSING="chýba sparky-xterm... Končím..."
+LOCAL_ALL_CERTIFICATES="Všetky koreňové certifikáty ICP-Brasil"
+### .desktop file to be translated too
+# Name[sk]=PJeOffice CA Certificates Installer
+# Comment[sk]=PJeOffice CA Certificates Installer

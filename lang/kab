@@ -1,0 +1,21 @@
+# kab localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Isem"
+LOCAL2="Aglam"
+LOCAL3="Ffeɣ"
+LOCAL4="Aseɣẓan n tistam"
+LOCAL5="Aseɣẓan n tistam n CA deg unagraw n umseɣli-nwen. \n\nFren yiwet n teɣzert"
+LOCAL11="tistam-nni tella yakan."
+LOCAL12="Ad tt-id-ssudreɣ tikkelt nniḍen?"
+LOCAL13="Ih"
+LOCAL14="Ala"
+LOCAL15="Tistam-agi i d-iteddun ssudren-tt-id yerna sseɣẓen-tt:"
+LOCAL_MUST_BE_ROOT="Ilaq ad telliḍ d root... Tuffɣa..."
+LOCAL_SPARKY_XTERM_MISSING="ileqqem sparky-xterm... Tuffɣa..."
+LOCAL_ALL_CERTIFICATES="Akk tistam n uẓar n ICP-Brasil"
+### .desktop file to be translated too
+# Name[kab]=PJeOffice CA Certificates Installer
+# Comment[kab]=PJeOffice CA Certificates Installer

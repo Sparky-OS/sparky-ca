@@ -1,0 +1,21 @@
+# ml localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="പേര്"
+LOCAL2="വിവരണം"
+LOCAL3="പുറത്തുകടക്കുക"
+LOCAL4="സർട്ടിഫിക്കറ്റ് ഇൻസ്റ്റാളർ"
+LOCAL5="ഇത് നിങ്ങളുടെ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിനുള്ളിൽ CA സർട്ടിഫിക്കറ്റുകൾ ഇൻസ്റ്റാൾ ചെയ്യുന്നു. \n\nദയവായി ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക"
+LOCAL11="സർട്ടിഫിക്കറ്റ് ഇതിനകം നിലവിലുണ്ട്."
+LOCAL12="ഞാൻ അത് വീണ്ടും ഡൗൺലോഡ് ചെയ്യണോ?"
+LOCAL13="അതെ"
+LOCAL14="ഇല്ല"
+LOCAL15="ഇനിപ്പറയുന്ന സർട്ടിഫിക്കറ്റുകൾ ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്തിട്ടുണ്ട്:"
+LOCAL_MUST_BE_ROOT="റൂട്ട് ആയിരിക്കണം... പുറത്തുകടക്കുന്നു..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm കാണുന്നില്ല... പുറത്തുകടക്കുന്നു..."
+LOCAL_ALL_CERTIFICATES="എല്ലാ ICP-ബ്രസീൽ റൂട്ട് സർട്ടിഫിക്കറ്റുകളും"
+### .desktop file to be translated too
+# Name[ml]=PJeOffice CA Certificates Installer
+# Comment[ml]=PJeOffice CA Certificates Installer

@@ -1,0 +1,21 @@
+# km localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="ឈ្មោះ"
+LOCAL2="ការពិពណ៌នា"
+LOCAL3="ចេញ"
+LOCAL4="កម្មវិធីដំឡើងវិញ្ញាបនបត្រ"
+LOCAL5="វាដំឡើងវិញ្ញាបនបត្រ CA នៅខាងក្នុងប្រព័ន្ធប្រតិបត្តិការរបស់អ្នក។ \n\nសូមជ្រើសរើសជម្រើស"
+LOCAL11="វិញ្ញាបនបត្រមានរួចហើយ។"
+LOCAL12="តើខ្ញុំគួរទាញយកវាម្តងទៀតទេ?"
+LOCAL13="បាទ"
+LOCAL14="ទេ"
+LOCAL15="វិញ្ញាបនបត្រខាងក្រោមត្រូវបានទាញយក និងដំឡើងរួចហើយ៖"
+LOCAL_MUST_BE_ROOT="ត្រូវតែជា root... កំពុងចេញ..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm បាត់... កំពុងចេញ..."
+LOCAL_ALL_CERTIFICATES="វិញ្ញាបនបត្រឫស ICP-Brasil ទាំងអស់"
+### .desktop file to be translated too
+# Name[km]=PJeOffice CA Certificates Installer
+# Comment[km]=PJeOffice CA Certificates Installer

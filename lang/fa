@@ -1,0 +1,21 @@
+# fa localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="نام"
+LOCAL2="توضیحات"
+LOCAL3="خروج"
+LOCAL4="نصب کننده گواهی"
+LOCAL5="گواهی های CA را در سیستم عامل شما نصب می کند. \n\nلطفا یک گزینه را انتخاب کنید"
+LOCAL11="گواهی از قبل وجود دارد."
+LOCAL12="آیا باید دوباره آن را بارگیری کنم؟"
+LOCAL13="بله"
+LOCAL14="نه"
+LOCAL15="گواهی های زیر بارگیری و نصب شده اند:"
+LOCAL_MUST_BE_ROOT="باید ریشه باشد... در حال خروج..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm موجود نیست... در حال خروج..."
+LOCAL_ALL_CERTIFICATES="همه گواهی های ریشه ICP-Brasil"
+### .desktop file to be translated too
+# Name[fa]=PJeOffice CA Certificates Installer
+# Comment[fa]=PJeOffice CA Certificates Installer

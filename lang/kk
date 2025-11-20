@@ -1,0 +1,21 @@
+# kk localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Аты"
+LOCAL2="Сипаттама"
+LOCAL3="Шығу"
+LOCAL4="Сертификат орнатушы"
+LOCAL5="Ол операциялық жүйеңізде CA сертификаттарын орнатады. \n\nОпцияны таңдаңыз"
+LOCAL11="сертификат бұрыннан бар."
+LOCAL12="Оны қайта жүктеп алуым керек пе?"
+LOCAL13="Иә"
+LOCAL14="Жоқ"
+LOCAL15="Келесі сертификаттар жүктеп алынып, орнатылды:"
+LOCAL_MUST_BE_ROOT="Root болуы керек... Шығу..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm жоқ... Шығу..."
+LOCAL_ALL_CERTIFICATES="Барлық ICP-Brasil түбірлік сертификаттары"
+### .desktop file to be translated too
+# Name[kk]=PJeOffice CA Certificates Installer
+# Comment[kk]=PJeOffice CA Certificates Installer

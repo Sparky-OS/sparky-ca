@@ -1,27 +1,28 @@
 #!/bin/bash
 #
 # Created by Paweł "pavroo" Pijanowski 2018/02/17
-# Copyright 2018 under the GNU GPL2 License
-# This script requires yad to run
-# Last update 2018/03/29
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
 
-# get default's locale file
+# Get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-ca"
-if [ "`cat /etc/default/locale | grep pl_PL`" != "" ]; then
-. $DEFLOCDIR/pl
-elif [ "`cat /etc/default/locale | grep pt_BR`" != "" ]; then
-. $DEFLOCDIR/pt_BR
+LOCALE=$(cat /etc/default/locale | grep "LANG=" | cut -d'=' -f2 | cut -d'.' -f1)
+
+if [ -f "$DEFLOCDIR/$LOCALE" ]; then
+    . "$DEFLOCDIR/$LOCALE"
 else
-. $DEFLOCDIR/en
+    . "$DEFLOCDIR/en"
 fi
 
-testroot="`whoami`"
+testroot=$(whoami)
 if [ "$testroot" != "root" ]; then
-    echo "Must be root... Exiting..."
+    echo "$LOCAL_MUST_BE_ROOT"
     exit 1
 fi
 
-DIALOG="yad --window-icon=seahorse --width=500 --height=320 --center"
+DIALOG="yad --window-icon=seahorse --width=500 --height=400 --center"
 DIALOG4="yad --window-icon=seahorse --width=450 --height=250 --center"
 TITLE="--always-print-result --dialog-sep --image=seahorse --title="
 TEXT="--text="
@@ -30,425 +31,105 @@ OKEXIT="--button=Ok:0 --button=$LOCAL3:1"
 YESNO="--button=$LOCAL13:0 --button=$LOCAL14:1"
 MSGBOX="--button=Ok:0"
 TITLETEXT="$LOCAL4"
-if [ -f /usr/bin/sparky-xterm ];then
-	SPARKYXTERM="/usr/bin/sparky-xterm"
+
+if [ -f /usr/bin/sparky-xterm ]; then
+    SPARKYXTERM="/usr/bin/sparky-xterm"
 else
-	echo "sparky-xterm is missing... Exiting..."
-	exit 1
+    echo "$LOCAL_SPARKY_XTERM_MISSING"
+    exit 1
 fi
+
 CADIR="/usr/local/share/ca-certificates"
 CABRDIR="ICP-Brazil"
-if [ ! -d $CADIR/$CABRDIR ]; then
-	mkdir -p $CADIR/$CABRDIR
+if [ ! -d "$CADIR/$CABRDIR" ]; then
+    mkdir -p "$CADIR/$CABRDIR"
 fi
-cd $CADIR/$CABRDIR
+cd "$CADIR/$CABRDIR"
 
 # Brazilian certificates servers
-BRSERVER1="http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ"
-BRSERVER2="http://acraiz.icpbrasil.gov.br/repositorio"
-BRSERVER3="http://acraiz.icpbrasil.gov.br/credenciadas/CERTISIGN"
-BRSERVER4="http://acraiz.icpbrasil.gov.br/credenciadas/JUS"
+BRSERVER="https://acraiz.icpbrasil.gov.br/credenciadas/RAIZ"
 
 # Brazilian certificates names
-# 1:ICP root
-BRCA1="ICP-Brasil.crt"
-BRCA2="ICP-Brasilv2.crt"
-BRCA3="ICP-Brasilv4.crt"
-BRCA4="ICP-Brasilv5.crt"
-BRCA5="ICP-Brasilv6.crt"
-BRCA6="ICP-Brasilv7.crt"
-BRCA7="ICP-Brasilv10.crt"
-BRCA8="ICP-Brasilv11.crt"
-# 2:Google Chrome root
-BRCA9="v1_v2_v5_v6_v7_10_11_goochr.p7b"
-# 3:CertSign Chains
-BRCA10="/v2/p/AC_Certisign_G6.crt"
-BRCA11="/v5/p/AC_Certisign_G7.crt"
-BRCA12="AC_Certisign_G7.crt"
-BRCA13="/v2/AC_Certisign_Multipla_G6.crt"
-BRCA14="/v5/AC_Certisign_Multipla_G7.crt"
-BRCA15="/v5/AC_Certisign_Multipla_CodeSigning.crt"
-BRCA16="/v5/AC_Certisign_Multipla_SSL.crt"
-# 4:OAB chains
-BRCA17="/v5/AC_OAB_G3.crt"
-# 5:Justice chains
-BRCA18="/v2/p/Autoridade_Certificadora_da_Justica_v4.crt"
-BRCA19="/v5/p/Autoridade_Certificadora_da_Justica_v5.crt"
+CERTIFICATES=(
+    "ICP-Brasilv2.crt"
+    "ICP-Brasilv4.crt"
+    "ICP-Brasilv5.crt"
+    "ICP-Brasilv6.crt"
+    "ICP-Brasilv7.crt"
+    "ICP-Brasilv10.crt"
+    "ICP-Brasilv11.crt"
+    "ICP-Brasilv12.crt"
+    "ICP-Brasilv13.crt"
+)
+
+#
+# Downloads and installs a single certificate.
+#
+download_certificate() {
+    local cert_name=$1
+    if [ -f "$cert_name" ]; then
+        $DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$cert_name $LOCAL11\n$LOCAL12"
+        if [ "$?" = "0" ]; then
+            rm -f "$cert_name"
+            $SPARKYXTERM "wget $BRSERVER/$cert_name"
+        fi
+    else
+        $SPARKYXTERM "wget $BRSERVER/$cert_name"
+    fi
+}
 
 #
 # Displays the main menu of the application and calls the appropriate
 # function based on user selection.
 #
-mainmenu () {
+mainmenu() {
+    local menu_options=()
+    for cert in "${CERTIFICATES[@]}"; do
+        menu_options+=("$cert" "$cert")
+    done
+    menu_options+=("All" "$LOCAL_ALL_CERTIFICATES")
+    menu_options+=("Exit" "$LOCAL3")
 
-CHOICES=`$DIALOG $TITLE"$TITLETEXT" $MENU $OKEXIT $TEXT"$LOCAL5:" \
-BR1 "$LOCAL6" \
-BR2 "$LOCAL16" \
-BR3 "$LOCAL7" \
-BR4 "$LOCAL8" \
-BR5 "$LOCAL9" \
-Exit "$LOCAL3"`
+    CHOICES=$($DIALOG $TITLE"$TITLETEXT" $MENU $OKEXIT $TEXT"$LOCAL5:" "${menu_options[@]}")
 
-if [ "$?" = "0" ]; then
-	CHOICE=`echo $CHOICES | cut -d "|" -f 1`
-else
-	exit 0
-fi
+    if [ "$?" = "0" ]; then
+        CHOICE=$(echo "$CHOICES" | cut -d "|" -f 1)
+    else
+        exit 0
+    fi
 
-if [ "$CHOICE" = "BR1" ]; then
-	br1menu
-elif [ "$CHOICE" = "BR2" ]; then
-	br2menu
-elif [ "$CHOICE" = "BR3" ]; then
-	br3menu
-elif [ "$CHOICE" = "BR4" ]; then
-	br4menu
-elif [ "$CHOICE" = "BR5" ]; then
-	br5menu
-elif [ "$CHOICE" = "Exit" ]; then
-	exit 0
-else
-	exit 0
-fi
-}
-
-#
-# Downloads and installs the ICP-Brasil root certificates.
-#
-br1menu () {
-if [ -f $BRCA1 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA1 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA1
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA1"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA1"
-fi
-
-if [ -f $BRCA2 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA2 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA2
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA2"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA2"
-fi
-
-if [ -f $BRCA3 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA3 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA3
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA3"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA3"
-fi
-
-if [ -f $BRCA4 ]; then
-        $DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA4 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA4
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA4"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA4"
-fi
-
-if [ -f $BRCA5 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA5 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA5
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA5"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA5"
-fi
-
-if [ -f $BRCA6 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA6 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA6
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA6"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA6"
-fi
-
-if [ -f $BRCA7 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA7 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA7
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA7"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA7"
-fi
-
-if [ -f $BRCA8 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA8 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA8
-		$SPARKYXTERM "wget $BRSERVER1/$BRCA8"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER1/$BRCA8"
-fi
-
-$SPARKYXTERM "update-ca-certificates"
-
-if [ -f $BRCA1 ]; then
-	BRCA1CHECK=$BRCA1
-else
-	BRCA1CHECK=""
-fi
-if [ -f $BRCA2 ]; then
-	BRCA2CHECK=$BRCA2
-else
-	BRCA2CHECK=""
-fi
-if [ -f $BRCA3 ]; then
-	BRCA3CHECK=$BRCA3
-else
-	BRCA3CHECK=""
-fi
-if [ -f $BRCA4 ]; then
-	BRCA4CHECK=$BRCA4
-else
-	BRCA4CHECK=""
-fi
-if [ -f $BRCA5 ]; then
-	BRCA5CHECK=$BRCA5
-else
-	BRCA5CHECK=""
-fi
-if [ -f $BRCA6 ]; then
-	BRCA6CHECK=$BRCA6
-else
-	BRCA6CHECK=""
-fi
-if [ -f $BRCA7 ]; then
-	BRCA7CHECK=$BRCA7
-else
-	BRCA7CHECK=""
-fi
-if [ -f $BRCA8 ]; then
-	BRCA8CHECK=$BRCA8
-else
-	BRCA8CHECK=""
-fi
-
-$DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA1CHECK\n$BRCA2CHECK\n$BRCA3CHECK\n$BRCA4CHECK\n$BRCA5CHECK\n$BRCA6CHECK\n$BRCA7CHECK\n$BRCA8CHECK"
-mainmenu
-}
-
-#
-# Downloads and installs the Google Chrome root certificate.
-#
-br2menu () {
-if [ -f $BRCA9 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA9 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA9
-		$SPARKYXTERM "wget $BRSERVER2$BRCA9"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER2$BRCA9"
-fi
-
-$SPARKYXTERM "update-ca-certificates"
-
-if [ -f $BRCA9 ]; then
-	BRCA9CHECK=$BRCA9
-else
-	BRCA9CHECK=""
-fi
-
-$DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA9CHECK"
-mainmenu
-}
-
-#
-# Downloads and installs the CertSign chains.
-#
-br3menu () {
-if [ -f $BRCA10 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA10 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA10
-		$SPARKYXTERM "wget $BRSERVER3$BRCA10"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA10"
-fi
-
-if [ -f $BRCA11 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA11 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA11
-		$SPARKYXTERM "wget $BRSERVER3$BRCA11"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA11"
-fi
-
-if [ -f $BRCA12 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA12 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA12
-		$SPARKYXTERM "wget $BRSERVER3$BRCA12"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA12"
-fi
-
-if [ -f $BRCA13 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA13 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA13
-		$SPARKYXTERM "wget $BRSERVER3$BRCA13"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA13"
-fi
-
-if [ -f $BRCA14 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA14 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA14
-		$SPARKYXTERM "wget $BRSERVER3$BRCA14"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA14"
-fi
-
-if [ -f $BRCA15 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA15 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA15
-		$SPARKYXTERM "wget $BRSERVER3$BRCA15"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA15"
-fi
-
-if [ -f $BRCA16 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA16 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA16
-		$SPARKYXTERM "wget $BRSERVER3$BRCA16"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA16"
-fi
-
-$SPARKYXTERM "update-ca-certificates"
-
-if [ -f $BRCA10 ]; then
-	BRCA10CHECK=$BRCA10
-else
-	BRCA10CHECK=""
-fi
-if [ -f $BRCA11 ]; then
-	BRCA11CHECK=$BRCA11
-else
-	BRCA11CHECK=""
-fi
-if [ -f $BRCA12 ]; then
-	BRCA12CHECK=$BRCA12
-else
-	BRCA12CHECK=""
-fi
-if [ -f $BRCA13 ]; then
-	BRCA13CHECK=$BRCA13
-else
-	BRCA13CHECK=""
-fi
-if [ -f $BRCA14 ]; then
-	BRCA14CHECK=$BRCA14
-else
-	BRCA14CHECK=""
-fi
-if [ -f $BRCA15 ]; then
-	BRCA15CHECK=$BRCA15
-else
-	BRCA15CHECK=""
-fi
-if [ -f $BRCA16 ]; then
-	BRCA16CHECK=$BRCA16
-else
-	BRCA16CHECK=""
-fi
-
-$DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA10CHECK\n$BRCA11CHECK\n$BRCA12CHECK\n$BRCA13CHECK\n$BRCA14CHECK\n$BRCA15CHECK\n$BRCA16CHECK"
-mainmenu
-}
-
-#
-# Downloads and installs the OAB chains.
-#
-br4menu () {
-if [ -f $BRCA17 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA17 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA17
-		$SPARKYXTERM "wget $BRSERVER3$BRCA17"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER3$BRCA17"
-fi
-
-$SPARKYXTERM "update-ca-certificates"
-
-if [ -f $BRCA17 ]; then
-	BRCA17CHECK=$BRCA17
-else
-	BRCA17CHECK=""
-fi
-
-$DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA17CHECK"
-mainmenu
-}
-
-#
-# Downloads and installs the Justice chains.
-#
-br5menu () {
-if [ -f $BRCA18 ]; then
-	$DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA18 $LOCAL11\n$LOCAL12"
-	if [ "$?" = "0" ]; then
-		rm -f $BRCA18
-		$SPARKYXTERM "wget $BRSERVER4$BRCA18"
-	fi
-else
-	$SPARKYXTERM "wget $BRSERVER4$BRCA18"
-fi
-
-if [ -f $BRCA19 ]; then
-        $DIALOG4 $TITLE"$TITLETEXT" $YESNO $TEXT"\n$BRCA19 $LOCAL11\n$LOCAL12"
-        if [ "$?" = "0" ]; then
-                rm -f $BRCA19
-                $SPARKYXTERM "wget $BRSERVER4$BRCA19"
+    if [ "$CHOICE" = "All" ]; then
+        download_all_certificates
+    elif [ "$CHOICE" = "Exit" ]; then
+        exit 0
+    else
+        download_certificate "$CHOICE"
+        $SPARKYXTERM "update-ca-certificates"
+        local downloaded_certs=""
+        if [ -f "$CHOICE" ]; then
+            downloaded_certs="$CHOICE"
         fi
-else
-        $SPARKYXTERM "wget $BRSERVER4$BRCA19"
-fi
+        $DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$downloaded_certs"
+        mainmenu
+    fi
+}
 
-$SPARKYXTERM "update-ca-certificates"
-
-if [ -f $BRCA18 ]; then
-        BRCA18CHECK=$BRCA18
-else
-        BRCA18CHECK=""
-fi
-if [ -f $BRCA19 ]; then
-        BRCA19CHECK=$BRCA19
-else
-        BRCA19CHECK=""
-fi
-$DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$BRCA18CHECK\n$BRCA19CHECK"
-mainmenu
+#
+# Downloads and installs all certificates.
+#
+download_all_certificates() {
+    for cert in "${CERTIFICATES[@]}"; do
+        download_certificate "$cert"
+    done
+    $SPARKYXTERM "update-ca-certificates"
+    local downloaded_certs=""
+    for cert in "${CERTIFICATES[@]}"; do
+        if [ -f "$cert" ]; then
+            downloaded_certs+="$cert\n"
+        fi
+    done
+    $DIALOG4 $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n$LOCAL15\n$downloaded_certs"
+    mainmenu
 }
 
 mainmenu

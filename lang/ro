@@ -1,0 +1,21 @@
+# ro localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Nume"
+LOCAL2="Descriere"
+LOCAL3="Ieșire"
+LOCAL4="Instalator de certificate"
+LOCAL5="Instalează certificate CA în sistemul dumneavoastră de operare. \n\nVă rugăm să selectați o opțiune"
+LOCAL11="certificatul există deja."
+LOCAL12="Ar trebui să-l descarc din nou?"
+LOCAL13="Da"
+LOCAL14="Nu"
+LOCAL15="Următoarele certificate au fost descărcate și instalate:"
+LOCAL_MUST_BE_ROOT="Trebuie să fiți root... Ieșire..."
+LOCAL_SPARKY_XTERM_MISSING="lipsește sparky-xterm... Ieșire..."
+LOCAL_ALL_CERTIFICATES="Toate certificatele rădăcină ICP-Brasil"
+### .desktop file to be translated too
+# Name[ro]=PJeOffice CA Certificates Installer
+# Comment[ro]=PJeOffice CA Certificates Installer

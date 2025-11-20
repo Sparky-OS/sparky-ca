@@ -1,0 +1,21 @@
+# vi localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Tên"
+LOCAL2="Mô tả"
+LOCAL3="Thoát"
+LOCAL4="Trình cài đặt chứng chỉ"
+LOCAL5="Nó cài đặt chứng chỉ CA bên trong hệ điều hành của bạn. \n\nVui lòng chọn một tùy chọn"
+LOCAL11="chứng chỉ đã tồn tại."
+LOCAL12="Tôi có nên tải xuống lại không?"
+LOCAL13="Có"
+LOCAL14="Không"
+LOCAL15="Các chứng chỉ sau đã được tải xuống và cài đặt:"
+LOCAL_MUST_BE_ROOT="Phải là root... Đang thoát..."
+LOCAL_SPARKY_XTERM_MISSING="thiếu sparky-xterm... Đang thoát..."
+LOCAL_ALL_CERTIFICATES="Tất cả các chứng chỉ gốc của ICP-Brasil"
+### .desktop file to be translated too
+# Name[vi]=PJeOffice CA Certificates Installer
+# Comment[vi]=PJeOffice CA Certificates Installer

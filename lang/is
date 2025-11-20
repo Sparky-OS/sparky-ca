@@ -1,0 +1,21 @@
+# is localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Nafn"
+LOCAL2="Lýsing"
+LOCAL3="Hætta"
+LOCAL4="Skírteinisuppsetningarforrit"
+LOCAL5="Það setur upp CA-skírteini í stýrikerfinu þínu. \n\nVinsamlegast veldu valkost"
+LOCAL11="skírteinið er þegar til."
+LOCAL12="Ætti ég að hlaða því niður aftur?"
+LOCAL13="Já"
+LOCAL14="Nei"
+LOCAL15="Eftirfarandi skírteini hafa verið sótt og sett upp:"
+LOCAL_MUST_BE_ROOT="Verður að vera rót... Hættir..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm vantar... Hættir..."
+LOCAL_ALL_CERTIFICATES="Öll ICP-Brasil rótarskírteini"
+### .desktop file to be translated too
+# Name[is]=PJeOffice CA Certificates Installer
+# Comment[is]=PJeOffice CA Certificates Installer

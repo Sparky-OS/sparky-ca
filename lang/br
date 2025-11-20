@@ -1,0 +1,21 @@
+# br localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Anv"
+LOCAL2="Deskrivadur"
+LOCAL3="Kuitaat"
+LOCAL4="Staliwr Testennoù"
+LOCAL5="Staliañ a ra testennoù CA e-barzh ho reizhiad korvoiñ. \n\nDibabit un dibarzh mar plij"
+LOCAL11="an testenn a zo anezhi c'hoazh."
+LOCAL12="Ha rankout a ran he adpellgas?"
+LOCAL13="Ya"
+LOCAL14="Nann"
+LOCAL15="An testennoù da-heul a zo bet pellgaset ha staliet:"
+LOCAL_MUST_BE_ROOT="Rankout a reer bezañ root... O kuitaat..."
+LOCAL_SPARKY_XTERM_MISSING="mankout a ra sparky-xterm... O kuitaat..."
+LOCAL_ALL_CERTIFICATES="An holl testennoù gwrizienn ICP-Brasil"
+### .desktop file to be translated too
+# Name[br]=PJeOffice CA Certificates Installer
+# Comment[br]=PJeOffice CA Certificates Installer

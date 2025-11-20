@@ -1,0 +1,21 @@
+# ku localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="Nav"
+LOCAL2="Danasîn"
+LOCAL3="Derketin"
+LOCAL4="Sazkerê Sertîfîkayê"
+LOCAL5="Ew sertîfîkayên CA di nav pergala xebitandina we de saz dike. \n\nJi kerema xwe vebijarkek hilbijêrin"
+LOCAL11="sertîfîka jixwe heye."
+LOCAL12="Divê ez wê ji nû ve dakêşim?"
+LOCAL13="Erê"
+LOCAL14="Na"
+LOCAL15="Sertîfîkayên jêrîn hatine daxistin û sazkirin:"
+LOCAL_MUST_BE_ROOT="Divê root be... Derketin..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm kêm e... Derketin..."
+LOCAL_ALL_CERTIFICATES="Hemî sertîfîkayên root ên ICP-Brasil"
+### .desktop file to be translated too
+# Name[ku]=PJeOffice CA Certificates Installer
+# Comment[ku]=PJeOffice CA Certificates Installer

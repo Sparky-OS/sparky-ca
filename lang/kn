@@ -1,0 +1,21 @@
+# kn localization file for Sparky CA.
+# Copyright 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+# Copyright 2025 Jules <jules@smol.ai>
+# Under the GNU GPL v2
+# Last update 2025/11/19
+LOCAL1="ಹೆಸರು"
+LOCAL2="ವಿವರಣೆ"
+LOCAL3="ನಿರ್ಗಮಿಸು"
+LOCAL4="ಪ್ರಮಾಣಪತ್ರ ಸ್ಥಾಪಕ"
+LOCAL5="ಇದು ನಿಮ್ಮ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಂನಲ್ಲಿ CA ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ಸ್ಥಾಪಿಸುತ್ತದೆ. \n\nದಯವಿಟ್ಟು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ"
+LOCAL11="ಪ್ರಮಾಣಪತ್ರ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ."
+LOCAL12="ನಾನು ಅದನ್ನು ಮರು-ಡೌನ್‌ಲೋಡ್ ಮಾಡಬೇಕೇ?"
+LOCAL13="ಹೌದು"
+LOCAL14="ಇಲ್ಲ"
+LOCAL15="ಕೆಳಗಿನ ಪ್ರಮಾಣಪತ್ರಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಸ್ಥಾಪಿಸಲಾಗಿದೆ:"
+LOCAL_MUST_BE_ROOT="ರೂಟ್ ಆಗಿರಬೇಕು... ನಿರ್ಗಮಿಸಲಾಗುತ್ತಿದೆ..."
+LOCAL_SPARKY_XTERM_MISSING="sparky-xterm ಕಾಣೆಯಾಗಿದೆ... ನಿರ್ಗಮಿಸಲಾಗುತ್ತಿದೆ..."
+LOCAL_ALL_CERTIFICATES="ಎಲ್ಲಾ ICP-ಬ್ರೆಜಿಲ್ ಮೂಲ ಪ್ರಮಾಣಪತ್ರಗಳು"
+### .desktop file to be translated too
+# Name[kn]=PJeOffice CA Certificates Installer
+# Comment[kn]=PJeOffice CA Certificates Installer
