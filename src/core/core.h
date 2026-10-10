@@ -9,6 +9,7 @@
 #include <QStringList>
 #include <QTimeZone>
 #include <QUrl>
+#include <QVariantMap>
 #include <memory>
 #include <openssl/x509.h>
 
@@ -75,10 +76,17 @@ QByteArray download(const QUrl &url, const Transport &transport, qint64 limit = 
 QStringList classify(const QString &name, const Certificate &cert);
 QJsonObject describe(const Certificate &cert, const QString &name, const QString &state);
 QStringList browserDatabases(const QString &home);
+QList<Certificate> previewCertificates(const QByteArray &bytes, const QByteArray &password = {});
+void importPersonalCertificate(const QString &file, const QString &database, const QByteArray &password, const QByteArray &databasePassword);
+void registerTokenModule(const QString &database, const QString &module, const QByteArray &databasePassword);
+QByteArray tokenInformation();
+void setGpgsmTrust(const Catalogue &catalogue, const QString &group, const QString &home, bool trusted);
+void applySystemChange(const QVariantMap &arguments, const QString &data, const QString &directory, const QString &bundle);
+void validateStorePath(const QString &path);
 class Store
 {
 public:
-    Store(QString systemDirectory, QString systemBundle, QString nssDatabase);
+    Store(QString systemDirectory, QString systemBundle, QString nssDatabase, QByteArray databasePassword = {});
     void install(const Catalogue &catalogue, const QString &group, bool allowE521 = false);
     void remove(const Catalogue &catalogue, const QString &group);
     QJsonArray list(const Catalogue &catalogue) const;
@@ -86,6 +94,7 @@ private:
     QString m_system;
     QString m_bundle;
     QString m_nss;
+    QByteArray m_password;
     void rebuild();
 };
 }

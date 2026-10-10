@@ -12,6 +12,16 @@
 #include <unistd.h>
 
 using namespace SparkyCA;
+static QByteArray passwordFromFile(const QString &path)
+{
+    auto password = readFile(path);
+    if (password.endsWith('\n')) {
+        password.chop(1);
+        if (password.endsWith('\r')) password.chop(1);
+    }
+    if (password.contains('\n') || password.contains('\0')) fail(i18n("Expected one password in a private file."));
+    return password;
+}
 int main(int argc, char **argv)
 {
     QCoreApplication application(argc, argv);
@@ -28,6 +38,9 @@ int main(int argc, char **argv)
         {"system-dir", i18n("System certificate directory."), "directory", "/usr/local/share/ca-certificates/sparky-ca"},
         {"system-bundle", i18n("Derived system bundle; redirects the updater for isolated tests."), "file", "/etc/ssl/certs/ca-certificates.crt"},
         {"nss", i18n("Operate on this NSS database instead of the system store. Close its browser first."), "directory"},
+        {"password-file", i18n("Read the PKCS#12 passphrase from this private file."), "file"},
+        {"nss-password-file", i18n("Read the NSS database password from this private file."), "file"},
+        {"gpg-home", i18n("GnuPG certificate directory."), "directory", QDir::homePath() + "/.gnupg"},
         {"allow-e521", i18n("Choose E-521 certificates despite unavailable Linux chain verification; requires programs with their own E-521 code.")},
         {"tls-ca", i18n("TLS trust root for an isolated HTTPS fixture."), "file"},
         {"tls-issuer", i18n("Missing TLS issuer, verified against the TLS trust roots."), "file"},
@@ -37,7 +50,7 @@ int main(int argc, char **argv)
         {"hash", i18n("Offline SHA-512 input."), "file"},
         {"output", i18n("Write refreshed catalogue here."), "file"}
     });
-    parser.addPositionalArgument("command", i18n("list [installed], groups, install <group>, remove <group|all>, update, status, profiles, import <file>"));
+    parser.addPositionalArgument("command", i18n("list [installed], groups, install <group>, remove <group|all>, update, status, profiles, preview <file>, import <file>, tokens, register-token <module>, gpgsm-trust <group>, gpgsm-untrust <group>"));
     parser.process(application);
     QTextStream out(stdout), err(stderr), in(stdin);
     try {
@@ -47,7 +60,7 @@ int main(int argc, char **argv)
         auto arguments = parser.positionalArguments();
         QString command = arguments.value(0);
         if (command != "update" || QFileInfo::exists(path)) catalogue.load(readFile(path));
-        Store store(parser.isSet("nss") ? QString() : parser.value("system-dir"), parser.value("system-bundle"), parser.value("nss"));
+        Store store(parser.isSet("nss") ? QString() : parser.value("system-dir"), parser.value("system-bundle"), parser.value("nss"), parser.isSet("nss-password-file") ? passwordFromFile(parser.value("nss-password-file")) : QByteArray());
         if (command.isEmpty()) {
             if (!isatty(STDIN_FILENO)) parser.showHelp(1);
             out << i18n("1. List catalogue\n2. List installed certificates\n3. Install group\n4. Remove group\n5. Status\n0. Exit\nChoice: ") << Qt::flush;
@@ -105,12 +118,32 @@ int main(int argc, char **argv)
             catalogue.ingest(zip, hash);
             writeFile(parser.value("output"), catalogue.json());
             out << i18n("Verified catalogue written.") << '\n';
+        } else if (command == "preview") {
+            if (arguments.size() != 2) fail(i18n("Specify one certificate file."));
+            QJsonArray records;
+            const auto password = parser.isSet("password-file") ? passwordFromFile(parser.value("password-file")) : QByteArray();
+            for (const auto &cert : previewCertificates(readFile(arguments[1]), password)) records.append(describe(cert, cert.subject(), catalogue.state(cert)));
+            out << QJsonDocument(records).toJson();
+        } else if (command == "tokens") {
+            out << tokenInformation();
+        } else if (command == "register-token") {
+            if (arguments.size() != 2 || !parser.isSet("nss")) fail(i18n("Specify an NSS database and one installed token module."));
+            registerTokenModule(parser.value("nss"), arguments[1], parser.isSet("nss-password-file") ? passwordFromFile(parser.value("nss-password-file")) : QByteArray());
+        } else if (command == "gpgsm-trust" || command == "gpgsm-untrust") {
+            if (arguments.size() != 2) fail(i18n("Specify one root group."));
+            setGpgsmTrust(catalogue, arguments[1], parser.value("gpg-home"), command == "gpgsm-trust");
         } else if (command == "import") {
             if (!parser.isSet("nss") || arguments.size() != 2) fail(i18n("Personal certificate import requires --nss and one PKCS#12 file."));
-            QProcess process;
-            process.setProcessChannelMode(QProcess::ForwardedChannels);
-            process.start("pk12util", {"-d", "sql:" + parser.value("nss"), "-i", arguments[1]});
-            if (!process.waitForFinished(-1) || process.exitCode() != 0) fail(i18n("Personal certificate import failed."));
+            if (parser.isSet("password-file")) {
+                importPersonalCertificate(arguments[1], parser.value("nss"), passwordFromFile(parser.value("password-file")),
+                    parser.isSet("nss-password-file") ? passwordFromFile(parser.value("nss-password-file")) : QByteArray());
+            } else {
+                QProcess process;
+                process.setProcessChannelMode(QProcess::ForwardedChannels);
+                process.setInputChannelMode(QProcess::ForwardedInputChannel);
+                process.start("pk12util", {"-d", "sql:" + parser.value("nss"), "-i", arguments[1]});
+                if (!process.waitForFinished(-1) || process.exitCode() != 0) fail(i18n("Personal certificate import failed."));
+            }
         } else {
             fail(i18n("Unknown command: %1", command));
         }

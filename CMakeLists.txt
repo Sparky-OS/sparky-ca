@@ -12,7 +12,8 @@ find_package(KF6I18n REQUIRED)
 find_package(OpenSSL 3 REQUIRED)
 find_package(LibArchive REQUIRED)
 add_library(sparky-ca-core STATIC
-    src/core/certificate.cpp src/core/catalogue.cpp src/core/download.cpp src/core/stores.cpp)
+    src/core/certificate.cpp src/core/catalogue.cpp src/core/download.cpp src/core/stores.cpp
+    src/core/personal.cpp src/core/systemchange.cpp)
 target_include_directories(sparky-ca-core PUBLIC src)
 target_link_libraries(sparky-ca-core PUBLIC Qt6::Core Qt6::Network KF6::I18n OpenSSL::Crypto LibArchive::LibArchive)
 target_compile_options(sparky-ca-core PRIVATE -Wall -Wextra -Wpedantic)
@@ -36,4 +37,10 @@ if(BUILD_TESTING)
         add_test(NAME core-ed521-provider COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/provider.py $<TARGET_FILE:sparky-ca> $<TARGET_FILE:ed521-provider>)
         set_tests_properties(core-ed521-provider PROPERTIES TIMEOUT 120)
     endif()
+endif()
+
+
+if(BUILD_TESTING)
+    add_executable(system-request-check tests/system-request.cpp)
+    target_link_libraries(system-request-check PRIVATE sparky-ca-core)
 endif()
