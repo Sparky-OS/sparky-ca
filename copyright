@@ -27,3 +27,13 @@ License:
 
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
+
+Files: CMakeLists.txt, src/*, tests/*, data/*, DESIGN.md, VERIFICATION.md
+    Copyright (C) 2026 Daniel Campos Ramos
+    License: GPL-3.0-or-later
+    Implementation assistance: gpt-6.1-sol via Codex
+
+    The new C++ core and its tests are free software; you can redistribute
+    them and/or modify them under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 3 of the
+    License, or (at your option) any later version.
