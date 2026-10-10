@@ -88,7 +88,8 @@ NSS rejects real v7 and the three synthetic Ed521-chain certificates with or
 without OpenSSL's provider, while the OpenSSL and RSA controls pass (13 checks).
 Gpgsm rejects Ed521 root self-signatures with or without that provider; an
 intermediate can be imported without becoming a usable key/chain. A generated
-RSA root succeeds in the same keybox (seven checks). NSS also rejects the
+RSA root succeeds in the same keybox. Working-provider and absent-provider
+OpenSSL controls are checked in that probe (nine checks). NSS also rejects the
 real Ed448/v6 root; gpgsm imports it. NSS group installation excludes v6/v7;
 gpgsm's opt-in trust excludes v7. All remain visible in the catalogue.
 Neither archive contains a real v7-issued descendant. Future NSS or Poppler
