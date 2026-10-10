@@ -67,7 +67,8 @@ Build dependencies are Qt 6 Core/Network, KI18n, OpenSSL and libarchive; `certut
 Commands are `groups`, `list`, `list installed`, `install <group>`, `remove <group|all>`, `status`, `profiles`, `update` and `import <file>`. `--data` selects package data; `--catalogue` selects a verified catalogue; `--nss` selects one browser database. A numbered TTY menu runs when no command is given. `update --output <file>` writes a verified catalogue and retains historical entries; it does not install it. Package root pins require review. A1 import prompts through `pk12util` and awaits milestone 4 verification.
 
 Intermediate revocation remains explicitly unknown pending signed CRL handling. Two MRE certificates remain archived with signature verification but fail current OpenSSL installation policy because they use explicit ECC parameters. Four additional historical VALID entries have missing issuers and are withheld, with reasons in `data/source-index.json`; none belongs to the current archive or 2020 baseline. The GUI, KAuth helper, timer, repository workflow, complete translations, tokens and Debian package remain later milestones. The CMake install stages only the new binary and data, without placeholder locales.
-# Optional Ed521 verification prototype
+
+## Optional Ed521 verification prototype
 
 `-DBUILD_ED521_PROVIDER=ON` builds the public-verification prototype following
 Pedro F. Albanese's e521 work. See [its README](ed521-provider/README.md) for
