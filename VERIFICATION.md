@@ -1,6 +1,108 @@
-# Core and Ed521 prototype verification
+# Verification record
 
-## Milestone 2
+## Milestone 3: KDE certificate manager
+
+Measured 2026-10-10. Containers use `photos-digikam-proof:1`, UID/GID 1000,
+four CPUs and only the workspace as a read-write mount. Runtime versions are
+Qt 6.11.2, KF6 6.30.0, KWin 6.7.4, NSS 3.130, Okular 26.08.0 and Poppler
+26.07.0. Authenticated Debian packages are extracted into the workspace;
+no host package, trust store, browser profile, desktop or token is used.
+
+The prepared KIO patch publishes the certificate-manager header and adds
+known-CA enable/disable functions. Its focused test passes seven QtTest cases
+with GCC 16.2 and Clang 21.1.8, including changed configuration from a second
+process, unknown-certificate rejection and failed-save rejection. Full KIO
+upstream CI and other platforms have not run.
+
+Configure the application inside the container against the matching KIO build:
+
+```sh
+cmake -S work/sparky-ca -B scratch/app-build -G Ninja \
+  -DCMAKE_PREFIX_PATH="$PWD/scratch/deps/usr" \
+  -DSPARKY_CA_KIO_SOURCE="$PWD/work/kio-reference" \
+  -DSPARKY_CA_KIO_BUILD="$PWD/scratch/kio-build" \
+  -DBUILD_ED521_PROVIDER=ON \
+  -DLibArchive_LIBRARY=/usr/lib/x86_64-linux-gnu/libarchive.so.13
+cmake --build scratch/app-build -j4
+ctest --test-dir scratch/app-build --output-on-failure
+```
+
+Extracted NSS tools and Qt plugins require their workspace PATH,
+LD_LIBRARY_PATH and QT_PLUGIN_PATH. Both GCC and Clang builds pass all nine
+CTest suites. The Clang build uses `clang++-21`. The default production build
+still leaves the unaudited public-only Ed521 prototype disabled.
+
+The generated-identity integration makes 44 expected-result checks. RSA-2048
+and ECDSA P-256 PKCS#12 identities import into password-protected NSS databases.
+PEM/DER/PKCS#7/PKCS#12 previews, wrong passwords, public password-file rejection,
+symlink rejection, another PKI's catalogue groups and unsafe group identifiers
+are checked. Import, group installation and removal preserve the identity and
+restore the exact pre-existing CA trust attributes.
+
+Okular's actual Document certificate store lists both generated identities;
+Document signing produces PDFs through Poppler's NSS backend. TLS-only group
+trust leaves the PDF issuer untrusted, while the signature itself is valid.
+A separate explicit NSS S/MIME CA decision (`C,C,`, not code-signing trust)
+makes the fixture chain trusted. Altering signed PDF content produces Digest
+Mismatch. Group installation does not grant this extra signing purpose.
+These are generated supported-chain fixtures, not real personal certificates
+or proof of ICP-Brasil document-signature policy compliance.
+
+Fourteen constrained core request checks reject malformed privileged requests
+before creating stores and exercise the actual updater at isolated paths.
+The executable compiled from the real KAuth helper rejects an unprivileged
+caller. Staged policy requires administrator authorization and activates the
+root helper. A positive root/polkit interaction has not been run: every test
+container is deliberately unprivileged. This remains a packaging test limit.
+
+The real p11-kit proxy registers in NSS and its owned registration removes
+without changing an unrelated certificate. Six checks include duplicate,
+missing-module and unowned-removal rejection plus an OpenSC no-reader control.
+No physical token, proprietary middleware or PIN storage is claimed. SoftHSM
+and package installation remain the packaging milestone.
+
+Four tests use the actual kwalletd6 and its Secret Service bridge with an empty
+generated test wallet. Passwords are absent before explicit opt-in, retain
+spaces after storage/readback, stay separate by identity and disappear after
+explicit removal. Production uses KWallet's public API; a private backend
+header is used only to create the generated fixture wallet. No token PINs or
+Okular-to-Wallet integration is claimed.
+
+Fifteen live desktop checks test KNotifications through an expected-message D-Bus
+receiver, KIO's CA enable/disable, a generated system-store root appearing in
+a fresh KIO process, and actual kssld reject/readback/clear operations. The
+Certificates KCM loads through KQuickConfigModuleLoader, loads its compiled
+QML and binds to the same complete backend. Headless KWin receives application
+Wayland surfaces. Application and loaded KCM screenshots are captured with
+QQuickWindow::grabWindow and inspected. The no-device virtual compositor uses
+QPainter; KWin ScreenShot2's OpenGL-only capture is a recorded limit, not the
+capture method claimed here.
+
+Nine dispatcher checks retain the numbered PTY menu, keep scripted commands
+text-only with a display and route supported file types. Fifteen CMake-stage
+checks confirm installed fronts, helper/policy, exact KCM identity, Dolphin
+service menu, preserved desktop name, all certificate MIME types, 331-entry
+catalogue and no placeholder translations. This is not a Debian package test.
+
+NSS rejects real v7 and the three synthetic Ed521-chain certificates with or
+without OpenSSL's provider, while the OpenSSL and RSA controls pass (13 checks).
+Gpgsm rejects Ed521 root self-signatures with or without that provider; an
+intermediate can be imported without becoming a usable key/chain. A generated
+RSA root succeeds in the same keybox (seven checks). NSS also rejects the
+real Ed448/v6 root; gpgsm imports it. NSS group installation excludes v6/v7;
+gpgsm's opt-in trust excludes v7. All remain visible in the catalogue.
+Neither archive contains a real v7-issued descendant. Future NSS or Poppler
+Ed521 integration is not implemented or claimed.
+
+Workspace evidence includes `m3-gcc-final.log`, `m3-clang-final.log`,
+`m3-desktop-core-okular.log`, `m3-desktop-services-wayland.log`, `m3-wallet.log`,
+`m3-nss-boundary.log`, `m3-gpgsm-boundary.log`, `m3-store-capabilities.log`,
+`m3-app-wayland.png` and `m3-kcm-wayland.png`, under `evidence/`.
+Reproduction sources for dependency extraction, isolated service setup,
+store fixtures and boundary probes remain in `verification/milestone3/`.
+Earlier milestone records below describe their historical state.
+
+## Milestone 2 historical record
 
 The opt-in ISC provider follows Pedro F. Albanese's e521 reference after
 the local Go interoperability fixes passed. It provides public PureEd521
