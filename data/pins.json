@@ -39,6 +39,19 @@
     {
       "file": "ICP-Brasilv13.crt",
       "sha256": "2b07d0bc02c4a6e0478ed22d0d99e8f97e1827b269097696a7feb6aad30c3ac8"
+    },
+    {
+      "file": "Certificado_AC_Raiz.crt",
+      "sha256": "687ea89089309d2cfe107db059fb10d676f45d3283aee056903eea0cf3c188f8"
+    },
+    {
+      "file": "ICP-Brasilv3.crt",
+      "sha256": "1226ebf38af7335ffb346de68840d5652d9be7413a65b989375edac6a7f16172",
+      "revoked": true
     }
+  ],
+  "bundleSha512": [
+    "4585a99955607525e475cf22138302fe8ddce6ca8f0926cd1f01809f007d4bcddff5c1070369d29b1de99c0d2eb058ce0deb856bae0189469ba37e09a59d7985",
+    "48a9ed4bd1e2a81bf31e00b981501854b979cdee4eb402c8da658184ab6bd55f2522863ff1e7a97c18159dea73f21ae080f299613e2ef4413a548483b50b5b56"
   ]
 }

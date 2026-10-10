@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "name": "ACcompactado.zip",
+      "sha512": "4585a99955607525e475cf22138302fe8ddce6ca8f0926cd1f01809f007d4bcddff5c1070369d29b1de99c0d2eb058ce0deb856bae0189469ba37e09a59d7985",
+      "bytes": 351321,
+      "entries": 180,
+      "withheld": []
+    },
+    {
+      "name": "ACcompactadox.zip",
+      "sha512": "48a9ed4bd1e2a81bf31e00b981501854b979cdee4eb402c8da658184ab6bd55f2522863ff1e7a97c18159dea73f21ae080f299613e2ef4413a548483b50b5b56",
+      "bytes": 624621,
+      "entries": 340,
+      "withheld": [
+        {
+          "name": "AC_Online_Brasil.crt",
+          "sourceSha256": "ded490876e135c3755dacc442b8f5b9742121b1e3c983835dec58eb0d505eb7e",
+          "reason": "Missing issuer AC VALID under root v2; chain cannot be verified."
+        },
+        {
+          "name": "AC_Valid_Brasil.crt",
+          "sourceSha256": "42e2bdc6fa28affd6ab66398bd4b46938847d265ca675bb327ef37db05c5f234",
+          "reason": "Missing issuer AC VALID under root v2; chain cannot be verified."
+        },
+        {
+          "name": "AC_Valid_PLUS.crt",
+          "sourceSha256": "577f36118354b738472c8ee40a4eb7177685666c8700c451e3d6ec84aae5a410",
+          "reason": "Missing issuer AC VALID under root v2; chain cannot be verified."
+        },
+        {
+          "name": "AC_Valid_SPB.crt",
+          "sourceSha256": "d4ebefdb4597ac5ebf331ec5afde97d103632efc07c43ae28cd492b35b1cc3a2",
+          "reason": "Missing issuer AC VALID under root v2; chain cannot be verified."
+        }
+      ]
+    }
+  ],
+  "assemblyEntries": 338
+}
