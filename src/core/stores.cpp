@@ -100,6 +100,7 @@ void Store::install(const Catalogue &catalogue, const QString &group, bool allow
     QList<Entry> chosen;
     for (const auto &entry : catalogue.entries()) {
         if (!entry.groups.contains(group) || catalogue.state(entry.certificate) != "valid") continue;
+        if (!m_nss.isEmpty() && (entry.certificate.signatureOid() == "1.3.101.113" || entry.certificate.signatureOid() == "1.3.6.1.4.1.44588.2.1")) continue;
         if (catalogue.requiresE521(entry.certificate) && !allowE521) continue;
         if (!catalogue.installationIssue(entry.certificate).isEmpty()) continue;
         catalogue.verify(entry.certificate, true);
@@ -175,6 +176,7 @@ void Store::remove(const Catalogue &catalogue, const QString &group)
     QJsonArray owned;
     auto borrowed = state.value("borrowed").toObject();
     if (!m_nss.isEmpty()) {
+        const auto current = list(catalogue);
         for (const auto &id : borrowed.keys()) {
             if (retained.contains(id)) continue;
             const auto record = borrowed.value(id).toObject();
@@ -184,6 +186,12 @@ void Store::remove(const Catalogue &catalogue, const QString &group)
                 || !QRegularExpression("^[A-Za-z]*,[A-Za-z]*,[A-Za-z]*$").match(trust).hasMatch()) fail(i18n("Invalid saved NSS trust decision."));
             const Certificate installed(run("certutil", {"-L", "-a", "-d", "sql:" + directory, "-n", nickname}));
             if (installed.fingerprint() != id) fail(i18n("Existing certificate bytes have changed."));
+            for (const auto &item : current) {
+                const auto actual = item.toObject();
+                if (actual.value("sha256").toString() != id) continue;
+                const auto flags = actual.value("trust").toString();
+                if (flags != trust && flags != "C," + trust.section(',', 1)) fail(i18n("Existing NSS trust settings changed outside this application."));
+            }
             run("certutil", {"-M", "-d", "sql:" + directory, "-n", nickname, "-t", trust, "-f", password.fileName()});
             borrowed.remove(id);
             state.insert("borrowed", borrowed);

@@ -144,7 +144,17 @@ void Catalogue::load(const QByteArray &json)
             const auto entry = item.toObject();
             const QString name = entry.value("name").toString();
             Certificate cert(entry.value("pem").toString().toUtf8());
-            entries.append({name, classify(name, cert), cert});
+            auto groups = classify(name, cert);
+            if (entry.contains("groups")) {
+                if (!entry.value("groups").isArray() || entry.value("groups").toArray().isEmpty() || entry.value("groups").toArray().size() > 64) fail(i18n("Invalid catalogue groups."));
+                groups.clear();
+                for (const auto &value : entry.value("groups").toArray()) {
+                    const auto group = value.toString();
+                    if (!QRegularExpression("^[a-z][a-z0-9-]{0,63}$").match(group).hasMatch() || groups.contains(group)) fail(i18n("Invalid catalogue group identifier."));
+                    groups.append(group);
+                }
+            }
+            entries.append({name, groups, cert});
         }
         m_entries = entries;
         validate(entries);
@@ -235,7 +245,11 @@ QByteArray Catalogue::json() const
         if (left.name != right.name) return left.name < right.name;
         return left.certificate.fingerprint() < right.certificate.fingerprint();
     });
-    for (const auto &entry : ordered) entries.append(QJsonObject{{"name", entry.name}, {"pem", QString::fromUtf8(entry.certificate.pem())}});
+    for (const auto &entry : ordered) {
+        QJsonObject record{{"name", entry.name}, {"pem", QString::fromUtf8(entry.certificate.pem())}};
+        if (entry.groups != classify(entry.name, entry.certificate)) record.insert("groups", QJsonArray::fromStringList(entry.groups));
+        entries.append(record);
+    }
     return QJsonDocument(QJsonObject{{"schema", 1}, {"certificates", entries}, {"provenance", m_provenance}}).toJson();
 }
 QStringList classify(const QString &name, const Certificate &cert)

@@ -14,6 +14,7 @@
 using namespace SparkyCA;
 static QByteArray passwordFromFile(const QString &path)
 {
+    if (QFileInfo(path).permissions() & (QFile::ReadGroup | QFile::WriteGroup | QFile::ReadOther | QFile::WriteOther)) fail(i18n("Use a private password file with owner-only permissions."));
     auto password = readFile(path);
     if (password.endsWith('\n')) {
         password.chop(1);
@@ -50,7 +51,7 @@ int main(int argc, char **argv)
         {"hash", i18n("Offline SHA-512 input."), "file"},
         {"output", i18n("Write refreshed catalogue here."), "file"}
     });
-    parser.addPositionalArgument("command", i18n("list [installed], groups, install <group>, remove <group|all>, update, status, profiles, preview <file>, import <file>, tokens, register-token <module>, gpgsm-trust <group>, gpgsm-untrust <group>"));
+    parser.addPositionalArgument("command", i18n("list [installed], groups, install <group>, remove <group|all>, update, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-trust <group>, gpgsm-untrust <group>"));
     parser.process(application);
     QTextStream out(stdout), err(stderr), in(stdin);
     try {
@@ -96,6 +97,7 @@ int main(int argc, char **argv)
         } else if (command == "install" || command == "remove") {
             if (arguments.size() != 2) fail(i18n("Specify one group."));
             if (command == "install") {
+                if (parser.isSet("nss")) err << i18n("NSS installations exclude Ed521 and Ed448 entries because NSS cannot import their key types.") << '\n';
                 for (const auto &entry : catalogue.entries()) {
                     if (entry.groups.contains(arguments[1]) && catalogue.requiresE521(entry.certificate)) {
                         err << catalogue.verificationNote(entry.certificate) << '\n';
@@ -125,13 +127,17 @@ int main(int argc, char **argv)
             for (const auto &cert : previewCertificates(readFile(arguments[1]), password)) records.append(describe(cert, cert.subject(), catalogue.state(cert)));
             out << QJsonDocument(records).toJson();
         } else if (command == "tokens") {
-            out << tokenInformation();
+            if (arguments.size() > 2) fail(i18n("Specify at most one token module."));
+            out << tokenInformation(arguments.value(1));
         } else if (command == "register-token") {
             if (arguments.size() != 2 || !parser.isSet("nss")) fail(i18n("Specify an NSS database and one installed token module."));
             registerTokenModule(parser.value("nss"), arguments[1], parser.isSet("nss-password-file") ? passwordFromFile(parser.value("nss-password-file")) : QByteArray());
         } else if (command == "gpgsm-trust" || command == "gpgsm-untrust") {
             if (arguments.size() != 2) fail(i18n("Specify one root group."));
             setGpgsmTrust(catalogue, arguments[1], parser.value("gpg-home"), command == "gpgsm-trust");
+        } else if (command == "unregister-token") {
+            if (arguments.size() != 1 || !parser.isSet("nss")) fail(i18n("Specify an NSS database."));
+            unregisterTokenModule(parser.value("nss"));
         } else if (command == "import") {
             if (!parser.isSet("nss") || arguments.size() != 2) fail(i18n("Personal certificate import requires --nss and one PKCS#12 file."));
             if (parser.isSet("password-file")) {
