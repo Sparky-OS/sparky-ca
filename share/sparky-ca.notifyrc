@@ -1,0 +1,9 @@
+[Global]
+IconName=security-high
+Name=Certificates
+Comment=Certificate trust and expiry notifications
+
+[Event/CertificateChanged]
+Name=Certificate status changed
+Comment=A certificate store changed or a certificate is expiring
+Action=Popup

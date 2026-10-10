@@ -1,0 +1,10 @@
+{
+    "KPlugin": {
+        "Name": "Certificates",
+        "Description": "Manage system, browser and KDE certificate trust",
+        "Icon": "security-high"
+    },
+    "X-KDE-System-Settings-Parent-Category": "security-privacy",
+    "X-KDE-Keywords": "certificate,trust,PKI,ICP-Brasil,NSS,token",
+    "X-KDE-FormFactors": ["desktop", "tablet"]
+}
