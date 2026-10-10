@@ -55,6 +55,7 @@ public:
     bool requiresE521(const Certificate &cert) const;
     QString verification(const Certificate &cert) const;
     QString verificationNote(const Certificate &cert) const;
+    QString installationIssue(const Certificate &cert) const;
     void verify(const Certificate &cert, bool current) const;
 private:
     QList<Certificate> m_roots;

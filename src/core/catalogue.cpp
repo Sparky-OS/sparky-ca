@@ -8,6 +8,7 @@
 #include <QRegularExpression>
 #include <archive.h>
 #include <archive_entry.h>
+#include <algorithm>
 #include <openssl/x509v3.h>
 
 namespace SparkyCA
@@ -55,6 +56,13 @@ QString Catalogue::verificationNote(const Certificate &cert) const
     if (!requiresE521(cert)) return {};
     return i18n("Chain signature not verifiable on Linux (E-521). Linux's crypto libraries cannot use E-521 yet; these certificates help only programs that carry their own E-521 code.");
 }
+QString Catalogue::installationIssue(const Certificate &cert) const
+{
+    try { verify(cert, true); } catch (const std::exception &error) {
+        return QString::fromUtf8(error.what());
+    }
+    return {};
+}
 void Catalogue::verify(const Certificate &cert, bool current) const
 {
     if (cert.root()) {
@@ -83,6 +91,10 @@ void Catalogue::verify(const Certificate &cert, bool current) const
     if (!current) {
         X509_VERIFY_PARAM_set_flags(parameters, X509_V_FLAG_NO_CHECK_TIME);
         X509_VERIFY_PARAM_set_auth_level(parameters, 0);
+        X509_STORE_CTX_set_verify_cb(context, [](int valid, X509_STORE_CTX *context) -> int {
+            // Archive explicit-curve certificates while still verifying every signature.
+            return valid || X509_STORE_CTX_get_error(context) == X509_V_ERR_EC_KEY_EXPLICIT_PARAMS;
+        });
     }
     const bool valid = X509_verify_cert(context) == 1;
     const QString error = QString::fromLatin1(X509_verify_cert_error_string(X509_STORE_CTX_get_error(context)));
@@ -181,10 +193,15 @@ void Catalogue::ingest(const QByteArray &zip, const QByteArray &sha512)
             needsProof = true;
         }
     }
-    if (needsProof) m_provenance.append(QJsonObject{{"sha512", QString::fromLatin1(expected)}, {"zip", QString::fromLatin1(zip.toBase64())}});
+    if (needsProof) {
+        bool recorded = false;
+        for (const auto &proof : m_provenance) recorded |= proof.toObject().value("sha512").toString().toLatin1() == expected;
+        if (!recorded) m_provenance.append(QJsonObject{{"sha512", QString::fromLatin1(expected)}, {"zip", QString::fromLatin1(zip.toBase64())}});
+    }
     for (const auto &root : m_roots) {
         bool found = false;
         for (const auto &entry : entries) found |= entry.certificate.fingerprint() == root.fingerprint();
+        for (const auto &entry : m_entries) found |= entry.certificate.fingerprint() == root.fingerprint();
         if (!found) entries.append({root.subject(), classify("ICP-Brasil", root), root});
     }
     const auto previous = m_entries;
@@ -193,6 +210,9 @@ void Catalogue::ingest(const QByteArray &zip, const QByteArray &sha512)
     for (const auto &item : entries + previous) {
         const QString fingerprint = item.certificate.fingerprint();
         if (!fingerprints.contains(fingerprint)) merged.append(item);
+        else for (auto &retained : merged) {
+            if (retained.certificate.fingerprint() == fingerprint && item.name < retained.name) retained = item;
+        }
         fingerprints.insert(fingerprint);
     }
     entries = merged;
@@ -205,7 +225,12 @@ void Catalogue::ingest(const QByteArray &zip, const QByteArray &sha512)
 QByteArray Catalogue::json() const
 {
     QJsonArray entries;
-    for (const auto &entry : m_entries) entries.append(QJsonObject{{"name", entry.name}, {"pem", QString::fromUtf8(entry.certificate.pem())}});
+    auto ordered = m_entries;
+    std::sort(ordered.begin(), ordered.end(), [](const Entry &left, const Entry &right) {
+        if (left.name != right.name) return left.name < right.name;
+        return left.certificate.fingerprint() < right.certificate.fingerprint();
+    });
+    for (const auto &entry : ordered) entries.append(QJsonObject{{"name", entry.name}, {"pem", QString::fromUtf8(entry.certificate.pem())}});
     return QJsonDocument(QJsonObject{{"schema", 1}, {"certificates", entries}, {"provenance", m_provenance}}).toJson();
 }
 QStringList classify(const QString &name, const Certificate &cert)

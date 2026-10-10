@@ -71,6 +71,10 @@ int main(int argc, char **argv)
                 item.insert("revocation", "unknown");
                 item.insert("verification", catalogue.verification(entry.certificate));
                 item.insert("note", catalogue.verificationNote(entry.certificate));
+                const QString issue = catalogue.installationIssue(entry.certificate);
+                item.insert("installationIssue", issue);
+                item.insert("installable", issue.isEmpty() && !catalogue.requiresE521(entry.certificate));
+                item.insert("requiresChoice", catalogue.requiresE521(entry.certificate));
                 entries.append(item);
             }
             out << QJsonDocument(entries).toJson();

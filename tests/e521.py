@@ -113,6 +113,8 @@ with tempfile.TemporaryDirectory(prefix='sparky-ca-e521-') as temporary:
     pins([digest])
     check(update(cert).returncode == 0, 'approved E-521 fixture accepts matching v7 issuer and AKI without claiming signature verification')
     original = Path('catalogue.json').read_text()
+    run([*args, 'update', '--zip', 'bundle.zip', '--hash', 'hash.txt', '--output', 'catalogue.json'])
+    check(Path('catalogue.json').read_text() == original, 'unchanged E-521 refresh preserves exact catalogue and provenance bytes')
     records = json.loads(run([*args, 'list']).stdout)
     check(len(records) == 2 and {r['verification'] for r in records} == {'pinned-root', 'transport-integrity-only'}, 'v7 and descendant expose distinct verification evidence')
     check(all('E-521' in r['note'] and 'own E-521 code' in r['note'] for r in records), 'E-521 limitations remain visible after catalogue reload')

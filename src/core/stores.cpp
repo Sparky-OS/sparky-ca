@@ -90,6 +90,7 @@ void Store::install(const Catalogue &catalogue, const QString &group, bool allow
     for (const auto &entry : catalogue.entries()) {
         if (!entry.groups.contains(group) || catalogue.state(entry.certificate) != "valid") continue;
         if (catalogue.requiresE521(entry.certificate) && !allowE521) continue;
+        if (!catalogue.installationIssue(entry.certificate).isEmpty()) continue;
         catalogue.verify(entry.certificate, true);
         chosen.append(entry);
     }
@@ -97,9 +98,13 @@ void Store::install(const Catalogue &catalogue, const QString &group, bool allow
     if (!m_nss.isEmpty() && !QFileInfo::exists(directory + "/cert9.db")) run("certutil", {"-N", "-d", "sql:" + directory, "--empty-password"});
     for (const auto &entry : chosen) {
         const QString id = entry.certificate.fingerprint();
-        if (owned.contains(id)) continue;
         const QString filename = directory + "/sparky-ca-" + id + ".crt";
         safePath(filename);
+        if (owned.contains(id)) {
+            const QByteArray bytes = m_nss.isEmpty() ? readFile(filename) : run("certutil", {"-L", "-a", "-d", "sql:" + directory, "-n", "sparky-ca-" + id});
+            if (Certificate(bytes).fingerprint() != id) fail(i18n("Owned certificate bytes have changed."));
+            continue;
+        }
         if (m_nss.isEmpty()) {
             if (QFileInfo::exists(filename)) fail(i18n("Unowned certificate filename already exists."));
             writeFile(filename, entry.certificate.pem());
@@ -146,6 +151,8 @@ void Store::remove(const Catalogue &catalogue, const QString &group)
             if (QFileInfo::exists(filename) && Certificate(readFile(filename)).fingerprint() != id) fail(i18n("Owned certificate bytes have changed."));
             if (QFileInfo::exists(filename) && !QFile::remove(filename)) fail(i18n("Cannot remove certificate."));
         } else {
+            const Certificate installed(run("certutil", {"-L", "-a", "-d", "sql:" + directory, "-n", "sparky-ca-" + id}));
+            if (installed.fingerprint() != id) fail(i18n("Owned certificate bytes have changed."));
             run("certutil", {"-D", "-d", "sql:" + directory, "-n", "sparky-ca-" + id});
         }
     }
