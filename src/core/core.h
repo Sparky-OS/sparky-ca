@@ -32,6 +32,8 @@ public:
     QDateTime expires() const;
     bool root() const;
     bool ca() const;
+    QString signatureOid() const;
+    bool issuedBy(const Certificate &issuer) const;
 private:
     std::shared_ptr<X509> m_cert;
 };
@@ -50,10 +52,16 @@ public:
     const QList<Entry> &entries() const { return m_entries; }
     QStringList groups() const;
     QString state(const Certificate &cert) const;
+    bool requiresE521(const Certificate &cert) const;
+    QString verification(const Certificate &cert) const;
+    QString verificationNote(const Certificate &cert) const;
     void verify(const Certificate &cert, bool current) const;
 private:
     QList<Certificate> m_roots;
     QSet<QString> m_revoked;
+    QSet<QString> m_bundlePins;
+    QSet<QString> m_e521Allowed;
+    QJsonArray m_provenance;
     QList<Entry> m_entries;
     void validate(const QList<Entry> &entries) const;
 };
@@ -69,7 +77,7 @@ class Store
 {
 public:
     Store(QString systemDirectory, QString systemBundle, QString nssDatabase);
-    void install(const Catalogue &catalogue, const QString &group);
+    void install(const Catalogue &catalogue, const QString &group, bool allowE521 = false);
     void remove(const Catalogue &catalogue, const QString &group);
     QJsonArray list(const Catalogue &catalogue) const;
 private:

@@ -71,7 +71,7 @@ void Store::rebuild()
         if (QDir(m_system).entryList({"*.crt"}, QDir::Files).isEmpty()) writeFile(m_bundle, {});
     }
 }
-void Store::install(const Catalogue &catalogue, const QString &group)
+void Store::install(const Catalogue &catalogue, const QString &group, bool allowE521)
 {
     if (!catalogue.groups().contains(group)) fail(i18n("Unknown certificate group: %1", group));
     const QString directory = m_nss.isEmpty() ? m_system : m_nss;
@@ -89,6 +89,7 @@ void Store::install(const Catalogue &catalogue, const QString &group)
     QList<Entry> chosen;
     for (const auto &entry : catalogue.entries()) {
         if (!entry.groups.contains(group) || catalogue.state(entry.certificate) != "valid") continue;
+        if (catalogue.requiresE521(entry.certificate) && !allowE521) continue;
         catalogue.verify(entry.certificate, true);
         chosen.append(entry);
     }
@@ -160,7 +161,9 @@ QJsonArray Store::list(const Catalogue &catalogue) const
         if (!QFileInfo::exists(m_bundle)) return result;
         for (const auto &ssl : QSslCertificate::fromData(readFile(m_bundle))) {
             const Certificate cert(ssl.toPem());
-            result.append(describe(cert, cert.subject(), catalogue.state(cert)));
+            auto item = describe(cert, cert.subject(), catalogue.state(cert));
+            item.insert("note", catalogue.verificationNote(cert));
+            result.append(item);
         }
     } else if (QFileInfo::exists(m_nss + "/cert9.db")) {
         const QString listing = QString::fromUtf8(run("certutil", {"-L", "-d", "sql:" + m_nss}));
@@ -172,6 +175,7 @@ QJsonArray Store::list(const Catalogue &catalogue) const
             const Certificate cert(run("certutil", {"-L", "-a", "-d", "sql:" + m_nss, "-n", nickname}));
             auto description = describe(cert, nickname, catalogue.state(cert));
             description.insert("trust", match.captured(2));
+            description.insert("note", catalogue.verificationNote(cert));
             result.append(description);
         }
     }

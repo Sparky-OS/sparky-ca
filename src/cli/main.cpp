@@ -28,6 +28,7 @@ int main(int argc, char **argv)
         {"system-dir", i18n("System certificate directory."), "directory", "/usr/local/share/ca-certificates/sparky-ca"},
         {"system-bundle", i18n("Derived system bundle; redirects the updater for isolated tests."), "file", "/etc/ssl/certs/ca-certificates.crt"},
         {"nss", i18n("Operate on this NSS database instead of the system store. Close its browser first."), "directory"},
+        {"allow-e521", i18n("Choose E-521 certificates despite unavailable Linux chain verification; requires programs with their own E-521 code.")},
         {"tls-ca", i18n("TLS trust root for an isolated HTTPS fixture."), "file"},
         {"tls-issuer", i18n("Missing TLS issuer, verified against the TLS trust roots."), "file"},
         {"bundle-url", i18n("HTTPS bundle URL."), "url", "https://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip"},
@@ -45,7 +46,7 @@ int main(int argc, char **argv)
         const QString path = parser.isSet("catalogue") ? parser.value("catalogue") : data + "/catalogue.json";
         auto arguments = parser.positionalArguments();
         QString command = arguments.value(0);
-        if (command != "update") catalogue.load(readFile(path));
+        if (command != "update" || QFileInfo::exists(path)) catalogue.load(readFile(path));
         Store store(parser.isSet("nss") ? QString() : parser.value("system-dir"), parser.value("system-bundle"), parser.value("nss"));
         if (command.isEmpty()) {
             if (!isatty(STDIN_FILENO)) parser.showHelp(1);
@@ -68,6 +69,8 @@ int main(int argc, char **argv)
                 auto item = describe(entry.certificate, entry.name, catalogue.state(entry.certificate));
                 item.insert("groups", QJsonArray::fromStringList(entry.groups));
                 item.insert("revocation", "unknown");
+                item.insert("verification", catalogue.verification(entry.certificate));
+                item.insert("note", catalogue.verificationNote(entry.certificate));
                 entries.append(item);
             }
             out << QJsonDocument(entries).toJson();
@@ -75,7 +78,16 @@ int main(int argc, char **argv)
             out << QJsonDocument(store.list(catalogue)).toJson();
         } else if (command == "install" || command == "remove") {
             if (arguments.size() != 2) fail(i18n("Specify one group."));
-            if (command == "install") store.install(catalogue, arguments[1]);
+            if (command == "install") {
+                for (const auto &entry : catalogue.entries()) {
+                    if (entry.groups.contains(arguments[1]) && catalogue.requiresE521(entry.certificate)) {
+                        err << catalogue.verificationNote(entry.certificate) << '\n';
+                        if (!parser.isSet("allow-e521")) err << i18n("E-521 entries are skipped. Use --allow-e521 to choose them explicitly.") << '\n';
+                        break;
+                    }
+                }
+                store.install(catalogue, arguments[1], parser.isSet("allow-e521"));
+            }
             else store.remove(catalogue, arguments[1]);
             out << i18n("Certificate store updated.") << '\n';
         } else if (command == "update") {
@@ -83,6 +95,7 @@ int main(int argc, char **argv)
             Transport transport;
             if (parser.isSet("tls-ca")) transport.caPem = readFile(parser.value("tls-ca"));
             if (parser.isSet("tls-issuer")) transport.issuerPem = readFile(parser.value("tls-issuer"));
+            else if (!parser.isSet("tls-ca") && QFileInfo::exists(data + "/tls-issuers.pem")) transport.issuerPem = readFile(data + "/tls-issuers.pem");
             const QByteArray zip = parser.isSet("zip") ? readFile(parser.value("zip")) : download(QUrl(parser.value("bundle-url")), transport);
             const QByteArray hash = parser.isSet("hash") ? readFile(parser.value("hash")) : download(QUrl(parser.value("hash-url")), transport, 4096);
             catalogue.ingest(zip, hash);

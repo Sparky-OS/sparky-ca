@@ -98,6 +98,23 @@ QString Certificate::subject() const { return name(X509_get_subject_name(get()))
 QString Certificate::issuer() const { return name(X509_get_issuer_name(get())); }
 bool Certificate::root() const { return X509_NAME_cmp(X509_get_subject_name(get()), X509_get_issuer_name(get())) == 0; }
 bool Certificate::ca() const { return X509_check_ca(get()) > 0; }
+QString Certificate::signatureOid() const
+{
+    char text[128];
+    OBJ_obj2txt(text, sizeof(text), X509_get0_tbs_sigalg(get())->algorithm, 1);
+    return QString::fromLatin1(text);
+}
+bool Certificate::issuedBy(const Certificate &issuer) const
+{
+    if (X509_NAME_cmp(X509_get_issuer_name(get()), X509_get_subject_name(issuer.get())) != 0) return false;
+    AUTHORITY_KEYID *authority = static_cast<AUTHORITY_KEYID *>(X509_get_ext_d2i(get(), NID_authority_key_identifier, nullptr, nullptr));
+    ASN1_OCTET_STRING *subject = static_cast<ASN1_OCTET_STRING *>(X509_get_ext_d2i(issuer.get(), NID_subject_key_identifier, nullptr, nullptr));
+    const bool matches = authority && authority->keyid && subject && ASN1_STRING_length(subject) > 0
+        && ASN1_OCTET_STRING_cmp(authority->keyid, subject) == 0;
+    AUTHORITY_KEYID_free(authority);
+    ASN1_OCTET_STRING_free(subject);
+    return matches;
+}
 QString Certificate::state() const
 {
     const int before = X509_cmp_current_time(X509_get0_notBefore(get()));

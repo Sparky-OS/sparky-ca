@@ -22,6 +22,7 @@ static QJsonObject object(const QByteArray &bytes)
 Catalogue::Catalogue(const QString &pinsFile, const QString &rootsDirectory)
 {
     const QJsonObject pins = object(readFile(pinsFile));
+    for (const auto &hash : pins.value("bundleSha512").toArray()) m_bundlePins.insert(hash.toString());
     for (const auto &item : pins.value("roots").toArray()) {
         const auto pin = item.toObject();
         const QString file = pin.value("file").toString();
@@ -33,12 +34,44 @@ Catalogue::Catalogue(const QString &pinsFile, const QString &rootsDirectory)
     }
     if (m_roots.isEmpty()) fail(i18n("No pinned roots."));
 }
+static bool e521Root(const Certificate &cert)
+{
+    return cert.fingerprint() == "5657e70580eb678983f3ed7dfce091d84cae6549389a47fccda8d0e4dc2cf576"
+        && cert.signatureOid() == "1.3.6.1.4.1.44588.2.1";
+}
+bool Catalogue::requiresE521(const Certificate &cert) const
+{
+    if (e521Root(cert)) return true;
+    for (const auto &root : m_roots) if (e521Root(root) && cert.issuedBy(root)) return true;
+    return false;
+}
+QString Catalogue::verification(const Certificate &cert) const
+{
+    if (cert.root()) return QStringLiteral("pinned-root");
+    return requiresE521(cert) ? QStringLiteral("transport-integrity-only") : QStringLiteral("signature-verified");
+}
+QString Catalogue::verificationNote(const Certificate &cert) const
+{
+    if (!requiresE521(cert)) return {};
+    return i18n("Chain signature not verifiable on Linux (E-521). Linux's crypto libraries cannot use E-521 yet; these certificates help only programs that carry their own E-521 code.");
+}
 void Catalogue::verify(const Certificate &cert, bool current) const
 {
     if (cert.root()) {
         bool pinned = false;
         for (const auto &root : m_roots) pinned |= root.fingerprint() == cert.fingerprint();
         if (!pinned) fail(i18n("Root is not pinned: %1", cert.subject()));
+        if (!cert.ca()) fail(i18n("Pinned certificate is not a CA."));
+        if (current && state(cert) != "valid") fail(i18n("Root is expired, revoked or not yet valid."));
+        return;
+    }
+    if (requiresE521(cert)) {
+        if (!cert.ca() || cert.signatureOid() != "1.3.6.1.4.1.44588.2.1" || !m_e521Allowed.contains(cert.fingerprint())) {
+            fail(i18n("E-521 certificate lacks authenticated bundle integrity evidence."));
+        }
+        for (const auto &root : m_roots) if (e521Root(root) && cert.issuedBy(root) && current && state(root) != "valid") fail(i18n("E-521 root is not currently valid."));
+        if (current && state(cert) != "valid") fail(i18n("E-521 certificate is not currently valid."));
+        return;
     }
     X509_STORE *store = X509_STORE_new();
     for (const auto &root : m_roots) X509_STORE_add_cert(store, root.get());
@@ -47,7 +80,6 @@ void Catalogue::verify(const Certificate &cert, bool current) const
     X509_STORE_CTX *context = X509_STORE_CTX_new();
     X509_STORE_CTX_init(context, store, cert.get(), chain);
     X509_VERIFY_PARAM *parameters = X509_STORE_CTX_get0_param(context);
-    X509_VERIFY_PARAM_set_flags(parameters, X509_V_FLAG_CHECK_SS_SIGNATURE);
     if (!current) {
         X509_VERIFY_PARAM_set_flags(parameters, X509_V_FLAG_NO_CHECK_TIME);
         X509_VERIFY_PARAM_set_auth_level(parameters, 0);
@@ -78,16 +110,31 @@ void Catalogue::load(const QByteArray &json)
 {
     const QJsonObject document = object(json);
     if (document.value("schema").toInt() != 1) fail(i18n("Unsupported catalogue schema."));
-    QList<Entry> entries;
-    for (const auto &item : document.value("certificates").toArray()) {
-        const auto entry = item.toObject();
-        const QString name = entry.value("name").toString();
-        Certificate cert(entry.value("pem").toString().toUtf8());
-        entries.append({name, classify(name, cert), cert});
+    const auto previousAllowed = m_e521Allowed;
+    const auto previousProvenance = m_provenance;
+    const auto previousEntries = m_entries;
+    m_e521Allowed.clear();
+    m_provenance = {};
+    try {
+        for (const auto &source : document.value("provenance").toArray()) {
+            const auto proof = source.toObject();
+            const QByteArray hash = proof.value("sha512").toString().toLatin1();
+            if (!m_bundlePins.contains(QString::fromLatin1(hash))) fail(i18n("Unapproved E-521 source bundle."));
+            ingest(QByteArray::fromBase64(proof.value("zip").toString().toLatin1()), hash);
+        }
+        QList<Entry> entries;
+        for (const auto &item : document.value("certificates").toArray()) {
+            const auto entry = item.toObject();
+            const QString name = entry.value("name").toString();
+            Certificate cert(entry.value("pem").toString().toUtf8());
+            entries.append({name, classify(name, cert), cert});
+        }
+        m_entries = entries;
+        validate(entries);
+    } catch (...) {
+        m_entries = previousEntries; m_e521Allowed = previousAllowed; m_provenance = previousProvenance;
+        throw;
     }
-    const auto previous = m_entries;
-    m_entries = entries;
-    try { validate(entries); } catch (...) { m_entries = previous; throw; }
 }
 void Catalogue::ingest(const QByteArray &zip, const QByteArray &sha512)
 {
@@ -124,26 +171,53 @@ void Catalogue::ingest(const QByteArray &zip, const QByteArray &sha512)
         entries.append({name, classify(name, cert), cert});
     }
     if (result != ARCHIVE_EOF) fail(i18n("Corrupt ZIP bundle."));
+    const auto previousAllowed = m_e521Allowed;
+    const auto previousProvenance = m_provenance;
+    bool needsProof = false;
+    for (const auto &item : entries) {
+        if (!item.certificate.root() && requiresE521(item.certificate)) {
+            if (!m_bundlePins.contains(QString::fromLatin1(expected))) fail(i18n("E-521 source bundle hash is not approved."));
+            m_e521Allowed.insert(item.certificate.fingerprint());
+            needsProof = true;
+        }
+    }
+    if (needsProof) m_provenance.append(QJsonObject{{"sha512", QString::fromLatin1(expected)}, {"zip", QString::fromLatin1(zip.toBase64())}});
     for (const auto &root : m_roots) {
         bool found = false;
         for (const auto &entry : entries) found |= entry.certificate.fingerprint() == root.fingerprint();
         if (!found) entries.append({root.subject(), classify("ICP-Brasil", root), root});
     }
     const auto previous = m_entries;
+    QSet<QString> fingerprints;
+    QList<Entry> merged;
+    for (const auto &item : entries + previous) {
+        const QString fingerprint = item.certificate.fingerprint();
+        if (!fingerprints.contains(fingerprint)) merged.append(item);
+        fingerprints.insert(fingerprint);
+    }
+    entries = merged;
     m_entries = entries;
-    try { validate(entries); } catch (...) { m_entries = previous; throw; }
+    try { validate(entries); } catch (...) {
+        m_entries = previous; m_e521Allowed = previousAllowed; m_provenance = previousProvenance;
+        throw;
+    }
 }
 QByteArray Catalogue::json() const
 {
     QJsonArray entries;
     for (const auto &entry : m_entries) entries.append(QJsonObject{{"name", entry.name}, {"pem", QString::fromUtf8(entry.certificate.pem())}});
-    return QJsonDocument(QJsonObject{{"schema", 1}, {"certificates", entries}}).toJson();
+    return QJsonDocument(QJsonObject{{"schema", 1}, {"certificates", entries}, {"provenance", m_provenance}}).toJson();
 }
 QStringList classify(const QString &name, const Certificate &cert)
 {
-    if (cert.root()) return {"icp-roots", "chrome-roots"};
+    if (cert.root()) {
+        QStringList groups{"icp-roots", "chrome-roots"};
+        if (e521Root(cert)) groups.append("e521");
+        return groups;
+    }
     const QString label = (name + cert.subject()).toLower();
     QStringList groups;
+    if (cert.signatureOid() == "1.3.6.1.4.1.44588.2.1") groups.append("e521");
     for (const QString family : {"certisign", "serasa", "serpro", "soluti", "valid", "oab", "rfb"}) if (label.contains(family)) groups.append(family);
     if (label.contains("jus") || label.contains("justica") || label.contains("justiça")) groups.append("justica");
     if (label.contains("ssl")) groups.append("ssl");
