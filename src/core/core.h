@@ -59,6 +59,7 @@ public:
     void verify(const Certificate &cert, bool current) const;
 private:
     QList<Certificate> m_roots;
+    bool m_e521Verified = false;
     QSet<QString> m_revoked;
     QSet<QString> m_bundlePins;
     QSet<QString> m_e521Allowed;

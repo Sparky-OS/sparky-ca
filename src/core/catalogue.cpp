@@ -32,6 +32,10 @@ Catalogue::Catalogue(const QString &pinsFile, const QString &rootsDirectory)
         if (!cert.root() || !cert.ca() || cert.fingerprint() != pin.value("sha256").toString()) fail(i18n("Root fingerprint mismatch: %1", file));
         if (pin.value("revoked").toBool()) m_revoked.insert(cert.fingerprint());
         m_roots.append(cert);
+        if (cert.fingerprint() == "5657e70580eb678983f3ed7dfce091d84cae6549389a47fccda8d0e4dc2cf576") {
+            EVP_PKEY *key = X509_get0_pubkey(cert.get());
+            m_e521Verified = key && X509_verify(cert.get(), key) == 1;
+        }
     }
     if (m_roots.isEmpty()) fail(i18n("No pinned roots."));
 }
@@ -42,6 +46,7 @@ static bool e521Root(const Certificate &cert)
 }
 bool Catalogue::requiresE521(const Certificate &cert) const
 {
+    if (m_e521Verified) return false;
     if (e521Root(cert)) return true;
     for (const auto &root : m_roots) if (e521Root(root) && cert.issuedBy(root)) return true;
     return false;

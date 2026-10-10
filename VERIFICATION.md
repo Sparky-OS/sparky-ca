@@ -1,4 +1,52 @@
-# Milestone 1 verification
+# Core and Ed521 prototype verification
+
+## Milestone 2
+
+The opt-in ISC provider follows Pedro F. Albanese's e521 reference after
+the local Go interoperability fixes passed. It provides public PureEd521
+verification with empty context, not private operations or audited signing.
+No Ed521ph X.509 OID is assumed. The existing application license is unchanged.
+
+Build inside the non-root, four-CPU container described below:
+
+```sh
+cmake -S . -B build -G Ninja -DBUILD_ED521_PROVIDER=ON \
+  -DCMAKE_PREFIX_PATH=/workspace/scratch/deps/usr
+cmake --build build -j4
+ctest --test-dir build -V
+```
+
+Tests activate the module in temporary OpenSSL configuration files. They
+never modify the host configuration or its stores. With the module loaded,
+`openssl verify -check_ss_sig` verifies the real ITI v7 self-signature and an
+independently generated three-level Ed521 chain. All 132 single-byte signature
+mutations, a message mutation, a public-key mutation and an altered intermediate
+fail. The synthetic chain fails without the provider. A separate constraint
+test rejects ten malformed, noncanonical or small-order SPKIs and confirms
+signing/key generation are unavailable. Provider integration passed in 101.70
+seconds; the added constraint test passed in 1.02 seconds.
+
+The core enables native Ed521 handling only after OpenSSL actually verifies
+the exact pinned ITI v7 self-signature. Ten new checks verify marker removal,
+full intermediate signature verification, absence-of-provider failure, altered
+signatures, unpinned roots, wrong bundle hashes, provenance handling and exact
+isolated-system-store install/remove results. The unchanged 40 native and 15
+integrity-fallback checks also pass: CTest 3/3 in 20.36 seconds. The real catalogue
+still has 331 entries; v7 is now eligible when this provider is active.
+
+The two ITI archives contain zero v7-issued certificates, so there is no real
+v7 descendant vector to claim. Public synthetic fixtures do not use ITI's private
+key. Their signatures agree with independent Python and the patched Go code.
+Go's full race suite and go vet pass, including the generated-chain checks
+(53.075 seconds for the race suite). Secret operations remain variable-time.
+
+Workspace logs: `evidence/e521-chain-go.log`, `evidence/e521-independent.log`,
+`evidence/e521-provider.log`, `evidence/e521-provider-constraints.log`, and
+`evidence/e521-core-provider.log`. A provider adds OpenSSL signature capability;
+it neither changes root pins nor adds Ed521 support to NSS, Java or browsers.
+Browser signing and PKI policy conformance are not established by these tests.
+
+## Milestone 1 record
 
 Measured 2026-10-10 through the workspace Docker proxy. The core, CLI and real catalogue are ready for milestone-1 review. This is not a complete production package; signed intermediate CRL processing, KDE integration, automation and packaging remain later work.
 
