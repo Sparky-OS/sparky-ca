@@ -1,5 +1,7 @@
 # Sparky CA
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23309048.svg)](https://doi.org/10.5281/zenodo.23309048)
+
 This tool downloads and installs PJeOffice CA Certificates.
 
 ## Description
