@@ -1,5 +1,48 @@
 # Verification record
 
+## Milestone 4: keeping the listed certificates current
+
+All checks ran in a Debian testing container as an unprivileged user with four CPUs.
+No host store, browser profile, desktop, token or service was touched.
+The build image is pinned to a Debian testing digest and listed in the workspace artifacts.
+
+| Check | Result |
+| --- | --- |
+| `tests/automation.py`, 47 checks, real OpenSSL, NSS and Debian updater, libfaketime for time | pass with GCC and Clang |
+| `tests/workflow.py`, 17 checks, repository scripts, local HTTPS server, bare origin, recording `gh` stub | pass with GCC and Clang |
+| `tests/notify-check.cpp`, 8 checks, real KNotifications to a fixture D-Bus receiver | pass with GCC and Clang |
+| `system-request-check`, 12 checks, including the automatic switch request | pass inside `desktop-core-okular` |
+| `helper-check`, the real KAuth helper refuses both actions without root | pass |
+| Full CTest, 12 tests, both compilers | 12 of 12 |
+| The workflow's own steps against ITI's real files, no git or gh | `current`, catalogue bytes identical |
+| `systemd-analyze verify` on the system units | clean; a control unit with an unknown key and a missing binary is rejected |
+| Live ITI data, isolated stores: 45 certificates chosen, `auto run` | 181 valid CAs checked against 28 verified CRLs, 7 revoked intermediates removed, second run silent |
+| Independent check of the 16 revoked CAs with `openssl crl -text` | all 16 serials are in the named CRL |
+
+What the automatic update tests prove, each against an expected result:
+a run with no chosen group installs nothing;
+an unchanged bundle writes no cache and a changed one is verified and cached;
+only the renewed intermediate of a chosen group is installed, and a new intermediate of an unchosen group is listed but not installed;
+a CRL signed by the pinned root revokes exactly one intermediate, which is removed with its reason, while the rest stay;
+a CRL with the root's name and another key is rejected and a known revocation survives it;
+ninety days later only the expired intermediate leaves the system store and the user's NSS store, and a CRL past its next update gives no answer and removes nothing;
+the switch stops a run, `--force` runs once, and enabling removes the switch;
+a wrong SHA-512 fails the refresh and keeps the catalogue and the stores;
+a world-writable cache, a cache that drops a packaged certificate and a cache with a damaged certificate are each ignored;
+an open browser profile is deferred;
+a user run never uses the network;
+the shipped v7 root is reported once as waiting for the user's choice and never installed.
+
+The repository scripts are tested for the four outcomes:
+an unchanged bundle ends quietly, a changed one opens or updates one pull request that touches only the catalogue, an unpinned root opens one issue naming its fingerprint and never writes a pin, and a wrong SHA-512 fails without an issue.
+
+Not verified here:
+the GitHub-hosted run itself (no `act`; checkout and artifact steps were not executed, and ITI's firewall may treat GitHub's runners differently from this machine);
+the systemd units under a real systemd (a container has no PID 1, so only static verification ran);
+the root and polkit path of the KAuth helper (every container runs unprivileged, as house rules require);
+the user path unit and the notification on a real desktop;
+CRL freshness beyond what ITI's CRLs said on 2026-10-14.
+
 ## Milestone 3: KDE certificate manager
 
 Measured 2026-10-10. Containers use `photos-digikam-proof:1`, UID/GID 1000,

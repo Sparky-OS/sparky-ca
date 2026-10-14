@@ -125,7 +125,7 @@ QString journalLines(const QJsonObject &report)
         if (!store.value("added").toArray().isEmpty()) lines << "5 " + i18n("%1: added %2", label, names(store.value("added").toArray()));
         for (const auto &removed : store.value("removed").toArray())
             lines << "5 " + i18n("%1: removed %2 (%3)", label, removed.toObject().value("name").toString(), removed.toObject().value("reason").toString());
-        if (store.value("needsChoice").toInt() > 0) lines << "5 " + i18n("%1: %2 new E-521 certificates need your choice and were not installed.", label, store.value("needsChoice").toInt());
+        if (store.value("needsChoice").toInt() > 0) lines << "5 " + i18np("%2: one new E-521 certificate needs your choice and was not installed.", "%2: %1 new E-521 certificates need your choice and were not installed.", store.value("needsChoice").toInt(), label);
         for (const auto &error : store.value("errors").toArray()) lines << "4 " + i18n("%1: %2", label, error.toString());
     }
     for (const auto &notice : report.value("notices").toArray()) lines << "4 " + notice.toString();
@@ -184,9 +184,22 @@ QJsonObject runAutomation(const AutomationOptions &options)
             if (last.isValid() && last.daysTo(now) > 7) notices.append(i18n("The catalogue has not been refreshed for %1 days.", last.daysTo(now)));
             else if (!last.isValid()) notices.append(i18n("The catalogue has never been refreshed from the Internet on this machine."));
         }
+        // An E-521 certificate waiting for the user's choice is reported once, not on every run.
+        const auto reported = [&](QJsonObject record) {
+            QSet<QString> before;
+            for (const auto &item : previousStatus.value("stores").toArray()) {
+                const auto old = item.toObject();
+                if (old.value("store") != record.value("store")) continue;
+                for (const auto &id : old.value("pendingChoice").toArray()) before.insert(id.toString());
+            }
+            int fresh = 0;
+            for (const auto &id : record.value("pendingChoice").toArray()) fresh += !before.contains(id.toString());
+            record.insert("needsChoice", fresh);
+            return record;
+        };
         if (options.scope == "system") {
             Store store(options.systemDirectory, options.systemBundle, {});
-            stores.append(store.refresh(catalogue));
+            stores.append(reported(store.refresh(catalogue)));
         } else {
             for (const auto &database : options.nssDatabases) {
                 if (QFileInfo(database + "/lock").isSymLink()) {
@@ -195,7 +208,7 @@ QJsonObject runAutomation(const AutomationOptions &options)
                 }
                 Store store({}, {}, database);
                 if (store.selectedGroups().isEmpty()) continue;
-                stores.append(store.refresh(catalogue));
+                stores.append(reported(store.refresh(catalogue)));
             }
         }
         report.insert("lastRefresh", lastRefresh);

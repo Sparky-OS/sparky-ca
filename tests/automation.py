@@ -19,6 +19,7 @@ import threading
 import zipfile
 
 binary = str(Path(sys.argv[1]).resolve())
+shipped = Path(sys.argv[2]).resolve()
 checks = 0
 
 
@@ -263,6 +264,14 @@ with tempfile.TemporaryDirectory(prefix="sparky-ca-auto-") as temporary:
     unprivileged = execute([binary, "--data", data.resolve(), "--cache-dir", state, "--config-dir", config, "auto", "run", "--scope", "system"], False)
     checked(unprivileged.returncode != 0 and "root" in unprivileged.stderr, "a system update without root is refused before any change")
     checked((data / "catalogue.json").read_bytes() == packaged, "the packaged catalogue was never modified")
+    packaged_args = [binary, "--data", shipped, "--cache-dir", Path("empty-state").resolve(), "--config-dir", config, "--system-dir", Path("shipped-system").resolve(), "--system-bundle", Path("shipped-derived/ca-certificates.crt").resolve()]
+    execute([*packaged_args, "install", "icp-roots"])
+    execute([*packaged_args, "auto", "run", "--scope", "system", "--no-network"])
+    first = json.loads(Path("empty-state/status.json").read_text())
+    checked(first["stores"][0]["needsChoice"] == 1 and len(first["stores"][0]["pendingChoice"]) == 1 and first["outcome"] == "attention", "the shipped v7 root waiting for the user's choice is reported the first time")
+    execute([*packaged_args, "auto", "run", "--scope", "system", "--no-network"])
+    again = json.loads(Path("empty-state/status.json").read_text())
+    checked(again["stores"][0]["needsChoice"] == 0 and again["stores"][0]["pendingChoice"] == first["stores"][0]["pendingChoice"] and again["outcome"] == "ok", "the same pending choice is not reported again and no longer asks for attention")
     server.shutdown()
     server.server_close()
 print(f"{checks} checks passed", flush=True)

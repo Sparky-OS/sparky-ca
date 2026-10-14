@@ -262,7 +262,7 @@ QJsonObject Store::refresh(const Catalogue &catalogue)
 {
     const QString directory = m_nss.isEmpty() ? m_system : m_nss;
     QJsonObject result{{"store", m_nss.isEmpty() ? QStringLiteral("system") : m_nss}, {"groups", QJsonArray::fromStringList(selectedGroups())},
-                       {"added", QJsonArray()}, {"removed", QJsonArray()}, {"needsChoice", 0}, {"errors", QJsonArray()}};
+                       {"added", QJsonArray()}, {"removed", QJsonArray()}, {"needsChoice", 0}, {"pendingChoice", QJsonArray()}, {"errors", QJsonArray()}};
     const QStringList groups = selectedGroups();
     if (groups.isEmpty()) return result;
     const auto owned = [&] {
@@ -272,7 +272,7 @@ QJsonObject Store::refresh(const Catalogue &catalogue)
     };
     const QSet<QString> before = owned();
     QJsonArray errors, removed;
-    int needsChoice = 0;
+    QJsonArray pending;
     QSet<QString> counted;
     m_refreshing = true;
     struct Reset { bool &flag; ~Reset() { flag = false; } } reset{m_refreshing};
@@ -286,7 +286,7 @@ QJsonObject Store::refresh(const Catalogue &catalogue)
             if (entry.groups.contains(group) && catalogue.requiresE521(entry.certificate) && catalogue.state(entry.certificate) == "valid"
                 && !before.contains(id) && !counted.contains(id)) {
                 counted.insert(id);
-                ++needsChoice;
+                pending.append(id);
             }
         }
         try {
@@ -312,7 +312,8 @@ QJsonObject Store::refresh(const Catalogue &catalogue)
     }
     result.insert("added", added);
     result.insert("removed", removed);
-    result.insert("needsChoice", needsChoice);
+    result.insert("needsChoice", pending.size());
+    result.insert("pendingChoice", pending);
     result.insert("errors", errors);
     return result;
 }
