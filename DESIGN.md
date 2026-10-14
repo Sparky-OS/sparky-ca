@@ -156,3 +156,16 @@ A machine without a desktop has only the journal; the missing notifier is not an
 The machine timer runs as root with `ProtectSystem=strict` and write access only to the updater's folders and its state folder.
 The application changes the machine's switch through a second KAuth action that accepts exactly one boolean and writes one file.
 The user switch is a file in the user's own configuration folder.
+
+## Packaging
+
+The package is a native Debian source package: `debian/` sits beside the code and `dpkg-buildpackage` builds it.
+`debian/control` names the KIO revision that carries the certificate manager API in three places, the build dependency and two runtime dependencies, so one edit changes it.
+Runtime packages the Kirigami application and the System Settings module need are listed as dependencies, because a missing QML module fails only when the window opens.
+OpenSC, p11-kit, pcscd, libccid and GnuPG are recommended, because a user without a token or Kleopatra needs none of them.
+The Ed521 provider is not built into the package: it is opt-in, public-only and unaudited.
+`dh_installsystemd` is told to handle only the timer, so installing never runs the update service.
+The postinst enables the machine timer and, for every user, the user timer and path unit; the switch files are never touched.
+The message catalogues come from `po/LINGUAS`; the desktop entries and AppStream metadata come from the same files through `msgfmt`.
+The copyright file is machine-readable and keeps the 2018 credit of Paweł Pijanowski on the files his work survives in.
+
