@@ -1,0 +1,1197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-14 17:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: qml/CertificatePage.qml:20
+msgid "Open certificate or personal identity"
+msgstr ""
+
+#: qml/CertificatePage.qml:21
+msgid "All files (*)"
+msgstr ""
+
+#: qml/CertificatePage.qml:21
+msgid "Certificate files (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+msgstr ""
+
+#: qml/CertificatePage.qml:34
+msgid "Open Certificate…"
+msgstr ""
+
+#: qml/CertificatePage.qml:35
+msgid "Refresh"
+msgstr ""
+
+#: qml/CertificatePage.qml:36
+msgid "Check Expiries"
+msgstr ""
+
+#: qml/CertificatePage.qml:39
+msgid "Keep Chosen Groups Current"
+msgstr ""
+
+#: qml/CertificatePage.qml:62
+msgid ""
+"ICP-Brasil v7 (Ed521) validates through the command line when the Ed521 "
+"OpenSSL provider is configured. Okular and NSS browsers cannot validate v7 "
+"until their certificate backend supports Ed521. RSA and ECDSA signing remain "
+"available."
+msgstr ""
+
+#: qml/CertificatePage.qml:69
+msgid "Store:"
+msgstr ""
+
+#: qml/CertificatePage.qml:73
+msgid "Certificate catalogue"
+msgstr ""
+
+#: qml/CertificatePage.qml:73
+msgid "KDE trust"
+msgstr ""
+
+#: qml/CertificatePage.qml:73
+msgid "System trust"
+msgstr ""
+
+#: qml/CertificatePage.qml:77
+msgid "Search name, issuer or fingerprint"
+msgstr ""
+
+#: qml/CertificatePage.qml:84
+msgid "Install Group…"
+msgstr ""
+
+#: qml/CertificatePage.qml:85
+msgid "Remove Group…"
+msgstr ""
+
+#: qml/CertificatePage.qml:86
+msgid "Kleopatra Trust…"
+msgstr ""
+
+#: qml/CertificatePage.qml:88
+msgid "One certificate"
+msgid_plural "%1 certificates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: qml/CertificatePage.qml:114
+msgid ""
+"SHA-256: %1\n"
+"Issuer: %2\n"
+"Expires: %3\n"
+"%4"
+msgstr ""
+
+#: qml/CertificatePage.qml:120
+msgid "Disable for KDE"
+msgstr ""
+
+#: qml/CertificatePage.qml:120
+msgid "Enable for KDE"
+msgstr ""
+
+#: qml/CertificatePage.qml:121
+msgid "Host name, for example example.org"
+msgstr ""
+
+#: qml/CertificatePage.qml:122
+msgid "Reject Host"
+msgstr ""
+
+#: qml/CertificatePage.qml:123
+msgid "Clear Host Rule"
+msgstr ""
+
+#: qml/CertificatePage.qml:128
+msgid "Detect Tokens"
+msgstr ""
+
+#: qml/CertificatePage.qml:129
+msgid "Register Token Module…"
+msgstr ""
+
+#: qml/CertificatePage.qml:130
+msgid ""
+"A3 PINs are not stored. Install vendor middleware locally through APTus when "
+"required."
+msgstr ""
+
+#: qml/CertificatePage.qml:134
+msgid "Within validity dates"
+msgstr ""
+
+#: qml/CertificatePage.qml:135
+msgid "Expired"
+msgstr ""
+
+#: qml/CertificatePage.qml:136
+msgid "Revoked"
+msgstr ""
+
+#: qml/CertificatePage.qml:137
+msgid "Not yet valid"
+msgstr ""
+
+#: qml/CertificatePage.qml:138
+msgid "Invalid"
+msgstr ""
+
+#: qml/CertificatePage.qml:143
+msgid "Install chosen group"
+msgstr ""
+
+#: qml/CertificatePage.qml:143
+msgid "Remove chosen group"
+msgstr ""
+
+#: qml/CertificatePage.qml:149
+msgid "Group: %1"
+msgstr ""
+
+#: qml/CertificatePage.qml:150
+msgid "Close this browser before changing its NSS database."
+msgstr ""
+
+#: qml/CertificatePage.qml:150
+msgid ""
+"This changes system trust and requests administrator authorization. Expired "
+"and revoked catalogue entries are excluded."
+msgstr ""
+
+#: qml/CertificatePage.qml:151
+msgid "Choose Ed521 certificates when native chain verification is unavailable"
+msgstr ""
+
+#: qml/CertificatePage.qml:152 qml/CertificatePage.qml:168
+#: qml/CertificatePage.qml:203
+msgid "NSS database password"
+msgstr ""
+
+#: qml/CertificatePage.qml:157
+msgid "Preview or import personal certificate"
+msgstr ""
+
+#: qml/CertificatePage.qml:163
+msgid "PKCS#12 passphrase (for .p12 or .pfx)"
+msgstr ""
+
+#: qml/CertificatePage.qml:164
+msgid "Preview"
+msgstr ""
+
+#: qml/CertificatePage.qml:167
+msgid ""
+"Okular can sign with a supported identity from this NSS directory. Browser "
+"TLS trust does not grant PDF certificate trust; that requires a separate S/"
+"MIME trust decision in NSS."
+msgstr ""
+
+#: qml/CertificatePage.qml:169
+msgid "Save A1 and NSS passwords in KDE Wallet"
+msgstr ""
+
+#: qml/CertificatePage.qml:170
+msgid ""
+"Close the browser before import. Private keys remain in its NSS database. A3 "
+"PINs are never saved here."
+msgstr ""
+
+#: qml/CertificatePage.qml:172
+msgid "Import A1"
+msgstr ""
+
+#: qml/CertificatePage.qml:173
+msgid "Read from Wallet"
+msgstr ""
+
+#: qml/CertificatePage.qml:174
+msgid "Forget Saved Passwords"
+msgstr ""
+
+#: qml/CertificatePage.qml:181
+msgid "Kleopatra / GnuPG S/MIME trust"
+msgstr ""
+
+#: qml/CertificatePage.qml:186
+msgid ""
+"Give current pinned roots of %1 to gpgsm's trust list. This is a separate "
+"trust decision. Ed521 roots are excluded because gpgsm cannot validate them. "
+"Importing a certificate alone does not prove chain validation."
+msgstr ""
+
+#: qml/CertificatePage.qml:187
+msgid "Trust Chosen Roots"
+msgstr ""
+
+#: qml/CertificatePage.qml:188
+msgid "Remove Our Trust Decision"
+msgstr ""
+
+#: qml/CertificatePage.qml:193
+msgid "Register a PKCS#11 module"
+msgstr ""
+
+#: qml/CertificatePage.qml:199
+msgid ""
+"Close the browser first. Choose the installed p11-kit proxy to expose "
+"configured token modules. Loading a module runs its code as your user."
+msgstr ""
+
+#: qml/CertificatePage.qml:201
+msgid "Absolute path to p11-kit-proxy.so"
+msgstr ""
+
+#: qml/CertificatePage.qml:202
+msgid "Inspect This Module"
+msgstr ""
+
+#: qml/CertificatePage.qml:204
+msgid "Remove Our Module Registration"
+msgstr ""
+
+#: share/kservices/sparky-ca-preview.desktop.in:8
+msgid "View Certificate"
+msgstr ""
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:6
+msgid "Sparky CA"
+msgstr ""
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:7
+msgid "ICP-Brasil certificates, browser trust and personal certificates"
+msgstr ""
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:9
+msgid ""
+"Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the "
+"system, in Waterfox, Firefox and Chromium, and keeps the groups you chose "
+"current."
+msgstr ""
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:10
+msgid ""
+"It shows every certificate with its issuer, expiry and state, imports your "
+"A1 certificate, registers your A3 token, and works on a plain text console "
+"as well as on the desktop."
+msgstr ""
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:11
+msgid ""
+"Every download is checked against ITI's published hash and pinned roots, and "
+"certificates revoked by their authority are never installed."
+msgstr ""
+
+#: share/sparky-ca.desktop.in:3
+msgid "PJeOffice CA Certificates Installer"
+msgstr ""
+
+#: share/sparky-ca.desktop.in:4
+msgid "Certificate Manager"
+msgstr ""
+
+#: share/sparky-ca.desktop.in:5
+msgid "Manage ICP-Brasil certificates, browser trust and personal certificates"
+msgstr ""
+
+#: share/sparky-ca.desktop.in:6
+msgid "certificate;ICP-Brasil;PJeOffice;CA;token;A1;A3;"
+msgstr ""
+
+#: src/cli/main.cpp:19
+msgid "Use a private password file with owner-only permissions."
+msgstr ""
+
+#: src/cli/main.cpp:25
+msgid "Expected one password in a private file."
+msgstr ""
+
+#: src/cli/main.cpp:39
+msgid "Scope must be system or user."
+msgstr ""
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are off."
+msgstr ""
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are on."
+msgstr ""
+
+#: src/cli/main.cpp:80
+msgid "Specify auto status, enable, disable or run."
+msgstr ""
+
+#: src/cli/main.cpp:82
+msgid "Automatic updates are turned off."
+msgstr ""
+
+#: src/cli/main.cpp:85
+msgid "System updates require root."
+msgstr ""
+
+#: src/cli/main.cpp:99
+msgid "Manage Brazilian CA certificates and browser trust."
+msgstr ""
+
+#: src/cli/main.cpp:103
+msgid "Package data directory."
+msgstr ""
+
+#: src/cli/main.cpp:104
+msgid "Verified catalogue file."
+msgstr ""
+
+#: src/cli/main.cpp:105
+msgid "System certificate directory."
+msgstr ""
+
+#: src/cli/main.cpp:106
+msgid "Derived system bundle; redirects the updater for isolated tests."
+msgstr ""
+
+#: src/cli/main.cpp:107
+msgid ""
+"Operate on this NSS database instead of the system store. Close its browser "
+"first."
+msgstr ""
+
+#: src/cli/main.cpp:108
+msgid "Read the PKCS#12 passphrase from this private file."
+msgstr ""
+
+#: src/cli/main.cpp:109
+msgid "Read the NSS database password from this private file."
+msgstr ""
+
+#: src/cli/main.cpp:110
+msgid "GnuPG certificate directory."
+msgstr ""
+
+#: src/cli/main.cpp:111
+msgid ""
+"Choose E-521 certificates despite unavailable Linux chain verification; "
+"requires programs with their own E-521 code."
+msgstr ""
+
+#: src/cli/main.cpp:112
+msgid "TLS trust root for an isolated HTTPS fixture."
+msgstr ""
+
+#: src/cli/main.cpp:113
+msgid "Missing TLS issuer, verified against the TLS trust roots."
+msgstr ""
+
+#: src/cli/main.cpp:114
+msgid "HTTPS bundle URL."
+msgstr ""
+
+#: src/cli/main.cpp:115
+msgid "HTTPS SHA-512 URL."
+msgstr ""
+
+#: src/cli/main.cpp:116
+msgid "Offline ZIP input for catalogue verification."
+msgstr ""
+
+#: src/cli/main.cpp:117
+msgid "Offline SHA-512 input."
+msgstr ""
+
+#: src/cli/main.cpp:118
+msgid "Write refreshed catalogue here."
+msgstr ""
+
+#: src/cli/main.cpp:119
+msgid ""
+"Keep the downloaded bundle and its SHA-512 here, as received, so a failed "
+"refresh can be examined."
+msgstr ""
+
+#: src/cli/main.cpp:120
+msgid ""
+"Machine state: refreshed catalogue, revocation answers and update status."
+msgstr ""
+
+#: src/cli/main.cpp:121
+msgid "Folder holding the switch for automatic updates."
+msgstr ""
+
+#: src/cli/main.cpp:122
+msgid "Home folder whose browser databases are updated."
+msgstr ""
+
+#: src/cli/main.cpp:123
+msgid "Automatic update scope: system or user."
+msgstr ""
+
+#: src/cli/main.cpp:124
+msgid "Run an automatic update although it is turned off."
+msgstr ""
+
+#: src/cli/main.cpp:125
+msgid "Do not use the Internet in an automatic update."
+msgstr ""
+
+#: src/cli/main.cpp:127
+msgid ""
+"list [installed], groups, install <group>, remove <group|all>, update, auto "
+"<status|enable|disable|run>, status, profiles, preview <file>, import "
+"<file>, tokens, register-token <module>, unregister-token, gpgsm-trust "
+"<group>, gpgsm-untrust <group>"
+msgstr ""
+
+#: src/cli/main.cpp:145
+msgid ""
+"1. List catalogue\n"
+"2. List installed certificates\n"
+"3. Install group\n"
+"4. Remove group\n"
+"5. Status\n"
+"0. Exit\n"
+"Choice: "
+msgstr ""
+
+#: src/cli/main.cpp:150
+msgid "Group: "
+msgstr ""
+
+#: src/cli/main.cpp:176
+msgid "Specify one group."
+msgstr ""
+
+#: src/cli/main.cpp:178
+msgid ""
+"NSS installations exclude Ed521 and Ed448 entries because NSS cannot import "
+"their key types."
+msgstr ""
+
+#: src/cli/main.cpp:182
+msgid "E-521 entries are skipped. Use --allow-e521 to choose them explicitly."
+msgstr ""
+
+#: src/cli/main.cpp:189
+msgid "Certificate store updated."
+msgstr ""
+
+#: src/cli/main.cpp:191
+msgid "Specify --output for the refreshed catalogue."
+msgstr ""
+
+#: src/cli/main.cpp:202
+msgid "Verified catalogue written."
+msgstr ""
+
+#: src/cli/main.cpp:204
+msgid "Specify one certificate file."
+msgstr ""
+
+#: src/cli/main.cpp:210
+msgid "Specify at most one token module."
+msgstr ""
+
+#: src/cli/main.cpp:213
+msgid "Specify an NSS database and one installed token module."
+msgstr ""
+
+#: src/cli/main.cpp:216
+msgid "Specify one root group."
+msgstr ""
+
+#: src/cli/main.cpp:219
+msgid "Specify an NSS database."
+msgstr ""
+
+#: src/cli/main.cpp:222
+msgid "Personal certificate import requires --nss and one PKCS#12 file."
+msgstr ""
+
+#: src/cli/main.cpp:231
+msgid "Personal certificate import failed."
+msgstr ""
+
+#: src/cli/main.cpp:234
+msgid "Unknown command: %1"
+msgstr ""
+
+#: src/core/automation.cpp:85
+msgid "Cannot turn automatic updates on."
+msgstr ""
+
+#: src/core/automation.cpp:88
+msgid "Cannot create the configuration folder."
+msgstr ""
+
+#: src/core/automation.cpp:89
+msgid ""
+"Automatic certificate updates are turned off. Remove this file or run: "
+"sparky-ca auto enable\n"
+msgstr ""
+
+#: src/core/automation.cpp:98 src/core/automation.cpp:143
+msgid "Cannot create the state folder."
+msgstr ""
+
+#: src/core/automation.cpp:113
+msgid "Automatic update failed: %1"
+msgstr ""
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed and changed."
+msgstr ""
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed; nothing changed."
+msgstr ""
+
+#: src/core/automation.cpp:116
+msgid "The catalogue could not be refreshed: %1"
+msgstr ""
+
+#: src/core/automation.cpp:119
+msgid "Revocation: %1 certificates checked, %2 revoked, %3 without an answer."
+msgstr ""
+
+#: src/core/automation.cpp:125
+msgid "%1: added %2"
+msgstr ""
+
+#: src/core/automation.cpp:127
+msgid "%1: removed %2 (%3)"
+msgstr ""
+
+#: src/core/automation.cpp:128
+msgid "%2: one new E-521 certificate needs your choice and was not installed."
+msgid_plural ""
+"%2: %1 new E-521 certificates need your choice and were not installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/core/automation.cpp:129
+msgid "%1: %2"
+msgstr ""
+
+#: src/core/automation.cpp:132
+msgid "Nothing to do."
+msgstr ""
+
+#: src/core/automation.cpp:146
+msgid "Another automatic update is running."
+msgstr ""
+
+#: src/core/automation.cpp:184
+msgid "The catalogue has not been refreshed for %1 days."
+msgstr ""
+
+#: src/core/automation.cpp:185
+msgid ""
+"The catalogue has never been refreshed from the Internet on this machine."
+msgstr ""
+
+#: src/core/automation.cpp:206
+msgid "%1 is in use by a browser; it will be updated on a later run."
+msgstr ""
+
+#: src/core/catalogue.cpp:20
+msgid "Invalid catalogue JSON."
+msgstr ""
+
+#: src/core/catalogue.cpp:30
+msgid "Invalid root filename."
+msgstr ""
+
+#: src/core/catalogue.cpp:32
+msgid "Root fingerprint mismatch: %1"
+msgstr ""
+
+#: src/core/catalogue.cpp:40
+msgid "No pinned roots."
+msgstr ""
+
+#: src/core/catalogue.cpp:62
+msgid ""
+"Chain signature not verifiable on Linux (E-521). Linux's crypto libraries "
+"cannot use E-521 yet; these certificates help only programs that carry their "
+"own E-521 code."
+msgstr ""
+
+#: src/core/catalogue.cpp:76
+msgid "Root is not pinned: %1"
+msgstr ""
+
+#: src/core/catalogue.cpp:77
+msgid "Pinned certificate is not a CA."
+msgstr ""
+
+#: src/core/catalogue.cpp:78
+msgid "Root is expired, revoked or not yet valid."
+msgstr ""
+
+#: src/core/catalogue.cpp:83
+msgid "E-521 certificate lacks authenticated bundle integrity evidence."
+msgstr ""
+
+#: src/core/catalogue.cpp:85
+msgid "E-521 root is not currently valid."
+msgstr ""
+
+#: src/core/catalogue.cpp:86
+msgid "E-521 certificate is not currently valid."
+msgstr ""
+
+#: src/core/catalogue.cpp:118
+msgid "Certificate chain rejected: %1: %2"
+msgstr ""
+
+#: src/core/catalogue.cpp:119
+msgid "Certificate is expired, revoked or not yet valid: %1"
+msgstr ""
+
+#: src/core/catalogue.cpp:132
+msgid "Invalid certificate count."
+msgstr ""
+
+#: src/core/catalogue.cpp:138
+msgid "Unsupported catalogue schema."
+msgstr ""
+
+#: src/core/catalogue.cpp:148
+msgid "Unapproved E-521 source bundle."
+msgstr ""
+
+#: src/core/catalogue.cpp:158
+msgid "Invalid catalogue groups."
+msgstr ""
+
+#: src/core/catalogue.cpp:162
+msgid "Invalid catalogue group identifier."
+msgstr ""
+
+#: src/core/catalogue.cpp:180
+msgid "Bundle SHA-512 mismatch."
+msgstr ""
+
+#: src/core/catalogue.cpp:181
+msgid "Bundle is too large."
+msgstr ""
+
+#: src/core/catalogue.cpp:185
+msgid "Cannot open ZIP bundle."
+msgstr ""
+
+#: src/core/catalogue.cpp:195
+msgid "Unsafe ZIP entry: %1"
+msgstr ""
+
+#: src/core/catalogue.cpp:203
+msgid "Expanded bundle is too large."
+msgstr ""
+
+#: src/core/catalogue.cpp:205
+msgid "Corrupt ZIP entry: %1"
+msgstr ""
+
+#: src/core/catalogue.cpp:209
+msgid "Corrupt ZIP bundle."
+msgstr ""
+
+#: src/core/catalogue.cpp:215
+msgid "E-521 source bundle hash is not approved."
+msgstr ""
+
+#: src/core/certificate.cpp:22
+msgid "Cannot read file: %1"
+msgstr ""
+
+#: src/core/certificate.cpp:30
+msgid "Cannot write file: %1"
+msgstr ""
+
+#: src/core/certificate.cpp:38
+msgid "Command failed: %1: %2"
+msgstr ""
+
+#: src/core/certificate.cpp:53
+msgid "Expected exactly one certificate."
+msgstr ""
+
+#: src/core/certificate.cpp:60
+msgid "Invalid certificate encoding."
+msgstr ""
+
+#: src/core/certificate.cpp:64
+msgid "Cannot parse certificate."
+msgstr ""
+
+#: src/core/certificate.cpp:83
+msgid "Cannot calculate certificate fingerprint."
+msgstr ""
+
+#: src/core/certificate.cpp:130
+msgid "Invalid certificate expiry."
+msgstr ""
+
+#: src/core/download.cpp:18
+msgid "Downloads require HTTPS."
+msgstr ""
+
+#: src/core/download.cpp:24
+msgid "Cannot parse TLS issuer chain."
+msgstr ""
+
+#: src/core/download.cpp:43
+msgid "TLS issuer does not chain to a trusted root."
+msgstr ""
+
+#: src/core/download.cpp:66
+msgid "Download exceeds its size limit."
+msgstr ""
+
+#: src/core/download.cpp:68
+msgid "HTTPS download failed: %1"
+msgstr ""
+
+#: src/core/personal.cpp:22
+msgid "Cannot encode certificate."
+msgstr ""
+
+#: src/core/personal.cpp:36
+msgid "Invalid certificate input."
+msgstr ""
+
+#: src/core/personal.cpp:77
+msgid "Cannot parse certificate file."
+msgstr ""
+
+#: src/core/personal.cpp:92
+msgid "Cannot unlock PKCS#12. Check its passphrase."
+msgstr ""
+
+#: src/core/personal.cpp:98
+msgid "Passwords cannot contain null bytes or newlines."
+msgstr ""
+
+#: src/core/personal.cpp:100 src/core/stores.cpp:55
+msgid "Cannot create a private password file."
+msgstr ""
+
+#: src/core/personal.cpp:110
+msgid "Cannot create NSS database directory."
+msgstr ""
+
+#: src/core/personal.cpp:130
+msgid ""
+"Expected a PKCS#12 identity with its matching private key and passphrase."
+msgstr ""
+
+#: src/core/personal.cpp:135
+msgid "Cannot create a private import file."
+msgstr ""
+
+#: src/core/personal.cpp:140 src/core/personal.cpp:152
+#: src/core/personal.cpp:170 src/core/stores.cpp:91 src/core/stores.cpp:174
+msgid "Certificate store is busy."
+msgstr ""
+
+#: src/core/personal.cpp:146 src/core/personal.cpp:185
+msgid "Choose an installed PKCS#11 module."
+msgstr ""
+
+#: src/core/personal.cpp:155
+msgid "The token module is already registered. Inspect it before changing it."
+msgstr ""
+
+#: src/core/personal.cpp:159
+msgid "An earlier token module record still exists."
+msgstr ""
+
+#: src/core/personal.cpp:175
+msgid "The registered token module differs from our record."
+msgstr ""
+
+#: src/core/personal.cpp:178
+msgid "Cannot remove the token module record."
+msgstr ""
+
+#: src/core/personal.cpp:194 src/core/personal.cpp:197
+msgid "No token slots detected. Check the reader and installed middleware."
+msgstr ""
+
+#: src/core/personal.cpp:207 src/core/stores.cpp:84
+#: src/core/systemchange.cpp:20
+msgid "Unknown certificate group: %1"
+msgstr ""
+
+#: src/core/personal.cpp:210
+msgid "Cannot prepare the GnuPG directory."
+msgstr ""
+
+#: src/core/personal.cpp:217
+msgid "GnuPG trust list is busy."
+msgstr ""
+
+#: src/core/personal.cpp:223
+msgid "Invalid GnuPG trust manifest."
+msgstr ""
+
+#: src/core/personal.cpp:230
+msgid "Invalid managed GnuPG trust block."
+msgstr ""
+
+#: src/core/personal.cpp:248
+msgid "Cannot calculate GnuPG's root identifier."
+msgstr ""
+
+#: src/core/personal.cpp:252
+msgid "This group has no current root certificates."
+msgstr ""
+
+#: src/core/personal.cpp:263
+msgid "Invalid GnuPG root identifier."
+msgstr ""
+
+#: src/core/revocation.cpp:49
+msgid "Cannot parse CRL."
+msgstr ""
+
+#: src/core/revocation.cpp:61
+msgid "CRL issuer does not match."
+msgstr ""
+
+#: src/core/revocation.cpp:63
+msgid "CRL signature is not valid."
+msgstr ""
+
+#: src/core/revocation.cpp:67
+msgid "CRL does not cover every certificate of its issuer."
+msgstr ""
+
+#: src/core/revocation.cpp:69
+msgid "CRL is not yet valid."
+msgstr ""
+
+#: src/core/revocation.cpp:70
+msgid "CRL is stale."
+msgstr ""
+
+#: src/core/revocation.cpp:90
+msgid "The CRL signature uses E-521, which Linux cannot verify."
+msgstr ""
+
+#: src/core/revocation.cpp:92
+msgid "The certificate names no CRL."
+msgstr ""
+
+#: src/core/revocation.cpp:98
+msgid "No CRL could be fetched."
+msgstr ""
+
+#: src/core/revocation.cpp:101
+msgid "The issuer is not in the catalogue."
+msgstr ""
+
+#: src/core/revocation.cpp:106
+msgid "No network was used for this check."
+msgstr ""
+
+#: src/core/stores.cpp:41
+msgid "Choose exactly one store."
+msgstr ""
+
+#: src/core/stores.cpp:47
+msgid "Refusing a symbolic link in store path: %1"
+msgstr ""
+
+#: src/core/stores.cpp:53
+msgid "The NSS password cannot contain a newline or a null byte."
+msgstr ""
+
+#: src/core/stores.cpp:63
+msgid "Invalid store ownership manifest."
+msgstr ""
+
+#: src/core/stores.cpp:73
+msgid "Cannot create updater configuration."
+msgstr ""
+
+#: src/core/stores.cpp:86 src/core/stores.cpp:169
+msgid "System changes require root. Run sparky-ca through sudo or pkexec."
+msgstr ""
+
+#: src/core/stores.cpp:89
+msgid "Cannot create store directory."
+msgstr ""
+
+#: src/core/stores.cpp:111
+msgid "This group has no installable certificates."
+msgstr ""
+
+#: src/core/stores.cpp:123 src/core/stores.cpp:225 src/core/stores.cpp:230
+msgid "Owned certificate bytes have changed."
+msgstr ""
+
+#: src/core/stores.cpp:128
+msgid "Unowned certificate filename already exists."
+msgstr ""
+
+#: src/core/stores.cpp:148
+msgid "Unowned NSS nickname already exists."
+msgstr ""
+
+#: src/core/stores.cpp:202
+msgid "Invalid saved NSS trust decision."
+msgstr ""
+
+#: src/core/stores.cpp:204
+msgid "Existing certificate bytes have changed."
+msgstr ""
+
+#: src/core/stores.cpp:209
+msgid "Existing NSS trust settings changed outside this application."
+msgstr ""
+
+#: src/core/stores.cpp:220
+msgid "Invalid owned certificate fingerprint."
+msgstr ""
+
+#: src/core/stores.cpp:226
+msgid "Cannot remove certificate."
+msgstr ""
+
+#: src/core/stores.cpp:281
+msgid "Selected group %1 is no longer in the catalogue."
+msgstr ""
+
+#: src/core/systemchange.cpp:12
+msgid "Invalid system certificate request."
+msgstr ""
+
+#: src/core/systemchange.cpp:17
+msgid "Unknown system certificate operation."
+msgstr ""
+
+#: src/core/systemchange.cpp:30
+msgid "Invalid automatic update request."
+msgstr ""
+
+#: src/desktop/dispatch.cpp:38
+msgid "Cannot find Sparky CA front end."
+msgstr ""
+
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:143
+#: src/desktop/notify.cpp:51
+msgid "Certificates"
+msgstr ""
+
+#: src/desktop/main.cpp:24
+msgid "Manage certificate trust and personal identities"
+msgstr ""
+
+#: src/desktop/main.cpp:26
+msgid "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+msgstr ""
+
+#: src/desktop/main.cpp:27
+msgid "Original author, 2018"
+msgstr ""
+
+#: src/desktop/main.cpp:27
+msgid "Paweł \"pavroo\" Pijanowski"
+msgstr ""
+
+#: src/desktop/main.cpp:28
+msgid "Brazilian certificates and KDE integration, 2020 and 2026"
+msgstr ""
+
+#: src/desktop/main.cpp:28
+msgid "Daniel Campos Ramos"
+msgstr ""
+
+#: src/desktop/main.cpp:33
+msgid "Catalogue data directory."
+msgstr ""
+
+#: src/desktop/main.cpp:34
+msgid "Capture the window for an isolated UI test."
+msgstr ""
+
+#: src/desktop/main.cpp:35
+msgid "Local certificate file to preview."
+msgstr ""
+
+#: src/desktop/manager.cpp:44
+msgid "No automatic update has run on this computer yet."
+msgstr ""
+
+#: src/desktop/manager.cpp:49
+msgid "Last automatic update: %1. Everything is current."
+msgstr ""
+
+#: src/desktop/manager.cpp:50
+msgid ""
+"Last automatic update: %1. It needs your attention: see the system journal "
+"or run sparky-ca auto status."
+msgstr ""
+
+#: src/desktop/manager.cpp:80
+msgid "Automatic certificate updates are off."
+msgstr ""
+
+#: src/desktop/manager.cpp:80
+msgid "Your chosen certificate groups will be kept current automatically."
+msgstr ""
+
+#: src/desktop/manager.cpp:96
+msgid "Choose an existing browser profile."
+msgstr ""
+
+#: src/desktop/manager.cpp:116
+msgid ""
+"Ed448 validates through OpenSSL. NSS cannot import this key type, so browser "
+"installations exclude it."
+msgstr ""
+
+#: src/desktop/manager.cpp:201
+msgid "System certificate store updated. Restart applications to reload trust."
+msgstr ""
+
+#: src/desktop/manager.cpp:217
+msgid ""
+"Browser certificate store updated. Ed521 and Ed448 entries stay listed but "
+"are excluded because NSS does not support their key types."
+msgstr ""
+
+#: src/desktop/manager.cpp:230
+msgid "Cannot save the KDE trust decision."
+msgstr ""
+
+#: src/desktop/manager.cpp:232
+msgid "KDE certificate trust updated."
+msgstr ""
+
+#: src/desktop/manager.cpp:238
+msgid "Certificate no longer exists in the KDE store."
+msgstr ""
+
+#: src/desktop/manager.cpp:244
+msgid "Enter a single lower-case host name, without a scheme or wildcard."
+msgstr ""
+
+#: src/desktop/manager.cpp:250 src/desktop/manager.cpp:258
+msgid "KDE's certificate service is unavailable."
+msgstr ""
+
+#: src/desktop/manager.cpp:278
+msgid "KDE's certificate service did not save the host rule."
+msgstr ""
+
+#: src/desktop/manager.cpp:280
+msgid ""
+"Host rule updated. Certificate errors remain enforced; no TLS error was "
+"ignored."
+msgstr ""
+
+#: src/desktop/manager.cpp:293
+msgid "Preview does not establish trust. Revocation status is unknown."
+msgstr ""
+
+#: src/desktop/manager.cpp:306
+msgid "Choose a local PKCS#12 file and browser profile."
+msgstr ""
+
+#: src/desktop/manager.cpp:314
+msgid ""
+"Personal certificate imported. Choose this NSS directory in Okular's PDF "
+"certificate settings."
+msgstr ""
+
+#: src/desktop/manager.cpp:335
+msgid "Saved certificate passwords removed."
+msgstr ""
+
+#: src/desktop/manager.cpp:345
+msgid ""
+"A3 PINs are not saved. Token retry limits and authentication policy apply. "
+"SafeSign or SafeNet middleware, when required, is installed on your machine "
+"through APTus."
+msgstr ""
+
+#: src/desktop/manager.cpp:355
+msgid "PKCS#11 module registered for this browser profile."
+msgstr ""
+
+#: src/desktop/manager.cpp:367
+msgid ""
+"GnuPG S/MIME root trust updated for Kleopatra. Ed521 entries stay listed but "
+"are excluded because gpgsm cannot validate them. Browser trust is separate."
+msgstr ""
+
+#: src/desktop/manager.cpp:377
+msgid ""
+"Our PKCS#11 module registration was removed. Token certificates remain on "
+"the token."
+msgstr ""
+
+#: src/desktop/manager.cpp:390
+msgid "One listed certificate expires within 30 days or has expired."
+msgid_plural "%1 listed certificates expire within 30 days or have expired."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/desktop/notify.cpp:30
+msgid "Machine state folder."
+msgstr ""
+
+#: src/desktop/notify.cpp:31
+msgid "Home folder holding the user's status."
+msgstr ""
+
+#: src/desktop/wallet.cpp:20
+msgid "Cannot open KDE Wallet. Passwords were not saved."
+msgstr ""
+
+#: src/desktop/wallet.cpp:23
+msgid "Cannot create the certificate wallet folder."
+msgstr ""
+
+#: src/desktop/wallet.cpp:27
+msgid "Cannot select the certificate wallet folder."
+msgstr ""
+
+#: src/desktop/wallet.cpp:34
+msgid "Cannot save certificate passwords in KDE Wallet."
+msgstr ""
+
+#: src/desktop/wallet.cpp:49
+msgid "Cannot read certificate passwords from KDE Wallet."
+msgstr ""
+
+#: src/desktop/wallet.cpp:61
+msgid "Cannot remove a saved certificate password."
+msgstr ""
+
+#: src/helper/helper.cpp:31 src/helper/helper.cpp:44 src/helper/helper.cpp:74
+#: src/helper/helper.cpp:78
+msgid "The certificate helper requires root."
+msgstr ""
+
+#: src/helper/helper.cpp:54
+msgid "Untrusted package certificate data."
+msgstr ""

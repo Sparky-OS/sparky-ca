@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# Until the patched KIO is packaged, a development build may point at its tree.
+ifneq ($(SPARKY_CA_KIO_BUILD),)
+KIO_FLAGS = -DSPARKY_CA_KIO_BUILD=$(SPARKY_CA_KIO_BUILD) -DSPARKY_CA_KIO_SOURCE=$(SPARKY_CA_KIO_SOURCE)
+endif
+
+%:
+	dh $@ --buildsystem=cmake+ninja
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DBUILD_TESTING=OFF -DBUILD_ED521_PROVIDER=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON $(KIO_FLAGS)
+
+override_dh_auto_test:
+
+override_dh_installdocs:
+	dh_installdocs README.md DESIGN.md
+
+override_dh_installsystemd:
+	dh_installsystemd sparky-ca-update.timer
+
+override_dh_installsystemduser:
+	dh_installsystemduser sparky-ca-user-update.timer sparky-ca-user-update.path
+
+override_dh_shlibdeps:
+	dh_shlibdeps $(if $(SPARKY_CA_KIO_BUILD),-l$(SPARKY_CA_KIO_BUILD)/bin -- --ignore-missing-info)

@@ -38,10 +38,27 @@ ctest --test-dir build --output-on-failure
 ```
 
 `-DBUILD_KDE_FRONTENDS=OFF` builds the core and original public CLI command without the desktop dependencies.
-The legacy shell installer is preserved for reference; version 2 packaging is a later milestone.
-CMake installs the new fronts, helper policy, KCM, desktop/service-menu metadata and certificate data.
-It installs no placeholder locales.
-Complete pt_BR/pl translations, the Debian package are pending.
+CMake installs the fronts, helper policy, KCM, desktop and service-menu entries, the manual page, the message catalogues and the units.
+The version 1 shell script and its placeholder locales are retired; git history keeps them.
+
+## Package
+
+`debian/` builds `sparky-ca_2.0.0_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
+It builds against the patched KIO that publishes `KSslCertificateManager` and depends on that KIO's revision, named in one place, `debian/control`.
+A development build before that revision exists points `SPARKY_CA_KIO_BUILD` and `SPARKY_CA_KIO_SOURCE` at a patched KIO tree.
+The package enables the machine timer and the user timer and path unit when it is installed.
+It never starts the update service on install or upgrade, and it never touches the switch files.
+The two things to change if the defaults change are `debian/rules` (what is enabled at install) and the unit files in `share/systemd/` (the rhythm).
+The notification threshold is the function `noteworthy` in `src/desktop/notify.cpp`.
+
+## Translations
+
+`po/LINGUAS` lists the languages that ship, and a language is listed only when every message is translated.
+`tools/update-translations.sh` rebuilds `po/sparky-ca.pot` and merges it into each `po/<language>.po`.
+Brazilian Portuguese and Polish are complete.
+Daniel Campos Ramos reviews pt_BR, and Paweł Pijanowski reviews pl, after publication.
+The desktop entries and the AppStream metadata take their translations from the same files.
+The catalogues need the locale to exist on the machine, as KDE's translation library requires.
 
 ## Console and files
 
@@ -124,7 +141,8 @@ Register the installed p11-kit proxy to expose configured modules.
 Removal checks our ownership record and removes our registration, leaving unrelated NSS certificates and the token itself intact.
 Vendor SafeSign/SafeNet middleware belongs on the user's machine through APTus; it is not mirrored.
 Physical cards and proprietary middleware have not been verified.
-The SoftHSM fixture belongs to the packaging milestone.
+A SoftHSM stand-in token is tested end to end through p11-kit's proxy and a real NSS database.
+The token and its certificate are detected without a PIN, NSS reaches the certificate and the private key after the PIN is given, a wrong PIN is refused by the token, and no PIN is stored.
 
 GnuPG root trust for Kleopatra is a separate opt-in decision.
 Only our managed trustlist block is removed; unrelated entries are preserved.

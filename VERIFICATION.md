@@ -1,5 +1,40 @@
 # Verification record
 
+## Milestone 5: package, languages, A1 and token
+
+The package was built and installed in containers on Debian testing (forky), Qt 6.11.2 and KDE Frameworks 6.30.0, base image pinned by digest.
+The build ran as an unprivileged user with fakeroot, four CPUs.
+The install test ran as root in a throwaway container with no extra capabilities and no host mounts except the workspace.
+No host store, browser profile, desktop, token or service was touched.
+
+| Check | Result |
+| --- | --- |
+| `dpkg-buildpackage -us -uc` on the committed tree | `sparky-ca_2.0.0_amd64.deb`, `.dsc`, `.tar.xz` (native source) |
+| `lintian` on the changes file, binary and source | no tags |
+| Full CTest, GCC and Clang | 14 of 14 each, including `translations` (10 checks) and `token-softhsm` (10 checks) |
+| `apt install` of the package in a clean container with recommended packages | every dependency resolves |
+| Install test (`verification/milestone5/install-test.sh`) | 45 checks pass |
+| The command, the desktop entry name and the manual page for both commands | as before and present |
+| pt_BR and pl at run time from the installed catalogues, English fallback, a translated runtime error | pass |
+| Installed application rendered offscreen in English, pt_BR and pl | window, status line and certificates inspected |
+| Install, then remove, on the container's real system store | the bundle returns byte for byte |
+| A1: a generated PKCS#12 previewed, imported into a fresh NSS database, key and certificate present; a wrong passphrase refused | pass |
+| A3: SoftHSM token through p11-kit's proxy and NSS | detected without PIN, certificate and key reached with PIN, wrong PIN refused, no PIN stored, unregistering keeps the token's objects |
+| Root path: the helper started by D-Bus as root after polkit said yes | installs into the real system store, refuses an unknown group, writes and removes the machine switch |
+| The same requests with the polkit rule removed | refused |
+| `systemd-analyze verify` with the binaries installed | system and user units clean |
+| `apt purge` | program and data gone, package no longer listed |
+
+The polkit rule used for the positive path is a file written only inside the test container, allowing the package's two actions for any user, and it is removed again before the refusal check.
+The client is `tests/kauth-client.cpp`, which calls the helper as the application does.
+
+What the install test cannot show:
+the units under a running systemd (the container has no PID 1, so enabling and the timers' firing were not observed; the postinst scripts call `deb-systemd-helper` and were inspected);
+the patched KIO as a real package (the install used stand-in packages with the version the package depends on, made from Debian's own packages with the patched library and `kssld` from the KIO tree);
+the Plasma System Settings page inside a Plasma session;
+physical tokens and vendor middleware;
+Polish review by its owner and Brazilian Portuguese review by Daniel Campos Ramos.
+
 ## Milestone 4: keeping the listed certificates current
 
 All checks ran in a Debian testing container as an unprivileged user with four CPUs.

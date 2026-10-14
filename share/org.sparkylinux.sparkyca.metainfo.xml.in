@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.sparkylinux.sparkyca</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Sparky CA</name>
+  <summary>ICP-Brasil certificates, browser trust and personal certificates</summary>
+  <description>
+    <p>Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the system, in Waterfox, Firefox and Chromium, and keeps the groups you chose current.</p>
+    <p>It shows every certificate with its issuer, expiry and state, imports your A1 certificate, registers your A3 token, and works on a plain text console as well as on the desktop.</p>
+    <p>Every download is checked against ITI's published hash and pinned roots, and certificates revoked by their authority are never installed.</p>
+  </description>
+  <launchable type="desktop-id">sparky-ca.desktop</launchable>
+  <url type="homepage">https://github.com/Sparky-OS/sparky-ca</url>
+  <url type="bugtracker">https://github.com/Sparky-OS/sparky-ca/issues</url>
+  <developer id="org.sparkylinux">
+    <name>Daniel Campos Ramos</name>
+  </developer>
+  <provides>
+    <binary>sparky-ca</binary>
+  </provides>
+  <categories>
+    <category>Utility</category>
+    <category>Security</category>
+  </categories>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="2.0.0" date="2026-10-14"/>
+  </releases>
+</component>
