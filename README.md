@@ -37,8 +37,7 @@ cmake --build build -j4
 ctest --test-dir build --output-on-failure
 ```
 
-`-DBUILD_KDE_FRONTENDS=OFF` builds the core and original public CLI command
-without the desktop dependencies.
+`-DBUILD_KDE_FRONTENDS=OFF` builds the core and original public CLI command without the desktop dependencies.
 CMake installs the fronts, helper policy, KCM, desktop and service-menu entries, the manual page, the message catalogues and the units.
 The version 1 shell script and its placeholder locales are retired; git history keeps them.
 
