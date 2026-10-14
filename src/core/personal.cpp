@@ -1,6 +1,9 @@
 // SPDX-FileCopyrightText: 2026 Daniel Campos Ramos
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "core.h"
+#include <QStandardPaths>
+#include <QMap>
+#include <functional>
 #include <KLocalizedString>
 #include <QDir>
 #include <QFile>
@@ -201,81 +204,231 @@ QByteArray tokenInformation(const QString &module)
         return slotList + QString::fromUtf8(error.what()).toUtf8();
     }
 }
-void setGpgsmTrust(const Catalogue &catalogue, const QString &group, const QString &home, bool trusted)
+bool gpgsmAvailable()
 {
-    if (!catalogue.groups().contains(group))
-        fail(i18n("Unknown certificate group: %1", group));
+    return !QStandardPaths::findExecutable("gpgsm").isEmpty();
+}
+static QString gpgsmManifestPath(const QString &home)
+{
+    return home + "/sparky-ca-gpgsm.json";
+}
+static QJsonObject gpgsmManifest(const QString &home)
+{
+    const auto path = gpgsmManifestPath(home);
+    validateStorePath(path);
+    if (!QFile::exists(path))
+        return {{"owned", QJsonObject()}, {"groups", QJsonObject()}};
+    QJsonParseError error;
+    const auto doc = QJsonDocument::fromJson(readFile(path), &error);
+    if (error.error != QJsonParseError::NoError || !doc.isObject())
+        fail(i18n("Invalid GnuPG import record."));
+    return doc.object();
+}
+static bool validFingerprint(const QString &id)
+{
+    return id.size() == 40 && std::all_of(id.cbegin(), id.cend(), [](QChar c) {
+               return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F');
+           });
+}
+static QString sha1Fingerprint(const Certificate &cert)
+{
+    unsigned char digest[EVP_MAX_MD_SIZE];
+    unsigned int size = 0;
+    if (!X509_digest(cert.get(), EVP_sha1(), digest, &size))
+        fail(i18n("Cannot calculate GnuPG's certificate identifier."));
+    return QString::fromLatin1(QByteArray(reinterpret_cast<char *>(digest), size).toHex().toUpper());
+}
+// gpgsm's keybox as {SHA-1 fingerprint: trust letter}. 'u' is ultimate trust, which gpgsm gives a root the user confirmed.
+static QMap<QString, QString> keybox(const QString &home)
+{
+    QMap<QString, QString> result;
+    QByteArray listing;
+    try {
+        listing = run("gpgsm", {"--homedir", home, "--batch", "--list-keys", "--with-colons"});
+    } catch (const std::exception &) {
+        return result;
+    }
+    QString trust;
+    for (const auto &line : QString::fromUtf8(listing).split('\n')) {
+        const auto fields = line.split(':');
+        if (fields.value(0) == "crt")
+            trust = fields.value(1);
+        else if (fields.value(0) == "fpr" && validFingerprint(fields.value(9)))
+            result.insert(fields.value(9), trust);
+    }
+    return result;
+}
+static void prepareGpgHome(const QString &home)
+{
     validateStorePath(home);
     if (!QDir().mkpath(home) || !QFile::setPermissions(home, QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner))
         fail(i18n("Cannot prepare the GnuPG directory."));
+}
+// Version 2.0.0 added its roots to gpgsm's trust list without asking. Take back only what it wrote.
+static bool retireLegacyTrust(const QString &home)
+{
     const auto trustPath = home + "/trustlist.txt";
-    const auto manifestPath = home + "/sparky-ca-trust.json";
+    const auto legacy = home + "/sparky-ca-trust.json";
     validateStorePath(trustPath);
-    validateStorePath(manifestPath);
+    validateStorePath(legacy);
+    const QByteArray begin("# sparky-ca managed roots begin\n"), end("# sparky-ca managed roots end\n");
+    bool changed = false;
+    if (QFile::exists(trustPath)) {
+        auto content = readFile(trustPath);
+        const int first = content.indexOf(begin), last = content.indexOf(end);
+        if (first >= 0 && last > first) {
+            content.remove(first, last + end.size() - first);
+            writeFile(trustPath, content);
+            changed = true;
+        }
+    }
+    if (QFile::exists(legacy) && QFile::remove(legacy))
+        changed = true;
+    if (changed && gpgsmAvailable()) {
+        try {
+            run("gpgconf", {"--homedir", home, "--reload", "gpg-agent"});
+        } catch (const std::exception &) {
+        }
+    }
+    return changed;
+}
+QJsonObject gpgsmImport(const Catalogue &catalogue, const QString &group, const QString &home)
+{
+    if (!gpgsmAvailable())
+        fail(i18n("GnuPG's gpgsm is not installed."));
+    if (!catalogue.groups().contains(group))
+        fail(i18n("Unknown certificate group: %1", group));
+    prepareGpgHome(home);
     QLockFile lock(home + "/.sparky-ca.lock");
     if (!lock.tryLock(0))
-        fail(i18n("GnuPG trust list is busy."));
-    QJsonObject groups;
-    if (QFile::exists(manifestPath)) {
-        QJsonParseError error;
-        const auto doc = QJsonDocument::fromJson(readFile(manifestPath), &error);
-        if (error.error != QJsonParseError::NoError || !doc.isObject())
-            fail(i18n("Invalid GnuPG trust manifest."));
-        groups = doc.object();
-    }
-    const QByteArray begin("# sparky-ca managed roots begin\n"), end("# sparky-ca managed roots end\n");
-    QByteArray content = QFile::exists(trustPath) ? readFile(trustPath) : QByteArray();
-    const int first = content.indexOf(begin), last = content.indexOf(end);
-    if ((first < 0) != (last < 0) || (first >= 0 && (last < first || content.indexOf(begin, first + 1) >= 0 || content.indexOf(end, last + 1) >= 0))) {
-        fail(i18n("Invalid managed GnuPG trust block."));
-    }
-    if (first >= 0)
-        content.remove(first, last + end.size() - first);
-    if (trusted) {
-        QJsonArray roots;
-        QTemporaryDir temporary;
-        for (const auto &entry : catalogue.entries()) {
-            if (!entry.groups.contains(group) || !entry.certificate.root() || catalogue.state(entry.certificate) != "valid")
-                continue;
-            if (entry.certificate.signatureOid() == "1.3.6.1.4.1.44588.2.1")
-                continue;
-            catalogue.verify(entry.certificate, true);
-            writeFile(temporary.path() + "/root.pem", entry.certificate.pem());
-            run("gpgsm", {"--homedir", home, "--batch", "--import", temporary.path() + "/root.pem"});
-            unsigned char digest[EVP_MAX_MD_SIZE];
-            unsigned int size = 0;
-            if (!X509_digest(entry.certificate.get(), EVP_sha1(), digest, &size))
-                fail(i18n("Cannot calculate GnuPG's root identifier."));
-            roots.append(QString::fromLatin1(QByteArray(reinterpret_cast<char *>(digest), size).toHex().toUpper()));
+        fail(i18n("GnuPG certificate store is busy."));
+    const bool legacy = retireLegacyTrust(home);
+    auto manifest = gpgsmManifest(home);
+    auto owned = manifest.value("owned").toObject();
+    auto groups = manifest.value("groups").toObject();
+    // The chain of every chosen certificate, up to its root, in the order gpgsm can verify it.
+    const auto usable = [&](const Entry &entry) {
+        return catalogue.state(entry.certificate) == "valid" && entry.certificate.signatureOid() != "1.3.6.1.4.1.44588.2.1"
+            && catalogue.installationIssue(entry.certificate).isEmpty();
+    };
+    QList<const Entry *> chain;
+    QSet<QString> seen;
+    const std::function<bool(const Entry &)> add = [&](const Entry &entry) {
+        if (seen.contains(entry.certificate.fingerprint()))
+            return true;
+        if (!usable(entry))
+            return false;
+        if (!entry.certificate.root()) {
+            const Entry *issuer = nullptr;
+            for (const auto &candidate : catalogue.entries()) {
+                if (entry.certificate.issuedBy(candidate.certificate)) {
+                    issuer = &candidate;
+                    break;
+                }
+            }
+            if (!issuer || !add(*issuer))
+                return false;
         }
-        if (roots.isEmpty())
-            fail(i18n("This group has no current root certificates."));
-        groups.insert(group, roots);
-    } else
+        seen.insert(entry.certificate.fingerprint());
+        chain.append(&entry);
+        return true;
+    };
+    QJsonArray skipped;
+    for (const auto &entry : catalogue.entries()) {
+        if (entry.groups.contains(group) && !add(entry))
+            skipped.append(entry.name);
+    }
+    if (chain.isEmpty())
+        fail(i18n("This group has no certificates gpgsm can use."));
+    const auto before = keybox(home);
+    QJsonArray imported, present;
+    QJsonArray members;
+    QTemporaryDir temporary;
+    for (const Entry *entry : chain) {
+        const QString sha1 = sha1Fingerprint(entry->certificate);
+        catalogue.verify(entry->certificate, true);
+        members.append(sha1);
+        if (before.contains(sha1)) {
+            present.append(entry->name);
+            continue;
+        }
+        writeFile(temporary.path() + "/certificate.pem", entry->certificate.pem());
+        run("gpgsm", {"--homedir", home, "--batch", "--import", temporary.path() + "/certificate.pem"});
+        owned.insert(sha1, QJsonObject{{"sha256", entry->certificate.fingerprint()}, {"name", entry->name}, {"root", entry->certificate.root()}});
+        imported.append(entry->name);
+        manifest.insert("owned", owned);
+        writeFile(gpgsmManifestPath(home), QJsonDocument(manifest).toJson());
+    }
+    groups.insert(group, members);
+    manifest.insert("owned", owned);
+    manifest.insert("groups", groups);
+    writeFile(gpgsmManifestPath(home), QJsonDocument(manifest).toJson());
+    return {{"imported", imported}, {"alreadyPresent", present}, {"skipped", skipped}, {"previousTrustRemoved", legacy}};
+}
+QJsonObject gpgsmRemove(const QString &group, const QString &home)
+{
+    if (!gpgsmAvailable())
+        fail(i18n("GnuPG's gpgsm is not installed."));
+    prepareGpgHome(home);
+    QLockFile lock(home + "/.sparky-ca.lock");
+    if (!lock.tryLock(0))
+        fail(i18n("GnuPG certificate store is busy."));
+    const bool legacy = retireLegacyTrust(home);
+    auto manifest = gpgsmManifest(home);
+    auto owned = manifest.value("owned").toObject();
+    auto groups = manifest.value("groups").toObject();
+    if (group != "all")
         groups.remove(group);
-    QSet<QString> identifiers;
-    for (auto it = groups.begin(); it != groups.end(); ++it) {
-        for (const auto &root : it.value().toArray()) {
-            const auto id = root.toString();
-            if (id.size() != 40 || !std::all_of(id.cbegin(), id.cend(), [](QChar c) {
-                    return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F');
-                }))
-                fail(i18n("Invalid GnuPG root identifier."));
-            identifiers.insert(id);
-        }
+    else
+        groups = {};
+    QSet<QString> needed;
+    for (const auto &members : groups)
+        for (const auto &id : members.toArray())
+            needed.insert(id.toString());
+    QJsonArray removed;
+    const auto present = keybox(home);
+    for (const auto &id : owned.keys()) {
+        if (needed.contains(id))
+            continue;
+        if (!validFingerprint(id))
+            fail(i18n("Invalid GnuPG certificate identifier."));
+        if (present.contains(id))
+            run("gpgsm", {"--homedir", home, "--batch", "--yes", "--delete-keys", id});
+        removed.append(owned.value(id).toObject().value("name").toString());
+        owned.remove(id);
+        manifest.insert("owned", owned);
+        writeFile(gpgsmManifestPath(home), QJsonDocument(manifest).toJson());
     }
-    auto ordered = identifiers.values();
-    ordered.sort();
-    if (!content.isEmpty() && !content.endsWith('\n'))
-        content.append('\n');
-    if (!ordered.isEmpty()) {
-        content.append(begin);
-        for (const auto &id : ordered)
-            content.append(id.toLatin1() + " S\n");
-        content.append(end);
+    manifest.insert("owned", owned);
+    manifest.insert("groups", groups);
+    writeFile(gpgsmManifestPath(home), QJsonDocument(manifest).toJson());
+    return {{"removed", removed}, {"previousTrustRemoved", legacy}};
+}
+QJsonArray gpgsmStatus(const QString &home)
+{
+    QJsonArray result;
+    if (!gpgsmAvailable() || !QFile::exists(gpgsmManifestPath(home)))
+        return result;
+    validateStorePath(home);
+    const auto owned = gpgsmManifest(home).value("owned").toObject();
+    const auto present = keybox(home);
+    for (const auto &id : owned.keys()) {
+        const auto record = owned.value(id).toObject();
+        QString trust = "not imported";
+        if (present.contains(id))
+            trust = !record.value("root").toBool() ? "through its root" : present.value(id) == "u" ? "confirmed by you" : "not confirmed";
+        result.append(QJsonObject{{"name", record.value("name")}, {"sha1", id}, {"sha256", record.value("sha256")}, {"root", record.value("root")}, {"trust", trust}});
     }
-    writeFile(trustPath, content);
-    writeFile(manifestPath, QJsonDocument(groups).toJson());
-    run("gpgconf", {"--homedir", home, "--reload", "gpg-agent"});
+    return result;
+}
+QStringList gpgsmUnconfirmedRoots(const QString &home)
+{
+    QStringList roots;
+    for (const auto &item : gpgsmStatus(home)) {
+        const auto record = item.toObject();
+        if (record.value("root").toBool() && record.value("trust").toString() == "not confirmed")
+            roots.append(record.value("sha1").toString());
+    }
+    return roots;
 }
 }

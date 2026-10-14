@@ -60,7 +60,7 @@ A1 import and the token path with SoftHSM are verified in the packaging mileston
 
 ## KDE certificate manager implementation
 
-The application and Certificates KCM share `CertificateManager`, which uses immutable core catalogue data, KIO's CA manager, kssld, KWallet and KNotifications.
+The application and Certificates KCM share `CertificateManager`, which uses immutable core catalogue data, KWallet, KNotifications and the gpgsm functions of the core.
 Personal operations run as the user.
 System group requests go through KAuth; its helper accepts exactly an operation, known group and boolean Ed521 choice.
 The helper owns the store paths and requires root-owned package data without symlinks or group/other write permissions.
@@ -79,7 +79,9 @@ When a chosen root changes its SSL trust, the previous flags are recorded and re
 A later unrelated trust change is refused on removal.
 Private identities are not treated as owned catalogue certificates.
 Token registration has a separate ownership record.
-GnuPG trust has its own managed block and group manifest, independent of browser trust.
+gpgsm has its own ownership record, `sparky-ca-gpgsm.json` in the GnuPG home: the SHA-1 fingerprints of the certificates Sparky CA imported, and the group that brought each.
+A certificate gpgsm already held is not recorded, so removal never touches it.
+Trust is never written by this program: the roots enter the keybox untrusted, and the trust list changes only through gpgsm's own question, answered by the user.
 
 Passwords may enter KWallet only through explicit user actions.
 The import success callback saves an A1/NSS pair only if selected.
@@ -160,12 +162,23 @@ The user switch is a file in the user's own configuration folder.
 ## Packaging
 
 The package is a native Debian source package: `debian/` sits beside the code and `dpkg-buildpackage` builds it.
-`debian/control` names the KIO revision that carries the certificate manager API in three places, the build dependency and two runtime dependencies, so one edit changes it.
+The package needs only stock Debian KDE Frameworks, so it installs on every SparkyLinux edition.
 Runtime packages the Kirigami application and the System Settings module need are listed as dependencies, because a missing QML module fails only when the window opens.
-OpenSC, p11-kit, pcscd, libccid and GnuPG are recommended, because a user without a token or Kleopatra needs none of them.
+OpenSC, p11-kit, pcscd, libccid and gpgsm are recommended, and Kleopatra suggested, because a user without a token or Kleopatra needs none of them.
 The Ed521 provider is not built into the package: it is opt-in, public-only and unaudited.
 `dh_installsystemd` is told to handle only the timer, so installing never runs the update service.
 The postinst enables the machine timer and, for every user, the user timer and path unit; the switch files are never touched.
 The message catalogues come from `po/LINGUAS`; the desktop entries and AppStream metadata come from the same files through `msgfmt`.
 The copyright file is machine-readable and keeps the 2018 credit of Paweł Pijanowski on the files his work survives in.
 
+
+## Kleopatra and gpgsm
+
+`gpgsmImport` imports a group's valid, supported certificates and, for each, its issuers up to the root, roots first, and skips a certificate whose chain is not valid.
+It lists the keybox first, so a certificate gpgsm already holds is reported as present and never recorded as ours.
+`gpgsmRemove` deletes only recorded fingerprints that no remaining group still needs.
+`gpgsmStatus` reads the keybox and reports for each recorded root whether the user confirmed it (gpgsm's trust letter `u`), and for each intermediate that it depends on its root.
+`gpgsm-confirm` runs `gpgsm --with-validation --list-keys` on each unconfirmed root with the terminal attached, which makes gpgsm ask its question; nothing answers it.
+The application shows the feature only if the executable `gpgsm` exists, and an Open in Kleopatra action only if `kleopatra` exists as well, called with `--query` and a checked fingerprint.
+Ed521 certificates are not imported, because gpgsm cannot validate them.
+The first gpgsm operation of 2.0.1 removes the managed block and record that 2.0.0 wrote into the trust list, and nothing else in that file.

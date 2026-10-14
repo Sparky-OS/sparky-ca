@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
+  Version 2.0.1 (2026-10-14)
+-------------------------------------------------------------------------------
+  * Removed the integration with KIO's certificate manager and the dependency on a patched KIO
+  * Added import of the chosen chain into gpgsm for Kleopatra, with trust only when you confirm it
+  * Added removal of what was imported and of the trust entries that 2.0.0 added without asking
+  * Made gpgsm and Kleopatra optional, shown only where gpgsm exists
+
+-------------------------------------------------------------------------------
   Version 2.0.0 (2026-10-14)
 -------------------------------------------------------------------------------
   * Rebuilt on Qt 6 and KDE Frameworks 6 with a Kirigami application, a System Settings module and a KAuth helper

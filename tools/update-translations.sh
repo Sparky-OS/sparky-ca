@@ -12,8 +12,9 @@ xgettext --from-code=UTF-8 -L JavaScript $KDE -o "$tmp/qml.pot" qml/*.qml
 xgettext --from-code=UTF-8 -L Desktop -o "$tmp/desktop.pot" share/sparky-ca.desktop.in share/kservices/sparky-ca-preview.desktop.in
 xgettext --from-code=UTF-8 --its=/usr/share/gettext/its/metainfo.its -o "$tmp/metainfo.pot" share/org.sparkylinux.sparkyca.metainfo.xml.in
 msgcat --use-first --sort-by-file "$tmp/code.pot" "$tmp/qml.pot" "$tmp/desktop.pot" "$tmp/metainfo.pot" \
-    | sed -e 's/^"Project-Id-Version: .*\\n"$/"Project-Id-Version: sparky-ca 2.0.0\\n"/' > po/sparky-ca.pot
+    | sed -e 's/^"Project-Id-Version: .*\\n"$/"Project-Id-Version: sparky-ca 2.0.1\\n"/' > po/sparky-ca.pot
 for file in po/*.po; do
     [ -e "$file" ] || continue
     msgmerge --quiet --update --backup=none --no-fuzzy-matching "$file" po/sparky-ca.pot
+    msgattrib --no-obsolete --output-file="$file" "$file"
 done
