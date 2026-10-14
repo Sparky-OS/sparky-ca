@@ -5,7 +5,7 @@
 
 namespace SparkyCA
 {
-void applySystemChange(const QVariantMap &arguments, const QString &data, const QString &directory, const QString &bundle)
+void applySystemChange(const QVariantMap &arguments, const QString &data, const QString &directory, const QString &bundle, const QString &stateDirectory)
 {
     if (arguments.size() != 3 || arguments.value("operation").metaType() != QMetaType::fromType<QString>()
         || arguments.value("group").metaType() != QMetaType::fromType<QString>() || arguments.value("allowE521").metaType() != QMetaType::fromType<bool>()) {
@@ -15,8 +15,7 @@ void applySystemChange(const QVariantMap &arguments, const QString &data, const 
     const auto group = arguments.value("group").toString();
     if (operation != "install" && operation != "remove")
         fail(i18n("Unknown system certificate operation."));
-    Catalogue catalogue(data + "/pins.json", data + "/roots");
-    catalogue.load(readFile(data + "/catalogue.json"));
+    Catalogue catalogue = loadCatalogue(data, stateDirectory);
     if (!catalogue.groups().contains(group) && !(operation == "remove" && group == "all"))
         fail(i18n("Unknown certificate group: %1", group));
     Store store(directory, bundle, {});
@@ -24,5 +23,11 @@ void applySystemChange(const QVariantMap &arguments, const QString &data, const 
         store.install(catalogue, group, arguments.value("allowE521").toBool());
     else
         store.remove(catalogue, group);
+}
+void applyAutomaticSwitch(const QVariantMap &arguments, const QString &configDirectory)
+{
+    if (arguments.size() != 1 || arguments.value("enabled").metaType() != QMetaType::fromType<bool>())
+        fail(i18n("Invalid automatic update request."));
+    setAutomationEnabled(configDirectory, arguments.value("enabled").toBool());
 }
 }

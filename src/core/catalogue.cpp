@@ -118,6 +118,15 @@ void Catalogue::verify(const Certificate &cert, bool current) const
     if (!valid || !cert.ca()) fail(i18n("Certificate chain rejected: %1: %2", cert.subject(), error));
     if (current && (revoked || cert.state() != "valid")) fail(i18n("Certificate is expired, revoked or not yet valid: %1", cert.subject()));
 }
+void Catalogue::applyRevocation(const QJsonObject &document)
+{
+    QSet<QString> known;
+    for (const auto &entry : m_entries) known.insert(entry.certificate.fingerprint());
+    const auto records = document.value("certificates").toObject();
+    for (const auto &fingerprint : records.keys()) {
+        if (known.contains(fingerprint) && records.value(fingerprint).toObject().value("status").toString() == "revoked") m_revoked.insert(fingerprint);
+    }
+}
 void Catalogue::validate(const QList<Entry> &entries) const
 {
     if (entries.isEmpty() || entries.size() > 1024) fail(i18n("Invalid certificate count."));

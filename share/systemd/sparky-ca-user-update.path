@@ -1,0 +1,10 @@
+[Unit]
+Description=Report the machine's certificate update when it finishes
+Documentation=https://github.com/Sparky-OS/sparky-ca
+
+[Path]
+PathChanged=/var/lib/sparky-ca/status.json
+Unit=sparky-ca-user-update.service
+
+[Install]
+WantedBy=default.target

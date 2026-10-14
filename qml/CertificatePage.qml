@@ -33,11 +33,23 @@ Kirigami.Page {
     actions: [
         Kirigami.Action { text: i18n("Open Certificate…"); icon.name: "document-open"; enabled: !manager.busy; onTriggered: filePicker.open() },
         Kirigami.Action { text: i18n("Refresh"); icon.name: "view-refresh"; enabled: !manager.busy; onTriggered: manager.refresh() },
-        Kirigami.Action { text: i18n("Check Expiries"); icon.name: "appointment-soon"; enabled: !manager.busy; onTriggered: manager.expiryNotification() }
+        Kirigami.Action { text: i18n("Check Expiries"); icon.name: "appointment-soon"; enabled: !manager.busy; onTriggered: manager.expiryNotification() },
+        Kirigami.Action {
+            id: automaticUpdates
+            text: i18n("Keep Chosen Groups Current")
+            icon.name: "view-refresh"
+            checkable: true
+            checked: manager.automaticUpdates
+            enabled: !manager.busy
+            onTriggered: manager.setAutomaticUpdates(checked)
+        }
     ]
     Connections {
         target: manager
-        function onChanged() { page.selected = ({}) }
+        function onChanged() {
+            page.selected = ({})
+            automaticUpdates.checked = Qt.binding(() => manager.automaticUpdates)
+        }
     }
     ColumnLayout {
         anchors.fill: parent
@@ -49,6 +61,7 @@ Kirigami.Page {
             type: Kirigami.MessageType.Information
             text: i18n("ICP-Brasil v7 (Ed521) validates through the command line when the Ed521 OpenSSL provider is configured. Okular and NSS browsers cannot validate v7 until their certificate backend supports Ed521. RSA and ECDSA signing remain available.")
         }
+        Controls.Label { Layout.fillWidth: true; text: manager.updateStatus; textFormat: Text.PlainText; wrapMode: Text.Wrap; opacity: 0.7 }
         Kirigami.InlineMessage { Layout.fillWidth: true; visible: manager.error.length > 0; type: Kirigami.MessageType.Error; text: manager.error }
         Controls.Label { Layout.fillWidth: true; visible: manager.notice.length > 0; text: manager.notice; textFormat: Text.PlainText; wrapMode: Text.Wrap; maximumLineCount: 5; elide: Text.ElideRight }
         RowLayout {

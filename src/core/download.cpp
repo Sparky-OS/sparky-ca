@@ -11,9 +11,11 @@
 
 namespace SparkyCA
 {
-QByteArray download(const QUrl &url, const Transport &transport, qint64 limit)
+QByteArray download(const QUrl &url, const Transport &transport, qint64 limit, bool signedObject)
 {
-    if (!url.isValid() || url.scheme() != "https" || !url.userInfo().isEmpty()) fail(i18n("Downloads require HTTPS."));
+    // Plain HTTP is allowed only for objects whose own signature the caller verifies, such as CRLs.
+    const bool plain = signedObject && url.scheme() == "http";
+    if (!url.isValid() || (url.scheme() != "https" && !plain) || !url.userInfo().isEmpty() || url.host().isEmpty()) fail(i18n("Downloads require HTTPS."));
     QSslConfiguration ssl = QSslConfiguration::defaultConfiguration();
     if (!transport.caPem.isEmpty()) ssl.setCaCertificates(QSslCertificate::fromData(transport.caPem));
     if (!transport.issuerPem.isEmpty()) {

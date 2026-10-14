@@ -1,0 +1,13 @@
+[Unit]
+Description=Keep the browser certificate groups you chose current
+Documentation=https://github.com/Sparky-OS/sparky-ca
+ConditionPathExists=!%E/sparky-ca/auto-update.disabled
+
+[Service]
+Type=oneshot
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/sparky-ca auto run --scope user
+ExecStartPost=-@CMAKE_INSTALL_FULL_LIBEXECDIR@/sparky-ca/sparky-ca-notify
+Nice=10
+NoNewPrivileges=yes
+RestrictRealtime=yes
+LockPersonality=yes

@@ -24,6 +24,19 @@ public:
             qunsetenv(name);
     }
 public Q_SLOTS:
+    KAuth::ActionReply automatic(const QVariantMap &arguments)
+    {
+        try {
+            if (geteuid() != 0)
+                SparkyCA::fail(i18n("The certificate helper requires root."));
+            SparkyCA::applyAutomaticSwitch(arguments, "/etc/sparky-ca");
+            return KAuth::ActionReply::SuccessReply();
+        } catch (const std::exception &error) {
+            auto reply = KAuth::ActionReply::HelperErrorReply();
+            reply.setErrorDescription(QString::fromUtf8(error.what()));
+            return reply;
+        }
+    }
     KAuth::ActionReply change(const QVariantMap &arguments)
     {
         try {
@@ -41,7 +54,7 @@ public Q_SLOTS:
                     SparkyCA::fail(i18n("Untrusted package certificate data."));
                 }
             }
-            SparkyCA::applySystemChange(arguments, data, "/usr/local/share/ca-certificates/sparky-ca", "/etc/ssl/certs/ca-certificates.crt");
+            SparkyCA::applySystemChange(arguments, data, "/usr/local/share/ca-certificates/sparky-ca", "/etc/ssl/certs/ca-certificates.crt", "/var/lib/sparky-ca");
             return KAuth::ActionReply::SuccessReply();
         } catch (const std::exception &error) {
             auto reply = KAuth::ActionReply::HelperErrorReply();
@@ -61,6 +74,10 @@ int main(int argc, char **argv)
     if (!result.failed() || result.errorDescription() != i18n("The certificate helper requires root."))
         return 1;
     QTextStream(stdout) << "PASS the actual KAuth helper refuses a valid request from an unprivileged process\n";
+    const auto automatic = helper.automatic({{"enabled", false}});
+    if (!automatic.failed() || automatic.errorDescription() != i18n("The certificate helper requires root.") || QFileInfo::exists("/etc/sparky-ca/auto-update.disabled"))
+        return 1;
+    QTextStream(stdout) << "PASS the actual KAuth helper refuses the automatic update switch from an unprivileged process\n";
     return 0;
 }
 #else

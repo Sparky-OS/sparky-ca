@@ -44,6 +44,25 @@ int main(int argc, char **argv)
         if (!store.list(catalogue).isEmpty())
             return 1;
         ++checks;
+        const auto configuration = fixture + "/config";
+        for (const auto &bad : QList<QVariantMap>{{}, {{"enabled", "false"}}, {{"enabled", false}, {"path", "/etc"}}}) {
+            bool rejected = false;
+            try {
+                applyAutomaticSwitch(bad, configuration);
+            } catch (const std::exception &) {
+                rejected = true;
+            }
+            if (!rejected || QFileInfo::exists(configuration))
+                return 1;
+            ++checks;
+        }
+        applyAutomaticSwitch({{"enabled", false}}, configuration);
+        if (automationEnabled(configuration))
+            return 1;
+        applyAutomaticSwitch({{"enabled", true}}, configuration);
+        if (!automationEnabled(configuration))
+            return 1;
+        checks += 2;
         QTextStream(stdout) << checks
                             << " system request checks passed: five malformed requests rejected before store creation; validated install/remove reach the real "
                                "isolated updater\n";

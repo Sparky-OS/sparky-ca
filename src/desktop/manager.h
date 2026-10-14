@@ -18,6 +18,8 @@ class CertificateManager : public QObject
     Q_PROPERTY(QString notice READ notice NOTIFY changed)
     Q_PROPERTY(bool busy READ busy NOTIFY changed)
     Q_PROPERTY(QString store READ store NOTIFY changed)
+    Q_PROPERTY(bool automaticUpdates READ automaticUpdates NOTIFY changed)
+    Q_PROPERTY(QString updateStatus READ updateStatus NOTIFY changed)
 public:
     explicit CertificateManager(QString data, QObject *parent = nullptr);
     QVariantList certificates() const
@@ -45,6 +47,9 @@ public:
     {
         return m_store;
     }
+    bool automaticUpdates() const;
+    QString updateStatus() const;
+    Q_INVOKABLE void setAutomaticUpdates(bool enabled);
     Q_INVOKABLE void setWindow(QWindow *window)
     {
         m_window = window;

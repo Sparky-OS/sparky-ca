@@ -23,13 +23,66 @@ CertificateManager::CertificateManager(QString data, QObject *parent)
     , m_data(std::move(data))
 {
     try {
-        auto catalogue = std::make_shared<Catalogue>(m_data + "/pins.json", m_data + "/roots");
-        catalogue->load(readFile(m_data + "/catalogue.json"));
-        m_catalogue = catalogue;
+        m_catalogue = std::make_shared<Catalogue>(loadCatalogue(m_data, SPARKY_CA_STATE));
         refresh();
     } catch (const std::exception &error) {
         m_error = QString::fromUtf8(error.what());
     }
+}
+static QString userConfiguration()
+{
+    return QDir::homePath() + "/.config/sparky-ca";
+}
+bool CertificateManager::automaticUpdates() const
+{
+    return automationEnabled("/etc/sparky-ca") && automationEnabled(userConfiguration());
+}
+QString CertificateManager::updateStatus() const
+{
+    const QString path = QStringLiteral(SPARKY_CA_STATE) + "/status.json";
+    if (!trustedStateFile(path))
+        return i18n("No automatic update has run on this computer yet.");
+    const auto report = QJsonDocument::fromJson(readFile(path)).object();
+    const auto time = QDateTime::fromString(report.value("time").toString(), Qt::ISODate).toLocalTime();
+    const auto outcome = report.value("outcome").toString();
+    return outcome == "ok"
+        ? i18n("Last automatic update: %1. Everything is current.", QLocale().toString(time, QLocale::ShortFormat))
+        : i18n("Last automatic update: %1. It needs your attention: see the system journal or run sparky-ca auto status.", QLocale().toString(time, QLocale::ShortFormat));
+}
+void CertificateManager::setAutomaticUpdates(bool enabled)
+{
+    if (m_busy)
+        return;
+    try {
+        setAutomationEnabled(userConfiguration(), enabled);
+    } catch (const std::exception &error) {
+        m_error = QString::fromUtf8(error.what());
+        Q_EMIT changed();
+        return;
+    }
+    KAuth::Action action("org.sparkylinux.sparkyca.automatic");
+    action.setHelperId("org.sparkylinux.sparkyca");
+    action.setParentWindow(m_window.data());
+    action.setArguments({{"enabled", enabled}});
+    auto job = action.execute();
+    m_busy = true;
+    m_error.clear();
+    Q_EMIT changed();
+    connect(job, &KJob::result, this, [this, enabled](KJob *finished) {
+        m_busy = false;
+        m_error = finished->errorString();
+        if (finished->error()) {
+            try {
+                setAutomationEnabled(userConfiguration(), !enabled);
+            } catch (const std::exception &) {
+            }
+        } else {
+            m_notice = enabled ? i18n("Your chosen certificate groups will be kept current automatically.") : i18n("Automatic certificate updates are off.");
+            notify(m_notice);
+        }
+        Q_EMIT changed();
+    });
+    job->start();
 }
 QStringList CertificateManager::profiles() const
 {
