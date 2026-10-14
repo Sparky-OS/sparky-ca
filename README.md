@@ -43,7 +43,7 @@ without the desktop dependencies. The legacy shell installer is preserved for
 reference; version 2 packaging is a later milestone. CMake installs the new
 fronts, helper policy, KCM, desktop/service-menu metadata and certificate data.
 It installs no placeholder locales. Complete pt_BR/pl translations, the Debian
-package and automatic catalogue updates are pending.
+package are pending.
 
 ## Console and files
 
@@ -54,7 +54,7 @@ remain text commands even when a display exists.
 Commands include `list`, `list installed`, `groups`, `install <group>`,
 `remove <group|all>`, `status`, `profiles`, `update`, `preview <file>`,
 `import <file>`, `tokens [module]`, `register-token <module>`,
-`unregister-token`, `gpgsm-trust <group>` and `gpgsm-untrust <group>`.
+`unregister-token`, `gpgsm-trust <group>`, `gpgsm-untrust <group>` and `auto <status|enable|disable|run>`.
 `--nss` chooses a browser database. Close that browser before making changes.
 CLI system operations require root or the user's chosen sudo/pkexec invocation.
 `update --output <file>` refreshes a catalogue without installing certificates.
@@ -63,6 +63,47 @@ Dolphin's service menu and MIME associations open `.crt`, `.cer`, `.pem`,
 `.p7b`, `.pfx` and `.p12`. Public files show a certificate preview; encrypted
 personal identities prompt for their passphrase. Preview does not establish
 trust or a revocation result.
+
+## Keeping certificates current
+
+Installing is always your own act. Once you have chosen groups, a daily timer keeps those groups current.
+It never chooses a group, never adds a root and never installs an Ed521 certificate for you.
+
+Each run does four things.
+It fetches ITI's bundle over verified HTTPS and checks ITI's SHA-512 and every chain against the pinned roots.
+It asks each issuing CA's signed CRL about every valid intermediate.
+It adds renewed or new intermediates of the groups you chose.
+It removes owned certificates that expired or were revoked.
+A CRL counts only when it names the issuer, verifies against that issuer's key and has not passed its next update.
+A revocation stays once seen.
+A good answer lasts only as long as the CRL that gave it.
+A certificate with no verified answer stays installed and is reported.
+
+A failed refresh keeps the last verified catalogue and your stores.
+The result is written to `/var/lib/sparky-ca/status.json` and to the journal (`journalctl -u sparky-ca-update`).
+On the desktop a KDE notification names what was added or removed, or says that an update needs attention.
+A catalogue that has not refreshed for seven days is reported.
+
+Two timers do the work.
+`sparky-ca-update.timer` runs as root and updates the system store and the shared catalogue.
+`sparky-ca-user-update.timer` runs in your session and updates the browser databases you chose, then sends the notification.
+A browser profile that is open is skipped and tried again on the next run.
+
+Turn it off in the application (**Keep Chosen Groups Current**), or from a terminal:
+
+```sh
+sparky-ca auto status
+sudo sparky-ca auto disable
+sparky-ca auto disable --scope user
+```
+
+`auto enable` turns it on again.
+`auto run --force` runs once although it is off.
+The switch is the file `/etc/sparky-ca/auto-update.disabled` (machine) or `~/.config/sparky-ca/auto-update.disabled` (you).
+The units skip their work while it exists, so a package upgrade never turns the timer back on.
+
+The refreshed catalogue replaces the packaged one only when it still holds every certificate the package ships, and only from a root-owned file that nobody else can write.
+Everything in it is verified again on load.
 
 ## Personal identities, Wallet and PDF signing
 
@@ -113,8 +154,9 @@ Ed521 chain until NSS supports it or Poppler gains a provider-backed backend.
 Neither route has been implemented. The real ITI archives contain no
 v7-issued descendant certificate; the tested descendants are synthetic.
 
-Intermediate revocation remains unknown until signed CRL/freshness handling
-is implemented. Two historical MRE entries fail OpenSSL's current explicit-ECC
+Intermediate revocation is checked against the issuing CA's signed CRL (see
+[Keeping certificates current](#keeping-certificates-current)); an Ed521
+issuer's CRL cannot be verified on Linux and stays unknown. Two historical MRE entries fail OpenSSL's current explicit-ECC
 policy, and four optional historical VALID entries have missing issuers.
 Their archive records and exclusions remain visible in the source index.
 See [VERIFICATION.md](VERIFICATION.md) for measured results and limits.

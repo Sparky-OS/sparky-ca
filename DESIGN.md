@@ -14,7 +14,7 @@ Store manifests record selected groups and owned fingerprints. Lock files serial
 
 System changes require root, sudo or pkexec in the CLI. Browser changes remain the invoking user's. The milestone-2 KAuth helper must accept constrained group IDs and store targets rather than arbitrary privileged paths. Tests redirect the real system updater and NSS tools to temporary stores in non-root containers. Host stores and browser profiles are never mounted.
 
-Milestone 3 will add the repository's scheduled HTTPS/hash/chain refresh, with catalogue changes proposed for review and no automatic pin changes. A root-owned machine cache and timer will remember the user's selected groups, refresh them, add new intermediates and remove expired or revoked owned entries. It must never choose groups or add roots automatically. The user can disable it; KDE notifications and the journal report results. Signed CRL evaluation and stale-status handling remain to be implemented before production automatic refresh. Intermediate revocation is currently explicit `unknown`; published root exclusions are implemented. A1 import verification and token registration with SoftHSM belong to milestone 4.
+The repository's scheduled refresh, the machine and user timers and signed CRL evaluation are described in "Keeping the listed certificates current" below. A1 import verification and token registration with SoftHSM belong to the packaging milestone.
 
 ## KDE certificate manager implementation
 
@@ -51,3 +51,68 @@ NSS/Okular and gpgsm retain their measured algorithm boundaries. The OpenSSL
 provider can verify Ed521 in the core; it does not make NSS import that key.
 Public file previews and CA listings are general PKI operations. ICP-Brasil
 is the shipped catalogue, and further pinned catalogues require review.
+
+## Keeping the listed certificates current
+
+### In the repository
+
+`.github/workflows/refresh-catalogue.yml` runs daily and by hand.
+The `verify` job has read permission only.
+It builds the core in a Debian testing container and runs `tools/refresh-catalogue.sh`.
+That script runs `sparky-ca update` against ITI's real bundle, which requires verified HTTPS, ITI's SHA-512 and a chain to a pinned root for every certificate.
+The result is one of four words in `out/result`: `current`, `changed`, `unpinned` or `failed`.
+The job uploads `out/` as an artifact and fails the run for `unpinned` and `failed`.
+The `propose` job holds the write permission and never builds or runs the verifier.
+For `changed` it commits only `data/catalogue.json` to the branch `catalogue-refresh`, with `tools/catalogue-diff.py` output as the description, and opens or updates one pull request.
+For `unpinned` it opens one issue.
+`tools/new-roots.py` lists the self-signed certificates in the bundle that no pin covers, with their SHA-256 fingerprints.
+A person checks each against ITI's page and adds the pin in a reviewed commit.
+No job writes a pin, so a new root such as a v14 is never trusted by automation.
+A wrong SHA-512 yields `failed` and no issue, because the file cannot be examined safely.
+
+### On the machine
+
+`sparky-ca auto run` is the one entry point for both timers and for the command line.
+Its scope is `system` for root and `user` otherwise.
+The system scope refreshes the catalogue, checks revocation and reconciles the system store.
+The user scope uses the system scope's results, never the network, and reconciles each browser database that has an ownership manifest.
+
+The selection is the `groups` list in each store's `.sparky-ca.json`.
+That list is written only by `install` and `remove`, so the timer cannot choose a group.
+Reconciling a store installs the owned groups' valid, eligible entries that are not yet owned, then drops owned entries that are no longer valid.
+Ed521 entries are counted and reported as needing the user's choice, never installed.
+The updater runs only when something changed.
+A browser profile with a `lock` link is skipped and reported.
+
+The machine state is the folder `/var/lib/sparky-ca`, owned by root and not writable by others.
+`catalogue.json` is the refreshed catalogue.
+`revocation.json` holds the CRL answers.
+`status.json` holds the last run and is the notification's source.
+Readers use a file only if root or the reader owns it, nobody else can write it and no path component is a link.
+The refreshed catalogue is loaded through the same verification as the packaged one and replaces it only if it contains every certificate fingerprint the package ships.
+A tampered or truncated cache is ignored, never partly used.
+The KAuth helper and the application load the catalogue the same way, so a group installed from the application matches what the timer maintains.
+
+### Revocation
+
+A certificate is checked against the CRL at its own distribution points, one verified answer per issuer and URL.
+Plain HTTP is allowed for the CRL fetch only, because the object is signed; TLS verification stays on for every HTTPS download.
+A CRL is accepted when its issuer name equals the catalogue issuer's subject, its signature verifies with that issuer's key, it is complete (no indirect, partial or user-only scope) and `thisUpdate` and `nextUpdate` surround now.
+A revocation is permanent: a failed fetch never turns a known revoked certificate good.
+A good answer lasts until the next update of the CRL that gave it.
+An Ed521 issuer's CRL cannot be verified on Linux, so those certificates stay unknown.
+Unknown never removes a certificate.
+
+### Reporting
+
+The journal gets one line per event with syslog priorities when run under systemd.
+`sparky-ca-notify` runs in the user's session after the user service and reads both status files.
+It shows one notification per new run that added, removed or needs attention, and stays silent otherwise.
+The user service also starts when the system's `status.json` changes, so the notification follows the root run.
+A machine without a desktop has only the journal; the missing notifier is not an error.
+
+### Privilege
+
+The machine timer runs as root with `ProtectSystem=strict` and write access only to the updater's folders and its state folder.
+The application changes the machine's switch through a second KAuth action that accepts exactly one boolean and writes one file.
+The user switch is a file in the user's own configuration folder.
