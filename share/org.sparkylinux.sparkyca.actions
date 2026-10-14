@@ -1,0 +1,15 @@
+[Domain]
+Name=Sparky CA
+Icon=security-high
+
+[org.sparkylinux.sparkyca.change]
+Name=Change system certificate trust
+Description=Install or remove a chosen certificate group in the system trust store
+Policy=auth_admin
+Persistence=session
+
+[org.sparkylinux.sparkyca.automatic]
+Name=Turn automatic certificate updates on or off
+Description=Change the machine's switch for the daily refresh of the chosen certificate groups
+Policy=auth_admin
+Persistence=session

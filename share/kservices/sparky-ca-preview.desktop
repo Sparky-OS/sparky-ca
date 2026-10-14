@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+MimeType=application/pkix-cert;application/x-x509-ca-cert;application/x-pem-file;application/x-pkcs7-certificates;application/x-pkcs12;
+Actions=PreviewCertificate;
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action PreviewCertificate]
+Name=View Certificate
+Icon=security-high
+Exec=sparky-ca --gui %u

@@ -1,0 +1,57 @@
+{
+  "roots": [
+    {
+      "file": "ICP-Brasil.crt",
+      "sha256": "cbd8ed38d4a2d677d453d70dd8890af4f6374cba6299943f1ab3a6936c6fd795"
+    },
+    {
+      "file": "ICP-Brasilv2.crt",
+      "sha256": "fb47d92a9909fd4fa9bec02737543e1f3514ced747407a8d9cfa397b0915067c"
+    },
+    {
+      "file": "ICP-Brasilv4.crt",
+      "sha256": "f0c15afd258fb674e7a96e1a50ff873149364b9ec70d4d93c7a9f1eb6060d020"
+    },
+    {
+      "file": "ICP-Brasilv5.crt",
+      "sha256": "caa53fc6091c6951887c976e378f6ef89aa6377c55d97b6475422b71ed7e9b17"
+    },
+    {
+      "file": "ICP-Brasilv6.crt",
+      "sha256": "3bdb9b509352f1d3d71c2bf64d9a38a4e6cebda27809d77f7ac476cbde6e314a"
+    },
+    {
+      "file": "ICP-Brasilv7.crt",
+      "sha256": "5657e70580eb678983f3ed7dfce091d84cae6549389a47fccda8d0e4dc2cf576"
+    },
+    {
+      "file": "ICP-Brasilv10.crt",
+      "sha256": "6e0bff069a26994c15de2c4888cc54af84882e5495b7fbf66be9ccffec7489f6"
+    },
+    {
+      "file": "ICP-Brasilv11.crt",
+      "sha256": "1406710058180fa4081aab3f246f1702429c552a11fa3143b84c88cb3ab8e5e7"
+    },
+    {
+      "file": "ICP-Brasilv12.crt",
+      "sha256": "d8478e37ce19c690cf657381e68fe600e4e1a042536830f06847e03e554c4b01"
+    },
+    {
+      "file": "ICP-Brasilv13.crt",
+      "sha256": "2b07d0bc02c4a6e0478ed22d0d99e8f97e1827b269097696a7feb6aad30c3ac8"
+    },
+    {
+      "file": "Certificado_AC_Raiz.crt",
+      "sha256": "687ea89089309d2cfe107db059fb10d676f45d3283aee056903eea0cf3c188f8"
+    },
+    {
+      "file": "ICP-Brasilv3.crt",
+      "sha256": "1226ebf38af7335ffb346de68840d5652d9be7413a65b989375edac6a7f16172",
+      "revoked": true
+    }
+  ],
+  "bundleSha512": [
+    "4585a99955607525e475cf22138302fe8ddce6ca8f0926cd1f01809f007d4bcddff5c1070369d29b1de99c0d2eb058ce0deb856bae0189469ba37e09a59d7985",
+    "48a9ed4bd1e2a81bf31e00b981501854b979cdee4eb402c8da658184ab6bd55f2522863ff1e7a97c18159dea73f21ae080f299613e2ef4413a548483b50b5b56"
+  ]
+}

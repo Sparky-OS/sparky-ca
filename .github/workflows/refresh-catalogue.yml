@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 Daniel Campos Ramos
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: Refresh the ICP-Brasil catalogue
+
+# The verify job fetches ITI's bundle over verified HTTPS, checks ITI's SHA-512 and every
+# chain against the pinned roots, and hands the result on as an artifact. It holds no write
+# permission. The propose job opens a pull request when the catalogue changed. A job never
+# trusts a new root: an unpinned root fails the run and opens an issue with its fingerprint,
+# for a reviewed commit that adds the pin.
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: catalogue-refresh
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    container:
+      image: debian:testing
+    outputs:
+      result: ${{ steps.refresh.outputs.result }}
+    steps:
+      - name: Install build tools
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          apt-get -y update
+          apt-get -y --no-install-recommends install ca-certificates cmake ninja-build g++ pkg-config extra-cmake-modules qt6-base-dev libkf6i18n-dev libssl-dev libarchive-dev python3 openssl
+      - uses: actions/checkout@v4
+      - name: Build the verifier
+        run: |
+          cmake -S . -B build -G Ninja -DBUILD_KDE_FRONTENDS=OFF -DBUILD_TESTING=OFF
+          cmake --build build
+      - name: Fetch and verify
+        id: refresh
+        run: tools/refresh-catalogue.sh build/sparky-ca out
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: catalogue-refresh
+          path: out/
+          retention-days: 14
+      - name: Fail the run when verification did not pass
+        if: ${{ steps.refresh.outputs.result == 'failed' || steps.refresh.outputs.result == 'unpinned' }}
+        run: |
+          cat out/summary.md
+          exit 1
+
+  propose:
+    needs: verify
+    if: ${{ always() && (needs.verify.outputs.result == 'changed' || needs.verify.outputs.result == 'unpinned') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalogue-refresh
+          path: out
+      - name: Open the pull request or the issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: tools/propose-catalogue.sh out
