@@ -1,0 +1,1307 @@
+# Polish translation of sparky-ca.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Daniel Campos Ramos
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.0\n"
+"PO-Revision-Date: 2026-10-14 00:00+0000\n"
+"Last-Translator: Claude Sonnet via Claude Code\n"
+"Language-Team: Polish; review by Paweł Pijanowski pending\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-14 17:48+0000\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: qml/CertificatePage.qml:20
+msgid "Open certificate or personal identity"
+msgstr "Otwórz certyfikat lub tożsamość osobistą"
+
+#: qml/CertificatePage.qml:21
+msgid "All files (*)"
+msgstr "Wszystkie pliki (*)"
+
+#: qml/CertificatePage.qml:21
+msgid "Certificate files (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+msgstr "Pliki certyfikatów (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+
+#: qml/CertificatePage.qml:34
+msgid "Open Certificate…"
+msgstr "Otwórz certyfikat…"
+
+#: qml/CertificatePage.qml:35
+msgid "Refresh"
+msgstr "Odśwież"
+
+#: qml/CertificatePage.qml:36
+msgid "Check Expiries"
+msgstr "Sprawdź terminy ważności"
+
+#: qml/CertificatePage.qml:39
+msgid "Keep Chosen Groups Current"
+msgstr "Aktualizuj wybrane grupy"
+
+#: qml/CertificatePage.qml:62
+msgid ""
+"ICP-Brasil v7 (Ed521) validates through the command line when the Ed521 "
+"OpenSSL provider is configured. Okular and NSS browsers cannot validate v7 "
+"until their certificate backend supports Ed521. RSA and ECDSA signing remain "
+"available."
+msgstr ""
+"ICP-Brasil v7 (Ed521) jest weryfikowana z wiersza poleceń, gdy "
+"skonfigurowano dostawcę OpenSSL Ed521. Okular i przeglądarki z NSS nie "
+"zweryfikują v7, dopóki ich silnik certyfikatów nie obsłuży Ed521. "
+"Podpisywanie przy użyciu RSA i ECDSA nadal działa."
+
+#: qml/CertificatePage.qml:69
+msgid "Store:"
+msgstr "Magazyn:"
+
+#: qml/CertificatePage.qml:73
+msgid "Certificate catalogue"
+msgstr "Katalog certyfikatów"
+
+#: qml/CertificatePage.qml:73
+msgid "KDE trust"
+msgstr "Zaufanie KDE"
+
+#: qml/CertificatePage.qml:73
+msgid "System trust"
+msgstr "Zaufanie systemowe"
+
+#: qml/CertificatePage.qml:77
+msgid "Search name, issuer or fingerprint"
+msgstr "Szukaj nazwy, wystawcy lub odcisku"
+
+#: qml/CertificatePage.qml:84
+msgid "Install Group…"
+msgstr "Zainstaluj grupę…"
+
+#: qml/CertificatePage.qml:85
+msgid "Remove Group…"
+msgstr "Usuń grupę…"
+
+#: qml/CertificatePage.qml:86
+msgid "Kleopatra Trust…"
+msgstr "Zaufanie Kleopatry…"
+
+#: qml/CertificatePage.qml:88
+msgid "One certificate"
+msgid_plural "%1 certificates"
+msgstr[0] "Jeden certyfikat"
+msgstr[1] "%1 certyfikaty"
+msgstr[2] "%1 certyfikatów"
+
+#: qml/CertificatePage.qml:114
+msgid ""
+"SHA-256: %1\n"
+"Issuer: %2\n"
+"Expires: %3\n"
+"%4"
+msgstr ""
+"SHA-256: %1\n"
+"Wystawca: %2\n"
+"Wygasa: %3\n"
+"%4"
+
+#: qml/CertificatePage.qml:120
+msgid "Disable for KDE"
+msgstr "Wyłącz dla KDE"
+
+#: qml/CertificatePage.qml:120
+msgid "Enable for KDE"
+msgstr "Włącz dla KDE"
+
+#: qml/CertificatePage.qml:121
+msgid "Host name, for example example.org"
+msgstr "Nazwa hosta, na przykład example.org"
+
+#: qml/CertificatePage.qml:122
+msgid "Reject Host"
+msgstr "Odrzuć host"
+
+#: qml/CertificatePage.qml:123
+msgid "Clear Host Rule"
+msgstr "Wyczyść regułę hosta"
+
+#: qml/CertificatePage.qml:128
+msgid "Detect Tokens"
+msgstr "Wykryj tokeny"
+
+#: qml/CertificatePage.qml:129
+msgid "Register Token Module…"
+msgstr "Zarejestruj moduł tokenu…"
+
+#: qml/CertificatePage.qml:130
+msgid ""
+"A3 PINs are not stored. Install vendor middleware locally through APTus when "
+"required."
+msgstr ""
+"Kody PIN A3 nie są przechowywane. W razie potrzeby zainstaluj lokalnie "
+"oprogramowanie producenta przez APTus."
+
+#: qml/CertificatePage.qml:134
+msgid "Within validity dates"
+msgstr "W okresie ważności"
+
+#: qml/CertificatePage.qml:135
+msgid "Expired"
+msgstr "Wygasły"
+
+#: qml/CertificatePage.qml:136
+msgid "Revoked"
+msgstr "Unieważniony"
+
+#: qml/CertificatePage.qml:137
+msgid "Not yet valid"
+msgstr "Jeszcze nieważny"
+
+#: qml/CertificatePage.qml:138
+msgid "Invalid"
+msgstr "Nieprawidłowy"
+
+#: qml/CertificatePage.qml:143
+msgid "Install chosen group"
+msgstr "Zainstaluj wybraną grupę"
+
+#: qml/CertificatePage.qml:143
+msgid "Remove chosen group"
+msgstr "Usuń wybraną grupę"
+
+#: qml/CertificatePage.qml:149
+msgid "Group: %1"
+msgstr "Grupa: %1"
+
+#: qml/CertificatePage.qml:150
+msgid "Close this browser before changing its NSS database."
+msgstr "Zamknij tę przeglądarkę przed zmianą jej bazy NSS."
+
+#: qml/CertificatePage.qml:150
+msgid ""
+"This changes system trust and requests administrator authorization. Expired "
+"and revoked catalogue entries are excluded."
+msgstr ""
+"To zmienia zaufanie systemowe i wymaga autoryzacji administratora. Wygasłe i "
+"unieważnione wpisy katalogu są pomijane."
+
+#: qml/CertificatePage.qml:151
+msgid "Choose Ed521 certificates when native chain verification is unavailable"
+msgstr ""
+"Wybierz certyfikaty Ed521, gdy natywna weryfikacja łańcucha jest niedostępna"
+
+#: qml/CertificatePage.qml:152 qml/CertificatePage.qml:168
+#: qml/CertificatePage.qml:203
+msgid "NSS database password"
+msgstr "Hasło bazy NSS"
+
+#: qml/CertificatePage.qml:157
+msgid "Preview or import personal certificate"
+msgstr "Podgląd lub import certyfikatu osobistego"
+
+#: qml/CertificatePage.qml:163
+msgid "PKCS#12 passphrase (for .p12 or .pfx)"
+msgstr "Hasło PKCS#12 (dla .p12 lub .pfx)"
+
+#: qml/CertificatePage.qml:164
+msgid "Preview"
+msgstr "Podgląd"
+
+#: qml/CertificatePage.qml:167
+msgid ""
+"Okular can sign with a supported identity from this NSS directory. Browser "
+"TLS trust does not grant PDF certificate trust; that requires a separate S/"
+"MIME trust decision in NSS."
+msgstr ""
+"Okular może podpisywać przy użyciu obsługiwanej tożsamości z tego katalogu "
+"NSS. Zaufanie TLS przeglądarki nie daje zaufania do certyfikatów PDF; wymaga "
+"to osobnej decyzji zaufania S/MIME w NSS."
+
+#: qml/CertificatePage.qml:169
+msgid "Save A1 and NSS passwords in KDE Wallet"
+msgstr "Zapisz hasła A1 i NSS w Portfelu KDE"
+
+#: qml/CertificatePage.qml:170
+msgid ""
+"Close the browser before import. Private keys remain in its NSS database. A3 "
+"PINs are never saved here."
+msgstr ""
+"Zamknij przeglądarkę przed importem. Klucze prywatne pozostają w jej bazie "
+"NSS. Kody PIN A3 nigdy nie są tu zapisywane."
+
+#: qml/CertificatePage.qml:172
+msgid "Import A1"
+msgstr "Importuj A1"
+
+#: qml/CertificatePage.qml:173
+msgid "Read from Wallet"
+msgstr "Odczytaj z Portfela"
+
+#: qml/CertificatePage.qml:174
+msgid "Forget Saved Passwords"
+msgstr "Zapomnij zapisane hasła"
+
+#: qml/CertificatePage.qml:181
+msgid "Kleopatra / GnuPG S/MIME trust"
+msgstr "Zaufanie S/MIME Kleopatry / GnuPG"
+
+#: qml/CertificatePage.qml:186
+msgid ""
+"Give current pinned roots of %1 to gpgsm's trust list. This is a separate "
+"trust decision. Ed521 roots are excluded because gpgsm cannot validate them. "
+"Importing a certificate alone does not prove chain validation."
+msgstr ""
+"Przekaż aktualne przypięte certyfikaty główne grupy %1 liście zaufania "
+"gpgsm. To osobna decyzja zaufania. Certyfikaty główne Ed521 są pomijane, bo "
+"gpgsm nie potrafi ich zweryfikować. Sam import certyfikatu nie dowodzi "
+"poprawności łańcucha."
+
+#: qml/CertificatePage.qml:187
+msgid "Trust Chosen Roots"
+msgstr "Zaufaj wybranym certyfikatom głównym"
+
+#: qml/CertificatePage.qml:188
+msgid "Remove Our Trust Decision"
+msgstr "Usuń naszą decyzję zaufania"
+
+#: qml/CertificatePage.qml:193
+msgid "Register a PKCS#11 module"
+msgstr "Zarejestruj moduł PKCS#11"
+
+#: qml/CertificatePage.qml:199
+msgid ""
+"Close the browser first. Choose the installed p11-kit proxy to expose "
+"configured token modules. Loading a module runs its code as your user."
+msgstr ""
+"Najpierw zamknij przeglądarkę. Wybierz zainstalowane proxy p11-kit, aby "
+"udostępnić skonfigurowane moduły tokenów. Wczytanie modułu uruchamia jego "
+"kod z Twoimi uprawnieniami."
+
+#: qml/CertificatePage.qml:201
+msgid "Absolute path to p11-kit-proxy.so"
+msgstr "Bezwzględna ścieżka do p11-kit-proxy.so"
+
+#: qml/CertificatePage.qml:202
+msgid "Inspect This Module"
+msgstr "Sprawdź ten moduł"
+
+#: qml/CertificatePage.qml:204
+msgid "Remove Our Module Registration"
+msgstr "Usuń naszą rejestrację modułu"
+
+#: share/kservices/sparky-ca-preview.desktop.in:8
+msgid "View Certificate"
+msgstr "Pokaż certyfikat"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:6
+msgid "Sparky CA"
+msgstr "Sparky CA"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:7
+msgid "ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "Certyfikaty ICP-Brasil, zaufanie przeglądarek i certyfikaty osobiste"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:9
+msgid ""
+"Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the "
+"system, in Waterfox, Firefox and Chromium, and keeps the groups you chose "
+"current."
+msgstr ""
+"Sparky CA instaluje urzędy certyfikacji brazylijskiej ICP-Brasil w systemie, "
+"w Waterfoksie, Firefoksie i Chromium oraz dba o aktualność wybranych przez "
+"Ciebie grup."
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:10
+msgid ""
+"It shows every certificate with its issuer, expiry and state, imports your "
+"A1 certificate, registers your A3 token, and works on a plain text console "
+"as well as on the desktop."
+msgstr ""
+"Pokazuje każdy certyfikat wraz z wystawcą, terminem ważności i stanem, "
+"importuje Twój certyfikat A1, rejestruje Twój token A3 i działa zarówno w "
+"konsoli tekstowej, jak i na pulpicie."
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:11
+msgid ""
+"Every download is checked against ITI's published hash and pinned roots, and "
+"certificates revoked by their authority are never installed."
+msgstr ""
+"Każde pobranie jest sprawdzane względem skrótu opublikowanego przez ITI i "
+"przypiętych certyfikatów głównych, a certyfikaty unieważnione przez swój "
+"urząd nigdy nie są instalowane."
+
+#: share/sparky-ca.desktop.in:3
+msgid "PJeOffice CA Certificates Installer"
+msgstr "Instalator Certyfikatów PJeOffice CA"
+
+#: share/sparky-ca.desktop.in:4
+msgid "Certificate Manager"
+msgstr "Menedżer certyfikatów"
+
+#: share/sparky-ca.desktop.in:5
+msgid "Manage ICP-Brasil certificates, browser trust and personal certificates"
+msgstr ""
+"Zarządzaj certyfikatami ICP-Brasil, zaufaniem przeglądarek i certyfikatami "
+"osobistymi"
+
+#: share/sparky-ca.desktop.in:6
+msgid "certificate;ICP-Brasil;PJeOffice;CA;token;A1;A3;"
+msgstr "certyfikat;ICP-Brasil;PJeOffice;CA;token;A1;A3;"
+
+#: src/cli/main.cpp:19
+msgid "Use a private password file with owner-only permissions."
+msgstr "Użyj prywatnego pliku z hasłem, dostępnego tylko dla właściciela."
+
+#: src/cli/main.cpp:25
+msgid "Expected one password in a private file."
+msgstr "Oczekiwano jednego hasła w prywatnym pliku."
+
+#: src/cli/main.cpp:39
+msgid "Scope must be system or user."
+msgstr "Zakres musi mieć wartość system lub user."
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are off."
+msgstr "Automatyczne aktualizacje są wyłączone."
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are on."
+msgstr "Automatyczne aktualizacje są włączone."
+
+#: src/cli/main.cpp:80
+msgid "Specify auto status, enable, disable or run."
+msgstr "Podaj auto status, enable, disable lub run."
+
+#: src/cli/main.cpp:82
+msgid "Automatic updates are turned off."
+msgstr "Automatyczne aktualizacje są wyłączone."
+
+#: src/cli/main.cpp:85
+msgid "System updates require root."
+msgstr "Aktualizacje systemowe wymagają uprawnień roota."
+
+#: src/cli/main.cpp:99
+msgid "Manage Brazilian CA certificates and browser trust."
+msgstr ""
+"Zarządza certyfikatami brazylijskich urzędów certyfikacji i zaufaniem "
+"przeglądarek."
+
+#: src/cli/main.cpp:103
+msgid "Package data directory."
+msgstr "Katalog danych pakietu."
+
+#: src/cli/main.cpp:104
+msgid "Verified catalogue file."
+msgstr "Zweryfikowany plik katalogu."
+
+#: src/cli/main.cpp:105
+msgid "System certificate directory."
+msgstr "Katalog certyfikatów systemowych."
+
+#: src/cli/main.cpp:106
+msgid "Derived system bundle; redirects the updater for isolated tests."
+msgstr ""
+"Wygenerowany zbiorczy plik certyfikatów systemu; przekierowuje aktualizator "
+"w testach izolowanych."
+
+#: src/cli/main.cpp:107
+msgid ""
+"Operate on this NSS database instead of the system store. Close its browser "
+"first."
+msgstr ""
+"Działaj na tej bazie NSS zamiast na magazynie systemowym. Najpierw zamknij "
+"jej przeglądarkę."
+
+#: src/cli/main.cpp:108
+msgid "Read the PKCS#12 passphrase from this private file."
+msgstr "Odczytaj hasło PKCS#12 z tego prywatnego pliku."
+
+#: src/cli/main.cpp:109
+msgid "Read the NSS database password from this private file."
+msgstr "Odczytaj hasło bazy NSS z tego prywatnego pliku."
+
+#: src/cli/main.cpp:110
+msgid "GnuPG certificate directory."
+msgstr "Katalog certyfikatów GnuPG."
+
+#: src/cli/main.cpp:111
+msgid ""
+"Choose E-521 certificates despite unavailable Linux chain verification; "
+"requires programs with their own E-521 code."
+msgstr ""
+"Wybierz certyfikaty E-521 mimo braku weryfikacji łańcucha w Linuksie; wymaga "
+"programów z własnym kodem E-521."
+
+#: src/cli/main.cpp:112
+msgid "TLS trust root for an isolated HTTPS fixture."
+msgstr ""
+"Główny certyfikat zaufania TLS dla izolowanego serwera HTTPS do testów."
+
+#: src/cli/main.cpp:113
+msgid "Missing TLS issuer, verified against the TLS trust roots."
+msgstr ""
+"Brakujący wystawca TLS, weryfikowany względem głównych certyfikatów zaufania "
+"TLS."
+
+#: src/cli/main.cpp:114
+msgid "HTTPS bundle URL."
+msgstr "Adres URL HTTPS zbioru."
+
+#: src/cli/main.cpp:115
+msgid "HTTPS SHA-512 URL."
+msgstr "Adres URL HTTPS sumy SHA-512."
+
+#: src/cli/main.cpp:116
+msgid "Offline ZIP input for catalogue verification."
+msgstr "Lokalny plik ZIP do weryfikacji katalogu."
+
+#: src/cli/main.cpp:117
+msgid "Offline SHA-512 input."
+msgstr "Lokalny plik SHA-512."
+
+#: src/cli/main.cpp:118
+msgid "Write refreshed catalogue here."
+msgstr "Zapisz tutaj odświeżony katalog."
+
+#: src/cli/main.cpp:119
+msgid ""
+"Keep the downloaded bundle and its SHA-512 here, as received, so a failed "
+"refresh can be examined."
+msgstr ""
+"Zachowaj tutaj pobrany zbiór i jego sumę SHA-512 w otrzymanej postaci, aby "
+"można było zbadać nieudane odświeżenie."
+
+#: src/cli/main.cpp:120
+msgid ""
+"Machine state: refreshed catalogue, revocation answers and update status."
+msgstr ""
+"Stan komputera: odświeżony katalog, odpowiedzi o unieważnieniach i stan "
+"aktualizacji."
+
+#: src/cli/main.cpp:121
+msgid "Folder holding the switch for automatic updates."
+msgstr "Folder przechowujący przełącznik automatycznych aktualizacji."
+
+#: src/cli/main.cpp:122
+msgid "Home folder whose browser databases are updated."
+msgstr "Folder domowy, którego bazy przeglądarek są aktualizowane."
+
+#: src/cli/main.cpp:123
+msgid "Automatic update scope: system or user."
+msgstr "Zakres automatycznej aktualizacji: system lub user."
+
+#: src/cli/main.cpp:124
+msgid "Run an automatic update although it is turned off."
+msgstr "Wykonaj automatyczną aktualizację, choć jest wyłączona."
+
+#: src/cli/main.cpp:125
+msgid "Do not use the Internet in an automatic update."
+msgstr "Nie używaj Internetu podczas automatycznej aktualizacji."
+
+#: src/cli/main.cpp:127
+msgid ""
+"list [installed], groups, install <group>, remove <group|all>, update, auto "
+"<status|enable|disable|run>, status, profiles, preview <file>, import "
+"<file>, tokens, register-token <module>, unregister-token, gpgsm-trust "
+"<group>, gpgsm-untrust <group>"
+msgstr ""
+"list [installed], groups, install <grupa>, remove <grupa|all>, update, auto "
+"<status|enable|disable|run>, status, profiles, preview <plik>, import "
+"<plik>, tokens, register-token <moduł>, unregister-token, gpgsm-trust "
+"<grupa>, gpgsm-untrust <grupa>"
+
+#: src/cli/main.cpp:145
+msgid ""
+"1. List catalogue\n"
+"2. List installed certificates\n"
+"3. Install group\n"
+"4. Remove group\n"
+"5. Status\n"
+"0. Exit\n"
+"Choice: "
+msgstr ""
+"1. Pokaż katalog\n"
+"2. Pokaż zainstalowane certyfikaty\n"
+"3. Zainstaluj grupę\n"
+"4. Usuń grupę\n"
+"5. Stan\n"
+"0. Wyjdź\n"
+"Wybór: "
+
+#: src/cli/main.cpp:150
+msgid "Group: "
+msgstr "Grupa: "
+
+#: src/cli/main.cpp:176
+msgid "Specify one group."
+msgstr "Podaj jedną grupę."
+
+#: src/cli/main.cpp:178
+msgid ""
+"NSS installations exclude Ed521 and Ed448 entries because NSS cannot import "
+"their key types."
+msgstr ""
+"Instalacje w NSS pomijają wpisy Ed521 i Ed448, ponieważ NSS nie potrafi "
+"zaimportować tych typów kluczy."
+
+#: src/cli/main.cpp:182
+msgid "E-521 entries are skipped. Use --allow-e521 to choose them explicitly."
+msgstr ""
+"Wpisy E-521 zostały pominięte. Użyj --allow-e521, aby wybrać je świadomie."
+
+#: src/cli/main.cpp:189
+msgid "Certificate store updated."
+msgstr "Magazyn certyfikatów został zaktualizowany."
+
+#: src/cli/main.cpp:191
+msgid "Specify --output for the refreshed catalogue."
+msgstr "Podaj --output dla odświeżonego katalogu."
+
+#: src/cli/main.cpp:202
+msgid "Verified catalogue written."
+msgstr "Zweryfikowany katalog został zapisany."
+
+#: src/cli/main.cpp:204
+msgid "Specify one certificate file."
+msgstr "Podaj jeden plik certyfikatu."
+
+#: src/cli/main.cpp:210
+msgid "Specify at most one token module."
+msgstr "Podaj co najwyżej jeden moduł tokenu."
+
+#: src/cli/main.cpp:213
+msgid "Specify an NSS database and one installed token module."
+msgstr "Podaj bazę NSS i jeden zainstalowany moduł tokenu."
+
+#: src/cli/main.cpp:216
+msgid "Specify one root group."
+msgstr "Podaj jedną grupę certyfikatów głównych."
+
+#: src/cli/main.cpp:219
+msgid "Specify an NSS database."
+msgstr "Podaj bazę NSS."
+
+#: src/cli/main.cpp:222
+msgid "Personal certificate import requires --nss and one PKCS#12 file."
+msgstr "Import certyfikatu osobistego wymaga --nss i jednego pliku PKCS#12."
+
+#: src/cli/main.cpp:231
+msgid "Personal certificate import failed."
+msgstr "Import certyfikatu osobistego nie powiódł się."
+
+#: src/cli/main.cpp:234
+msgid "Unknown command: %1"
+msgstr "Nieznane polecenie: %1"
+
+#: src/core/automation.cpp:85
+msgid "Cannot turn automatic updates on."
+msgstr "Nie można włączyć automatycznych aktualizacji."
+
+#: src/core/automation.cpp:88
+msgid "Cannot create the configuration folder."
+msgstr "Nie można utworzyć folderu konfiguracji."
+
+#: src/core/automation.cpp:89
+msgid ""
+"Automatic certificate updates are turned off. Remove this file or run: "
+"sparky-ca auto enable\n"
+msgstr ""
+"Automatyczne aktualizacje certyfikatów są wyłączone. Usuń ten plik albo "
+"uruchom: sparky-ca auto enable\n"
+
+#: src/core/automation.cpp:98 src/core/automation.cpp:143
+msgid "Cannot create the state folder."
+msgstr "Nie można utworzyć folderu stanu."
+
+#: src/core/automation.cpp:113
+msgid "Automatic update failed: %1"
+msgstr "Automatyczna aktualizacja nie powiodła się: %1"
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed and changed."
+msgstr "Katalog certyfikatów został odświeżony i zmienił się."
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed; nothing changed."
+msgstr "Katalog certyfikatów został odświeżony; nic się nie zmieniło."
+
+#: src/core/automation.cpp:116
+msgid "The catalogue could not be refreshed: %1"
+msgstr "Nie udało się odświeżyć katalogu: %1"
+
+#: src/core/automation.cpp:119
+msgid "Revocation: %1 certificates checked, %2 revoked, %3 without an answer."
+msgstr ""
+"Unieważnienia: sprawdzono %1 certyfikatów, %2 unieważnionych, %3 bez "
+"odpowiedzi."
+
+#: src/core/automation.cpp:125
+msgid "%1: added %2"
+msgstr "%1: dodano %2"
+
+#: src/core/automation.cpp:127
+msgid "%1: removed %2 (%3)"
+msgstr "%1: usunięto %2 (%3)"
+
+#: src/core/automation.cpp:128
+msgid "%2: one new E-521 certificate needs your choice and was not installed."
+msgid_plural ""
+"%2: %1 new E-521 certificates need your choice and were not installed."
+msgstr[0] ""
+"%2: jeden nowy certyfikat E-521 wymaga Twojego wyboru i nie został "
+"zainstalowany."
+msgstr[1] ""
+"%2: %1 nowe certyfikaty E-521 wymagają Twojego wyboru i nie zostały "
+"zainstalowane."
+msgstr[2] ""
+"%2: %1 nowych certyfikatów E-521 wymaga Twojego wyboru i nie zostało "
+"zainstalowanych."
+
+#: src/core/automation.cpp:129
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: src/core/automation.cpp:132
+msgid "Nothing to do."
+msgstr "Nie ma nic do zrobienia."
+
+#: src/core/automation.cpp:146
+msgid "Another automatic update is running."
+msgstr "Trwa inna automatyczna aktualizacja."
+
+#: src/core/automation.cpp:184
+msgid "The catalogue has not been refreshed for %1 days."
+msgstr "Katalog nie był odświeżany od %1 dni."
+
+#: src/core/automation.cpp:185
+msgid ""
+"The catalogue has never been refreshed from the Internet on this machine."
+msgstr "Katalog nigdy nie został odświeżony przez Internet na tym komputerze."
+
+#: src/core/automation.cpp:206
+msgid "%1 is in use by a browser; it will be updated on a later run."
+msgstr ""
+"%1 jest używany przez przeglądarkę; zostanie zaktualizowany przy następnym "
+"uruchomieniu."
+
+#: src/core/catalogue.cpp:20
+msgid "Invalid catalogue JSON."
+msgstr "Nieprawidłowy JSON katalogu."
+
+#: src/core/catalogue.cpp:30
+msgid "Invalid root filename."
+msgstr "Nieprawidłowa nazwa pliku certyfikatu głównego."
+
+#: src/core/catalogue.cpp:32
+msgid "Root fingerprint mismatch: %1"
+msgstr "Odcisk certyfikatu głównego nie zgadza się: %1"
+
+#: src/core/catalogue.cpp:40
+msgid "No pinned roots."
+msgstr "Brak przypiętych certyfikatów głównych."
+
+#: src/core/catalogue.cpp:62
+msgid ""
+"Chain signature not verifiable on Linux (E-521). Linux's crypto libraries "
+"cannot use E-521 yet; these certificates help only programs that carry their "
+"own E-521 code."
+msgstr ""
+"Podpisu łańcucha nie da się zweryfikować w Linuksie (E-521). Biblioteki "
+"kryptograficzne Linuksa nie obsługują jeszcze E-521; te certyfikaty pomagają "
+"tylko programom z własnym kodem E-521."
+
+#: src/core/catalogue.cpp:76
+msgid "Root is not pinned: %1"
+msgstr "Certyfikat główny nie jest przypięty: %1"
+
+#: src/core/catalogue.cpp:77
+msgid "Pinned certificate is not a CA."
+msgstr "Przypięty certyfikat nie należy do urzędu certyfikacji."
+
+#: src/core/catalogue.cpp:78
+msgid "Root is expired, revoked or not yet valid."
+msgstr ""
+"Certyfikat główny wygasł, został unieważniony albo jeszcze nie obowiązuje."
+
+#: src/core/catalogue.cpp:83
+msgid "E-521 certificate lacks authenticated bundle integrity evidence."
+msgstr "Certyfikat E-521 nie ma uwierzytelnionego dowodu integralności zbioru."
+
+#: src/core/catalogue.cpp:85
+msgid "E-521 root is not currently valid."
+msgstr "Certyfikat główny E-521 nie jest obecnie ważny."
+
+#: src/core/catalogue.cpp:86
+msgid "E-521 certificate is not currently valid."
+msgstr "Certyfikat E-521 nie jest obecnie ważny."
+
+#: src/core/catalogue.cpp:118
+msgid "Certificate chain rejected: %1: %2"
+msgstr "Łańcuch certyfikatów odrzucony: %1: %2"
+
+#: src/core/catalogue.cpp:119
+msgid "Certificate is expired, revoked or not yet valid: %1"
+msgstr "Certyfikat wygasł, został unieważniony albo jeszcze nie obowiązuje: %1"
+
+#: src/core/catalogue.cpp:132
+msgid "Invalid certificate count."
+msgstr "Nieprawidłowa liczba certyfikatów."
+
+#: src/core/catalogue.cpp:138
+msgid "Unsupported catalogue schema."
+msgstr "Nieobsługiwany schemat katalogu."
+
+#: src/core/catalogue.cpp:148
+msgid "Unapproved E-521 source bundle."
+msgstr "Niezatwierdzony zbiór źródłowy E-521."
+
+#: src/core/catalogue.cpp:158
+msgid "Invalid catalogue groups."
+msgstr "Nieprawidłowe grupy katalogu."
+
+#: src/core/catalogue.cpp:162
+msgid "Invalid catalogue group identifier."
+msgstr "Nieprawidłowy identyfikator grupy katalogu."
+
+#: src/core/catalogue.cpp:180
+msgid "Bundle SHA-512 mismatch."
+msgstr "Suma SHA-512 zbioru nie zgadza się."
+
+#: src/core/catalogue.cpp:181
+msgid "Bundle is too large."
+msgstr "Zbiór jest zbyt duży."
+
+#: src/core/catalogue.cpp:185
+msgid "Cannot open ZIP bundle."
+msgstr "Nie można otworzyć zbioru ZIP."
+
+#: src/core/catalogue.cpp:195
+msgid "Unsafe ZIP entry: %1"
+msgstr "Niebezpieczny wpis ZIP: %1"
+
+#: src/core/catalogue.cpp:203
+msgid "Expanded bundle is too large."
+msgstr "Rozpakowany zbiór jest zbyt duży."
+
+#: src/core/catalogue.cpp:205
+msgid "Corrupt ZIP entry: %1"
+msgstr "Uszkodzony wpis ZIP: %1"
+
+#: src/core/catalogue.cpp:209
+msgid "Corrupt ZIP bundle."
+msgstr "Uszkodzony zbiór ZIP."
+
+#: src/core/catalogue.cpp:215
+msgid "E-521 source bundle hash is not approved."
+msgstr "Suma zbioru źródłowego E-521 nie jest zatwierdzona."
+
+#: src/core/certificate.cpp:22
+msgid "Cannot read file: %1"
+msgstr "Nie można odczytać pliku: %1"
+
+#: src/core/certificate.cpp:30
+msgid "Cannot write file: %1"
+msgstr "Nie można zapisać pliku: %1"
+
+#: src/core/certificate.cpp:38
+msgid "Command failed: %1: %2"
+msgstr "Polecenie nie powiodło się: %1: %2"
+
+#: src/core/certificate.cpp:53
+msgid "Expected exactly one certificate."
+msgstr "Oczekiwano dokładnie jednego certyfikatu."
+
+#: src/core/certificate.cpp:60
+msgid "Invalid certificate encoding."
+msgstr "Nieprawidłowe kodowanie certyfikatu."
+
+#: src/core/certificate.cpp:64
+msgid "Cannot parse certificate."
+msgstr "Nie można przetworzyć certyfikatu."
+
+#: src/core/certificate.cpp:83
+msgid "Cannot calculate certificate fingerprint."
+msgstr "Nie można obliczyć odcisku certyfikatu."
+
+#: src/core/certificate.cpp:130
+msgid "Invalid certificate expiry."
+msgstr "Nieprawidłowa data ważności certyfikatu."
+
+#: src/core/download.cpp:18
+msgid "Downloads require HTTPS."
+msgstr "Pobieranie wymaga HTTPS."
+
+#: src/core/download.cpp:24
+msgid "Cannot parse TLS issuer chain."
+msgstr "Nie można przetworzyć łańcucha wystawcy TLS."
+
+#: src/core/download.cpp:43
+msgid "TLS issuer does not chain to a trusted root."
+msgstr "Wystawca TLS nie prowadzi do zaufanego certyfikatu głównego."
+
+#: src/core/download.cpp:66
+msgid "Download exceeds its size limit."
+msgstr "Pobieranie przekracza limit rozmiaru."
+
+#: src/core/download.cpp:68
+msgid "HTTPS download failed: %1"
+msgstr "Pobieranie przez HTTPS nie powiodło się: %1"
+
+#: src/core/personal.cpp:22
+msgid "Cannot encode certificate."
+msgstr "Nie można zakodować certyfikatu."
+
+#: src/core/personal.cpp:36
+msgid "Invalid certificate input."
+msgstr "Nieprawidłowe dane certyfikatu."
+
+#: src/core/personal.cpp:77
+msgid "Cannot parse certificate file."
+msgstr "Nie można przetworzyć pliku certyfikatu."
+
+#: src/core/personal.cpp:92
+msgid "Cannot unlock PKCS#12. Check its passphrase."
+msgstr "Nie można odblokować PKCS#12. Sprawdź hasło."
+
+#: src/core/personal.cpp:98
+msgid "Passwords cannot contain null bytes or newlines."
+msgstr "Hasła nie mogą zawierać bajtów zerowych ani znaków nowego wiersza."
+
+#: src/core/personal.cpp:100 src/core/stores.cpp:55
+msgid "Cannot create a private password file."
+msgstr "Nie można utworzyć prywatnego pliku z hasłem."
+
+#: src/core/personal.cpp:110
+msgid "Cannot create NSS database directory."
+msgstr "Nie można utworzyć katalogu bazy NSS."
+
+#: src/core/personal.cpp:130
+msgid ""
+"Expected a PKCS#12 identity with its matching private key and passphrase."
+msgstr "Oczekiwano tożsamości PKCS#12 z pasującym kluczem prywatnym i hasłem."
+
+#: src/core/personal.cpp:135
+msgid "Cannot create a private import file."
+msgstr "Nie można utworzyć prywatnego pliku importu."
+
+#: src/core/personal.cpp:140 src/core/personal.cpp:152
+#: src/core/personal.cpp:170 src/core/stores.cpp:91 src/core/stores.cpp:174
+msgid "Certificate store is busy."
+msgstr "Magazyn certyfikatów jest zajęty."
+
+#: src/core/personal.cpp:146 src/core/personal.cpp:185
+msgid "Choose an installed PKCS#11 module."
+msgstr "Wybierz zainstalowany moduł PKCS#11."
+
+#: src/core/personal.cpp:155
+msgid "The token module is already registered. Inspect it before changing it."
+msgstr "Moduł tokenu jest już zarejestrowany. Sprawdź go przed zmianą."
+
+#: src/core/personal.cpp:159
+msgid "An earlier token module record still exists."
+msgstr "Nadal istnieje wcześniejszy zapis modułu tokenu."
+
+#: src/core/personal.cpp:175
+msgid "The registered token module differs from our record."
+msgstr "Zarejestrowany moduł tokenu różni się od naszego zapisu."
+
+#: src/core/personal.cpp:178
+msgid "Cannot remove the token module record."
+msgstr "Nie można usunąć zapisu modułu tokenu."
+
+#: src/core/personal.cpp:194 src/core/personal.cpp:197
+msgid "No token slots detected. Check the reader and installed middleware."
+msgstr ""
+"Nie wykryto gniazd tokenów. Sprawdź czytnik i zainstalowane oprogramowanie "
+"pośredniczące."
+
+#: src/core/personal.cpp:207 src/core/stores.cpp:84
+#: src/core/systemchange.cpp:20
+msgid "Unknown certificate group: %1"
+msgstr "Nieznana grupa certyfikatów: %1"
+
+#: src/core/personal.cpp:210
+msgid "Cannot prepare the GnuPG directory."
+msgstr "Nie można przygotować katalogu GnuPG."
+
+#: src/core/personal.cpp:217
+msgid "GnuPG trust list is busy."
+msgstr "Lista zaufania GnuPG jest zajęta."
+
+#: src/core/personal.cpp:223
+msgid "Invalid GnuPG trust manifest."
+msgstr "Nieprawidłowy manifest zaufania GnuPG."
+
+#: src/core/personal.cpp:230
+msgid "Invalid managed GnuPG trust block."
+msgstr "Nieprawidłowy zarządzany blok zaufania GnuPG."
+
+#: src/core/personal.cpp:248
+msgid "Cannot calculate GnuPG's root identifier."
+msgstr "Nie można obliczyć identyfikatora certyfikatu głównego w GnuPG."
+
+#: src/core/personal.cpp:252
+msgid "This group has no current root certificates."
+msgstr "Ta grupa nie ma aktualnych certyfikatów głównych."
+
+#: src/core/personal.cpp:263
+msgid "Invalid GnuPG root identifier."
+msgstr "Nieprawidłowy identyfikator certyfikatu głównego GnuPG."
+
+#: src/core/revocation.cpp:49
+msgid "Cannot parse CRL."
+msgstr "Nie można przetworzyć listy CRL."
+
+#: src/core/revocation.cpp:61
+msgid "CRL issuer does not match."
+msgstr "Wystawca listy CRL nie zgadza się."
+
+#: src/core/revocation.cpp:63
+msgid "CRL signature is not valid."
+msgstr "Podpis listy CRL jest nieprawidłowy."
+
+#: src/core/revocation.cpp:67
+msgid "CRL does not cover every certificate of its issuer."
+msgstr "Lista CRL nie obejmuje wszystkich certyfikatów swojego wystawcy."
+
+#: src/core/revocation.cpp:69
+msgid "CRL is not yet valid."
+msgstr "Lista CRL jeszcze nie obowiązuje."
+
+#: src/core/revocation.cpp:70
+msgid "CRL is stale."
+msgstr "Lista CRL jest nieaktualna."
+
+#: src/core/revocation.cpp:90
+msgid "The CRL signature uses E-521, which Linux cannot verify."
+msgstr "Podpis listy CRL używa E-521, którego Linux nie potrafi zweryfikować."
+
+#: src/core/revocation.cpp:92
+msgid "The certificate names no CRL."
+msgstr "Certyfikat nie wskazuje żadnej listy CRL."
+
+#: src/core/revocation.cpp:98
+msgid "No CRL could be fetched."
+msgstr "Nie udało się pobrać żadnej listy CRL."
+
+#: src/core/revocation.cpp:101
+msgid "The issuer is not in the catalogue."
+msgstr "Wystawcy nie ma w katalogu."
+
+#: src/core/revocation.cpp:106
+msgid "No network was used for this check."
+msgstr "Do tej kontroli nie użyto sieci."
+
+#: src/core/stores.cpp:41
+msgid "Choose exactly one store."
+msgstr "Wybierz dokładnie jeden magazyn."
+
+#: src/core/stores.cpp:47
+msgid "Refusing a symbolic link in store path: %1"
+msgstr "Odmowa: dowiązanie symboliczne w ścieżce magazynu: %1"
+
+#: src/core/stores.cpp:53
+msgid "The NSS password cannot contain a newline or a null byte."
+msgstr "Hasło NSS nie może zawierać znaku nowego wiersza ani bajtu zerowego."
+
+#: src/core/stores.cpp:63
+msgid "Invalid store ownership manifest."
+msgstr "Nieprawidłowy manifest własności magazynu."
+
+#: src/core/stores.cpp:73
+msgid "Cannot create updater configuration."
+msgstr "Nie można utworzyć konfiguracji aktualizatora."
+
+#: src/core/stores.cpp:86 src/core/stores.cpp:169
+msgid "System changes require root. Run sparky-ca through sudo or pkexec."
+msgstr ""
+"Zmiany w systemie wymagają uprawnień roota. Uruchom sparky-ca przez sudo lub "
+"pkexec."
+
+#: src/core/stores.cpp:89
+msgid "Cannot create store directory."
+msgstr "Nie można utworzyć katalogu magazynu."
+
+#: src/core/stores.cpp:111
+msgid "This group has no installable certificates."
+msgstr "Ta grupa nie ma certyfikatów możliwych do zainstalowania."
+
+#: src/core/stores.cpp:123 src/core/stores.cpp:225 src/core/stores.cpp:230
+msgid "Owned certificate bytes have changed."
+msgstr "Zawartość certyfikatu, którego jesteśmy właścicielem, uległa zmianie."
+
+#: src/core/stores.cpp:128
+msgid "Unowned certificate filename already exists."
+msgstr "Plik certyfikatu o tej nazwie już istnieje i nie należy do nas."
+
+#: src/core/stores.cpp:148
+msgid "Unowned NSS nickname already exists."
+msgstr "Pseudonim NSS już istnieje i nie należy do nas."
+
+#: src/core/stores.cpp:202
+msgid "Invalid saved NSS trust decision."
+msgstr "Zapisana decyzja zaufania NSS jest nieprawidłowa."
+
+#: src/core/stores.cpp:204
+msgid "Existing certificate bytes have changed."
+msgstr "Zawartość istniejącego certyfikatu uległa zmianie."
+
+#: src/core/stores.cpp:209
+msgid "Existing NSS trust settings changed outside this application."
+msgstr "Istniejące ustawienia zaufania NSS zmieniono poza tą aplikacją."
+
+#: src/core/stores.cpp:220
+msgid "Invalid owned certificate fingerprint."
+msgstr "Nieprawidłowy odcisk certyfikatu, którego jesteśmy właścicielem."
+
+#: src/core/stores.cpp:226
+msgid "Cannot remove certificate."
+msgstr "Nie można usunąć certyfikatu."
+
+#: src/core/stores.cpp:281
+msgid "Selected group %1 is no longer in the catalogue."
+msgstr "Wybranej grupy %1 nie ma już w katalogu."
+
+#: src/core/systemchange.cpp:12
+msgid "Invalid system certificate request."
+msgstr "Nieprawidłowe żądanie certyfikatu systemowego."
+
+#: src/core/systemchange.cpp:17
+msgid "Unknown system certificate operation."
+msgstr "Nieznana operacja na certyfikatach systemowych."
+
+#: src/core/systemchange.cpp:30
+msgid "Invalid automatic update request."
+msgstr "Nieprawidłowe żądanie automatycznej aktualizacji."
+
+#: src/desktop/dispatch.cpp:38
+msgid "Cannot find Sparky CA front end."
+msgstr "Nie można znaleźć interfejsu Sparky CA."
+
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:143
+#: src/desktop/notify.cpp:51
+msgid "Certificates"
+msgstr "Certyfikaty"
+
+#: src/desktop/main.cpp:24
+msgid "Manage certificate trust and personal identities"
+msgstr "Zarządzaj zaufaniem do certyfikatów i tożsamościami osobistymi"
+
+#: src/desktop/main.cpp:26
+msgid "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+msgstr "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:27
+msgid "Original author, 2018"
+msgstr "Autor oryginału, 2018"
+
+#: src/desktop/main.cpp:27
+msgid "Paweł \"pavroo\" Pijanowski"
+msgstr "Paweł \"pavroo\" Pijanowski"
+
+#: src/desktop/main.cpp:28
+msgid "Brazilian certificates and KDE integration, 2020 and 2026"
+msgstr "Certyfikaty brazylijskie i integracja z KDE, 2020 i 2026"
+
+#: src/desktop/main.cpp:28
+msgid "Daniel Campos Ramos"
+msgstr "Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:33
+msgid "Catalogue data directory."
+msgstr "Katalog z danymi katalogu certyfikatów."
+
+#: src/desktop/main.cpp:34
+msgid "Capture the window for an isolated UI test."
+msgstr "Zrób zrzut okna do izolowanego testu interfejsu."
+
+#: src/desktop/main.cpp:35
+msgid "Local certificate file to preview."
+msgstr "Lokalny plik certyfikatu do podglądu."
+
+#: src/desktop/manager.cpp:44
+msgid "No automatic update has run on this computer yet."
+msgstr ""
+"Na tym komputerze nie uruchomiono jeszcze żadnej automatycznej aktualizacji."
+
+#: src/desktop/manager.cpp:49
+msgid "Last automatic update: %1. Everything is current."
+msgstr "Ostatnia automatyczna aktualizacja: %1. Wszystko jest aktualne."
+
+#: src/desktop/manager.cpp:50
+msgid ""
+"Last automatic update: %1. It needs your attention: see the system journal "
+"or run sparky-ca auto status."
+msgstr ""
+"Ostatnia automatyczna aktualizacja: %1. Wymaga Twojej uwagi: zajrzyj do "
+"dziennika systemowego albo uruchom sparky-ca auto status."
+
+#: src/desktop/manager.cpp:80
+msgid "Automatic certificate updates are off."
+msgstr "Automatyczne aktualizacje certyfikatów są wyłączone."
+
+#: src/desktop/manager.cpp:80
+msgid "Your chosen certificate groups will be kept current automatically."
+msgstr ""
+"Wybrane przez Ciebie grupy certyfikatów będą automatycznie aktualizowane."
+
+#: src/desktop/manager.cpp:96
+msgid "Choose an existing browser profile."
+msgstr "Wybierz istniejący profil przeglądarki."
+
+#: src/desktop/manager.cpp:116
+msgid ""
+"Ed448 validates through OpenSSL. NSS cannot import this key type, so browser "
+"installations exclude it."
+msgstr ""
+"Ed448 jest weryfikowany przez OpenSSL. NSS nie potrafi zaimportować tego "
+"typu klucza, więc instalacje w przeglądarkach go pomijają."
+
+#: src/desktop/manager.cpp:201
+msgid "System certificate store updated. Restart applications to reload trust."
+msgstr ""
+"Systemowy magazyn certyfikatów został zaktualizowany. Uruchom aplikacje "
+"ponownie, aby wczytały zaufanie."
+
+#: src/desktop/manager.cpp:217
+msgid ""
+"Browser certificate store updated. Ed521 and Ed448 entries stay listed but "
+"are excluded because NSS does not support their key types."
+msgstr ""
+"Magazyn certyfikatów przeglądarki został zaktualizowany. Wpisy Ed521 i Ed448 "
+"pozostają na liście, ale są pomijane, bo NSS nie obsługuje tych typów kluczy."
+
+#: src/desktop/manager.cpp:230
+msgid "Cannot save the KDE trust decision."
+msgstr "Nie można zapisać decyzji zaufania KDE."
+
+#: src/desktop/manager.cpp:232
+msgid "KDE certificate trust updated."
+msgstr "Zaufanie do certyfikatów KDE zostało zaktualizowane."
+
+#: src/desktop/manager.cpp:238
+msgid "Certificate no longer exists in the KDE store."
+msgstr "Certyfikatu nie ma już w magazynie KDE."
+
+#: src/desktop/manager.cpp:244
+msgid "Enter a single lower-case host name, without a scheme or wildcard."
+msgstr ""
+"Wpisz jedną nazwę hosta małymi literami, bez schematu i symbolu "
+"wieloznacznego."
+
+#: src/desktop/manager.cpp:250 src/desktop/manager.cpp:258
+msgid "KDE's certificate service is unavailable."
+msgstr "Usługa certyfikatów KDE jest niedostępna."
+
+#: src/desktop/manager.cpp:278
+msgid "KDE's certificate service did not save the host rule."
+msgstr "Usługa certyfikatów KDE nie zapisała reguły hosta."
+
+#: src/desktop/manager.cpp:280
+msgid ""
+"Host rule updated. Certificate errors remain enforced; no TLS error was "
+"ignored."
+msgstr ""
+"Reguła hosta zaktualizowana. Błędy certyfikatów nadal obowiązują; żaden błąd "
+"TLS nie został zignorowany."
+
+#: src/desktop/manager.cpp:293
+msgid "Preview does not establish trust. Revocation status is unknown."
+msgstr "Podgląd nie ustanawia zaufania. Stan unieważnienia jest nieznany."
+
+#: src/desktop/manager.cpp:306
+msgid "Choose a local PKCS#12 file and browser profile."
+msgstr "Wybierz lokalny plik PKCS#12 i profil przeglądarki."
+
+#: src/desktop/manager.cpp:314
+msgid ""
+"Personal certificate imported. Choose this NSS directory in Okular's PDF "
+"certificate settings."
+msgstr ""
+"Certyfikat osobisty zaimportowany. Wybierz ten katalog NSS w ustawieniach "
+"certyfikatów PDF w Okularze."
+
+#: src/desktop/manager.cpp:335
+msgid "Saved certificate passwords removed."
+msgstr "Zapisane hasła certyfikatów zostały usunięte."
+
+#: src/desktop/manager.cpp:345
+msgid ""
+"A3 PINs are not saved. Token retry limits and authentication policy apply. "
+"SafeSign or SafeNet middleware, when required, is installed on your machine "
+"through APTus."
+msgstr ""
+"Kody PIN A3 nie są zapisywane. Obowiązują limity prób i zasady "
+"uwierzytelniania tokenu. Oprogramowanie SafeSign lub SafeNet, gdy jest "
+"potrzebne, instaluje się na Twoim komputerze przez APTus."
+
+#: src/desktop/manager.cpp:355
+msgid "PKCS#11 module registered for this browser profile."
+msgstr "Moduł PKCS#11 zarejestrowany dla tego profilu przeglądarki."
+
+#: src/desktop/manager.cpp:367
+msgid ""
+"GnuPG S/MIME root trust updated for Kleopatra. Ed521 entries stay listed but "
+"are excluded because gpgsm cannot validate them. Browser trust is separate."
+msgstr ""
+"Zaufanie do certyfikatów głównych S/MIME w GnuPG zaktualizowane dla "
+"Kleopatry. Wpisy Ed521 pozostają na liście, ale są pomijane, bo gpgsm nie "
+"potrafi ich zweryfikować. Zaufanie przeglądarek jest osobne."
+
+#: src/desktop/manager.cpp:377
+msgid ""
+"Our PKCS#11 module registration was removed. Token certificates remain on "
+"the token."
+msgstr ""
+"Rejestracja naszego modułu PKCS#11 została usunięta. Certyfikaty tokenu "
+"pozostają na tokenie."
+
+#: src/desktop/manager.cpp:390
+msgid "One listed certificate expires within 30 days or has expired."
+msgid_plural "%1 listed certificates expire within 30 days or have expired."
+msgstr[0] "Jeden certyfikat z listy wygasa w ciągu 30 dni lub już wygasł."
+msgstr[1] "%1 certyfikaty z listy wygasają w ciągu 30 dni lub już wygasły."
+msgstr[2] "%1 certyfikatów z listy wygasa w ciągu 30 dni lub już wygasło."
+
+#: src/desktop/notify.cpp:30
+msgid "Machine state folder."
+msgstr "Folder stanu komputera."
+
+#: src/desktop/notify.cpp:31
+msgid "Home folder holding the user's status."
+msgstr "Folder domowy przechowujący stan użytkownika."
+
+#: src/desktop/wallet.cpp:20
+msgid "Cannot open KDE Wallet. Passwords were not saved."
+msgstr "Nie można otworzyć Portfela KDE. Hasła nie zostały zapisane."
+
+#: src/desktop/wallet.cpp:23
+msgid "Cannot create the certificate wallet folder."
+msgstr "Nie można utworzyć folderu certyfikatów w portfelu."
+
+#: src/desktop/wallet.cpp:27
+msgid "Cannot select the certificate wallet folder."
+msgstr "Nie można wybrać folderu certyfikatów w portfelu."
+
+#: src/desktop/wallet.cpp:34
+msgid "Cannot save certificate passwords in KDE Wallet."
+msgstr "Nie można zapisać haseł certyfikatów w Portfelu KDE."
+
+#: src/desktop/wallet.cpp:49
+msgid "Cannot read certificate passwords from KDE Wallet."
+msgstr "Nie można odczytać haseł certyfikatów z Portfela KDE."
+
+#: src/desktop/wallet.cpp:61
+msgid "Cannot remove a saved certificate password."
+msgstr "Nie można usunąć zapisanego hasła certyfikatu."
+
+#: src/helper/helper.cpp:31 src/helper/helper.cpp:44 src/helper/helper.cpp:74
+#: src/helper/helper.cpp:78
+msgid "The certificate helper requires root."
+msgstr "Pomocnik certyfikatów wymaga uprawnień roota."
+
+#: src/helper/helper.cpp:54
+msgid "Untrusted package certificate data."
+msgstr "Niezaufane dane certyfikatów pakietu."

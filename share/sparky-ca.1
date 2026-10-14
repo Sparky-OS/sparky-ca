@@ -1,0 +1,96 @@
+.TH SPARKY-CA 1 "2026-10-14" "sparky-ca 2.0.0" "Sparky CA"
+.SH NAME
+sparky-ca \- manage Brazilian CA certificates, browser trust and personal certificates
+.SH SYNOPSIS
+.B sparky-ca
+[\fB\-\-tty\fR] [\fB\-\-gui\fR] [\fIFILE\fR]
+.br
+.B sparky-ca
+[\fIOPTIONS\fR] \fICOMMAND\fR [\fIARGUMENT\fR...]
+.SH DESCRIPTION
+With a display, \fBsparky-ca\fR opens the graphical application.
+On a text console it shows a numbered menu.
+A command runs as a script, with or without a display.
+.PP
+ICP-Brasil is the first catalogue.
+Every certificate is listed with its issuer, expiry and state: valid, expired or revoked.
+Expired and revoked certificates stay listed and are never installed.
+Downloads need verified HTTPS, ITI's published SHA-512 and a chain to a pinned root.
+.SH COMMANDS
+.TP
+.B list [installed]
+Print the catalogue, or what is installed in the chosen store, as JSON.
+.TP
+.B groups
+Print the certificate groups.
+.TP
+.BI install " GROUP"
+Install a group.
+System changes need root, sudo or pkexec.
+.TP
+.BI remove " GROUP|all"
+Remove a group that this program installed.
+.TP
+.B update
+Write a refreshed catalogue to the file given with \fB\-\-output\fR.
+.TP
+.B auto status|enable|disable|run
+Keep the groups you chose current.
+\fBrun\fR does one update.
+\fBdisable\fR and \fBenable\fR change the switch.
+.TP
+.B status, profiles
+Print the installed certificates, or the browser databases found.
+.TP
+.BI preview " FILE"
+Show the certificates in a .crt, .cer, .pem, .p7b, .pfx or .p12 file.
+.TP
+.BI import " FILE"
+Import a personal PKCS#12 certificate (A1) into the database given with \fB\-\-nss\fR.
+.TP
+.B tokens [MODULE]
+Show the A3 tokens a PKCS#11 module sees.
+.TP
+.BI register-token " MODULE"
+Register a PKCS#11 module in the NSS database given with \fB\-\-nss\fR.
+.TP
+.B unregister-token
+Remove our registration.
+.TP
+.BI gpgsm-trust " GROUP"
+Give the roots of a group to GnuPG's trust list for Kleopatra.
+.SH OPTIONS
+.TP
+.BI \-\-nss " DIRECTORY"
+Work on this NSS database instead of the system store.
+Close its browser first.
+.TP
+.BI \-\-password-file " FILE"
+Read a PKCS#12 passphrase from a file only its owner can read.
+.TP
+.B \-\-allow-e521
+Choose E-521 certificates, which Linux cannot verify yet.
+.TP
+.B \-\-scope system|user
+For \fBauto\fR: the machine's update or yours.
+.TP
+.B \-\-force
+For \fBauto run\fR: run although the switch is off.
+.SH AUTOMATIC UPDATES
+Installing is always your own act.
+After you choose groups, a daily timer fetches ITI's bundle, asks each authority's signed CRL about every valid intermediate, adds renewed intermediates of your groups and removes certificates that expired or were revoked.
+It never chooses a group, adds a root or installs an E-521 certificate.
+.PP
+The switch is the file \fI/etc/sparky-ca/auto-update.disabled\fR for the machine, or \fI~/.config/sparky-ca/auto-update.disabled\fR for you.
+The result is in \fI/var/lib/sparky-ca/status.json\fR and in the journal of \fBsparky-ca-update.service\fR.
+.SH FILES
+.TP
+.I /usr/share/sparky-ca
+Pinned roots, pins and the packaged catalogue.
+.TP
+.I /var/lib/sparky-ca
+The refreshed catalogue, revocation answers and the last update's status.
+.SH AUTHORS
+Paweł "pavroo" Pijanowski (2018), Daniel Campos Ramos (2020, 2026).
+.SH COPYRIGHT
+GPL-3.0-or-later.

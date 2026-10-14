@@ -1,0 +1,15 @@
+sparky-ca (2.0.0) forky; urgency=medium
+
+  * Rebuilt on Qt 6 and KDE Frameworks 6: a Kirigami application, a System
+    Settings module, a KAuth helper, a numbered text menu and script
+    commands, all from one core
+  * Verified catalogue of ICP-Brasil certificates with pinned roots, ITI's
+    hash and signed CRLs
+  * Installs in the system, Waterfox, Firefox and Chromium and removes only
+    what it installed
+  * Imports A1 certificates and registers A3 token modules without storing
+    PINs
+  * Keeps the chosen groups current with a daily timer that can be turned off
+  * Complete Brazilian Portuguese and Polish translations
+
+ -- Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>  Wed, 14 Oct 2026 12:00:00 +0000

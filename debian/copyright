@@ -1,0 +1,80 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sparky-ca
+Upstream-Contact: Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>
+Source: https://github.com/Sparky-OS/sparky-ca
+Comment: Sparky CA was created in 2018 by Paweł "pavroo" Pijanowski for SparkyLinux.
+ Daniel Campos Ramos updated its certificates in 2020 and rebuilt it in 2026.
+ The 2026 code, tests and translations were written with the assistance of
+ AI models, which the project's commit messages name.
+
+Files: *
+Copyright: 2026 Daniel Campos Ramos
+License: GPL-3+
+
+Files: share/sparky-ca.desktop.in
+       share/kservices/sparky-ca-preview.desktop.in
+Copyright: 2018 Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+           2020, 2026 Daniel Campos Ramos
+License: GPL-2+
+
+Files: ed521-provider/*
+Copyright: 2025 Pedro F. Albanese
+           2026 Daniel Campos Ramos
+License: ISC
+
+Files: data/roots/*
+       data/tls-issuers.pem
+       ed521-provider/tests/data/*.der
+Copyright: public data published by their issuers
+License: public-domain
+ These are public certificates published by Instituto Nacional de Tecnologia
+ da Informação (ITI) and by the public certification authority named in
+ each file. They are redistributed unchanged so that the program can verify
+ downloads without relying on the network.
+
+Files: po/pl.po
+Copyright: 2026 Daniel Campos Ramos
+Comment: Polish translation, written by an AI model; review by Paweł
+ "pavroo" Pijanowski is pending.
+License: GPL-3+
+
+License: GPL-3+
+ This program is free software: you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the Free
+ Software Foundation, either version 3 of the License, or (at your option)
+ any later version.
+ .
+ This program is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ details.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the Free
+ Software Foundation; either version 2 of the License, or (at your option)
+ any later version.
+ .
+ This package is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ details.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: ISC
+ Permission to use, copy, modify, and/or distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+ REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THIS SOFTWARE.

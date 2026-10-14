@@ -56,7 +56,7 @@ Tests redirect the real system updater and NSS tools to temporary stores in non-
 Host stores and browser profiles are never mounted.
 
 The repository's scheduled refresh, the machine and user timers and signed CRL evaluation are described in "Keeping the listed certificates current" below.
-A1 import verification and token registration with SoftHSM belong to the packaging milestone.
+A1 import and the token path with SoftHSM are verified in the packaging milestone.
 
 ## KDE certificate manager implementation
 

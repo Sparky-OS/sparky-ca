@@ -1,4 +1,15 @@
 -------------------------------------------------------------------------------
+  Version 2.0.0 (2026-10-14)
+-------------------------------------------------------------------------------
+  * Rebuilt on Qt 6 and KDE Frameworks 6 with a Kirigami application, a System Settings module and a KAuth helper
+  * Kept the sparky-ca command, the numbered text menu and the desktop entry name
+  * Added a verified catalogue of ICP-Brasil certificates with pinned roots, ITI hashes and signed CRLs
+  * Added installation in the system, Waterfox, Firefox and Chromium
+  * Added A1 import, A3 token registration and optional KDE Wallet storage of passwords
+  * Added a daily timer that keeps the chosen groups current and can be turned off
+  * Added complete Brazilian Portuguese and Polish translations
+
+-------------------------------------------------------------------------------
   Version 0.1.2 (2018-03-29)
 -------------------------------------------------------------------------------
   * Changed sparky-xterm settings
