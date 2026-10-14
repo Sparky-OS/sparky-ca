@@ -18,6 +18,8 @@ class CertificateManager : public QObject
     Q_PROPERTY(QString notice READ notice NOTIFY changed)
     Q_PROPERTY(bool busy READ busy NOTIFY changed)
     Q_PROPERTY(QString store READ store NOTIFY changed)
+    Q_PROPERTY(bool gpgAvailable READ gpgAvailable CONSTANT)
+    Q_PROPERTY(bool kleopatraAvailable READ kleopatraAvailable CONSTANT)
     Q_PROPERTY(bool automaticUpdates READ automaticUpdates NOTIFY changed)
     Q_PROPERTY(QString updateStatus READ updateStatus NOTIFY changed)
 public:
@@ -47,6 +49,8 @@ public:
     {
         return m_store;
     }
+    bool gpgAvailable() const;
+    bool kleopatraAvailable() const;
     bool automaticUpdates() const;
     QString updateStatus() const;
     Q_INVOKABLE void setAutomaticUpdates(bool enabled);
@@ -57,8 +61,6 @@ public:
     Q_INVOKABLE void selectStore(const QString &store);
     Q_INVOKABLE void refresh();
     Q_INVOKABLE void changeGroup(const QString &group, bool install, bool allowE521, const QString &password);
-    Q_INVOKABLE void setKdeEnabled(const QString &fingerprint, bool enabled);
-    Q_INVOKABLE void hostRule(const QString &fingerprint, const QString &host, bool reject, bool clear);
     Q_INVOKABLE void preview(const QUrl &file, const QString &password);
     Q_INVOKABLE void importIdentity(const QUrl &file, const QString &database, const QString &password, const QString &databasePassword, bool remember);
     Q_INVOKABLE QVariantMap rememberedPasswords(const QUrl &file, const QString &database);
@@ -66,7 +68,10 @@ public:
     Q_INVOKABLE void tokens(const QString &module = {});
     Q_INVOKABLE void registerModule(const QString &database, const QString &module, const QString &password);
     Q_INVOKABLE void unregisterModule(const QString &database);
-    Q_INVOKABLE void gpgTrust(const QString &group, bool trusted);
+    Q_INVOKABLE void gpgImport(const QString &group);
+    Q_INVOKABLE void gpgRemove(const QString &group);
+    Q_INVOKABLE void gpgConfirm();
+    Q_INVOKABLE void openKleopatra(const QString &fingerprint);
     Q_INVOKABLE void expiryNotification();
 Q_SIGNALS:
     void changed();
@@ -79,4 +84,5 @@ private:
     QPointer<QWindow> m_window;
     void task(std::function<QString()> operation, std::function<void()> success = {});
     void notify(const QString &text);
+    QString gpgHome() const;
 };

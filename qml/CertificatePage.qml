@@ -70,20 +70,20 @@ Kirigami.Page {
             Controls.ComboBox {
                 id: storeChooser
                 Layout.preferredWidth: 350
-                model: [i18n("Certificate catalogue"), i18n("System trust"), i18n("KDE trust"), ...manager.profiles]
+                model: manager.gpgAvailable ? [i18n("Certificate catalogue"), i18n("System trust"), i18n("GnuPG S/MIME (Kleopatra)"), ...manager.profiles] : [i18n("Certificate catalogue"), i18n("System trust"), ...manager.profiles]
                 enabled: !manager.busy
-                onActivated: manager.selectStore(currentIndex === 0 ? "catalogue" : currentIndex === 1 ? "system" : currentIndex === 2 ? "kde" : manager.profiles[currentIndex - 3])
+                onActivated: manager.selectStore(currentIndex === 0 ? "catalogue" : currentIndex === 1 ? "system" : manager.gpgAvailable && currentIndex === 2 ? "gpgsm" : manager.profiles[currentIndex - (manager.gpgAvailable ? 3 : 2)])
             }
             Controls.TextField { id: search; Layout.fillWidth: true; placeholderText: i18n("Search name, issuer or fingerprint") }
             Controls.BusyIndicator { running: manager.busy; visible: running; Layout.preferredWidth: 30; Layout.preferredHeight: 30 }
         }
         RowLayout {
-            visible: manager.store !== "kde" && manager.store !== "preview"
+            visible: manager.store !== "gpgsm" && manager.store !== "preview"
             Layout.fillWidth: true
             Controls.ComboBox { id: groupChooser; model: manager.groups; Layout.preferredWidth: 180; enabled: !manager.busy }
             Controls.Button { text: i18n("Install Group…"); enabled: !manager.busy; onClicked: { changeDialog.installing = true; changeDialog.open() } }
             Controls.Button { text: i18n("Remove Group…"); enabled: !manager.busy; onClicked: { changeDialog.installing = false; changeDialog.open() } }
-            Controls.Button { text: i18n("Kleopatra Trust…"); enabled: !manager.busy; onClicked: gpgDialog.open() }
+            Controls.Button { visible: manager.gpgAvailable; text: i18n("Kleopatra…"); enabled: !manager.busy; onClicked: gpgDialog.open() }
             Item { Layout.fillWidth: true }
             Controls.Label { text: i18np("One certificate", "%1 certificates", manager.certificates.length) }
         }
@@ -116,11 +116,8 @@ Kirigami.Page {
             textFormat: Text.PlainText
         }
         RowLayout {
-            visible: manager.store === "kde" && page.selected.sha256 !== undefined
-            Controls.Button { text: page.selected.enabled ? i18n("Disable for KDE") : i18n("Enable for KDE"); onClicked: manager.setKdeEnabled(page.selected.sha256, !page.selected.enabled) }
-            Controls.TextField { id: host; placeholderText: i18n("Host name, for example example.org") }
-            Controls.Button { text: i18n("Reject Host"); onClicked: manager.hostRule(page.selected.sha256, host.text, true, false) }
-            Controls.Button { text: i18n("Clear Host Rule"); onClicked: manager.hostRule(page.selected.sha256, host.text, false, true) }
+            visible: manager.store === "gpgsm" && manager.kleopatraAvailable && page.selected.issuer !== undefined
+            Controls.Button { text: i18n("Open in Kleopatra"); onClicked: manager.openKleopatra(page.selected.issuer) }
         }
         RowLayout {
             objectName: "tokenActions"
@@ -135,6 +132,9 @@ Kirigami.Page {
         if (state === "expired") return i18n("Expired")
         if (state === "revoked") return i18n("Revoked")
         if (state === "not-yet-valid") return i18n("Not yet valid")
+        if (state === "confirmed by you") return i18n("Trusted: you confirmed it")
+        if (state === "not confirmed") return i18n("Imported, not trusted yet")
+        if (state === "through its root") return i18n("Trusted through its root")
         return i18n("Invalid")
     }
     Controls.Dialog {
@@ -178,14 +178,16 @@ Kirigami.Page {
     }
     Controls.Dialog {
         id: gpgDialog
-        title: i18n("Kleopatra / GnuPG S/MIME trust")
+        title: i18n("Kleopatra / GnuPG S/MIME")
         modal: true
         anchors.centerIn: parent
         standardButtons: Controls.Dialog.Close
         ColumnLayout {
-            Controls.Label { Layout.preferredWidth: 480; wrapMode: Text.Wrap; text: i18n("Give current pinned roots of %1 to gpgsm's trust list. This is a separate trust decision. Ed521 roots are excluded because gpgsm cannot validate them. Importing a certificate alone does not prove chain validation.", groupChooser.currentText) }
-            Controls.Button { text: i18n("Trust Chosen Roots"); onClicked: { manager.gpgTrust(groupChooser.currentText, true); gpgDialog.close() } }
-            Controls.Button { text: i18n("Remove Our Trust Decision"); onClicked: { manager.gpgTrust(groupChooser.currentText, false); gpgDialog.close() } }
+            Controls.Label { Layout.preferredWidth: 480; wrapMode: Text.Wrap; text: i18n("Import the chosen group's certificates, with the chain up to their roots, into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by importing. You decide about each root yourself, in Kleopatra or when gpgsm asks. Ed521 certificates are not imported because gpgsm cannot validate them.") }
+            Controls.Button { text: i18n("Import Chosen Group"); onClicked: { manager.gpgImport(groupChooser.currentText); gpgDialog.close() } }
+            Controls.Button { text: i18n("Show What Was Imported"); onClicked: { manager.selectStore("gpgsm"); gpgDialog.close() } }
+            Controls.Button { text: i18n("Ask gpgsm About Imported Roots"); onClicked: { manager.gpgConfirm(); gpgDialog.close() } }
+            Controls.Button { text: i18n("Remove What We Imported"); onClicked: { manager.gpgRemove(groupChooser.currentText); gpgDialog.close() } }
         }
     }
     Controls.Dialog {

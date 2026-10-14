@@ -105,7 +105,11 @@ void importPersonalCertificate(const QString &file, const QString &database, con
 void registerTokenModule(const QString &database, const QString &module, const QByteArray &databasePassword);
 void unregisterTokenModule(const QString &database);
 QByteArray tokenInformation(const QString &module = {});
-void setGpgsmTrust(const Catalogue &catalogue, const QString &group, const QString &home, bool trusted);
+bool gpgsmAvailable();
+QJsonObject gpgsmImport(const Catalogue &catalogue, const QString &group, const QString &home);
+QJsonObject gpgsmRemove(const QString &group, const QString &home);
+QJsonArray gpgsmStatus(const QString &home);
+QStringList gpgsmUnconfirmedRoots(const QString &home);
 void applySystemChange(const QVariantMap &arguments, const QString &data, const QString &directory, const QString &bundle, const QString &stateDirectory = {});
 void applyAutomaticSwitch(const QVariantMap &arguments, const QString &configDirectory);
 void validateStorePath(const QString &path);

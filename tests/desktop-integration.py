@@ -128,12 +128,11 @@ with tempfile.TemporaryDirectory(prefix='sparky-ca-desktop-') as temporary:
         print(run([request, data, fixture / 'request']).stdout, flush=True)
         check(True, algorithm + ' constrained helper request reaches only its known fixture paths')
         gpg = fixture / 'gpg'
-        run([*args, '--gpg-home', gpg, 'gpgsm-trust', 'icp-roots'])
-        trust = (gpg / 'trustlist.txt').read_text()
-        check('sparky-ca managed roots begin' in trust and ' S\n' in trust, algorithm + ' GnuPG gets a separate managed root decision')
-        with (gpg / 'trustlist.txt').open('a') as file: file.write('# user note retained\n')
-        run([*args, '--gpg-home', gpg, 'gpgsm-untrust', 'icp-roots'])
-        check((gpg / 'trustlist.txt').read_text() == '# user note retained\n', algorithm + ' GnuPG removal preserves unrelated user text')
+        run([*args, '--gpg-home', gpg, 'gpgsm-import', 'icp-roots'])
+        trust = (gpg / 'trustlist.txt').read_text() if (gpg / 'trustlist.txt').exists() else ''
+        check(' S' not in trust, algorithm + ' importing roots into GnuPG sets no trust')
+        run([*args, '--gpg-home', gpg, 'gpgsm-remove', 'icp-roots'])
+        check(json.loads(run([*args, '--gpg-home', gpg, 'gpgsm-status']).stdout) == [], algorithm + ' GnuPG removal takes back what was imported')
         run(['gpgconf', '--homedir', gpg, '--kill', 'all'])
         signing_nss = fixture / 'signing-nss'
         run([*args, '--nss', signing_nss, '--password-file', password, 'import', p12])

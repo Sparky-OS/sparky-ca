@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 {
     QCoreApplication application(argc, argv);
     application.setApplicationName("sparky-ca");
-    application.setApplicationVersion("2.0.0");
+    application.setApplicationVersion("2.0.1");
     KLocalizedString::setApplicationDomain("sparky-ca");
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("Manage Brazilian CA certificates and browser trust."));
@@ -124,7 +124,7 @@ int main(int argc, char **argv)
         {"force", i18n("Run an automatic update although it is turned off.")},
         {"no-network", i18n("Do not use the Internet in an automatic update.")}
     });
-    parser.addPositionalArgument("command", i18n("list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-trust <group>, gpgsm-untrust <group>"));
+    parser.addPositionalArgument("command", i18n("list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"));
     parser.process(application);
     QTextStream out(stdout), err(stderr), in(stdin);
     try {
@@ -142,11 +142,14 @@ int main(int argc, char **argv)
         Store store(parser.isSet("nss") ? QString() : parser.value("system-dir"), parser.value("system-bundle"), parser.value("nss"), parser.isSet("nss-password-file") ? passwordFromFile(parser.value("nss-password-file")) : QByteArray());
         if (command.isEmpty()) {
             if (!isatty(STDIN_FILENO)) parser.showHelp(1);
-            out << i18n("1. List catalogue\n2. List installed certificates\n3. Install group\n4. Remove group\n5. Status\n0. Exit\nChoice: ") << Qt::flush;
+            const bool gpg = gpgsmAvailable();
+            out << (gpg ? i18n("1. List catalogue\n2. List installed certificates\n3. Install group\n4. Remove group\n5. Status\n6. Import group into gpgsm (Kleopatra)\n7. Remove what was imported into gpgsm\n8. Confirm an imported root\n0. Exit\nChoice: ")
+                        : i18n("1. List catalogue\n2. List installed certificates\n3. Install group\n4. Remove group\n5. Status\n0. Exit\nChoice: ")) << Qt::flush;
             const QString choice = in.readLine();
             if (choice == "0" || choice.isNull()) return 0;
-            command = choice == "1" ? "list" : choice == "2" ? "installed" : choice == "3" ? "install" : choice == "4" ? "remove" : choice == "5" ? "status" : "invalid";
-            if (command == "install" || command == "remove") {
+            command = choice == "1" ? "list" : choice == "2" ? "installed" : choice == "3" ? "install" : choice == "4" ? "remove" : choice == "5" ? "status"
+                : gpg && choice == "6" ? "gpgsm-import" : gpg && choice == "7" ? "gpgsm-remove" : gpg && choice == "8" ? "gpgsm-confirm" : "invalid";
+            if (command == "install" || command == "remove" || command == "gpgsm-import" || command == "gpgsm-remove") {
                 out << catalogue.groups().join(", ") << '\n' << i18n("Group: ") << Qt::flush;
                 arguments = {command, in.readLine()};
             }
@@ -212,9 +215,25 @@ int main(int argc, char **argv)
         } else if (command == "register-token") {
             if (arguments.size() != 2 || !parser.isSet("nss")) fail(i18n("Specify an NSS database and one installed token module."));
             registerTokenModule(parser.value("nss"), arguments[1], parser.isSet("nss-password-file") ? passwordFromFile(parser.value("nss-password-file")) : QByteArray());
-        } else if (command == "gpgsm-trust" || command == "gpgsm-untrust") {
+        } else if (command == "gpgsm-import" || command == "gpgsm-remove") {
             if (arguments.size() != 2) fail(i18n("Specify one root group."));
-            setGpgsmTrust(catalogue, arguments[1], parser.value("gpg-home"), command == "gpgsm-trust");
+            const auto result = command == "gpgsm-import" ? gpgsmImport(catalogue, arguments[1], parser.value("gpg-home")) : gpgsmRemove(arguments[1], parser.value("gpg-home"));
+            out << QJsonDocument(result).toJson();
+            if (result.value("previousTrustRemoved").toBool()) err << i18n("Trust entries that version 2.0.0 added to gpgsm without asking were removed.") << '\n';
+            if (command == "gpgsm-import") out << i18n("Imported certificates are not trusted yet. Run gpgsm-confirm, or use Kleopatra's Trust Root Certificate, to decide.") << '\n';
+        } else if (command == "gpgsm-status") {
+            out << QJsonDocument(gpgsmStatus(parser.value("gpg-home"))).toJson();
+        } else if (command == "gpgsm-confirm") {
+            const auto roots = gpgsmUnconfirmedRoots(parser.value("gpg-home"));
+            if (roots.isEmpty()) out << i18n("No imported root is waiting for your confirmation.") << '\n';
+            for (const auto &fingerprint : roots) {
+                // gpgsm shows the fingerprint and asks through its own prompt. Nothing here answers for the user.
+                QProcess process;
+                process.setProcessChannelMode(QProcess::ForwardedChannels);
+                process.setInputChannelMode(QProcess::ForwardedInputChannel);
+                process.start("gpgsm", {"--homedir", parser.value("gpg-home"), "--with-validation", "--list-keys", fingerprint});
+                if (!process.waitForFinished(-1) || process.exitCode() != 0) fail(i18n("gpgsm could not check the root."));
+            }
         } else if (command == "unregister-token") {
             if (arguments.size() != 1 || !parser.isSet("nss")) fail(i18n("Specify an NSS database."));
             unregisterTokenModule(parser.value("nss"));

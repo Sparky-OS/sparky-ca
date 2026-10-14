@@ -13,7 +13,6 @@ Build-Depends: debhelper-compat (= 13),
                libkf6coreaddons-dev,
                libkf6i18n-dev,
                libkf6kcmutils-dev,
-               libkf6kio-dev (>= 6.30.0-1+stereo3d3),
                libkf6notifications-dev,
                libkf6wallet-dev,
                libssl-dev,
@@ -24,9 +23,7 @@ Build-Depends: debhelper-compat (= 13),
 Package: sparky-ca
 Architecture: amd64
 Depends: ca-certificates,
-         kio6 (>= 6.30.0-1+stereo3d3),
          kwallet6,
-         libkf6kiocore6 (>= 6.30.0-1+stereo3d3),
          libnss3-tools,
          polkitd,
          qml6-module-org-kde-kcmutils,
@@ -39,7 +36,7 @@ Depends: ca-certificates,
          qml6-module-qtquick-window,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: gnupg,
+Recommends: gpgsm,
             libccid,
             opensc,
             p11-kit,
@@ -48,10 +45,10 @@ Suggests: kleopatra,
           okular
 Description: ICP-Brasil certificates, browser trust and personal certificates
  Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the
- system, in Waterfox, Firefox and Chromium, and keeps the groups you chose
- current. It shows every certificate with its issuer, expiry and state,
- imports your A1 certificate, registers your A3 token, and works on a plain
- text console as well as in KDE.
+ system, in Waterfox, Firefox and Chromium, and in GnuPG for Kleopatra, and
+ keeps the groups you chose current. It shows every certificate with its
+ issuer, expiry and state, imports your A1 certificate, registers your A3
+ token, and works on a plain text console as well as in KDE.
  .
  Every download is checked against ITI's published hash and pinned roots, and
  certificates revoked by their authority are never installed. A daily timer

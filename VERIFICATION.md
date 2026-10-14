@@ -1,5 +1,37 @@
 # Verification record
 
+## 2.0.1: Kleopatra's gpgsm instead of KIO
+
+Daniel asked for the integration with Kleopatra, not KIO's certificate manager.
+The KIO and kssld code and the dependency on a patched KIO are gone.
+Everything ran in containers on Debian testing as an unprivileged user with four CPUs, except the install tests, which ran as root in throwaway containers.
+The program builds against Debian's own KDE Frameworks; `ldd` on the test program shows no KIO library.
+
+| Check | Result |
+| --- | --- |
+| Full CTest, GCC and Clang | 15 of 15 each, including `gpgsm-kleopatra` (21 checks) |
+| `tests/gpgsm.py` in a fresh GNUPGHOME with a generated root, intermediate and signer | see below |
+| Application backend, KCM and the Kleopatra launcher (`desktop-check`, 9 checks) | pass; a stand-in `kleopatra` records its arguments |
+| `dpkg-buildpackage` from the committed tree | `sparky-ca_2.0.1_amd64.deb`, `.dsc`, `.tar.xz` |
+| `lintian`, binary and source | no tags |
+| Install with recommends, plus Debian's own `kio6` (6.30.0-1+b1, no stereo revision) | 51 checks pass: the package depends on no KIO package and coexists with stock `kio6` |
+| Install with `--no-install-recommends`, then `gpgsm` removed | installs and works; the Kleopatra commands say gpgsm is missing; the console menu shows nothing about gpgsm |
+
+What the gpgsm test proves, each against an expected result:
+a new home has nothing owned;
+importing a group brings in its chain up to the root and writes no trust;
+the root is reported as waiting for confirmation and the intermediate as depending on it;
+an S/MIME signature that chains to the imported root is refused with "Not trusted";
+when the stand-in pinentry (the user) says no, nothing is trusted and the signature still fails;
+when it says yes, gpgsm records the trust itself, the status says confirmed by you, and the signature verifies;
+importing again changes nothing;
+removal takes out exactly what was imported and keeps the user's own trust-list entry;
+a root the user already had is reported as present and never removed;
+the managed trust block and record that 2.0.0 wrote are taken back while the user's own lines stay;
+without gpgsm the command says so, and the console menu offers the gpgsm items only where gpgsm exists.
+
+Not verified: Kleopatra itself (the launcher was tested against a stand-in that records its arguments), a real pinentry window, KMail.
+
 ## Milestone 5: package, languages, A1 and token
 
 The package was built and installed in containers on Debian testing (forky), Qt 6.11.2 and KDE Frameworks 6.30.0, base image pinned by digest.

@@ -7,8 +7,8 @@ ICP-Brasil is its first catalogue.
 The command remains `sparky-ca`, and the desktop entry keeps its original name.
 
 The Kirigami application and System Settings **Certificates** module share one C++ core.
-They list certificate subjects, issuers, expiry and state in the catalogue, system bundle, browser NSS databases and KDE's CA manager.
-KDE CA enable/disable decisions and rejecting per-host rules use KIO and kssld.
+They list certificate subjects, issuers, expiry and state in the catalogue, the system bundle, the browser NSS databases and, where gpgsm exists, GnuPG's S/MIME keybox that Kleopatra reads.
+KDE programs and Qt already trust the system store, where the roots go, so nothing is patched in KDE.
 System changes request administrator authorization through KAuth.
 
 The catalogue contains 331 distinct certificates, including the retained 2020 Certisign, OAB and Justiça groups.
@@ -21,15 +21,10 @@ See [DESIGN.md](DESIGN.md).
 
 Build in an isolated container.
 The core requires Qt 6 Core/Network, KI18n, OpenSSL 3 and libarchive.
-The KDE front additionally requires Qt Quick, Kirigami, KAuth, KWallet, KNotifications, KIO and KCMUtils.
+The KDE front additionally requires Qt Quick, Kirigami, KAuth, KWallet, KNotifications and KCMUtils.
 NSS operations need `certutil`, `pk12util` and `modutil`; token inspection needs OpenSC and the locally installed PKCS#11 middleware.
-GnuPG integration uses `gpgsm` and `gpgconf`.
+The Kleopatra integration uses `gpgsm` and `gpgconf` and appears only where gpgsm is installed.
 Okular/Poppler development files enable the PDF integration test.
-
-The front requires the prepared KIO public API patch: the installed `KSslCertificateManager` header and its `allCaCertificates`, `isCaCertificateEnabled` and `setCaCertificateEnabled` functions.
-Stock KF6 6.30 does not publish that header.
-For development against the matching patched KIO build, pass `SPARKY_CA_KIO_SOURCE` and `SPARKY_CA_KIO_BUILD` to CMake.
-Upstream acceptance is pending.
 
 ```sh
 cmake -S . -B build -G Ninja
@@ -43,9 +38,8 @@ The version 1 shell script and its placeholder locales are retired; git history 
 
 ## Package
 
-`debian/` builds `sparky-ca_2.0.0_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
-It builds against the patched KIO that publishes `KSslCertificateManager` and depends on that KIO's revision, named in one place, `debian/control`.
-A development build before that revision exists points `SPARKY_CA_KIO_BUILD` and `SPARKY_CA_KIO_SOURCE` at a patched KIO tree.
+`debian/` builds `sparky-ca_2.0.1_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
+It needs only stock Debian KDE Frameworks, so it installs on every SparkyLinux edition; `gpgsm` and Kleopatra are recommended and suggested, not required.
 The package enables the machine timer and the user timer and path unit when it is installed.
 It never starts the update service on install or upgrade, and it never touches the switch files.
 The two things to change if the defaults change are `debian/rules` (what is enabled at install) and the unit files in `share/systemd/` (the rhythm).
@@ -66,7 +60,7 @@ With a display, `sparky-ca` opens the graphical application.
 On a console it keeps the numbered text menu.
 `--tty` forces the console front, and scripts remain text commands even when a display exists.
 
-Commands include `list`, `list installed`, `groups`, `install <group>`, `remove <group|all>`, `status`, `profiles`, `update`, `preview <file>`, `import <file>`, `tokens [module]`, `register-token <module>`, `unregister-token`, `gpgsm-trust <group>`, `gpgsm-untrust <group>` and `auto <status|enable|disable|run>`.
+Commands include `list`, `list installed`, `groups`, `install <group>`, `remove <group|all>`, `status`, `profiles`, `update`, `preview <file>`, `import <file>`, `tokens [module]`, `register-token <module>`, `unregister-token`, `gpgsm-import <group>`, `gpgsm-remove <group|all>`, `gpgsm-status`, `gpgsm-confirm` and `auto <status|enable|disable|run>`.
 `--nss` chooses a browser database.
 Close that browser before making changes.
 CLI system operations require root or the user's chosen sudo/pkexec invocation.
@@ -144,8 +138,18 @@ Physical cards and proprietary middleware have not been verified.
 A SoftHSM stand-in token is tested end to end through p11-kit's proxy and a real NSS database.
 The token and its certificate are detected without a PIN, NSS reaches the certificate and the private key after the PIN is given, a wrong PIN is refused by the token, and no PIN is stored.
 
-GnuPG root trust for Kleopatra is a separate opt-in decision.
-Only our managed trustlist block is removed; unrelated entries are preserved.
+## Kleopatra and KMail
+
+Kleopatra and KMail read S/MIME certificates from GnuPG's gpgsm keybox.
+`gpgsm-import <group>` imports the group's certificates and the chain up to their roots there.
+It never sets trust.
+A root becomes trusted only when you confirm it: gpgsm asks through your own pinentry (run `gpgsm-confirm`, or let gpgsm ask when it first needs the root), or you use Kleopatra's Trust Root Certificate.
+The application can open Kleopatra on a certificate.
+`gpgsm-remove` takes out what Sparky CA imported, and nothing else: a certificate you already had stays.
+Trust you confirmed yourself stays in gpgsm's trust list; remove it in Kleopatra.
+Version 2.0.0 added its roots to that trust list without asking; 2.0.1 takes back exactly those entries the first time it touches gpgsm.
+The console menu offers the same items where gpgsm exists, and nothing about gpgsm where it does not.
+
 Kleopatra uses GnuPG's OpenPGP/S/MIME and smart-card interfaces, rather than browser NSS databases or our PKCS#11 registration.
 
 ## Ed521 and store boundaries
@@ -159,7 +163,7 @@ It cannot sign.
 
 **An OpenSSL provider does not add an algorithm to NSS or GnuPG.** NSS 3.130 rejects Ed521/v7 and Ed448/v6 key types.
 Browser group installations exclude these entries while keeping them listed.
-Gpgsm rejects Ed521 self-signatures, so its group trust option excludes Ed521 roots.
+Gpgsm rejects Ed521 self-signatures, so the import excludes Ed521 certificates.
 CLI/OpenSSL Ed521 chain verification works with the configured provider.
 Okular cannot validate an Ed521 chain until NSS supports it or Poppler gains a provider-backed backend.
 Neither route has been implemented.

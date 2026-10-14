@@ -5,7 +5,6 @@
 #include <KPluginMetaData>
 #include <KQuickConfigModule>
 #include <KQuickConfigModuleLoader>
-#include <KSslCertificateManager>
 #include <QApplication>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
@@ -76,29 +75,20 @@ int main(int argc, char **argv)
                     5000)
                     && receiver.title == "Certificates" && receiver.body == manager.notice(),
                 "KNotifications delivers the measured expiry message over D-Bus");
-        manager.selectStore("kde");
-        require(manager.error().isEmpty() && !manager.certificates().isEmpty(), "application lists KIO's system CA certificates");
-        auto kde = KSslCertificateManager::self();
-        const auto expected = qEnvironmentVariable("SPARKY_CA_EXPECTED_ROOT");
-        if (!expected.isEmpty()) {
-            bool found = false;
-            for (const auto &cert : kde->allCaCertificates())
-                if (SparkyCA::Certificate(cert.toDer()).fingerprint() == expected)
-                    found = true;
-            require(found, "the generated system-store install appears in KIO's CA list");
+        const auto fakeLog = qEnvironmentVariable("SPARKY_CA_FAKE_KLEOPATRA_LOG");
+        if (!fakeLog.isEmpty()) {
+            require(manager.gpgAvailable() && manager.kleopatraAvailable(), "the application offers Kleopatra only where gpgsm and Kleopatra exist");
+            const QString fingerprint(40, 'A');
+            manager.openKleopatra(fingerprint);
+            require(QTest::qWaitFor(
+                        [&] {
+                            return QFileInfo::exists(fakeLog) && SparkyCA::readFile(fakeLog).contains(("--query " + fingerprint).toUtf8());
+                        },
+                        5000),
+                    "Open in Kleopatra starts it on exactly that certificate");
+            manager.openKleopatra("not a fingerprint; rm -rf");
+            require(!manager.error().isEmpty(), "anything that is not a fingerprint is refused");
         }
-        const auto certificate = kde->allCaCertificates().first();
-        const auto fingerprint = SparkyCA::Certificate(certificate.toDer()).fingerprint();
-        manager.setKdeEnabled(fingerprint, false);
-        require(manager.error().isEmpty() && !kde->caCertificates().contains(certificate), "application disables a known KDE CA");
-        manager.setKdeEnabled(fingerprint, true);
-        require(manager.error().isEmpty() && kde->caCertificates().contains(certificate), "application restores a known KDE CA");
-        manager.hostRule(fingerprint, "fixture.invalid", true, false);
-        require(manager.error().isEmpty() && kde->rule(certificate, "fixture.invalid").isRejected(), "actual kssld saves and returns a rejecting host rule");
-        manager.hostRule(fingerprint, "https://fixture.invalid", true, false);
-        require(!manager.error().isEmpty(), "a URL cannot be mistaken for a host rule");
-        manager.hostRule(fingerprint, "fixture.invalid", false, true);
-        require(manager.error().isEmpty() && !kde->rule(certificate, "fixture.invalid").expiryDateTime().isValid(), "actual kssld removes the host rule");
         const auto module = KQuickConfigModuleLoader::loadModule(KPluginMetaData(QFileInfo(QString::fromLocal8Bit(argv[2])).absoluteFilePath()));
         require(module.plugin != nullptr, "System Settings loads the Certificates plugin");
         auto item = module.plugin->mainUi();
@@ -129,7 +119,7 @@ int main(int argc, char **argv)
             item->setParentItem(nullptr);
         }
         delete module.plugin;
-        QTextStream(stdout) << checkCount << " desktop/KIO/kssld/KCM/notification checks passed\n";
+        QTextStream(stdout) << checkCount << " desktop/KCM/notification checks passed\n";
         return 0;
     } catch (const std::exception &error) {
         QTextStream(stderr) << error.what() << '\n';

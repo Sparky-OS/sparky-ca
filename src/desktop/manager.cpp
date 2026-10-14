@@ -6,15 +6,12 @@
 #include <KAuth/ExecuteJob>
 #include <KLocalizedString>
 #include <KNotification>
-#include <KSslCertificateManager>
-#include <QDBusConnection>
-#include <QDBusConnectionInterface>
-#include <QDBusReply>
 #include <QDir>
 #include <QFutureWatcher>
 #include <QJsonDocument>
 #include <QRegularExpression>
-#include <QSslCertificate>
+#include <QProcess>
+#include <QStandardPaths>
 #include <QtConcurrent>
 
 using namespace SparkyCA;
@@ -92,7 +89,7 @@ void CertificateManager::selectStore(const QString &store)
 {
     if (m_busy)
         return;
-    if (store != "catalogue" && store != "system" && store != "kde" && !profiles().contains(store)) {
+    if (store != "catalogue" && store != "system" && store != "gpgsm" && !profiles().contains(store)) {
         m_error = i18n("Choose an existing browser profile.");
         Q_EMIT changed();
         return;
@@ -117,13 +114,11 @@ void CertificateManager::refresh()
                 row.insert("installationIssue", m_catalogue->installationIssue(entry.certificate));
                 m_certificates.append(row.toVariantMap());
             }
-        } else if (m_store == "kde") {
-            auto manager = KSslCertificateManager::self();
-            for (const auto &certificate : manager->allCaCertificates()) {
-                Certificate cert(certificate.toDer());
-                auto row = describe(cert, cert.subject(), m_catalogue->state(cert)).toVariantMap();
-                row.insert("enabled", manager->isCaCertificateEnabled(certificate));
-                m_certificates.append(row);
+        } else if (m_store == "gpgsm") {
+            for (const auto &item : gpgsmStatus(gpgHome())) {
+                const auto record = item.toObject();
+                m_certificates.append(QVariantMap{{"name", record.value("name").toString()}, {"issuer", record.value("sha1").toString()}, {"sha256", record.value("sha256").toString()},
+                                                  {"expires", QString()}, {"state", record.value("trust").toString()}, {"root", record.value("root").toBool()}});
             }
         } else {
             Store store(m_store == "system" ? "/usr/local/share/ca-certificates/sparky-ca" : QString(),
@@ -204,7 +199,7 @@ void CertificateManager::changeGroup(const QString &group, bool install, bool al
             Q_EMIT changed();
         });
         job->start();
-    } else if (m_store != "kde") {
+    } else if (m_store != "gpgsm") {
         const auto catalogue = m_catalogue;
         const auto database = m_store;
         task([catalogue, database, group, install, allowE521, password] {
@@ -216,70 +211,6 @@ void CertificateManager::changeGroup(const QString &group, bool install, bool al
             return i18n(
                 "Browser certificate store updated. Ed521 and Ed448 entries stay listed but are excluded because NSS does not support their key types.");
         });
-    }
-}
-void CertificateManager::setKdeEnabled(const QString &fingerprint, bool enabled)
-{
-    auto manager = KSslCertificateManager::self();
-    for (const auto &certificate : manager->allCaCertificates()) {
-        if (Certificate(certificate.toDer()).fingerprint() != fingerprint)
-            continue;
-        const bool saved = manager->setCaCertificateEnabled(certificate, enabled);
-        refresh();
-        if (!saved)
-            m_error = i18n("Cannot save the KDE trust decision.");
-        else {
-            m_notice = i18n("KDE certificate trust updated.");
-            notify(m_notice);
-        }
-        Q_EMIT changed();
-        return;
-    }
-    m_error = i18n("Certificate no longer exists in the KDE store.");
-    Q_EMIT changed();
-}
-void CertificateManager::hostRule(const QString &fingerprint, const QString &host, bool reject, bool clear)
-{
-    if (!QRegularExpression("^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$").match(host).hasMatch() || host.contains("..")) {
-        m_error = i18n("Enter a single lower-case host name, without a scheme or wildcard.");
-        Q_EMIT changed();
-        return;
-    }
-    auto bus = QDBusConnection::sessionBus().interface();
-    if (!bus) {
-        m_error = i18n("KDE's certificate service is unavailable.");
-        Q_EMIT changed();
-        return;
-    }
-    if (!bus->isServiceRegistered("org.kde.kssld6").value())
-        bus->startService("org.kde.kssld6");
-    const QDBusReply<bool> available = bus->isServiceRegistered("org.kde.kssld6");
-    if (!available.isValid() || !available.value()) {
-        m_error = i18n("KDE's certificate service is unavailable.");
-        Q_EMIT changed();
-        return;
-    }
-    auto manager = KSslCertificateManager::self();
-    for (const auto &cert : manager->allCaCertificates()) {
-        if (Certificate(cert.toDer()).fingerprint() != fingerprint)
-            continue;
-        m_error.clear();
-        m_notice.clear();
-        if (clear)
-            manager->clearRule(cert, host);
-        else {
-            KSslCertificateRule rule(cert, host);
-            rule.setRejected(reject);
-            rule.setExpiryDateTime(QDateTime::currentDateTimeUtc().addDays(30));
-            manager->setRule(rule);
-        }
-        const auto saved = manager->rule(cert, host);
-        if ((!clear && (saved.isRejected() != reject || !saved.expiryDateTime().isValid())) || (clear && saved.expiryDateTime().isValid()))
-            m_error = i18n("KDE's certificate service did not save the host rule.");
-        else
-            m_notice = i18n("Host rule updated. Certificate errors remain enforced; no TLS error was ignored.");
-        Q_EMIT changed();
-        return;
     }
 }
 void CertificateManager::preview(const QUrl &file, const QString &password)
@@ -355,18 +286,63 @@ void CertificateManager::registerModule(const QString &database, const QString &
         return i18n("PKCS#11 module registered for this browser profile.");
     });
 }
-void CertificateManager::gpgTrust(const QString &group, bool trusted)
+QString CertificateManager::gpgHome() const
+{
+    return QDir::homePath() + "/.gnupg";
+}
+bool CertificateManager::gpgAvailable() const
+{
+    return gpgsmAvailable();
+}
+bool CertificateManager::kleopatraAvailable() const
+{
+    return gpgsmAvailable() && !QStandardPaths::findExecutable("kleopatra").isEmpty();
+}
+void CertificateManager::gpgImport(const QString &group)
 {
     if (!m_catalogue)
         return;
     const auto catalogue = m_catalogue;
-    const auto home = QDir::homePath() + "/.gnupg";
-    task([catalogue, group, home, trusted] {
-        setGpgsmTrust(*catalogue, group, home, trusted);
-        return i18n(
-            "GnuPG S/MIME root trust updated for Kleopatra. Ed521 entries stay listed but are excluded because gpgsm cannot validate them. Browser trust is "
-            "separate.");
+    const auto home = gpgHome();
+    task([catalogue, group, home] {
+        const auto result = gpgsmImport(*catalogue, group, home);
+        return i18n("Certificates imported for Kleopatra. They are not trusted until you confirm each root in Kleopatra or in gpgsm. Ed521 entries stay listed but are not imported because gpgsm cannot validate them.")
+            + (result.value("previousTrustRemoved").toBool() ? " " + i18n("Trust entries that version 2.0.0 added to gpgsm without asking were removed.") : QString());
     });
+}
+void CertificateManager::gpgRemove(const QString &group)
+{
+    const auto home = gpgHome();
+    task([group, home] {
+        gpgsmRemove(group, home);
+        return i18n("Certificates that Sparky CA imported into gpgsm were removed. Trust you confirmed yourself stays in gpgsm's trust list until you remove it in Kleopatra.");
+    });
+}
+void CertificateManager::gpgConfirm()
+{
+    const auto home = gpgHome();
+    task([home] {
+        const auto roots = gpgsmUnconfirmedRoots(home);
+        if (roots.isEmpty())
+            return i18n("No imported root is waiting for your confirmation.");
+        for (const auto &fingerprint : roots) {
+            // gpgsm asks the question itself, through the user's own pinentry.
+            QProcess process;
+            process.start("gpgsm", {"--homedir", home, "--with-validation", "--list-keys", fingerprint});
+            if (!process.waitForFinished(-1) || process.exitCode() != 0)
+                fail(i18n("gpgsm could not check the root."));
+        }
+        return i18n("gpgsm asked about each imported root. Your answers are in its trust list.");
+    });
+}
+void CertificateManager::openKleopatra(const QString &fingerprint)
+{
+    if (!kleopatraAvailable() || !QRegularExpression("^[0-9A-F]{40}$").match(fingerprint).hasMatch()) {
+        m_error = i18n("Kleopatra is not installed.");
+        Q_EMIT changed();
+        return;
+    }
+    QProcess::startDetached("kleopatra", {"--query", fingerprint});
 }
 void CertificateManager::unregisterModule(const QString &database)
 {
