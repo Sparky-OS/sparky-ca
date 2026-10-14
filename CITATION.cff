@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "sparky-ca: install the CA certificates PJeOffice needs"
+abstract: "A graphical tool that downloads and installs the CA certificates required by PJeOffice, the Brazilian electronic judicial system (ICP-Brasil). A fork of Paweł Pijanowski's SparkyLinux tool, sparky-ca."
+authors:
+  - family-names: "Pijanowski"
+    given-names: "Paweł"
+  - family-names: "Ramos"
+    given-names: "Daniel Campos"
+    orcid: "https://orcid.org/0009-0001-4546-8673"
+license: GPL-3.0-or-later
+doi: "10.5281/zenodo.23309048"
+repository-code: "https://github.com/Sparky-OS/sparky-ca"
+keywords:
+  - "CA certificates"
+  - "ICP-Brasil"
+  - "PJeOffice"
+  - "SparkyLinux"
+  - "Debian"
+  - "Bash"
