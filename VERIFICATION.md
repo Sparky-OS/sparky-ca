@@ -1,5 +1,29 @@
 # Verification record
 
+## 2.0.2: quiet browser-lock deferrals
+
+Automatic updates ignore browser profiles without selected groups before checking their browser locks.
+Selected locked profiles remain untouched and appear in the status report's `deferred` list and journal at info priority.
+The notification threshold and actionable notice handling are unchanged.
+No browser lock is removed, including one whose target process no longer exists.
+
+Tests ran in an isolated Debian testing container as UID 1000 with four CPUs.
+`tests/browser-locks.py` runs five tests, including active and stale lock subcases and repeated runs.
+It checks no manifest, an empty selection, byte-identical NSS files and lock targets, malformed manifests and refresh errors.
+`tests/notify-check.cpp` passes 23 checks through a fixture D-Bus notification receiver.
+Deferrals stay silent while update failures, catalogue failures, store errors, new choices, revocations and legacy notices still notify once per run.
+The new browser-lock and notification tests both fail against the unmodified 2.0.1 implementation.
+
+The full default CTest suite passes 13 of 13 with GCC and Clang.
+The optional Ed521 provider remains disabled, as in the shipping package.
+Existing integration checks cover ownership-preserving operations, signed revocation, refresh failures, GnuPG trust confirmation, token fixtures and Okular PDF signing.
+Translation extraction still finds the same 275 messages; the existing translated lock message is reused.
+
+The initial test container lacked a D-Bus user entry, the smart-card daemon and PDF runtime tools, and its fixture path exceeded GnuPG's Unix-socket path limit.
+Those environment gaps were corrected; the corresponding unmodified 2.0.1 controls also pass in the completed environment.
+No host profile, certificate store or desktop was used.
+Real browser sessions and timer execution under a running systemd were not observed.
+
 ## 2.0.1: Kleopatra's gpgsm instead of KIO
 
 Daniel asked for the integration with Kleopatra, not KIO's certificate manager.

@@ -1,4 +1,4 @@
-.TH SPARKY-CA 1 "2026-10-14" "sparky-ca 2.0.1" "Sparky CA"
+.TH SPARKY-CA 1 "2026-10-19" "sparky-ca 2.0.2" "Sparky CA"
 .SH NAME
 sparky-ca \- manage Brazilian CA certificates, browser trust and personal certificates
 .SH SYNOPSIS
@@ -93,6 +93,10 @@ For \fBauto run\fR: run although the switch is off.
 Installing is always your own act.
 After you choose groups, a daily timer fetches ITI's bundle, asks each authority's signed CRL about every valid intermediate, adds renewed intermediates of your groups and removes certificates that expired or were revoked.
 It never chooses a group, adds a root or installs an E-521 certificate.
+Browser profiles without selected groups are ignored.
+Selected profiles with browser locks are left untouched and retried on a later run, without a desktop notification.
+These deferrals remain visible in \fBauto status --scope user\fR and the user service journal.
+Sparky CA never removes browser locks.
 .PP
 The switch is the file \fI/etc/sparky-ca/auto-update.disabled\fR for the machine, or \fI~/.config/sparky-ca/auto-update.disabled\fR for you.
 The result is in \fI/var/lib/sparky-ca/status.json\fR and in the journal of \fBsparky-ca-update.service\fR.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
+  Version 2.0.2 (2026-10-19)
+-------------------------------------------------------------------------------
+  * Ignored browser profiles without explicitly selected certificate groups
+  * Kept locked selected profiles safely deferred in status and the journal without repeated desktop alerts
+  * Preserved notifications for update failures, certificate changes and new choices
+
+-------------------------------------------------------------------------------
   Version 2.0.1 (2026-10-14)
 -------------------------------------------------------------------------------
   * Removed the integration with KIO's certificate manager and the dependency on a patched KIO

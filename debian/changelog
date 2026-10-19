@@ -1,3 +1,12 @@
+sparky-ca (2.0.2) forky; urgency=medium
+
+  * Ignore browser profiles without explicitly selected certificate groups
+  * Defer locked selected profiles without desktop alerts, retaining their
+    status and informational journal messages without touching browser locks
+  * Keep actionable update notifications and add browser-lock regression tests
+
+ -- Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>  Mon, 19 Oct 2026 22:03:00 +0000
+
 sparky-ca (2.0.1) forky; urgency=medium
 
   * Remove the integration with KIO's certificate manager and the dependency

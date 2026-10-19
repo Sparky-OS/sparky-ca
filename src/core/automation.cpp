@@ -128,6 +128,7 @@ QString journalLines(const QJsonObject &report)
         if (store.value("needsChoice").toInt() > 0) lines << "5 " + i18np("%2: one new E-521 certificate needs your choice and was not installed.", "%2: %1 new E-521 certificates need your choice and were not installed.", store.value("needsChoice").toInt(), label);
         for (const auto &error : store.value("errors").toArray()) lines << "4 " + i18n("%1: %2", label, error.toString());
     }
+    for (const auto &deferred : report.value("deferred").toArray()) lines << "6 " + deferred.toString();
     for (const auto &notice : report.value("notices").toArray()) lines << "4 " + notice.toString();
     if (lines.isEmpty()) lines << "6 " + i18n("Nothing to do.");
     return lines.join('\n');
@@ -138,7 +139,7 @@ QJsonObject runAutomation(const AutomationOptions &options)
     QJsonObject report{{"schema", 1}, {"scope", options.scope}, {"time", now.toString(Qt::ISODate)}, {"runId", QString::number(now.toMSecsSinceEpoch())}};
     const QString statusPath = automationStatusPath(options);
     const QJsonObject previousStatus = readState(statusPath);
-    QJsonArray notices, stores;
+    QJsonArray notices, stores, deferred;
     try {
         if (!QDir().mkpath(QFileInfo(statusPath).absolutePath())) fail(i18n("Cannot create the state folder."));
         QLockFile lock(QFileInfo(statusPath).absolutePath() + "/.sparky-ca-auto.lock");
@@ -202,12 +203,12 @@ QJsonObject runAutomation(const AutomationOptions &options)
             stores.append(reported(store.refresh(catalogue)));
         } else {
             for (const auto &database : options.nssDatabases) {
-                if (QFileInfo(database + "/lock").isSymLink()) {
-                    notices.append(i18n("%1 is in use by a browser; it will be updated on a later run.", database));
-                    continue;
-                }
                 Store store({}, {}, database);
                 if (store.selectedGroups().isEmpty()) continue;
+                if (QFileInfo(database + "/lock").isSymLink()) {
+                    deferred.append(i18n("%1 is in use by a browser; it will be updated on a later run.", database));
+                    continue;
+                }
                 stores.append(reported(store.refresh(catalogue)));
             }
         }
@@ -217,6 +218,7 @@ QJsonObject runAutomation(const AutomationOptions &options)
         report.insert("lastRefresh", previousStatus.value("lastRefresh"));
     }
     report.insert("stores", stores);
+    report.insert("deferred", deferred);
     report.insert("notices", notices);
     bool attention = !report.value("error").toString().isEmpty() || !notices.isEmpty() || !report.value("catalogue").toObject().value("error").toString().isEmpty();
     for (const auto &item : stores) {

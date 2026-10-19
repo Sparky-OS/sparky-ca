@@ -124,7 +124,10 @@ That list is written only by `install` and `remove`, so the timer cannot choose 
 Reconciling a store installs the owned groups' valid, eligible entries that are not yet owned, then drops owned entries that are no longer valid.
 Ed521 entries are counted and reported as needing the user's choice, never installed.
 The updater runs only when something changed.
-A browser profile with a `lock` link is skipped and reported.
+Browser profiles without selected groups are ignored before checking their locks.
+A selected profile with a `lock` link is left untouched, including stale links.
+The status report lists these routine deferrals in `deferred`, separately from actionable `notices`.
+They use journal info priority and do not trigger a desktop notification.
 
 The machine state is the folder `/var/lib/sparky-ca`, owned by root and not writable by others.
 `catalogue.json` is the refreshed catalogue.

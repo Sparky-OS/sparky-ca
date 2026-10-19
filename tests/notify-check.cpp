@@ -103,6 +103,41 @@ int main(int argc, char **argv)
     require(receiver.bodies.last().contains("AC_Old_G6.crt") && receiver.bodies.last().contains("expired"), "the message names the certificate and why it was removed");
     publish(systemStatus, report("system", "1002", {added}, {}), QFile::ReadOwner | QFile::WriteOwner | QFile::WriteOther);
     require(notify() == 0 && receiver.titles.size() == 2, "a world-writable status file is ignored");
+    auto deferred = report("user", "2001", {}, {});
+    deferred.insert("deferred", QJsonArray{"Fixture profile is in use by a browser; it will be updated on a later run."});
+    publish(userStatus, deferred);
+    require(SparkyCA::journalLines(deferred).startsWith("6 Fixture profile"), "a deferred browser profile remains visible at journal info priority");
+    require(notify() == 0 && receiver.titles.size() == 2, "a deferred browser profile sends no notification");
+    deferred.insert("runId", "2002");
+    publish(userStatus, deferred);
+    require(notify() == 0 && receiver.titles.size() == 2, "a repeated deferred browser profile stays silent");
+    const auto actionable = [&](QJsonObject status, const QString &text) {
+        status.insert("deferred", deferred.value("deferred"));
+        const int before = receiver.titles.size();
+        publish(userStatus, status);
+        require(notify() == 0 && receiver.titles.size() == before + 1 && receiver.bodies.last().contains(text)
+                    && !receiver.bodies.last().contains("Fixture profile"),
+                "an actionable update still notifies beside a deferred profile: " + text);
+        require(notify() == 0 && receiver.titles.size() == before + 1, "the actionable run is reported only once");
+    };
+    auto failed = report("user", "2003", {}, {});
+    failed.insert("error", "Fixture update failure");
+    actionable(failed, "Fixture update failure");
+    auto refreshFailed = report("user", "2004", {}, {});
+    refreshFailed.insert("catalogue", QJsonObject{{"error", "Fixture refresh failure"}});
+    actionable(refreshFailed, "Fixture refresh failure");
+    auto storeFailed = report("user", "2005", {}, {});
+    storeFailed.insert("stores", QJsonArray{QJsonObject{{"store", "fixture"}, {"errors", QJsonArray{"Fixture store failure"}}}});
+    actionable(storeFailed, "Fixture store failure");
+    auto choice = report("user", "2006", {}, {});
+    choice.insert("stores", QJsonArray{QJsonObject{{"store", "fixture"}, {"needsChoice", 1}}});
+    actionable(choice, "needs your choice");
+    auto revoked = removed;
+    revoked.insert("reason", "revoked");
+    actionable(report("user", "2007", {}, {revoked}), "revoked");
+    auto notice = report("user", "2008", {}, {});
+    notice.insert("notices", QJsonArray{"Fixture legacy attention notice"});
+    actionable(notice, "Fixture legacy attention notice");
     QTextStream(stdout) << checks << " notification checks passed\n";
     return 0;
 }

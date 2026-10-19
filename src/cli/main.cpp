@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 {
     QCoreApplication application(argc, argv);
     application.setApplicationName("sparky-ca");
-    application.setApplicationVersion("2.0.1");
+    application.setApplicationVersion("2.0.2");
     KLocalizedString::setApplicationDomain("sparky-ca");
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("Manage Brazilian CA certificates and browser trust."));

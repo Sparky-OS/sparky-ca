@@ -38,7 +38,7 @@ The version 1 shell script and its placeholder locales are retired; git history 
 
 ## Package
 
-`debian/` builds `sparky-ca_2.0.1_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
+`debian/` builds `sparky-ca_2.0.2_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
 It needs only stock Debian KDE Frameworks, so it installs on every SparkyLinux edition; `gpgsm` and Kleopatra are recommended and suggested, not required.
 The package enables the machine timer and the user timer and path unit when it is installed.
 It never starts the update service on install or upgrade, and it never touches the switch files.
@@ -94,7 +94,10 @@ A catalogue that has not refreshed for seven days is reported.
 Two timers do the work.
 `sparky-ca-update.timer` runs as root and updates the system store and the shared catalogue.
 `sparky-ca-user-update.timer` runs in your session and updates the browser databases you chose, then sends the notification.
-A browser profile that is open is skipped and tried again on the next run.
+Only browser profiles with explicitly selected groups are considered.
+A profile with a browser lock is left untouched and tried again on the next run.
+This routine deferral appears in `sparky-ca auto status --scope user` and the user service journal, without a desktop notification.
+A stale lock is treated conservatively too; Sparky CA never removes browser locks.
 
 Turn it off in the application (**Keep Chosen Groups Current**), or from a terminal:
 
