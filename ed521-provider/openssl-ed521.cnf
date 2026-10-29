@@ -1,0 +1,21 @@
+# OpenSSL's system configuration with the Ed521 verification provider.
+#
+# libcrypto reads /usr/lib/ssl/openssl.cnf, which Debian's openssl package
+# ships as a link to /etc/ssl/openssl.cnf.  The package openssl-provider-ed521
+# diverts that link to /usr/lib/ssl/openssl.cnf.distrib and points the path at
+# this file, after checking that it works; removing the package puts Debian's
+# link back.  Your settings stay in /etc/ssl/openssl.cnf, which is read first.
+.include /etc/ssl/openssl.cnf
+
+# Add the provider to the list Debian's file names in [openssl_init].
+[provider_sect]
+ed521 = ed521_sect
+
+# Activating any provider switches off the implicit default provider
+# (config(5), "Default provider and its activation"), so it is named too.
+[default_sect]
+activate = 1
+
+# The module is ed521.so in OpenSSL's module directory, found by the name.
+[ed521_sect]
+activate = 1
