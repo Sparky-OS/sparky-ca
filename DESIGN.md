@@ -27,7 +27,7 @@ The authorized v7 exception uses its exact SHA-256 pin.
 A direct E-521 descendant must match v7's issuer name and authority key identifier, use the E-521 signature OID, and match exact certificate bytes from a package-approved SHA-512 bundle.
 Embedded bundle provenance allows that check to be repeated on catalogue load.
 Its evidence is labelled `transport-integrity-only`, never `signature-verified`.
-The explanation states that Linux's crypto libraries cannot use E-521 yet and programs need their own implementation.
+The explanation states that the computer's crypto libraries cannot use E-521 and programs need their own implementation; with openssl-provider-ed521 installed, the pinned v7 self-signature verifies and these entries are signature-verified like any other.
 Installation requires `--allow-e521`.
 The current and historical snapshots contain zero such descendants.
 A future E-521 source digest requires a reviewed package update; a supplied offline hash cannot authorize it.
@@ -90,7 +90,8 @@ Notifications follow completed trust changes and the explicit expiry check.
 Automatic refresh notifications belong to the later timer milestone.
 
 NSS/Okular and gpgsm retain their measured algorithm boundaries.
-The OpenSSL provider can verify Ed521 in the core; it does not make NSS import that key.
+The OpenSSL provider verifies Ed521 in the core and, installed as openssl-provider-ed521, in every program that reads OpenSSL's system configuration; it does not make NSS import that key.
+The certificates page probes OpenSSL, NSS (certutil) and gpgsm with ITI's v7 root, says what validates v7 where, and shows nothing once all of them do; closing it hides it until that changes.
 Public file previews and CA listings are general PKI operations.
 ICP-Brasil is the shipped catalogue, and further pinned catalogues require review.
 
@@ -122,7 +123,7 @@ The user scope uses the system scope's results, never the network, and reconcile
 The selection is the `groups` list in each store's `.sparky-ca.json`.
 That list is written only by `install` and `remove`, so the timer cannot choose a group.
 Reconciling a store installs the owned groups' valid, eligible entries that are not yet owned, then drops owned entries that are no longer valid.
-Ed521 entries are counted and reported as needing the user's choice, never installed.
+Without the Ed521 provider, Ed521 entries are counted and reported as needing the user's choice, never installed; with it they are verified entries like any other.
 The updater runs only when something changed.
 Browser profiles without selected groups are ignored before checking their locks.
 A selected profile with a `lock` link is left untouched, including stale links.
@@ -145,7 +146,7 @@ Plain HTTP is allowed for the CRL fetch only, because the object is signed; TLS 
 A CRL is accepted when its issuer name equals the catalogue issuer's subject, its signature verifies with that issuer's key, it is complete (no indirect, partial or user-only scope) and `thisUpdate` and `nextUpdate` surround now.
 A revocation is permanent: a failed fetch never turns a known revoked certificate good.
 A good answer lasts until the next update of the CRL that gave it.
-An Ed521 issuer's CRL cannot be verified on Linux, so those certificates stay unknown.
+An Ed521 issuer's CRL is verified only with the Ed521 provider; without it those certificates stay unknown.
 Unknown never removes a certificate.
 
 ### Reporting
@@ -168,7 +169,8 @@ The package is a native Debian source package: `debian/` sits beside the code an
 The package needs only stock Debian KDE Frameworks, so it installs on every SparkyLinux edition.
 Runtime packages the Kirigami application and the System Settings module need are listed as dependencies, because a missing QML module fails only when the window opens.
 OpenSC, p11-kit, pcscd, libccid and gpgsm are recommended, and Kleopatra suggested, because a user without a token or Kleopatra needs none of them.
-The Ed521 provider is not built into the package: it is opt-in, public-only and unaudited.
+The Ed521 provider ships as its own package, openssl-provider-ed521, which sparky-ca recommends; it verifies only and has not been independently audited.
+Debian's openssl has no configuration directory, so the package diverts the link /usr/lib/ssl/openssl.cnf to a file that includes /etc/ssl/openssl.cnf and then adds the provider, only after a self-test; removing it restores the link.
 `dh_installsystemd` is told to handle only the timer, so installing never runs the update service.
 The postinst enables the machine timer and, for every user, the user timer and path unit; the switch files are never touched.
 The message catalogues come from `po/LINGUAS`; the desktop entries and AppStream metadata come from the same files through `msgfmt`.

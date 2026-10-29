@@ -1,5 +1,19 @@
 # Verification record
 
+## 2.0.3: Ed521 for everyone, and an accurate message
+
+The provider and its package were tested in isolated Debian testing containers (OpenSSL 3.6.5), the package as root in a throwaway container only.
+`ed521-provider/tests/spec.py` checks the independent Python reference against all eleven Ed448 and Ed448ph vectors of RFC 8032 sections 7.4 and 7.5, the E-521 parameters of DOC-ICP-01.01 v6.0 and ITI's v7 self-signature and CRL.
+`vectors.py` runs the provider against both real v7 signatures, 264 single-bit signature mutations and 39 vectors, including wrong domain strings, the 66-octet challenge of the Go interop bug, S + L, malformed points and weak keys.
+Ten deliberately broken builds of the provider (wrong domain, no domain, 66-octet challenge, no range check on S, no subgroup check, identity key, negative zero, y >= p, cofactored check, wrong d) each fail these tests.
+`safety.py` compares OpenSSL's complete algorithm inventory with and without the shipped configuration: the only additions are the Ed521 key manager, signature and decoder, and every private-key operation is refused.
+`unchanged.py` gives the same results for 404 of 413 certificate, CMS, digest, TLS and listing operations with and without it; the other nine are lines naming Ed521 and ITI's v7 root, which verifies only with Ed521.
+`chain.py` validates v7, its CRL and a TEST hierarchy (strict chain, CRL, CMS SignedData, TLS 1.2 and 1.3 through s_client, Python and curl), each failing with the default provider alone.
+Installing sparky-ca with its recommends brings openssl-provider-ed521; v7 then validates with no OPENSSL_CONF, and removing or purging the package restores the diversion list, the link and every operation exactly.
+A FIPS configuration, an administrator's switch-off and a missing module were tested too.
+`tests/ed521-message.py` checks the certificates page message in every state and in the nine languages, and in the KCM loaded from the installed package.
+No real private key, host store, browser profile or desktop session was used.
+
 ## 2.0.2: quiet browser-lock deferrals
 
 Automatic updates ignore browser profiles without selected groups before checking their browser locks.

@@ -1,3 +1,20 @@
+sparky-ca (2.0.3) forky; urgency=medium
+
+  * New binary package openssl-provider-ed521: the Ed521 verification
+    provider, added to OpenSSL's system configuration beside the default
+    provider after a self-test, through a diversion of /usr/lib/ssl/openssl.cnf;
+    removing it restores Debian's configuration
+  * Ed521 provider 0.2.0: projective arithmetic, cheap key decoding, the
+    subgroup check at verification, and tests against RFC 8032, ITI's v7
+    root and CRL and the unchanged default provider
+  * Certificates page: the Ed521 message says what validates v7 and what not
+    yet, can be closed, disappears when nothing is missing, and is
+    translated into the edition's nine languages
+  * sparky-ca recommends openssl-provider-ed521
+  * Build-depend on cmake and ninja-build
+
+ -- Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>  Thu, 29 Oct 2026 21:00:00 +0000
+
 sparky-ca (2.0.2) forky; urgency=medium
 
   * Ignore browser profiles without explicitly selected certificate groups

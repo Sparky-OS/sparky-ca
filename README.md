@@ -38,7 +38,7 @@ The version 1 shell script and its placeholder locales are retired; git history 
 
 ## Package
 
-`debian/` builds `sparky-ca_2.0.2_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
+`debian/` builds `sparky-ca_2.0.3_amd64.deb` and `openssl-provider-ed521_2.0.3_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
 It needs only stock Debian KDE Frameworks, so it installs on every SparkyLinux edition; `gpgsm` and Kleopatra are recommended and suggested, not required.
 The package enables the machine timer and the user timer and path unit when it is installed.
 It never starts the update service on install or upgrade, and it never touches the switch files.
@@ -74,7 +74,8 @@ Preview does not establish trust or a revocation result.
 
 Installing is always your own act.
 Once you have chosen groups, a daily timer keeps those groups current.
-It never chooses a group, never adds a root and never installs an Ed521 certificate for you.
+It never chooses a group and never adds a root.
+Without the Ed521 provider it never installs an Ed521 certificate for you; with it, Ed521 certificates of the groups you chose are verified and kept like any other.
 
 Each run does four things.
 It fetches ITI's bundle over verified HTTPS and checks ITI's SHA-512 and every chain against the pinned roots.
@@ -157,22 +158,21 @@ Kleopatra uses GnuPG's OpenPGP/S/MIME and smart-card interfaces, rather than bro
 
 ## Ed521 and store boundaries
 
-`-DBUILD_ED521_PROVIDER=ON` builds the optional public-verification prototype following Pedro F.
-Albanese's e521 reference.
-Read [its README](ed521-provider/README.md) for licensing, configuration and limitations.
-Native v7 handling is enabled only after the provider verifies the exact pinned ITI v7 self-signature.
-The default build leaves this unaudited prototype disabled.
-It cannot sign.
+ICP-Brasil's root v7 signs with Ed521 (EdDSA over E-521), which OpenSSL, NSS, GnuPG and GnuTLS do not implement.
+The package `openssl-provider-ed521`, built from this source and recommended by `sparky-ca`, adds a verification-only provider following Pedro F.
+Albanese's e521 reference to OpenSSL's system configuration, beside the default provider.
+`openssl verify`, curl, Python's `ssl`, Qt and the other programs that read the system configuration then validate v7 certificates, CRLs and CMS signatures, and Sparky CA treats v7 as signature-verified.
+It cannot generate keys or sign, and every other algorithm stays with the providers that answered it before.
+Read [its README](ed521-provider/README.md) and the package's `README.Debian` for how it is configured and removed.
 
 **An OpenSSL provider does not add an algorithm to NSS or GnuPG.** NSS 3.130 rejects Ed521/v7 and Ed448/v6 key types.
 Browser group installations exclude these entries while keeping them listed.
 Gpgsm rejects Ed521 self-signatures, so the import excludes Ed521 certificates.
-CLI/OpenSSL Ed521 chain verification works with the configured provider.
-Okular cannot validate an Ed521 chain until NSS supports it or Poppler gains a provider-backed backend.
-Neither route has been implemented.
+Okular cannot validate an Ed521 chain until NSS supports it or Poppler gains a backend that can.
+The certificates page says which of them validates v7 on this computer and which does not yet; the message can be closed, and it disappears once nothing is missing.
 The real ITI archives contain no v7-issued descendant certificate; the tested descendants are synthetic.
 
-Intermediate revocation is checked against the issuing CA's signed CRL (see [Keeping certificates current](#keeping-certificates-current)); an Ed521 issuer's CRL cannot be verified on Linux and stays unknown.
+Intermediate revocation is checked against the issuing CA's signed CRL (see [Keeping certificates current](#keeping-certificates-current)); an Ed521 issuer's CRL is verified only with the Ed521 provider and otherwise stays unknown.
 Two historical MRE entries fail OpenSSL's current explicit-ECC policy, and four optional historical VALID entries have missing issuers.
 Their archive records and exclusions remain visible in the source index.
 See [VERIFICATION.md](VERIFICATION.md) for measured results and limits.
@@ -181,7 +181,7 @@ See [VERIFICATION.md](VERIFICATION.md) for measured results and limits.
 
 Sparky CA is GPL-3.0-or-later, without warranty.
 Paweł "pavroo" Pijanowski is the original author (2018); Daniel Campos Ramos contributed in 2020 and 2026.
-The separate ISC Ed521 prototype follows Pedro F.
+The separate ISC Ed521 provider follows Pedro F.
 Albanese's work.
 KDE/Qt, OpenSSL, NSS, ITI, Poppler/Okular, GnuPG, p11-kit and OpenSC supply the interfaces and data used here.
 Upstream contributions are prepared, not yet published.

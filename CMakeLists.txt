@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 cmake_minimum_required(VERSION 3.25)
-project(sparky-ca VERSION 2.0.2 LANGUAGES CXX)
+project(sparky-ca VERSION 2.0.3 LANGUAGES CXX)
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX /usr CACHE PATH "Install prefix" FORCE)
 endif()

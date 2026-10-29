@@ -1,4 +1,13 @@
 -------------------------------------------------------------------------------
+  Version 2.0.3 (2026-10-29)
+-------------------------------------------------------------------------------
+  * Added openssl-provider-ed521: Ed521 verification configured in OpenSSL system-wide beside the default provider, so ICP-Brasil v7 validates out of the box
+  * Made the Ed521 provider faster and stricter: projective arithmetic, cheap key decoding, the subgroup check at verification
+  * Added tests against RFC 8032, ITI's v7 root and CRL, wrong domains, the truncated hash and malformed points, and proof that nothing else in OpenSSL changes
+  * Made the Ed521 message on the certificates page accurate, closable and gone when nothing is missing, in nine languages
+  * Added the missing cmake and ninja-build build dependencies
+
+-------------------------------------------------------------------------------
   Version 2.0.2 (2026-10-19)
 -------------------------------------------------------------------------------
   * Ignored browser profiles without explicitly selected certificate groups
