@@ -45,7 +45,7 @@ with tempfile.TemporaryDirectory(prefix='sparky-ca-provider-') as temporary:
 
     records = json.loads(run(['--data', source / 'data', 'list']).stdout)
     v7 = next(item for item in records if item['sha256'] == '5657e70580eb678983f3ed7dfce091d84cae6549389a47fccda8d0e4dc2cf576')
-    check(len(records) == 331 and v7['installable'] and not v7['requiresChoice'] and v7['note'] == '',
+    check(len(records) == len(json.loads((source / 'data/catalogue.json').read_text())['certificates']) and v7['installable'] and not v7['requiresChoice'] and v7['note'] == '',
           'real v7 signature capability clears only its unsupported marker in the complete catalogue')
     plain = json.loads(run(['--data', source / 'data', 'list'], configured=False).stdout)
     check(next(item for item in plain if item['sha256'] == v7['sha256'])['requiresChoice'],
