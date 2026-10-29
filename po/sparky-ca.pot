@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sparky-ca 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 20:46+0000\n"
+"POT-Creation-Date: 2026-10-29 20:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,53 +46,45 @@ msgstr ""
 msgid "Keep Chosen Groups Current"
 msgstr ""
 
-#: qml/CertificatePage.qml:62
-msgid ""
-"ICP-Brasil v7 (Ed521) validates through the command line when the Ed521 "
-"OpenSSL provider is configured. Okular and NSS browsers cannot validate v7 "
-"until their certificate backend supports Ed521. RSA and ECDSA signing remain "
-"available."
-msgstr ""
-
-#: qml/CertificatePage.qml:69
+#: qml/CertificatePage.qml:79
 msgid "Store:"
 msgstr ""
 
-#: qml/CertificatePage.qml:73
+#: qml/CertificatePage.qml:83
 msgid "Certificate catalogue"
 msgstr ""
 
-#: qml/CertificatePage.qml:73
+#: qml/CertificatePage.qml:83
 msgid "GnuPG S/MIME (Kleopatra)"
 msgstr ""
 
-#: qml/CertificatePage.qml:73
+#: qml/CertificatePage.qml:83
 msgid "System trust"
 msgstr ""
 
-#: qml/CertificatePage.qml:77
+#: qml/CertificatePage.qml:87
 msgid "Search name, issuer or fingerprint"
 msgstr ""
 
-#: qml/CertificatePage.qml:84
+#: qml/CertificatePage.qml:94
 msgid "Install Group…"
 msgstr ""
 
-#: qml/CertificatePage.qml:85
+#: qml/CertificatePage.qml:95
 msgid "Remove Group…"
 msgstr ""
 
-#: qml/CertificatePage.qml:86
+#: qml/CertificatePage.qml:96
 msgid "Kleopatra…"
 msgstr ""
 
-#: qml/CertificatePage.qml:88
+#: qml/CertificatePage.qml:98
 msgid "One certificate"
 msgid_plural "%1 certificates"
 msgstr[0] ""
 msgstr[1] ""
 
-#: qml/CertificatePage.qml:114
+#: qml/CertificatePage.qml:124
 msgid ""
 "SHA-256: %1\n"
 "Issuer: %2\n"
@@ -100,133 +92,133 @@ msgid ""
 "%4"
 msgstr ""
 
-#: qml/CertificatePage.qml:120
+#: qml/CertificatePage.qml:130
 msgid "Open in Kleopatra"
 msgstr ""
 
-#: qml/CertificatePage.qml:125
+#: qml/CertificatePage.qml:135
 msgid "Detect Tokens"
 msgstr ""
 
-#: qml/CertificatePage.qml:126
+#: qml/CertificatePage.qml:136
 msgid "Register Token Module…"
 msgstr ""
 
-#: qml/CertificatePage.qml:127
+#: qml/CertificatePage.qml:137
 msgid ""
 "A3 PINs are not stored. Install vendor middleware locally through APTus when "
 "required."
 msgstr ""
 
-#: qml/CertificatePage.qml:131
+#: qml/CertificatePage.qml:141
 msgid "Within validity dates"
 msgstr ""
 
-#: qml/CertificatePage.qml:132
+#: qml/CertificatePage.qml:142
 msgid "Expired"
 msgstr ""
 
-#: qml/CertificatePage.qml:133
+#: qml/CertificatePage.qml:143
 msgid "Revoked"
 msgstr ""
 
-#: qml/CertificatePage.qml:134
+#: qml/CertificatePage.qml:144
 msgid "Not yet valid"
 msgstr ""
 
-#: qml/CertificatePage.qml:135
+#: qml/CertificatePage.qml:145
 msgid "Trusted: you confirmed it"
 msgstr ""
 
-#: qml/CertificatePage.qml:136
+#: qml/CertificatePage.qml:146
 msgid "Imported, not trusted yet"
 msgstr ""
 
-#: qml/CertificatePage.qml:137
+#: qml/CertificatePage.qml:147
 msgid "Trusted through its root"
 msgstr ""
 
-#: qml/CertificatePage.qml:138
+#: qml/CertificatePage.qml:148
 msgid "Invalid"
 msgstr ""
 
-#: qml/CertificatePage.qml:143
+#: qml/CertificatePage.qml:153
 msgid "Install chosen group"
 msgstr ""
 
-#: qml/CertificatePage.qml:143
+#: qml/CertificatePage.qml:153
 msgid "Remove chosen group"
 msgstr ""
 
-#: qml/CertificatePage.qml:149
+#: qml/CertificatePage.qml:159
 msgid "Group: %1"
 msgstr ""
 
-#: qml/CertificatePage.qml:150
+#: qml/CertificatePage.qml:160
 msgid "Close this browser before changing its NSS database."
 msgstr ""
 
-#: qml/CertificatePage.qml:150
+#: qml/CertificatePage.qml:160
 msgid ""
 "This changes system trust and requests administrator authorization. Expired "
 "and revoked catalogue entries are excluded."
 msgstr ""
 
-#: qml/CertificatePage.qml:151
+#: qml/CertificatePage.qml:161
 msgid "Choose Ed521 certificates when native chain verification is unavailable"
 msgstr ""
 
-#: qml/CertificatePage.qml:152 qml/CertificatePage.qml:168
-#: qml/CertificatePage.qml:205
+#: qml/CertificatePage.qml:162 qml/CertificatePage.qml:178
+#: qml/CertificatePage.qml:215
 msgid "NSS database password"
 msgstr ""
 
-#: qml/CertificatePage.qml:157
+#: qml/CertificatePage.qml:167
 msgid "Preview or import personal certificate"
 msgstr ""
 
-#: qml/CertificatePage.qml:163
+#: qml/CertificatePage.qml:173
 msgid "PKCS#12 passphrase (for .p12 or .pfx)"
 msgstr ""
 
-#: qml/CertificatePage.qml:164
+#: qml/CertificatePage.qml:174
 msgid "Preview"
 msgstr ""
 
-#: qml/CertificatePage.qml:167
+#: qml/CertificatePage.qml:177
 msgid ""
 "Okular can sign with a supported identity from this NSS directory. Browser "
 "TLS trust does not grant PDF certificate trust; that requires a separate S/"
 "MIME trust decision in NSS."
 msgstr ""
 
-#: qml/CertificatePage.qml:169
+#: qml/CertificatePage.qml:179
 msgid "Save A1 and NSS passwords in KDE Wallet"
 msgstr ""
 
-#: qml/CertificatePage.qml:170
+#: qml/CertificatePage.qml:180
 msgid ""
 "Close the browser before import. Private keys remain in its NSS database. A3 "
 "PINs are never saved here."
 msgstr ""
 
-#: qml/CertificatePage.qml:172
+#: qml/CertificatePage.qml:182
 msgid "Import A1"
 msgstr ""
 
-#: qml/CertificatePage.qml:173
+#: qml/CertificatePage.qml:183
 msgid "Read from Wallet"
 msgstr ""
 
-#: qml/CertificatePage.qml:174
+#: qml/CertificatePage.qml:184
 msgid "Forget Saved Passwords"
 msgstr ""
 
-#: qml/CertificatePage.qml:181
+#: qml/CertificatePage.qml:191
 msgid "Kleopatra / GnuPG S/MIME"
 msgstr ""
 
-#: qml/CertificatePage.qml:186
+#: qml/CertificatePage.qml:196
 msgid ""
 "Import the chosen group's certificates, with the chain up to their roots, "
 "into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by "
@@ -234,41 +226,41 @@ msgid ""
 "asks. Ed521 certificates are not imported because gpgsm cannot validate them."
 msgstr ""
 
-#: qml/CertificatePage.qml:187
+#: qml/CertificatePage.qml:197
 msgid "Import Chosen Group"
 msgstr ""
 
-#: qml/CertificatePage.qml:188
+#: qml/CertificatePage.qml:198
 msgid "Show What Was Imported"
 msgstr ""
 
-#: qml/CertificatePage.qml:189
+#: qml/CertificatePage.qml:199
 msgid "Ask gpgsm About Imported Roots"
 msgstr ""
 
-#: qml/CertificatePage.qml:190
+#: qml/CertificatePage.qml:200
 msgid "Remove What We Imported"
 msgstr ""
 
-#: qml/CertificatePage.qml:195
+#: qml/CertificatePage.qml:205
 msgid "Register a PKCS#11 module"
 msgstr ""
 
-#: qml/CertificatePage.qml:201
+#: qml/CertificatePage.qml:211
 msgid ""
 "Close the browser first. Choose the installed p11-kit proxy to expose "
 "configured token modules. Loading a module runs its code as your user."
 msgstr ""
 
-#: qml/CertificatePage.qml:203
+#: qml/CertificatePage.qml:213
 msgid "Absolute path to p11-kit-proxy.so"
 msgstr ""
 
-#: qml/CertificatePage.qml:204
+#: qml/CertificatePage.qml:214
 msgid "Inspect This Module"
 msgstr ""
 
-#: qml/CertificatePage.qml:206
+#: qml/CertificatePage.qml:216
 msgid "Remove Our Module Registration"
 msgstr ""
 
@@ -534,7 +526,7 @@ msgstr ""
 msgid "Specify one root group."
 msgstr ""
 
-#: src/cli/main.cpp:222 src/desktop/manager.cpp:310
+#: src/cli/main.cpp:222 src/desktop/manager.cpp:347
 msgid ""
 "Trust entries that version 2.0.0 added to gpgsm without asking were removed."
 msgstr ""
@@ -545,11 +537,11 @@ msgid ""
 "Kleopatra's Trust Root Certificate, to decide."
 msgstr ""
 
-#: src/cli/main.cpp:228 src/desktop/manager.cpp:327
+#: src/cli/main.cpp:228 src/desktop/manager.cpp:364
 msgid "No imported root is waiting for your confirmation."
 msgstr ""
 
-#: src/cli/main.cpp:235 src/desktop/manager.cpp:333
+#: src/cli/main.cpp:235 src/desktop/manager.cpp:370
 msgid "gpgsm could not check the root."
 msgstr ""
 
@@ -583,7 +575,7 @@ msgid ""
 "sparky-ca auto enable\n"
 msgstr ""
 
-#: src/core/automation.cpp:98 src/core/automation.cpp:143
+#: src/core/automation.cpp:98 src/core/automation.cpp:144
 msgid "Cannot create the state folder."
 msgstr ""
 
@@ -626,24 +618,24 @@ msgstr[1] ""
 msgid "%1: %2"
 msgstr ""
 
-#: src/core/automation.cpp:132
+#: src/core/automation.cpp:133
 msgid "Nothing to do."
 msgstr ""
 
-#: src/core/automation.cpp:146
+#: src/core/automation.cpp:147
 msgid "Another automatic update is running."
 msgstr ""
 
-#: src/core/automation.cpp:184
+#: src/core/automation.cpp:185
 msgid "The catalogue has not been refreshed for %1 days."
 msgstr ""
 
-#: src/core/automation.cpp:185
+#: src/core/automation.cpp:186
 msgid ""
 "The catalogue has never been refreshed from the Internet on this machine."
 msgstr ""
 
-#: src/core/automation.cpp:206
+#: src/core/automation.cpp:209
 msgid "%1 is in use by a browser; it will be updated on a later run."
 msgstr ""
 
@@ -1033,7 +1025,7 @@ msgstr ""
 msgid "Cannot find Sparky CA front end."
 msgstr ""
 
-#: src/desktop/main.cpp:22 src/desktop/manager.cpp:138
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:175
 #: src/desktop/notify.cpp:51
 msgid "Certificates"
 msgstr ""
@@ -1074,107 +1066,107 @@ msgstr ""
 msgid "Local certificate file to preview."
 msgstr ""
 
-#: src/desktop/manager.cpp:41
+#: src/desktop/manager.cpp:78
 msgid "No automatic update has run on this computer yet."
 msgstr ""
 
-#: src/desktop/manager.cpp:46
+#: src/desktop/manager.cpp:83
 msgid "Last automatic update: %1. Everything is current."
 msgstr ""
 
-#: src/desktop/manager.cpp:47
+#: src/desktop/manager.cpp:84
 msgid ""
 "Last automatic update: %1. It needs your attention: see the system journal "
 "or run sparky-ca auto status."
 msgstr ""
 
-#: src/desktop/manager.cpp:77
+#: src/desktop/manager.cpp:114
 msgid "Automatic certificate updates are off."
 msgstr ""
 
-#: src/desktop/manager.cpp:77
+#: src/desktop/manager.cpp:114
 msgid "Your chosen certificate groups will be kept current automatically."
 msgstr ""
 
-#: src/desktop/manager.cpp:93
+#: src/desktop/manager.cpp:130
 msgid "Choose an existing browser profile."
 msgstr ""
 
-#: src/desktop/manager.cpp:113
+#: src/desktop/manager.cpp:150
 msgid ""
 "Ed448 validates through OpenSSL. NSS cannot import this key type, so browser "
 "installations exclude it."
 msgstr ""
 
-#: src/desktop/manager.cpp:196
+#: src/desktop/manager.cpp:233
 msgid "System certificate store updated. Restart applications to reload trust."
 msgstr ""
 
-#: src/desktop/manager.cpp:212
+#: src/desktop/manager.cpp:249
 msgid ""
 "Browser certificate store updated. Ed521 and Ed448 entries stay listed but "
 "are excluded because NSS does not support their key types."
 msgstr ""
 
-#: src/desktop/manager.cpp:224
+#: src/desktop/manager.cpp:261
 msgid "Preview does not establish trust. Revocation status is unknown."
 msgstr ""
 
-#: src/desktop/manager.cpp:237
+#: src/desktop/manager.cpp:274
 msgid "Choose a local PKCS#12 file and browser profile."
 msgstr ""
 
-#: src/desktop/manager.cpp:245
+#: src/desktop/manager.cpp:282
 msgid ""
 "Personal certificate imported. Choose this NSS directory in Okular's PDF "
 "certificate settings."
 msgstr ""
 
-#: src/desktop/manager.cpp:266
+#: src/desktop/manager.cpp:303
 msgid "Saved certificate passwords removed."
 msgstr ""
 
-#: src/desktop/manager.cpp:276
+#: src/desktop/manager.cpp:313
 msgid ""
 "A3 PINs are not saved. Token retry limits and authentication policy apply. "
 "SafeSign or SafeNet middleware, when required, is installed on your machine "
 "through APTus."
 msgstr ""
 
-#: src/desktop/manager.cpp:286
+#: src/desktop/manager.cpp:323
 msgid "PKCS#11 module registered for this browser profile."
 msgstr ""
 
-#: src/desktop/manager.cpp:309
+#: src/desktop/manager.cpp:346
 msgid ""
 "Certificates imported for Kleopatra. They are not trusted until you confirm "
 "each root in Kleopatra or in gpgsm. Ed521 entries stay listed but are not "
 "imported because gpgsm cannot validate them."
 msgstr ""
 
-#: src/desktop/manager.cpp:318
+#: src/desktop/manager.cpp:355
 msgid ""
 "Certificates that Sparky CA imported into gpgsm were removed. Trust you "
 "confirmed yourself stays in gpgsm's trust list until you remove it in "
 "Kleopatra."
 msgstr ""
 
-#: src/desktop/manager.cpp:335
+#: src/desktop/manager.cpp:372
 msgid ""
 "gpgsm asked about each imported root. Your answers are in its trust list."
 msgstr ""
 
-#: src/desktop/manager.cpp:341
+#: src/desktop/manager.cpp:378
 msgid "Kleopatra is not installed."
 msgstr ""
 
-#: src/desktop/manager.cpp:353
+#: src/desktop/manager.cpp:390
 msgid ""
 "Our PKCS#11 module registration was removed. Token certificates remain on "
 "the token."
 msgstr ""
 
-#: src/desktop/manager.cpp:366
+#: src/desktop/manager.cpp:403
 msgid "One listed certificate expires within 30 days or has expired."
 msgid_plural "%1 listed certificates expire within 30 days or have expired."
 msgstr[0] ""

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sparky-ca 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 20:46+0000\n"
+"POT-Creation-Date: 2026-10-29 20:37+0000\n"
 "PO-Revision-Date: 2026-10-14 00:00+0000\n"
 "Last-Translator: Claude Sonnet via Claude Code\n"
 "Language-Team: Portuguese (Brazil); review by Daniel Campos Ramos pending\n"
@@ -43,57 +43,45 @@ msgstr "Verificar validades"
 msgid "Keep Chosen Groups Current"
 msgstr "Manter os grupos escolhidos em dia"
 
-#: qml/CertificatePage.qml:62
-msgid ""
-"ICP-Brasil v7 (Ed521) validates through the command line when the Ed521 "
-"OpenSSL provider is configured. Okular and NSS browsers cannot validate v7 "
-"until their certificate backend supports Ed521. RSA and ECDSA signing remain "
-"available."
-msgstr ""
-"A ICP-Brasil v7 (Ed521) é validada pela linha de comando quando o provedor "
-"OpenSSL Ed521 está configurado. O Okular e os navegadores NSS não validam a "
-"v7 até que o seu motor de certificados suporte Ed521. A assinatura com RSA e "
-"ECDSA continua disponível."
-
-#: qml/CertificatePage.qml:69
+#: qml/CertificatePage.qml:79
 msgid "Store:"
 msgstr "Repositório:"
 
-#: qml/CertificatePage.qml:73
+#: qml/CertificatePage.qml:83
 msgid "Certificate catalogue"
 msgstr "Catálogo de certificados"
 
-#: qml/CertificatePage.qml:73
+#: qml/CertificatePage.qml:83
 msgid "GnuPG S/MIME (Kleopatra)"
 msgstr "S/MIME do GnuPG (Kleopatra)"
 
-#: qml/CertificatePage.qml:73
+#: qml/CertificatePage.qml:83
 msgid "System trust"
 msgstr "Confiança do sistema"
 
-#: qml/CertificatePage.qml:77
+#: qml/CertificatePage.qml:87
 msgid "Search name, issuer or fingerprint"
 msgstr "Buscar por nome, emissor ou impressão digital"
 
-#: qml/CertificatePage.qml:84
+#: qml/CertificatePage.qml:94
 msgid "Install Group…"
 msgstr "Instalar grupo…"
 
-#: qml/CertificatePage.qml:85
+#: qml/CertificatePage.qml:95
 msgid "Remove Group…"
 msgstr "Remover grupo…"
 
-#: qml/CertificatePage.qml:86
+#: qml/CertificatePage.qml:96
 msgid "Kleopatra…"
 msgstr "Kleopatra…"
 
-#: qml/CertificatePage.qml:88
+#: qml/CertificatePage.qml:98
 msgid "One certificate"
 msgid_plural "%1 certificates"
 msgstr[0] "Um certificado"
 msgstr[1] "%1 certificados"
 
-#: qml/CertificatePage.qml:114
+#: qml/CertificatePage.qml:124
 msgid ""
 "SHA-256: %1\n"
 "Issuer: %2\n"
@@ -105,19 +93,19 @@ msgstr ""
 "Expira em: %3\n"
 "%4"
 
-#: qml/CertificatePage.qml:120
+#: qml/CertificatePage.qml:130
 msgid "Open in Kleopatra"
 msgstr "Abrir no Kleopatra"
 
-#: qml/CertificatePage.qml:125
+#: qml/CertificatePage.qml:135
 msgid "Detect Tokens"
 msgstr "Detectar tokens"
 
-#: qml/CertificatePage.qml:126
+#: qml/CertificatePage.qml:136
 msgid "Register Token Module…"
 msgstr "Registrar módulo de token…"
 
-#: qml/CertificatePage.qml:127
+#: qml/CertificatePage.qml:137
 msgid ""
 "A3 PINs are not stored. Install vendor middleware locally through APTus when "
 "required."
@@ -125,55 +113,55 @@ msgstr ""
 "Os PINs A3 não são guardados. Instale o middleware do fabricante no "
 "computador, pelo APTus, quando necessário."
 
-#: qml/CertificatePage.qml:131
+#: qml/CertificatePage.qml:141
 msgid "Within validity dates"
 msgstr "Dentro do prazo de validade"
 
-#: qml/CertificatePage.qml:132
+#: qml/CertificatePage.qml:142
 msgid "Expired"
 msgstr "Expirado"
 
-#: qml/CertificatePage.qml:133
+#: qml/CertificatePage.qml:143
 msgid "Revoked"
 msgstr "Revogado"
 
-#: qml/CertificatePage.qml:134
+#: qml/CertificatePage.qml:144
 msgid "Not yet valid"
 msgstr "Ainda não é válido"
 
-#: qml/CertificatePage.qml:135
+#: qml/CertificatePage.qml:145
 msgid "Trusted: you confirmed it"
 msgstr "Confiável: você confirmou"
 
-#: qml/CertificatePage.qml:136
+#: qml/CertificatePage.qml:146
 msgid "Imported, not trusted yet"
 msgstr "Importado, ainda sem confiança"
 
-#: qml/CertificatePage.qml:137
+#: qml/CertificatePage.qml:147
 msgid "Trusted through its root"
 msgstr "Confiável pela raiz"
 
-#: qml/CertificatePage.qml:138
+#: qml/CertificatePage.qml:148
 msgid "Invalid"
 msgstr "Inválido"
 
-#: qml/CertificatePage.qml:143
+#: qml/CertificatePage.qml:153
 msgid "Install chosen group"
 msgstr "Instalar o grupo escolhido"
 
-#: qml/CertificatePage.qml:143
+#: qml/CertificatePage.qml:153
 msgid "Remove chosen group"
 msgstr "Remover o grupo escolhido"
 
-#: qml/CertificatePage.qml:149
+#: qml/CertificatePage.qml:159
 msgid "Group: %1"
 msgstr "Grupo: %1"
 
-#: qml/CertificatePage.qml:150
+#: qml/CertificatePage.qml:160
 msgid "Close this browser before changing its NSS database."
 msgstr "Feche este navegador antes de alterar o banco de dados NSS dele."
 
-#: qml/CertificatePage.qml:150
+#: qml/CertificatePage.qml:160
 msgid ""
 "This changes system trust and requests administrator authorization. Expired "
 "and revoked catalogue entries are excluded."
@@ -181,30 +169,30 @@ msgstr ""
 "Isto altera a confiança do sistema e pede autorização de administrador. As "
 "entradas expiradas e revogadas do catálogo são excluídas."
 
-#: qml/CertificatePage.qml:151
+#: qml/CertificatePage.qml:161
 msgid "Choose Ed521 certificates when native chain verification is unavailable"
 msgstr ""
 "Escolher certificados Ed521 quando a verificação nativa da cadeia não está "
 "disponível"
 
-#: qml/CertificatePage.qml:152 qml/CertificatePage.qml:168
-#: qml/CertificatePage.qml:205
+#: qml/CertificatePage.qml:162 qml/CertificatePage.qml:178
+#: qml/CertificatePage.qml:215
 msgid "NSS database password"
 msgstr "Senha do banco de dados NSS"
 
-#: qml/CertificatePage.qml:157
+#: qml/CertificatePage.qml:167
 msgid "Preview or import personal certificate"
 msgstr "Visualizar ou importar certificado pessoal"
 
-#: qml/CertificatePage.qml:163
+#: qml/CertificatePage.qml:173
 msgid "PKCS#12 passphrase (for .p12 or .pfx)"
 msgstr "Senha do PKCS#12 (para .p12 ou .pfx)"
 
-#: qml/CertificatePage.qml:164
+#: qml/CertificatePage.qml:174
 msgid "Preview"
 msgstr "Visualizar"
 
-#: qml/CertificatePage.qml:167
+#: qml/CertificatePage.qml:177
 msgid ""
 "Okular can sign with a supported identity from this NSS directory. Browser "
 "TLS trust does not grant PDF certificate trust; that requires a separate S/"
@@ -214,11 +202,11 @@ msgstr ""
 "confiança TLS do navegador não dá confiança em certificados de PDF; isso "
 "exige uma decisão de confiança S/MIME separada no NSS."
 
-#: qml/CertificatePage.qml:169
+#: qml/CertificatePage.qml:179
 msgid "Save A1 and NSS passwords in KDE Wallet"
 msgstr "Salvar as senhas do A1 e do NSS na Carteira do KDE"
 
-#: qml/CertificatePage.qml:170
+#: qml/CertificatePage.qml:180
 msgid ""
 "Close the browser before import. Private keys remain in its NSS database. A3 "
 "PINs are never saved here."
@@ -226,23 +214,23 @@ msgstr ""
 "Feche o navegador antes de importar. As chaves privadas ficam no banco de "
 "dados NSS dele. Os PINs A3 nunca são salvos aqui."
 
-#: qml/CertificatePage.qml:172
+#: qml/CertificatePage.qml:182
 msgid "Import A1"
 msgstr "Importar A1"
 
-#: qml/CertificatePage.qml:173
+#: qml/CertificatePage.qml:183
 msgid "Read from Wallet"
 msgstr "Ler da Carteira"
 
-#: qml/CertificatePage.qml:174
+#: qml/CertificatePage.qml:184
 msgid "Forget Saved Passwords"
 msgstr "Esquecer as senhas salvas"
 
-#: qml/CertificatePage.qml:181
+#: qml/CertificatePage.qml:191
 msgid "Kleopatra / GnuPG S/MIME"
 msgstr "Kleopatra / S/MIME do GnuPG"
 
-#: qml/CertificatePage.qml:186
+#: qml/CertificatePage.qml:196
 msgid ""
 "Import the chosen group's certificates, with the chain up to their roots, "
 "into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by "
@@ -255,27 +243,27 @@ msgstr ""
 "gpgsm perguntar. Os certificados Ed521 não são importados porque o gpgsm não "
 "consegue validá-los."
 
-#: qml/CertificatePage.qml:187
+#: qml/CertificatePage.qml:197
 msgid "Import Chosen Group"
 msgstr "Importar o grupo escolhido"
 
-#: qml/CertificatePage.qml:188
+#: qml/CertificatePage.qml:198
 msgid "Show What Was Imported"
 msgstr "Mostrar o que foi importado"
 
-#: qml/CertificatePage.qml:189
+#: qml/CertificatePage.qml:199
 msgid "Ask gpgsm About Imported Roots"
 msgstr "Perguntar ao gpgsm sobre as raízes importadas"
 
-#: qml/CertificatePage.qml:190
+#: qml/CertificatePage.qml:200
 msgid "Remove What We Imported"
 msgstr "Remover o que importamos"
 
-#: qml/CertificatePage.qml:195
+#: qml/CertificatePage.qml:205
 msgid "Register a PKCS#11 module"
 msgstr "Registrar um módulo PKCS#11"
 
-#: qml/CertificatePage.qml:201
+#: qml/CertificatePage.qml:211
 msgid ""
 "Close the browser first. Choose the installed p11-kit proxy to expose "
 "configured token modules. Loading a module runs its code as your user."
@@ -284,15 +272,15 @@ msgstr ""
 "módulos de token configurados. Carregar um módulo executa o código dele como "
 "o seu usuário."
 
-#: qml/CertificatePage.qml:203
+#: qml/CertificatePage.qml:213
 msgid "Absolute path to p11-kit-proxy.so"
 msgstr "Caminho absoluto de p11-kit-proxy.so"
 
-#: qml/CertificatePage.qml:204
+#: qml/CertificatePage.qml:214
 msgid "Inspect This Module"
 msgstr "Inspecionar este módulo"
 
-#: qml/CertificatePage.qml:206
+#: qml/CertificatePage.qml:216
 msgid "Remove Our Module Registration"
 msgstr "Remover o nosso registro de módulo"
 
@@ -607,7 +595,7 @@ msgstr "Indique um banco de dados NSS e um módulo de token instalado."
 msgid "Specify one root group."
 msgstr "Indique um grupo de raízes."
 
-#: src/cli/main.cpp:222 src/desktop/manager.cpp:310
+#: src/cli/main.cpp:222 src/desktop/manager.cpp:347
 msgid ""
 "Trust entries that version 2.0.0 added to gpgsm without asking were removed."
 msgstr ""
@@ -622,11 +610,11 @@ msgstr ""
 "Os certificados importados ainda não são confiáveis. Execute gpgsm-confirm, "
 "ou use \"Confiar no certificado raiz\" do Kleopatra, para decidir."
 
-#: src/cli/main.cpp:228 src/desktop/manager.cpp:327
+#: src/cli/main.cpp:228 src/desktop/manager.cpp:364
 msgid "No imported root is waiting for your confirmation."
 msgstr "Nenhuma raiz importada espera a sua confirmação."
 
-#: src/cli/main.cpp:235 src/desktop/manager.cpp:333
+#: src/cli/main.cpp:235 src/desktop/manager.cpp:370
 msgid "gpgsm could not check the root."
 msgstr "O gpgsm não conseguiu verificar a raiz."
 
@@ -662,7 +650,7 @@ msgstr ""
 "As atualizações automáticas de certificados estão desativadas. Remova este "
 "arquivo ou execute: sparky-ca auto enable\n"
 
-#: src/core/automation.cpp:98 src/core/automation.cpp:143
+#: src/core/automation.cpp:98 src/core/automation.cpp:144
 msgid "Cannot create the state folder."
 msgstr "Não foi possível criar a pasta de estado."
 
@@ -708,24 +696,24 @@ msgstr[1] ""
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: src/core/automation.cpp:132
+#: src/core/automation.cpp:133
 msgid "Nothing to do."
 msgstr "Nada a fazer."
 
-#: src/core/automation.cpp:146
+#: src/core/automation.cpp:147
 msgid "Another automatic update is running."
 msgstr "Outra atualização automática está em andamento."
 
-#: src/core/automation.cpp:184
+#: src/core/automation.cpp:185
 msgid "The catalogue has not been refreshed for %1 days."
 msgstr "O catálogo não é atualizado há %1 dias."
 
-#: src/core/automation.cpp:185
+#: src/core/automation.cpp:186
 msgid ""
 "The catalogue has never been refreshed from the Internet on this machine."
 msgstr "O catálogo nunca foi atualizado pela Internet neste computador."
 
-#: src/core/automation.cpp:206
+#: src/core/automation.cpp:209
 msgid "%1 is in use by a browser; it will be updated on a later run."
 msgstr ""
 "%1 está em uso por um navegador; será atualizado em uma execução posterior."
@@ -1125,7 +1113,7 @@ msgstr "Pedido de atualização automática inválido."
 msgid "Cannot find Sparky CA front end."
 msgstr "Não foi possível encontrar a interface do Sparky CA."
 
-#: src/desktop/main.cpp:22 src/desktop/manager.cpp:138
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:175
 #: src/desktop/notify.cpp:51
 msgid "Certificates"
 msgstr "Certificados"
@@ -1166,15 +1154,15 @@ msgstr "Captura a janela para um teste isolado da interface."
 msgid "Local certificate file to preview."
 msgstr "Arquivo de certificado local a visualizar."
 
-#: src/desktop/manager.cpp:41
+#: src/desktop/manager.cpp:78
 msgid "No automatic update has run on this computer yet."
 msgstr "Nenhuma atualização automática foi executada neste computador ainda."
 
-#: src/desktop/manager.cpp:46
+#: src/desktop/manager.cpp:83
 msgid "Last automatic update: %1. Everything is current."
 msgstr "Última atualização automática: %1. Tudo está em dia."
 
-#: src/desktop/manager.cpp:47
+#: src/desktop/manager.cpp:84
 msgid ""
 "Last automatic update: %1. It needs your attention: see the system journal "
 "or run sparky-ca auto status."
@@ -1182,21 +1170,21 @@ msgstr ""
 "Última atualização automática: %1. Ela precisa da sua atenção: veja o diário "
 "do sistema ou execute sparky-ca auto status."
 
-#: src/desktop/manager.cpp:77
+#: src/desktop/manager.cpp:114
 msgid "Automatic certificate updates are off."
 msgstr "As atualizações automáticas de certificados estão desativadas."
 
-#: src/desktop/manager.cpp:77
+#: src/desktop/manager.cpp:114
 msgid "Your chosen certificate groups will be kept current automatically."
 msgstr ""
 "Os grupos de certificados que você escolheu serão mantidos em dia "
 "automaticamente."
 
-#: src/desktop/manager.cpp:93
+#: src/desktop/manager.cpp:130
 msgid "Choose an existing browser profile."
 msgstr "Escolha um perfil de navegador existente."
 
-#: src/desktop/manager.cpp:113
+#: src/desktop/manager.cpp:150
 msgid ""
 "Ed448 validates through OpenSSL. NSS cannot import this key type, so browser "
 "installations exclude it."
@@ -1204,13 +1192,13 @@ msgstr ""
 "O Ed448 é validado pelo OpenSSL. O NSS não importa esse tipo de chave, então "
 "as instalações em navegadores o excluem."
 
-#: src/desktop/manager.cpp:196
+#: src/desktop/manager.cpp:233
 msgid "System certificate store updated. Restart applications to reload trust."
 msgstr ""
 "Repositório de certificados do sistema atualizado. Reinicie os aplicativos "
 "para recarregar a confiança."
 
-#: src/desktop/manager.cpp:212
+#: src/desktop/manager.cpp:249
 msgid ""
 "Browser certificate store updated. Ed521 and Ed448 entries stay listed but "
 "are excluded because NSS does not support their key types."
@@ -1219,17 +1207,17 @@ msgstr ""
 "Ed448 continuam listadas, mas são excluídas porque o NSS não suporta esses "
 "tipos de chave."
 
-#: src/desktop/manager.cpp:224
+#: src/desktop/manager.cpp:261
 msgid "Preview does not establish trust. Revocation status is unknown."
 msgstr ""
 "A visualização não estabelece confiança. A situação de revogação é "
 "desconhecida."
 
-#: src/desktop/manager.cpp:237
+#: src/desktop/manager.cpp:274
 msgid "Choose a local PKCS#12 file and browser profile."
 msgstr "Escolha um arquivo PKCS#12 local e um perfil de navegador."
 
-#: src/desktop/manager.cpp:245
+#: src/desktop/manager.cpp:282
 msgid ""
 "Personal certificate imported. Choose this NSS directory in Okular's PDF "
 "certificate settings."
@@ -1237,11 +1225,11 @@ msgstr ""
 "Certificado pessoal importado. Escolha este diretório NSS nas configurações "
 "de certificado de PDF do Okular."
 
-#: src/desktop/manager.cpp:266
+#: src/desktop/manager.cpp:303
 msgid "Saved certificate passwords removed."
 msgstr "Senhas de certificados salvas foram removidas."
 
-#: src/desktop/manager.cpp:276
+#: src/desktop/manager.cpp:313
 msgid ""
 "A3 PINs are not saved. Token retry limits and authentication policy apply. "
 "SafeSign or SafeNet middleware, when required, is installed on your machine "
@@ -1251,11 +1239,11 @@ msgstr ""
 "autenticação do token. O middleware SafeSign ou SafeNet, quando necessário, "
 "é instalado no seu computador pelo APTus."
 
-#: src/desktop/manager.cpp:286
+#: src/desktop/manager.cpp:323
 msgid "PKCS#11 module registered for this browser profile."
 msgstr "Módulo PKCS#11 registrado para este perfil de navegador."
 
-#: src/desktop/manager.cpp:309
+#: src/desktop/manager.cpp:346
 msgid ""
 "Certificates imported for Kleopatra. They are not trusted until you confirm "
 "each root in Kleopatra or in gpgsm. Ed521 entries stay listed but are not "
@@ -1265,7 +1253,7 @@ msgstr ""
 "confirme cada raiz no Kleopatra ou no gpgsm. As entradas Ed521 continuam "
 "listadas, mas não são importadas porque o gpgsm não consegue validá-las."
 
-#: src/desktop/manager.cpp:318
+#: src/desktop/manager.cpp:355
 msgid ""
 "Certificates that Sparky CA imported into gpgsm were removed. Trust you "
 "confirmed yourself stays in gpgsm's trust list until you remove it in "
@@ -1275,18 +1263,18 @@ msgstr ""
 "confiança que você mesmo confirmou continua na lista de confiança do gpgsm "
 "até que você a remova no Kleopatra."
 
-#: src/desktop/manager.cpp:335
+#: src/desktop/manager.cpp:372
 msgid ""
 "gpgsm asked about each imported root. Your answers are in its trust list."
 msgstr ""
 "O gpgsm perguntou sobre cada raiz importada. As suas respostas estão na "
 "lista de confiança dele."
 
-#: src/desktop/manager.cpp:341
+#: src/desktop/manager.cpp:378
 msgid "Kleopatra is not installed."
 msgstr "O Kleopatra não está instalado."
 
-#: src/desktop/manager.cpp:353
+#: src/desktop/manager.cpp:390
 msgid ""
 "Our PKCS#11 module registration was removed. Token certificates remain on "
 "the token."
@@ -1294,7 +1282,7 @@ msgstr ""
 "O registro do nosso módulo PKCS#11 foi removido. Os certificados do token "
 "continuam no token."
 
-#: src/desktop/manager.cpp:366
+#: src/desktop/manager.cpp:403
 msgid "One listed certificate expires within 30 days or has expired."
 msgid_plural "%1 listed certificates expire within 30 days or have expired."
 msgstr[0] "Um certificado listado expira em até 30 dias ou já expirou."

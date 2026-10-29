@@ -56,10 +56,20 @@ Kirigami.Page {
         spacing: Kirigami.Units.smallSpacing
         Kirigami.ActionToolBar { Layout.fillWidth: true; visible: page.inlineActions; actions: page.actions; alignment: Qt.AlignLeft }
         Kirigami.InlineMessage {
+            objectName: "ed521Message"
             Layout.fillWidth: true
-            visible: true
-            type: Kirigami.MessageType.Information
-            text: i18n("ICP-Brasil v7 (Ed521) validates through the command line when the Ed521 OpenSSL provider is configured. Okular and NSS browsers cannot validate v7 until their certificate backend supports Ed521. RSA and ECDSA signing remain available.")
+            visible: manager.ed521Message.length > 0 && !manager.ed521Dismissed
+            type: manager.ed521Warning ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
+            text: manager.ed521Message
+            actions: [
+                Kirigami.Action {
+                    objectName: "ed521Close"
+                    text: i18nd("sparky-ca-ed521", "Close this message")
+                    icon.name: "dialog-close"
+                    displayHint: Kirigami.DisplayHint.IconOnly
+                    onTriggered: manager.dismissEd521()
+                }
+            ]
         }
         Controls.Label { Layout.fillWidth: true; text: manager.updateStatus; textFormat: Text.PlainText; wrapMode: Text.Wrap; opacity: 0.7 }
         Kirigami.InlineMessage { Layout.fillWidth: true; visible: manager.error.length > 0; type: Kirigami.MessageType.Error; text: manager.error }

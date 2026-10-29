@@ -11,6 +11,7 @@
 #include <QUrl>
 #include <QVariantMap>
 #include <memory>
+#include <optional>
 #include <openssl/x509.h>
 
 namespace SparkyCA
@@ -78,6 +79,19 @@ QJsonObject checkRevocation(const Catalogue &catalogue, const Transport &transpo
 bool trustedStateFile(const QString &path);
 Catalogue loadCatalogue(const QString &data, const QString &stateDirectory, const QString &catalogueFile = {});
 QString catalogueSource(const QString &data, const QString &stateDirectory);
+
+// Which certificate backends on this computer validate Ed521 (ICP-Brasil v7), found by trying ITI's v7 root.
+struct Ed521Support {
+    bool openssl = false; // this process's libcrypto, with the system configuration
+    bool providerInstalled = false; // openssl-provider-ed521 is installed, even if OpenSSL does not use it
+    std::optional<bool> nss; // certutil with a fresh NSS database; empty when NSS's tools are missing
+    std::optional<bool> gnupg; // gpgsm with a fresh home; empty when gpgsm is missing
+    bool chromium = false; // Chromium is installed; its BoringSSL has no Ed521
+};
+Ed521Support probeEd521(const QString &v7File);
+bool ed521Complete(const Ed521Support &support);
+QString ed521Message(const Ed521Support &support);
+QString ed521State(const Ed521Support &support);
 struct AutomationOptions {
     QString data;
     QString stateDirectory;

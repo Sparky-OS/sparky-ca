@@ -1,0 +1,86 @@
+# Japanese translation of the Ed521 message of sparky-ca.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Daniel Campos Ramos
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 20:36+0000\n"
+"PO-Revision-Date: 2026-10-29 20:00+0000\n"
+"Last-Translator: Claude Opus 5.5 via Claude Code\n"
+"Language-Team: Japanese; review by native speakers welcome\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: qml/CertificatePage.qml:67
+msgid "Close this message"
+msgstr "このメッセージを閉じる"
+
+#: src/core/ed521.cpp:115
+msgid ""
+"ICP-Brasil v7 (Ed521) certificates validate on this computer in the command "
+"line and in programs that use OpenSSL."
+msgstr ""
+"ICP-Brasil v7（Ed521）の証明書は、このコンピューターのコマンドラインと "
+"OpenSSL を使うプログラムで検証できます。"
+
+#: src/core/ed521.cpp:117
+msgid ""
+"ICP-Brasil v7 (Ed521) certificates do not validate on this computer: the "
+"package openssl-provider-ed521 is installed, but OpenSSL does not use it. "
+"The command /usr/libexec/openssl-provider-ed521/system-config status shows "
+"why."
+msgstr ""
+"ICP-Brasil v7（Ed521）の証明書はこのコンピューターでは検証できません。パッ"
+"ケージ openssl-provider-ed521 はインストールされていますが、OpenSSL はそれを"
+"使っていません。理由はコマンド /usr/libexec/openssl-provider-ed521/system-"
+"config status で確認できます。"
+
+#: src/core/ed521.cpp:119
+msgid ""
+"ICP-Brasil v7 (Ed521) certificates do not validate on this computer yet. "
+"Install the package openssl-provider-ed521 to validate them in the command "
+"line and in programs that use OpenSSL."
+msgstr ""
+"ICP-Brasil v7（Ed521）の証明書は、このコンピューターではまだ検証できません。"
+"コマンドラインと OpenSSL を使うプログラムで検証するには、パッケージ openssl-"
+"provider-ed521 をインストールしてください。"
+
+#: src/core/ed521.cpp:121
+msgid "Firefox, Waterfox and Okular validate them through NSS."
+msgstr "Firefox、Waterfox、Okular は NSS でこれらを検証します。"
+
+#: src/core/ed521.cpp:122
+msgid ""
+"Firefox, Waterfox and Okular check certificates with NSS, which cannot "
+"validate Ed521 yet."
+msgstr ""
+"Firefox、Waterfox、Okular は NSS で証明書を確認しますが、NSS はまだ Ed521 を"
+"検証できません。"
+
+#: src/core/ed521.cpp:124
+msgid "Kleopatra and KMail validate them through GnuPG."
+msgstr "Kleopatra と KMail は GnuPG でこれらを検証します。"
+
+#: src/core/ed521.cpp:125
+msgid ""
+"Kleopatra and KMail check certificates with GnuPG, which cannot validate "
+"Ed521 yet."
+msgstr ""
+"Kleopatra と KMail は GnuPG で証明書を確認しますが、GnuPG はまだ Ed521 を検証"
+"できません。"
+
+#: src/core/ed521.cpp:127
+msgid ""
+"Chromium checks certificates with its own BoringSSL, which cannot validate "
+"Ed521."
+msgstr ""
+"Chromium は独自の BoringSSL で証明書を確認しますが、BoringSSL は Ed521 を検証"
+"できません。"
+
+#: src/core/ed521.cpp:128
+msgid "Certificates with RSA and ECDSA keys work in all of them."
+msgstr "RSA と ECDSA の鍵を使う証明書は、これらすべてのプログラムで使えます。"

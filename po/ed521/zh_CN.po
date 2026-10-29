@@ -1,0 +1,78 @@
+# Chinese (simplified) translation of the Ed521 message of sparky-ca.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Daniel Campos Ramos
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 20:36+0000\n"
+"PO-Revision-Date: 2026-10-29 20:00+0000\n"
+"Last-Translator: Claude Opus 5.5 via Claude Code\n"
+"Language-Team: Chinese (simplified); review by native speakers welcome\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: qml/CertificatePage.qml:67
+msgid "Close this message"
+msgstr "关闭此消息"
+
+#: src/core/ed521.cpp:115
+msgid ""
+"ICP-Brasil v7 (Ed521) certificates validate on this computer in the command "
+"line and in programs that use OpenSSL."
+msgstr ""
+"ICP-Brasil v7 (Ed521) 证书可以在此计算机的命令行和使用 OpenSSL 的程序中验证。"
+
+#: src/core/ed521.cpp:117
+msgid ""
+"ICP-Brasil v7 (Ed521) certificates do not validate on this computer: the "
+"package openssl-provider-ed521 is installed, but OpenSSL does not use it. "
+"The command /usr/libexec/openssl-provider-ed521/system-config status shows "
+"why."
+msgstr ""
+"ICP-Brasil v7 (Ed521) 证书无法在此计算机上验证：已安装 openssl-provider-"
+"ed521 软件包，但 OpenSSL 没有使用它。命令 /usr/libexec/openssl-provider-"
+"ed521/system-config status 会显示原因。"
+
+#: src/core/ed521.cpp:119
+msgid ""
+"ICP-Brasil v7 (Ed521) certificates do not validate on this computer yet. "
+"Install the package openssl-provider-ed521 to validate them in the command "
+"line and in programs that use OpenSSL."
+msgstr ""
+"ICP-Brasil v7 (Ed521) 证书暂时无法在此计算机上验证。安装 openssl-provider-"
+"ed521 软件包后，即可在命令行和使用 OpenSSL 的程序中验证它们。"
+
+#: src/core/ed521.cpp:121
+msgid "Firefox, Waterfox and Okular validate them through NSS."
+msgstr "Firefox、Waterfox 和 Okular 通过 NSS 验证它们。"
+
+#: src/core/ed521.cpp:122
+msgid ""
+"Firefox, Waterfox and Okular check certificates with NSS, which cannot "
+"validate Ed521 yet."
+msgstr ""
+"Firefox、Waterfox 和 Okular 使用 NSS 检查证书，而 NSS 尚不能验证 Ed521。"
+
+#: src/core/ed521.cpp:124
+msgid "Kleopatra and KMail validate them through GnuPG."
+msgstr "Kleopatra 和 KMail 通过 GnuPG 验证它们。"
+
+#: src/core/ed521.cpp:125
+msgid ""
+"Kleopatra and KMail check certificates with GnuPG, which cannot validate "
+"Ed521 yet."
+msgstr "Kleopatra 和 KMail 使用 GnuPG 检查证书，而 GnuPG 尚不能验证 Ed521。"
+
+#: src/core/ed521.cpp:127
+msgid ""
+"Chromium checks certificates with its own BoringSSL, which cannot validate "
+"Ed521."
+msgstr "Chromium 使用自带的 BoringSSL 检查证书，而 BoringSSL 不能验证 Ed521。"
+
+#: src/core/ed521.cpp:128
+msgid "Certificates with RSA and ECDSA keys work in all of them."
+msgstr "使用 RSA 和 ECDSA 密钥的证书在所有这些程序中都可以使用。"

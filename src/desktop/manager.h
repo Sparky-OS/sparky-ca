@@ -22,6 +22,10 @@ class CertificateManager : public QObject
     Q_PROPERTY(bool kleopatraAvailable READ kleopatraAvailable CONSTANT)
     Q_PROPERTY(bool automaticUpdates READ automaticUpdates NOTIFY changed)
     Q_PROPERTY(QString updateStatus READ updateStatus NOTIFY changed)
+    Q_PROPERTY(QString ed521Message READ ed521Message NOTIFY ed521Changed)
+    Q_PROPERTY(bool ed521Warning READ ed521Warning NOTIFY ed521Changed)
+    Q_PROPERTY(bool ed521Dismissed READ ed521Dismissed NOTIFY ed521Changed)
+    Q_PROPERTY(bool ed521Probed READ ed521Probed NOTIFY ed521Changed)
 public:
     explicit CertificateManager(QString data, QObject *parent = nullptr);
     QVariantList certificates() const
@@ -53,6 +57,21 @@ public:
     bool kleopatraAvailable() const;
     bool automaticUpdates() const;
     QString updateStatus() const;
+    QString ed521Message() const
+    {
+        return m_ed521Message;
+    }
+    bool ed521Warning() const
+    {
+        return m_ed521Probed && !m_ed521.openssl;
+    }
+    bool ed521Dismissed() const;
+    bool ed521Probed() const
+    {
+        return m_ed521Probed;
+    }
+    Q_INVOKABLE void dismissEd521();
+    Q_INVOKABLE void probeEd521();
     Q_INVOKABLE void setAutomaticUpdates(bool enabled);
     Q_INVOKABLE void setWindow(QWindow *window)
     {
@@ -75,12 +94,16 @@ public:
     Q_INVOKABLE void expiryNotification();
 Q_SIGNALS:
     void changed();
+    void ed521Changed();
 
 private:
     std::shared_ptr<const SparkyCA::Catalogue> m_catalogue;
     QVariantList m_certificates;
     QString m_data, m_store = "catalogue", m_error, m_notice;
     bool m_busy = false;
+    SparkyCA::Ed521Support m_ed521;
+    bool m_ed521Probed = false;
+    QString m_ed521Message;
     QPointer<QWindow> m_window;
     void task(std::function<QString()> operation, std::function<void()> success = {});
     void notify(const QString &text);

@@ -11,6 +11,7 @@
 #include <QJsonDocument>
 #include <QRegularExpression>
 #include <QProcess>
+#include <QSettings>
 #include <QStandardPaths>
 #include <QtConcurrent>
 
@@ -25,10 +26,46 @@ CertificateManager::CertificateManager(QString data, QObject *parent)
     } catch (const std::exception &error) {
         m_error = QString::fromUtf8(error.what());
     }
+    probeEd521();
 }
 static QString userConfiguration()
 {
     return QDir::homePath() + "/.config/sparky-ca";
+}
+static QString desktopSettings()
+{
+    return userConfiguration() + "/desktop.conf";
+}
+void CertificateManager::probeEd521()
+{
+    // Each probe tries ITI's v7 root in a throwaway store; the external tools take a moment, so off the GUI thread.
+    const QString v7 = m_data + "/roots/ICP-Brasilv7.crt";
+    auto *watcher = new QFutureWatcher<Ed521Support>(this);
+    connect(watcher, &QFutureWatcher<Ed521Support>::finished, this, [this, watcher] {
+        m_ed521 = watcher->result();
+        m_ed521Probed = true;
+        m_ed521Message = SparkyCA::ed521Message(m_ed521);
+        watcher->deleteLater();
+        Q_EMIT ed521Changed();
+    });
+    watcher->setFuture(QtConcurrent::run([v7] {
+        return SparkyCA::probeEd521(v7);
+    }));
+}
+bool CertificateManager::ed521Dismissed() const
+{
+    // Closing the message hides it until what works where changes.
+    return m_ed521Probed && QSettings(desktopSettings(), QSettings::IniFormat).value("ed521/dismissed").toString() == ed521State(m_ed521);
+}
+void CertificateManager::dismissEd521()
+{
+    if (!m_ed521Probed)
+        return;
+    QDir().mkpath(userConfiguration());
+    QSettings settings(desktopSettings(), QSettings::IniFormat);
+    settings.setValue("ed521/dismissed", ed521State(m_ed521));
+    settings.sync();
+    Q_EMIT ed521Changed();
 }
 bool CertificateManager::automaticUpdates() const
 {

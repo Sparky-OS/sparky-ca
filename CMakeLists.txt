@@ -13,7 +13,7 @@ find_package(OpenSSL 3 REQUIRED)
 find_package(LibArchive REQUIRED)
 add_library(sparky-ca-core STATIC
     src/core/certificate.cpp src/core/catalogue.cpp src/core/download.cpp src/core/stores.cpp
-    src/core/personal.cpp src/core/systemchange.cpp src/core/revocation.cpp src/core/automation.cpp)
+    src/core/personal.cpp src/core/systemchange.cpp src/core/revocation.cpp src/core/automation.cpp src/core/ed521.cpp)
 target_include_directories(sparky-ca-core PUBLIC src)
 target_link_libraries(sparky-ca-core PUBLIC Qt6::Core Qt6::Network KF6::I18n OpenSSL::Crypto LibArchive::LibArchive)
 target_compile_options(sparky-ca-core PRIVATE -Wall -Wextra -Wpedantic)
@@ -32,6 +32,18 @@ foreach(language ${SPARKY_CA_LANGUAGES})
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/locale/${language}/LC_MESSAGES
         COMMAND ${MSGFMT_PROGRAM} --check-format -o ${catalog} ${CMAKE_CURRENT_SOURCE_DIR}/po/${language}.po
         DEPENDS po/${language}.po)
+    list(APPEND SPARKY_CA_TRANSLATED ${catalog})
+    install(FILES ${catalog} DESTINATION ${CMAKE_INSTALL_DATADIR}/locale/${language}/LC_MESSAGES)
+endforeach()
+# The Ed521 message has its own domain and ships in all of the edition's languages.
+file(STRINGS po/ed521/LINGUAS SPARKY_CA_ED521_LANGUAGES)
+string(REPLACE " " ";" SPARKY_CA_ED521_LANGUAGES "${SPARKY_CA_ED521_LANGUAGES}")
+foreach(language ${SPARKY_CA_ED521_LANGUAGES})
+    set(catalog ${CMAKE_CURRENT_BINARY_DIR}/locale/${language}/LC_MESSAGES/sparky-ca-ed521.mo)
+    add_custom_command(OUTPUT ${catalog}
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/locale/${language}/LC_MESSAGES
+        COMMAND ${MSGFMT_PROGRAM} --check-format -o ${catalog} ${CMAKE_CURRENT_SOURCE_DIR}/po/ed521/${language}.po
+        DEPENDS po/ed521/${language}.po)
     list(APPEND SPARKY_CA_TRANSLATED ${catalog})
     install(FILES ${catalog} DESTINATION ${CMAKE_INSTALL_DATADIR}/locale/${language}/LC_MESSAGES)
 endforeach()
@@ -175,6 +187,14 @@ if(BUILD_TESTING)
         if(DBUS_RUN_SESSION)
             add_test(NAME automatic-update-notification COMMAND ${DBUS_RUN_SESSION} -- $<TARGET_FILE:notify-check> $<TARGET_FILE:sparky-ca-notify> ${CMAKE_CURRENT_SOURCE_DIR}/share/sparky-ca.notifyrc)
             set_tests_properties(automatic-update-notification PROPERTIES TIMEOUT 120)
+        endif()
+        add_executable(ed521-kcm-check tests/ed521-kcm-check.cpp)
+        target_link_libraries(ed521-kcm-check PRIVATE sparky-ca-desktop Qt6::Widgets Qt6::Quick Qt6::Test KF6::KCMUtilsQuick)
+        find_program(DBUS_RUN_SESSION_FOR_ED521 dbus-run-session)
+        if(DBUS_RUN_SESSION_FOR_ED521)
+            add_test(NAME ed521-message COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/ed521-message.py $<TARGET_FILE:ed521-kcm-check>
+                     $<TARGET_FILE:kcm_certificates> ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} $<$<BOOL:${BUILD_ED521_PROVIDER}>:$<TARGET_FILE:ed521-provider>>)
+            set_tests_properties(ed521-message PROPERTIES TIMEOUT 300)
         endif()
         add_executable(desktop-check tests/desktop-check.cpp)
         target_link_libraries(desktop-check PRIVATE sparky-ca-desktop Qt6::Widgets Qt6::Quick Qt6::Test KF6::KCMUtilsQuick)
