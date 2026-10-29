@@ -61,5 +61,5 @@ with tempfile.TemporaryDirectory() as temporary:
     fresh = set(re.findall(r'^msgid "(.+)"$', subprocess.run(["msgattrib", "--no-wrap", str(copy / "po/sparky-ca.pot")], capture_output=True, text=True, check=True).stdout, re.M))
     checked(fresh == wanted, "the catalogue matches the strings in the sources")
     fresh_ed521 = set(re.findall(r'^msgid "(.+)"$', subprocess.run(["msgattrib", "--no-wrap", str(copy / "po/ed521/sparky-ca-ed521.pot")], capture_output=True, text=True, check=True).stdout, re.M))
-    checked(fresh_ed521 == ed521_wanted and len(ed521_wanted) == 10, "the Ed521 catalogue matches the strings in the sources")
+    checked(fresh_ed521 == ed521_wanted and len(ed521_wanted) == 9, "the Ed521 catalogue matches the strings in the sources")
 print(f"{checks} checks passed", flush=True)

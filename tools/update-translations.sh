@@ -21,7 +21,8 @@ for file in po/*.po; do
 done
 xgettext --from-code=UTF-8 -L C++ -k -ki18nd:2 -o "$tmp/ed521-code.pot" src/core/ed521.cpp
 xgettext --from-code=UTF-8 -L JavaScript -k -ki18nd:2 -o "$tmp/ed521-qml.pot" qml/CertificatePage.qml
-msgcat --use-first --sort-by-file "$tmp/ed521-code.pot" "$tmp/ed521-qml.pot" \
+# xgettext writes no file when a source has no such string.
+msgcat --use-first --sort-by-file "$tmp/ed521-code.pot" $(ls "$tmp/ed521-qml.pot" 2>/dev/null) \
     | sed -e 's/^"Project-Id-Version: .*\\n"$/"Project-Id-Version: sparky-ca 2.0.3\\n"/' > po/ed521/sparky-ca-ed521.pot
 for file in po/ed521/*.po; do
     [ -e "$file" ] || continue

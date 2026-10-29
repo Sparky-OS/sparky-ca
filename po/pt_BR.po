@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sparky-ca 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 20:37+0000\n"
+"POT-Creation-Date: 2026-10-29 20:47+0000\n"
 "PO-Revision-Date: 2026-10-14 00:00+0000\n"
 "Last-Translator: Claude Sonnet via Claude Code\n"
 "Language-Team: Portuguese (Brazil); review by Daniel Campos Ramos pending\n"
@@ -43,45 +43,45 @@ msgstr "Verificar validades"
 msgid "Keep Chosen Groups Current"
 msgstr "Manter os grupos escolhidos em dia"
 
-#: qml/CertificatePage.qml:79
+#: qml/CertificatePage.qml:76
 msgid "Store:"
 msgstr "Repositório:"
 
-#: qml/CertificatePage.qml:83
+#: qml/CertificatePage.qml:80
 msgid "Certificate catalogue"
 msgstr "Catálogo de certificados"
 
-#: qml/CertificatePage.qml:83
+#: qml/CertificatePage.qml:80
 msgid "GnuPG S/MIME (Kleopatra)"
 msgstr "S/MIME do GnuPG (Kleopatra)"
 
-#: qml/CertificatePage.qml:83
+#: qml/CertificatePage.qml:80
 msgid "System trust"
 msgstr "Confiança do sistema"
 
-#: qml/CertificatePage.qml:87
+#: qml/CertificatePage.qml:84
 msgid "Search name, issuer or fingerprint"
 msgstr "Buscar por nome, emissor ou impressão digital"
 
-#: qml/CertificatePage.qml:94
+#: qml/CertificatePage.qml:91
 msgid "Install Group…"
 msgstr "Instalar grupo…"
 
-#: qml/CertificatePage.qml:95
+#: qml/CertificatePage.qml:92
 msgid "Remove Group…"
 msgstr "Remover grupo…"
 
-#: qml/CertificatePage.qml:96
+#: qml/CertificatePage.qml:93
 msgid "Kleopatra…"
 msgstr "Kleopatra…"
 
-#: qml/CertificatePage.qml:98
+#: qml/CertificatePage.qml:95
 msgid "One certificate"
 msgid_plural "%1 certificates"
 msgstr[0] "Um certificado"
 msgstr[1] "%1 certificados"
 
-#: qml/CertificatePage.qml:124
+#: qml/CertificatePage.qml:121
 msgid ""
 "SHA-256: %1\n"
 "Issuer: %2\n"
@@ -93,19 +93,19 @@ msgstr ""
 "Expira em: %3\n"
 "%4"
 
-#: qml/CertificatePage.qml:130
+#: qml/CertificatePage.qml:127
 msgid "Open in Kleopatra"
 msgstr "Abrir no Kleopatra"
 
-#: qml/CertificatePage.qml:135
+#: qml/CertificatePage.qml:132
 msgid "Detect Tokens"
 msgstr "Detectar tokens"
 
-#: qml/CertificatePage.qml:136
+#: qml/CertificatePage.qml:133
 msgid "Register Token Module…"
 msgstr "Registrar módulo de token…"
 
-#: qml/CertificatePage.qml:137
+#: qml/CertificatePage.qml:134
 msgid ""
 "A3 PINs are not stored. Install vendor middleware locally through APTus when "
 "required."
@@ -113,55 +113,55 @@ msgstr ""
 "Os PINs A3 não são guardados. Instale o middleware do fabricante no "
 "computador, pelo APTus, quando necessário."
 
-#: qml/CertificatePage.qml:141
+#: qml/CertificatePage.qml:138
 msgid "Within validity dates"
 msgstr "Dentro do prazo de validade"
 
-#: qml/CertificatePage.qml:142
+#: qml/CertificatePage.qml:139
 msgid "Expired"
 msgstr "Expirado"
 
-#: qml/CertificatePage.qml:143
+#: qml/CertificatePage.qml:140
 msgid "Revoked"
 msgstr "Revogado"
 
-#: qml/CertificatePage.qml:144
+#: qml/CertificatePage.qml:141
 msgid "Not yet valid"
 msgstr "Ainda não é válido"
 
-#: qml/CertificatePage.qml:145
+#: qml/CertificatePage.qml:142
 msgid "Trusted: you confirmed it"
 msgstr "Confiável: você confirmou"
 
-#: qml/CertificatePage.qml:146
+#: qml/CertificatePage.qml:143
 msgid "Imported, not trusted yet"
 msgstr "Importado, ainda sem confiança"
 
-#: qml/CertificatePage.qml:147
+#: qml/CertificatePage.qml:144
 msgid "Trusted through its root"
 msgstr "Confiável pela raiz"
 
-#: qml/CertificatePage.qml:148
+#: qml/CertificatePage.qml:145
 msgid "Invalid"
 msgstr "Inválido"
 
-#: qml/CertificatePage.qml:153
+#: qml/CertificatePage.qml:150
 msgid "Install chosen group"
 msgstr "Instalar o grupo escolhido"
 
-#: qml/CertificatePage.qml:153
+#: qml/CertificatePage.qml:150
 msgid "Remove chosen group"
 msgstr "Remover o grupo escolhido"
 
-#: qml/CertificatePage.qml:159
+#: qml/CertificatePage.qml:156
 msgid "Group: %1"
 msgstr "Grupo: %1"
 
-#: qml/CertificatePage.qml:160
+#: qml/CertificatePage.qml:157
 msgid "Close this browser before changing its NSS database."
 msgstr "Feche este navegador antes de alterar o banco de dados NSS dele."
 
-#: qml/CertificatePage.qml:160
+#: qml/CertificatePage.qml:157
 msgid ""
 "This changes system trust and requests administrator authorization. Expired "
 "and revoked catalogue entries are excluded."
@@ -169,30 +169,30 @@ msgstr ""
 "Isto altera a confiança do sistema e pede autorização de administrador. As "
 "entradas expiradas e revogadas do catálogo são excluídas."
 
-#: qml/CertificatePage.qml:161
+#: qml/CertificatePage.qml:158
 msgid "Choose Ed521 certificates when native chain verification is unavailable"
 msgstr ""
 "Escolher certificados Ed521 quando a verificação nativa da cadeia não está "
 "disponível"
 
-#: qml/CertificatePage.qml:162 qml/CertificatePage.qml:178
-#: qml/CertificatePage.qml:215
+#: qml/CertificatePage.qml:159 qml/CertificatePage.qml:175
+#: qml/CertificatePage.qml:212
 msgid "NSS database password"
 msgstr "Senha do banco de dados NSS"
 
-#: qml/CertificatePage.qml:167
+#: qml/CertificatePage.qml:164
 msgid "Preview or import personal certificate"
 msgstr "Visualizar ou importar certificado pessoal"
 
-#: qml/CertificatePage.qml:173
+#: qml/CertificatePage.qml:170
 msgid "PKCS#12 passphrase (for .p12 or .pfx)"
 msgstr "Senha do PKCS#12 (para .p12 ou .pfx)"
 
-#: qml/CertificatePage.qml:174
+#: qml/CertificatePage.qml:171
 msgid "Preview"
 msgstr "Visualizar"
 
-#: qml/CertificatePage.qml:177
+#: qml/CertificatePage.qml:174
 msgid ""
 "Okular can sign with a supported identity from this NSS directory. Browser "
 "TLS trust does not grant PDF certificate trust; that requires a separate S/"
@@ -202,11 +202,11 @@ msgstr ""
 "confiança TLS do navegador não dá confiança em certificados de PDF; isso "
 "exige uma decisão de confiança S/MIME separada no NSS."
 
-#: qml/CertificatePage.qml:179
+#: qml/CertificatePage.qml:176
 msgid "Save A1 and NSS passwords in KDE Wallet"
 msgstr "Salvar as senhas do A1 e do NSS na Carteira do KDE"
 
-#: qml/CertificatePage.qml:180
+#: qml/CertificatePage.qml:177
 msgid ""
 "Close the browser before import. Private keys remain in its NSS database. A3 "
 "PINs are never saved here."
@@ -214,23 +214,23 @@ msgstr ""
 "Feche o navegador antes de importar. As chaves privadas ficam no banco de "
 "dados NSS dele. Os PINs A3 nunca são salvos aqui."
 
-#: qml/CertificatePage.qml:182
+#: qml/CertificatePage.qml:179
 msgid "Import A1"
 msgstr "Importar A1"
 
-#: qml/CertificatePage.qml:183
+#: qml/CertificatePage.qml:180
 msgid "Read from Wallet"
 msgstr "Ler da Carteira"
 
-#: qml/CertificatePage.qml:184
+#: qml/CertificatePage.qml:181
 msgid "Forget Saved Passwords"
 msgstr "Esquecer as senhas salvas"
 
-#: qml/CertificatePage.qml:191
+#: qml/CertificatePage.qml:188
 msgid "Kleopatra / GnuPG S/MIME"
 msgstr "Kleopatra / S/MIME do GnuPG"
 
-#: qml/CertificatePage.qml:196
+#: qml/CertificatePage.qml:193
 msgid ""
 "Import the chosen group's certificates, with the chain up to their roots, "
 "into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by "
@@ -243,27 +243,27 @@ msgstr ""
 "gpgsm perguntar. Os certificados Ed521 não são importados porque o gpgsm não "
 "consegue validá-los."
 
-#: qml/CertificatePage.qml:197
+#: qml/CertificatePage.qml:194
 msgid "Import Chosen Group"
 msgstr "Importar o grupo escolhido"
 
-#: qml/CertificatePage.qml:198
+#: qml/CertificatePage.qml:195
 msgid "Show What Was Imported"
 msgstr "Mostrar o que foi importado"
 
-#: qml/CertificatePage.qml:199
+#: qml/CertificatePage.qml:196
 msgid "Ask gpgsm About Imported Roots"
 msgstr "Perguntar ao gpgsm sobre as raízes importadas"
 
-#: qml/CertificatePage.qml:200
+#: qml/CertificatePage.qml:197
 msgid "Remove What We Imported"
 msgstr "Remover o que importamos"
 
-#: qml/CertificatePage.qml:205
+#: qml/CertificatePage.qml:202
 msgid "Register a PKCS#11 module"
 msgstr "Registrar um módulo PKCS#11"
 
-#: qml/CertificatePage.qml:211
+#: qml/CertificatePage.qml:208
 msgid ""
 "Close the browser first. Choose the installed p11-kit proxy to expose "
 "configured token modules. Loading a module runs its code as your user."
@@ -272,15 +272,15 @@ msgstr ""
 "módulos de token configurados. Carregar um módulo executa o código dele como "
 "o seu usuário."
 
-#: qml/CertificatePage.qml:213
+#: qml/CertificatePage.qml:210
 msgid "Absolute path to p11-kit-proxy.so"
 msgstr "Caminho absoluto de p11-kit-proxy.so"
 
-#: qml/CertificatePage.qml:214
+#: qml/CertificatePage.qml:211
 msgid "Inspect This Module"
 msgstr "Inspecionar este módulo"
 
-#: qml/CertificatePage.qml:216
+#: qml/CertificatePage.qml:213
 msgid "Remove Our Module Registration"
 msgstr "Remover o nosso registro de módulo"
 

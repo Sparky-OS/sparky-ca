@@ -9,6 +9,7 @@
 #include <KQuickConfigModule>
 #include <KQuickConfigModuleLoader>
 #include <QApplication>
+#include <QIcon>
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -29,6 +30,9 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
     app.setApplicationName("sparky-ca-ed521-check");
     KLocalizedString::setApplicationDomain("sparky-ca");
+    // Outside Plasma no platform theme names the icon theme; screenshots name it here.
+    if (qEnvironmentVariableIsSet("ED521_ICON_THEME"))
+        QIcon::setThemeName(qEnvironmentVariable("ED521_ICON_THEME"));
     const QByteArray mode = argc > 1 ? argv[1] : "";
     if (mode == "message" && argc == 7) {
         SparkyCA::Ed521Support support;
@@ -70,10 +74,18 @@ int main(int argc, char **argv)
                        {"itemText", message ? message->property("text").toString() : QString()}};
     window.grabWindow().save(QString::fromLocal8Bit(argv[4]) + ".png");
     if (argc == 6 && QByteArray(argv[5]) == "close") {
-        auto close = item->findChild<QObject *>("ed521Close");
+        // Kirigami's own close button inside the message: a ToolButton labelled Close.
+        QQuickItem *close = nullptr;
+        if (message) {
+            for (auto child : message->findChildren<QQuickItem *>()) {
+                if (QByteArray(child->metaObject()->className()).contains("ToolButton") && child->property("text").toString() == QStringLiteral("Close")
+                    && child->isVisible())
+                    close = child;
+            }
+        }
         report.insert("closeFound", close != nullptr);
         if (close)
-            QMetaObject::invokeMethod(close, "trigger");
+            QMetaObject::invokeMethod(close, "clicked");
         QTest::qWait(1500);
         report.insert("dismissedAfterClose", backend->ed521Dismissed());
         report.insert("itemVisibleAfterClose", message && message->isVisible());

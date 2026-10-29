@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sparky-ca 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 20:37+0000\n"
+"POT-Creation-Date: 2026-10-29 20:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,45 +46,45 @@ msgstr ""
 msgid "Keep Chosen Groups Current"
 msgstr ""
 
-#: qml/CertificatePage.qml:79
+#: qml/CertificatePage.qml:76
 msgid "Store:"
 msgstr ""
 
-#: qml/CertificatePage.qml:83
+#: qml/CertificatePage.qml:80
 msgid "Certificate catalogue"
 msgstr ""
 
-#: qml/CertificatePage.qml:83
+#: qml/CertificatePage.qml:80
 msgid "GnuPG S/MIME (Kleopatra)"
 msgstr ""
 
-#: qml/CertificatePage.qml:83
+#: qml/CertificatePage.qml:80
 msgid "System trust"
 msgstr ""
 
-#: qml/CertificatePage.qml:87
+#: qml/CertificatePage.qml:84
 msgid "Search name, issuer or fingerprint"
 msgstr ""
 
-#: qml/CertificatePage.qml:94
+#: qml/CertificatePage.qml:91
 msgid "Install Group…"
 msgstr ""
 
-#: qml/CertificatePage.qml:95
+#: qml/CertificatePage.qml:92
 msgid "Remove Group…"
 msgstr ""
 
-#: qml/CertificatePage.qml:96
+#: qml/CertificatePage.qml:93
 msgid "Kleopatra…"
 msgstr ""
 
-#: qml/CertificatePage.qml:98
+#: qml/CertificatePage.qml:95
 msgid "One certificate"
 msgid_plural "%1 certificates"
 msgstr[0] ""
 msgstr[1] ""
 
-#: qml/CertificatePage.qml:124
+#: qml/CertificatePage.qml:121
 msgid ""
 "SHA-256: %1\n"
 "Issuer: %2\n"
@@ -92,133 +92,133 @@ msgid ""
 "%4"
 msgstr ""
 
-#: qml/CertificatePage.qml:130
+#: qml/CertificatePage.qml:127
 msgid "Open in Kleopatra"
 msgstr ""
 
-#: qml/CertificatePage.qml:135
+#: qml/CertificatePage.qml:132
 msgid "Detect Tokens"
 msgstr ""
 
-#: qml/CertificatePage.qml:136
+#: qml/CertificatePage.qml:133
 msgid "Register Token Module…"
 msgstr ""
 
-#: qml/CertificatePage.qml:137
+#: qml/CertificatePage.qml:134
 msgid ""
 "A3 PINs are not stored. Install vendor middleware locally through APTus when "
 "required."
 msgstr ""
 
-#: qml/CertificatePage.qml:141
+#: qml/CertificatePage.qml:138
 msgid "Within validity dates"
 msgstr ""
 
-#: qml/CertificatePage.qml:142
+#: qml/CertificatePage.qml:139
 msgid "Expired"
 msgstr ""
 
-#: qml/CertificatePage.qml:143
+#: qml/CertificatePage.qml:140
 msgid "Revoked"
 msgstr ""
 
-#: qml/CertificatePage.qml:144
+#: qml/CertificatePage.qml:141
 msgid "Not yet valid"
 msgstr ""
 
-#: qml/CertificatePage.qml:145
+#: qml/CertificatePage.qml:142
 msgid "Trusted: you confirmed it"
 msgstr ""
 
-#: qml/CertificatePage.qml:146
+#: qml/CertificatePage.qml:143
 msgid "Imported, not trusted yet"
 msgstr ""
 
-#: qml/CertificatePage.qml:147
+#: qml/CertificatePage.qml:144
 msgid "Trusted through its root"
 msgstr ""
 
-#: qml/CertificatePage.qml:148
+#: qml/CertificatePage.qml:145
 msgid "Invalid"
 msgstr ""
 
-#: qml/CertificatePage.qml:153
+#: qml/CertificatePage.qml:150
 msgid "Install chosen group"
 msgstr ""
 
-#: qml/CertificatePage.qml:153
+#: qml/CertificatePage.qml:150
 msgid "Remove chosen group"
 msgstr ""
 
-#: qml/CertificatePage.qml:159
+#: qml/CertificatePage.qml:156
 msgid "Group: %1"
 msgstr ""
 
-#: qml/CertificatePage.qml:160
+#: qml/CertificatePage.qml:157
 msgid "Close this browser before changing its NSS database."
 msgstr ""
 
-#: qml/CertificatePage.qml:160
+#: qml/CertificatePage.qml:157
 msgid ""
 "This changes system trust and requests administrator authorization. Expired "
 "and revoked catalogue entries are excluded."
 msgstr ""
 
-#: qml/CertificatePage.qml:161
+#: qml/CertificatePage.qml:158
 msgid "Choose Ed521 certificates when native chain verification is unavailable"
 msgstr ""
 
-#: qml/CertificatePage.qml:162 qml/CertificatePage.qml:178
-#: qml/CertificatePage.qml:215
+#: qml/CertificatePage.qml:159 qml/CertificatePage.qml:175
+#: qml/CertificatePage.qml:212
 msgid "NSS database password"
 msgstr ""
 
-#: qml/CertificatePage.qml:167
+#: qml/CertificatePage.qml:164
 msgid "Preview or import personal certificate"
 msgstr ""
 
-#: qml/CertificatePage.qml:173
+#: qml/CertificatePage.qml:170
 msgid "PKCS#12 passphrase (for .p12 or .pfx)"
 msgstr ""
 
-#: qml/CertificatePage.qml:174
+#: qml/CertificatePage.qml:171
 msgid "Preview"
 msgstr ""
 
-#: qml/CertificatePage.qml:177
+#: qml/CertificatePage.qml:174
 msgid ""
 "Okular can sign with a supported identity from this NSS directory. Browser "
 "TLS trust does not grant PDF certificate trust; that requires a separate S/"
 "MIME trust decision in NSS."
 msgstr ""
 
-#: qml/CertificatePage.qml:179
+#: qml/CertificatePage.qml:176
 msgid "Save A1 and NSS passwords in KDE Wallet"
 msgstr ""
 
-#: qml/CertificatePage.qml:180
+#: qml/CertificatePage.qml:177
 msgid ""
 "Close the browser before import. Private keys remain in its NSS database. A3 "
 "PINs are never saved here."
 msgstr ""
 
-#: qml/CertificatePage.qml:182
+#: qml/CertificatePage.qml:179
 msgid "Import A1"
 msgstr ""
 
-#: qml/CertificatePage.qml:183
+#: qml/CertificatePage.qml:180
 msgid "Read from Wallet"
 msgstr ""
 
-#: qml/CertificatePage.qml:184
+#: qml/CertificatePage.qml:181
 msgid "Forget Saved Passwords"
 msgstr ""
 
-#: qml/CertificatePage.qml:191
+#: qml/CertificatePage.qml:188
 msgid "Kleopatra / GnuPG S/MIME"
 msgstr ""
 
-#: qml/CertificatePage.qml:196
+#: qml/CertificatePage.qml:193
 msgid ""
 "Import the chosen group's certificates, with the chain up to their roots, "
 "into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by "
@@ -226,41 +226,41 @@ msgid ""
 "asks. Ed521 certificates are not imported because gpgsm cannot validate them."
 msgstr ""
 
-#: qml/CertificatePage.qml:197
+#: qml/CertificatePage.qml:194
 msgid "Import Chosen Group"
 msgstr ""
 
-#: qml/CertificatePage.qml:198
+#: qml/CertificatePage.qml:195
 msgid "Show What Was Imported"
 msgstr ""
 
-#: qml/CertificatePage.qml:199
+#: qml/CertificatePage.qml:196
 msgid "Ask gpgsm About Imported Roots"
 msgstr ""
 
-#: qml/CertificatePage.qml:200
+#: qml/CertificatePage.qml:197
 msgid "Remove What We Imported"
 msgstr ""
 
-#: qml/CertificatePage.qml:205
+#: qml/CertificatePage.qml:202
 msgid "Register a PKCS#11 module"
 msgstr ""
 
-#: qml/CertificatePage.qml:211
+#: qml/CertificatePage.qml:208
 msgid ""
 "Close the browser first. Choose the installed p11-kit proxy to expose "
 "configured token modules. Loading a module runs its code as your user."
 msgstr ""
 
-#: qml/CertificatePage.qml:213
+#: qml/CertificatePage.qml:210
 msgid "Absolute path to p11-kit-proxy.so"
 msgstr ""
 
-#: qml/CertificatePage.qml:214
+#: qml/CertificatePage.qml:211
 msgid "Inspect This Module"
 msgstr ""
 
-#: qml/CertificatePage.qml:216
+#: qml/CertificatePage.qml:213
 msgid "Remove Our Module Registration"
 msgstr ""
 

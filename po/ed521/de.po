@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sparky-ca 2.0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 20:36+0000\n"
+"POT-Creation-Date: 2026-10-29 20:47+0000\n"
 "PO-Revision-Date: 2026-10-29 20:00+0000\n"
 "Last-Translator: Claude Opus 5.5 via Claude Code\n"
 "Language-Team: German; review by native speakers welcome\n"
@@ -14,10 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: qml/CertificatePage.qml:67
-msgid "Close this message"
-msgstr "Diese Meldung schließen"
 
 #: src/core/ed521.cpp:115
 msgid ""

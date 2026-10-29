@@ -61,15 +61,12 @@ Kirigami.Page {
             visible: manager.ed521Message.length > 0 && !manager.ed521Dismissed
             type: manager.ed521Warning ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
             text: manager.ed521Message
-            actions: [
-                Kirigami.Action {
-                    objectName: "ed521Close"
-                    text: i18nd("sparky-ca-ed521", "Close this message")
-                    icon.name: "dialog-close"
-                    displayHint: Kirigami.DisplayHint.IconOnly
-                    onTriggered: manager.dismissEd521()
-                }
-            ]
+            showCloseButton: true
+            // The close button hides the message; remember that, but not when the page itself is hidden.
+            onVisibleChanged: {
+                if (!visible && page.visible && manager.ed521Message.length > 0 && !manager.ed521Dismissed)
+                    manager.dismissEd521()
+            }
         }
         Controls.Label { Layout.fillWidth: true; text: manager.updateStatus; textFormat: Text.PlainText; wrapMode: Text.Wrap; opacity: 0.7 }
         Kirigami.InlineMessage { Layout.fillWidth: true; visible: manager.error.length > 0; type: Kirigami.MessageType.Error; text: manager.error }
