@@ -27,12 +27,15 @@ Files: data/roots/*
        ed521-provider/ICP-Brasilv7.pem
        ed521-provider/tests/data/*.der
        ed521-provider/tests/data/LCRacraizv7.crl
+       ed521-provider/tests/fuzz/v7.h
+       ed521-provider/tests/fuzz/corpus/*
 Copyright: public data published by their issuers
 License: public-domain
  These are public certificates published by Instituto Nacional de Tecnologia
  da Informação (ITI) and by the public certification authority named in
  each file. They are redistributed unchanged so that the program can verify
- downloads without relying on the network.
+ downloads without relying on the network. The fuzzing corpus holds inputs
+ that libFuzzer derived from these certificates and from public TEST seeds.
 
 Files: ed521-provider/tests/data/rfc8032-ed448.json
 Copyright: 2017 IETF Trust and the persons identified as the document authors
