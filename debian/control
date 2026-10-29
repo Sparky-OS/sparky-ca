@@ -5,7 +5,8 @@ Maintainer: Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>
 Standards-Version: 4.7.3
 Homepage: https://sparkylinux.org
 Rules-Requires-Root: no
-Build-Depends: debhelper-compat (= 13),
+Build-Depends: cmake,
+               debhelper-compat (= 13),
                extra-cmake-modules,
                gettext,
                libarchive-dev,
@@ -16,6 +17,7 @@ Build-Depends: debhelper-compat (= 13),
                libkf6notifications-dev,
                libkf6wallet-dev,
                libssl-dev,
+               ninja-build,
                openssl <!nocheck>,
                pkgconf,
                python3:native <!nocheck>,
