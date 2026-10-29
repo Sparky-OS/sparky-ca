@@ -1,0 +1,3 @@
+# The diversion is added by /usr/libexec/openssl-provider-ed521/system-config,
+# which postinst calls after the new configuration has passed its self-test.
+remove-of-unknown-diversion usr/lib/ssl/openssl.cnf [postrm:*]
