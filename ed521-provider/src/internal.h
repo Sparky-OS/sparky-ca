@@ -9,6 +9,7 @@
 #include <openssl/crypto.h>
 #include <openssl/params.h>
 #define ED521_OID "1.3.6.1.4.1.44588.2.1"
+#define ED521_VERSION "0.2.0"
 #define ED521_NAMES "ED521:Ed521:" ED521_OID
 typedef struct {
     OSSL_LIB_CTX *libctx;
@@ -18,6 +19,7 @@ typedef struct {
     unsigned char public_key[66];
     int present;
 } ED521_KEY;
+int ed521_public_decodes(const unsigned char public_key[66]);
 int ed521_public_valid(const unsigned char public_key[66]);
 int ed521_verify(OSSL_LIB_CTX *libctx, const unsigned char public_key[66],
                  const unsigned char signature[132], const unsigned char *message,

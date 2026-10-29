@@ -42,7 +42,7 @@ static int key_import(void *data, int selection, const OSSL_PARAM params[])
         || !(selection & OSSL_KEYMGMT_SELECT_PUBLIC_KEY)
         || public == NULL || public->data_type != OSSL_PARAM_OCTET_STRING
         || public->data == NULL || public->data_size != 66
-        || !ed521_public_valid(public->data))
+        || !ed521_public_decodes(public->data))
         return 0;
     memcpy(key->public_key, public->data, 66);
     key->present = 1;

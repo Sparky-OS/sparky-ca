@@ -61,7 +61,7 @@ static int decoder_decode(void *data, OSSL_CORE_BIO *input, int selection,
     X509_ALGOR_get0((const ASN1_OBJECT **)&algorithm, &type, NULL, identifier);
     OBJ_obj2txt(oid, sizeof(oid), algorithm, 1);
     if (strcmp(oid, ED521_OID) != 0 || type != V_ASN1_UNDEF || public_length != 66
-        || !ed521_public_valid(public))
+        || !ed521_public_decodes(public))
         goto end;
     key = OPENSSL_zalloc(sizeof(*key));
     if (key == NULL) {

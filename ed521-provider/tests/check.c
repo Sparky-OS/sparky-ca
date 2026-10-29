@@ -33,7 +33,7 @@ int main(int argc, char **argv)
         EVP_PKEY_CTX_free(generation);
         goto end;
     }
-    message = OPENSSL_hexstr2buf(argv[2], &message_length);
+    message = argv[2][0] != '\0' ? OPENSSL_hexstr2buf(argv[2], &message_length) : OPENSSL_zalloc(1);
     signature = OPENSSL_hexstr2buf(argv[3], &signature_length);
     ctx = EVP_MD_CTX_new();
     if (message == NULL || signature == NULL || ctx == NULL

@@ -35,7 +35,14 @@ with tempfile.TemporaryDirectory(prefix='ed521-constraints-') as temporary:
         pem.write_text('-----BEGIN PUBLIC KEY-----\n' + text + '\n-----END PUBLIC KEY-----\n')
         result = subprocess.run([check, str(pem), vector['message'], vector['signature'], *extra],
                                 env=env, capture_output=True, timeout=10)
-        assert result.returncode == expected, (expected, result.returncode, result.stderr)
+        assert result.returncode == expected or (expected == 'rejected' and result.returncode in (1, 2)), (expected, result.returncode, result.stderr)
+        return pem
+
+    def pubcheck(der):
+        text = base64.b64encode(der).decode()
+        pem.write_text('-----BEGIN PUBLIC KEY-----\n' + text + '\n-----END PUBLIC KEY-----\n')
+        return subprocess.run(['openssl', 'pkey', '-pubin', '-in', str(pem), '-pubcheck', '-noout'],
+                              env=env, capture_output=True, timeout=10).returncode
 
     run(spki(public), 0)
     run(spki(public), 0, ('public-only',))
@@ -51,6 +58,9 @@ with tempfile.TemporaryDirectory(prefix='ed521-constraints-') as temporary:
         spki(public, alg=pack(48, algorithm[2:] + b'\x05\x00')),
         spki(public) + b'\x00',
     ]
+    small_order = spki(((1 << 521) - 2).to_bytes(66, 'little'))
     for der in cases:
-        run(der, 2)
-    print('Provider constraints: valid public key verifies; signing/key generation unavailable; ten malformed, noncanonical or small-order SPKIs rejected')
+        run(der, 'rejected' if der == small_order else 2)
+    assert pubcheck(spki(public)) == 0
+    assert pubcheck(small_order) != 0
+    print('Provider constraints: valid public key verifies and passes -pubcheck; signing/key generation unavailable; nine malformed or noncanonical SPKIs refused at decoding; the order-2 key decodes, fails -pubcheck and verifies nothing')

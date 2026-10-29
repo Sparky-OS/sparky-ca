@@ -5,15 +5,15 @@
 #include "internal.h"
 
 static const OSSL_ALGORITHM keymgmt[] = {
-    { ED521_NAMES, "provider=ed521-provider", ed521_keymgmt, "Public Ed521 keys" },
+    { ED521_NAMES, "provider=ed521", ed521_keymgmt, "Public Ed521 keys" },
     { NULL, NULL, NULL, NULL }
 };
 static const OSSL_ALGORITHM signature[] = {
-    { ED521_NAMES, "provider=ed521-provider", ed521_signature, "PureEd521 verification" },
+    { ED521_NAMES, "provider=ed521", ed521_signature, "PureEd521 verification" },
     { NULL, NULL, NULL, NULL }
 };
 static const OSSL_ALGORITHM decoder[] = {
-    { ED521_NAMES, "provider=ed521-provider,input=der,structure=SubjectPublicKeyInfo", ed521_decoder, "Ed521 SubjectPublicKeyInfo" },
+    { ED521_NAMES, "provider=ed521,input=der,structure=SubjectPublicKeyInfo", ed521_decoder, "Ed521 SubjectPublicKeyInfo" },
     { NULL, NULL, NULL, NULL }
 };
 
@@ -51,9 +51,9 @@ static int get_params(void *ctx, OSSL_PARAM params[])
 {
     OSSL_PARAM *p;
     (void)ctx;
-    if ((p = OSSL_PARAM_locate(params, OSSL_PROV_PARAM_NAME)) != NULL && !OSSL_PARAM_set_utf8_ptr(p, "Ed521 verification prototype following Pedro Albanese"))
+    if ((p = OSSL_PARAM_locate(params, OSSL_PROV_PARAM_NAME)) != NULL && !OSSL_PARAM_set_utf8_ptr(p, "Ed521 verification, after Pedro F. Albanese's e521"))
         return 0;
-    if ((p = OSSL_PARAM_locate(params, OSSL_PROV_PARAM_VERSION)) != NULL && !OSSL_PARAM_set_utf8_ptr(p, "0.1.0"))
+    if ((p = OSSL_PARAM_locate(params, OSSL_PROV_PARAM_VERSION)) != NULL && !OSSL_PARAM_set_utf8_ptr(p, ED521_VERSION))
         return 0;
     if ((p = OSSL_PARAM_locate(params, OSSL_PROV_PARAM_STATUS)) != NULL && !OSSL_PARAM_set_int(p, 1))
         return 0;
