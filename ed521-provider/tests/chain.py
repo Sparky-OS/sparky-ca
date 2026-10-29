@@ -22,6 +22,7 @@ import base64
 from datetime import datetime, timedelta, timezone
 import hashlib
 import os
+import shutil
 from pathlib import Path
 import socket
 import ssl
@@ -211,6 +212,27 @@ def main():
                 bad = openssl('s_client', '-connect', f'127.0.0.1:{port}', '-servername', 'localhost', '-brief', '-no_ign_eof', '-CAfile', d / 'root.pem',
                               '-verify_return_error', version, env=plain, input=b'')
                 check(bad.returncode != 0, 'TLS 1.2: the default provider alone rejects the Ed521-signed chain')
+            try:
+                server_process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                server_process.kill()
+                server_process.wait()
+        if shutil.which('curl'):
+            with socket.socket() as s:
+                s.bind(('127.0.0.1', 0))
+                port = s.getsockname()[1]
+            server_process = subprocess.Popen(['openssl', 's_server', '-accept', f'127.0.0.1:{port}', '-naccept', '2', '-www', '-cert', d / 'server.pem',
+                                               '-key', d / 'server.key', '-cert_chain', d / 'intermediate.pem', '-quiet'], env=configured,
+                                              stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            for _ in range(250):
+                if listening(port):
+                    break
+                time.sleep(0.02)
+            curl = ['curl', '-sS', '--max-time', '20', '--cacert', str(d / 'root.pem'), f'https://localhost:{port}/']
+            good = subprocess.run(curl, env=configured, capture_output=True, timeout=30)
+            check(good.returncode == 0 and b'Ciphers supported' in good.stdout, 'curl (OpenSSL backend) fetches over the Ed521-signed chain')
+            bad = subprocess.run(curl, env=plain, capture_output=True, timeout=30)
+            check(bad.returncode != 0, f'curl with the default provider alone refuses it ({bad.stderr.decode().strip()[:70]})')
             try:
                 server_process.wait(timeout=5)
             except subprocess.TimeoutExpired:
