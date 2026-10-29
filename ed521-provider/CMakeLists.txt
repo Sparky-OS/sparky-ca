@@ -13,6 +13,10 @@ target_compile_features(ed521-provider PRIVATE c_std_11)
 target_compile_options(ed521-provider PRIVATE -Wall -Wextra -Werror)
 # OpenSSL loads a provider named ed521 from MODULESDIR/ed521.so when the configuration names no module.
 set_target_properties(ed521-provider PROPERTIES PREFIX "" OUTPUT_NAME ed521 C_VISIBILITY_PRESET hidden)
+install(TARGETS ed521-provider LIBRARY DESTINATION ${OPENSSL_MODULESDIR})
+install(FILES openssl-ed521.cnf DESTINATION ${CMAKE_INSTALL_DATADIR}/openssl-provider-ed521 RENAME openssl.cnf)
+install(FILES ICP-Brasilv7.pem DESTINATION ${CMAKE_INSTALL_DATADIR}/openssl-provider-ed521)
+install(PROGRAMS system-config.sh DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/openssl-provider-ed521 RENAME system-config)
 
 add_executable(ed521-check tests/check.c)
 target_link_libraries(ed521-check PRIVATE OpenSSL::Crypto)

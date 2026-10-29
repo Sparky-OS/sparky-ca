@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+# prerm restores Debian's link; this covers a removal after a failed prerm.
+if [ "$1" = remove ] || [ "$1" = purge ] || [ "$1" = abort-install ]; then
+	if [ "$(dpkg-divert --listpackage /usr/lib/ssl/openssl.cnf)" = openssl-provider-ed521 ]; then
+		if [ -L /usr/lib/ssl/openssl.cnf.distrib ] || [ -e /usr/lib/ssl/openssl.cnf.distrib ]; then
+			mv -T /usr/lib/ssl/openssl.cnf.distrib /usr/lib/ssl/openssl.cnf
+		fi
+		dpkg-divert --package openssl-provider-ed521 --remove --no-rename \
+			--divert /usr/lib/ssl/openssl.cnf.distrib /usr/lib/ssl/openssl.cnf >/dev/null
+	fi
+fi
+
+if [ "$1" = purge ]; then
+	rm -rf /var/lib/openssl-provider-ed521
+fi
+
+#DEBHELPER#
+
+exit 0

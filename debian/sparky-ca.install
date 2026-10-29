@@ -1,0 +1,14 @@
+usr/bin
+usr/lib/kf6
+usr/lib/systemd
+usr/lib/*/qt6
+usr/libexec/sparky-ca
+usr/share/applications
+usr/share/dbus-1
+usr/share/kio
+usr/share/knotifications6
+usr/share/locale
+usr/share/man
+usr/share/metainfo
+usr/share/polkit-1
+usr/share/sparky-ca

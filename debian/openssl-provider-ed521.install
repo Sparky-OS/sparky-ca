@@ -1,0 +1,3 @@
+usr/lib/*/ossl-modules/ed521.so
+usr/libexec/openssl-provider-ed521
+usr/share/openssl-provider-ed521

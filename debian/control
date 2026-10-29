@@ -16,7 +16,9 @@ Build-Depends: debhelper-compat (= 13),
                libkf6notifications-dev,
                libkf6wallet-dev,
                libssl-dev,
+               openssl <!nocheck>,
                pkgconf,
+               python3:native <!nocheck>,
                qt6-base-dev,
                qt6-declarative-dev
 
@@ -39,6 +41,7 @@ Depends: ca-certificates,
 Recommends: gpgsm,
             libccid,
             opensc,
+            openssl-provider-ed521,
             p11-kit,
             pcscd
 Suggests: kleopatra,
@@ -53,3 +56,19 @@ Description: ICP-Brasil certificates, browser trust and personal certificates
  Every download is checked against ITI's published hash and pinned roots, and
  certificates revoked by their authority are never installed. A daily timer
  keeps your chosen groups current and can be turned off.
+
+Package: openssl-provider-ed521
+Architecture: amd64
+Depends: openssl,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Ed521 signature verification for OpenSSL (ICP-Brasil v7)
+ An OpenSSL 3 provider that verifies EdDSA signatures over the curve E-521
+ (Ed521, OID 1.3.6.1.4.1.44588.2.1), the algorithm of ICP-Brasil's root
+ certificate v7, following Pedro F. Albanese's e521 reference.
+ .
+ It only verifies: it cannot create keys or sign, and it answers for Ed521
+ alone. Installing it adds the provider to OpenSSL's system configuration
+ beside the default provider, after checking that the result works, so that
+ openssl and the programs that use OpenSSL validate v7 certificates, CRLs
+ and CMS signatures. Removing it restores the previous configuration.

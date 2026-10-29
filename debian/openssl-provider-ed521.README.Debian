@@ -1,0 +1,57 @@
+openssl-provider-ed521 for Debian
+---------------------------------
+
+The provider verifies Ed521 signatures (EdDSA over E-521, OID
+1.3.6.1.4.1.44588.2.1), the algorithm of ICP-Brasil's root certificate v7.
+It cannot generate keys or sign.
+
+How it is configured
+--------------------
+
+libcrypto reads /usr/lib/ssl/openssl.cnf, which the openssl package ships as
+a link to /etc/ssl/openssl.cnf.  Debian's openssl has no directory for
+configuration snippets, so this package diverts that link:
+
+  /usr/lib/ssl/openssl.cnf          -> /usr/share/openssl-provider-ed521/openssl.cnf
+  /usr/lib/ssl/openssl.cnf.distrib  -> /etc/ssl/openssl.cnf  (Debian's link)
+
+/usr/share/openssl-provider-ed521/openssl.cnf includes /etc/ssl/openssl.cnf
+first, so your settings there still apply, then adds the provider ed521 to
+[provider_sect] and activates the default provider in [default_sect]: once
+any provider is activated, OpenSSL no longer loads the default provider by
+itself (config(5), "Default provider and its activation").
+
+The package switches the link only after checking, at installation, that
+the new configuration activates exactly the providers active before plus
+ed521, that the default provider is among them, that no FIPS provider is
+active, that SHA-256 works and that ITI's v7 root verifies.  Otherwise it
+leaves the configuration as it was and says why.
+
+  /usr/libexec/openssl-provider-ed521/system-config status
+
+shows the state.  As root, "system-config disable" puts Debian's link back
+and keeps it so across upgrades; "system-config enable" switches it on
+again.  Removing the package puts Debian's link back too.
+
+What changes for programs
+-------------------------
+
+Programs that read the system configuration (openssl, curl, Python's ssl,
+Qt) can verify Ed521 certificates, CRLs and CMS signatures.  Every other
+algorithm is answered by the providers that answered it before.  A program
+that loads providers itself (OSSL_PROVIDER_load) now finds the default
+provider already active, as with any configuration that activates it.
+
+Programs that use NSS (Firefox, Chromium, Okular's NSS backend), GnuPG
+(Kleopatra, KMail, Okular's GnuPG backend), GnuTLS or Java do not use
+OpenSSL's providers and cannot verify Ed521 through this package.
+
+To configure it by hand instead, run "system-config disable" and add these
+lines to /etc/ssl/openssl.cnf:
+
+  [provider_sect]
+  ed521 = ed521_sect
+  [default_sect]
+  activate = 1
+  [ed521_sect]
+  activate = 1

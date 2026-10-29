@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = configure ]; then
+	/usr/libexec/openssl-provider-ed521/system-config configure
+fi
+
+#DEBHELPER#
+
+exit 0

@@ -12,3 +12,18 @@ Its public synthetic seeds are bytes 0..65, bytes 65..0, and 66 repetitions
 of byte 7. These fixtures establish interoperability, not security of these
 deliberately public seeds. They are not certificates issued by real ITI v7.
 The patched Go tests verify the same exact TBS/signature bytes independently.
+
+`LCRacraizv7.crl` is ITI's CRL for v7 (CRL number 36, last update
+2026-10-01), fetched from the address in v7's CRL distribution point,
+http://acraiz.icpbrasil.gov.br/LCRacraizv7.crl, SHA-256
+`7ed58f20abab5bf4825e3ce9040d106c77c9b59163102a1840558f782002a5e6`.
+It is a second real Ed521 signature by v7; its signature, not the
+transport, authenticates it.
+
+`rfc8032-ed448.json` holds the Ed448 and Ed448ph test vectors of RFC 8032
+sections 7.4 and 7.5, extracted unchanged.
+
+`ed521-vectors.json` is written by `../make-vectors.py` from the
+independent oracle (`../oracle.py`) and public TEST seeds printed in the
+file. `../chain.py` builds its TEST hierarchy at run time from public TEST
+seeds as well.

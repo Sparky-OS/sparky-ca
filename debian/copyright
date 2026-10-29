@@ -24,13 +24,23 @@ License: ISC
 
 Files: data/roots/*
        data/tls-issuers.pem
+       ed521-provider/ICP-Brasilv7.pem
        ed521-provider/tests/data/*.der
+       ed521-provider/tests/data/LCRacraizv7.crl
 Copyright: public data published by their issuers
 License: public-domain
  These are public certificates published by Instituto Nacional de Tecnologia
  da Informação (ITI) and by the public certification authority named in
  each file. They are redistributed unchanged so that the program can verify
  downloads without relying on the network.
+
+Files: ed521-provider/tests/data/rfc8032-ed448.json
+Copyright: 2017 IETF Trust and the persons identified as the document authors
+Comment: The Ed448 and Ed448ph test vectors of RFC 8032 (Simon Josefsson and
+ Ilari Liusvaara), sections 7.4 and 7.5, extracted unchanged as data. The
+ RFC is subject to BCP 78 and the IETF Trust's Legal Provisions, which give
+ code components extracted from it the Simplified BSD License (section 4.e).
+License: BSD-2-Clause
 
 Files: po/pl.po
 Copyright: 2026 Daniel Campos Ramos
@@ -78,3 +88,25 @@ License: ISC
  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  PERFORMANCE OF THIS SOFTWARE.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.

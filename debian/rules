@@ -1,19 +1,24 @@
 #!/usr/bin/make -f
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+include /usr/share/dpkg/architecture.mk
 
 %:
 	dh $@ --buildsystem=cmake+ninja
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DBUILD_TESTING=OFF -DBUILD_ED521_PROVIDER=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	dh_auto_configure -- -DBUILD_TESTING=OFF -DBUILD_ED521_PROVIDER=ON -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
 override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	cd obj-$(DEB_HOST_GNU_TYPE)/ed521-provider && ctest --output-on-failure
+endif
 
 override_dh_installdocs:
-	dh_installdocs README.md DESIGN.md
+	dh_installdocs -psparky-ca README.md DESIGN.md
+	dh_installdocs -popenssl-provider-ed521 ed521-provider/README.md
 
 override_dh_installsystemd:
-	dh_installsystemd sparky-ca-update.timer
+	dh_installsystemd -psparky-ca sparky-ca-update.timer
 
 override_dh_installsystemduser:
-	dh_installsystemduser sparky-ca-user-update.timer sparky-ca-user-update.path
+	dh_installsystemduser -psparky-ca sparky-ca-user-update.timer sparky-ca-user-update.path
