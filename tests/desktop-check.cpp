@@ -10,6 +10,9 @@
 #include <QDBusConnectionInterface>
 #include <QFileInfo>
 #include <QJSValue>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QTest>
@@ -66,7 +69,8 @@ int main(int argc, char **argv)
         return 1;
     try {
         CertificateManager manager(QString::fromLocal8Bit(argv[1]));
-        require(manager.error().isEmpty() && manager.certificates().size() == 331, "application backend loads all 331 catalogue entries");
+        const auto entries = QJsonDocument::fromJson(SparkyCA::readFile(QString::fromLocal8Bit(argv[1]) + "/catalogue.json")).object().value("certificates").toArray().size();
+        require(manager.error().isEmpty() && manager.certificates().size() == entries, QStringLiteral("application backend loads all %1 catalogue entries").arg(entries));
         manager.expiryNotification();
         require(QTest::qWaitFor(
                     [&] {
@@ -94,7 +98,7 @@ int main(int argc, char **argv)
         auto item = module.plugin->mainUi();
         require(item != nullptr, "System Settings loads the compiled Certificates QML");
         const auto backend = module.plugin->property("manager").value<CertificateManager *>();
-        require(backend && backend->certificates().size() == 331 && backend->error().isEmpty(), "the KCM shares the complete certificate backend");
+        require(backend && backend->certificates().size() == entries && backend->error().isEmpty(), "the KCM shares the complete certificate backend");
         const auto binding = item->property("manager");
         auto bound = binding.value<QObject *>();
         if (binding.metaType() == QMetaType::fromType<QJSValue>())

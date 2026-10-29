@@ -42,10 +42,24 @@ for language in languages:
         if sorted(re.findall(r"%\d", message)) != sorted(re.findall(r"%\d", translation)):
             raise AssertionError(f"{language}: placeholders differ: {message}")
     checked(True, f"{language}: every translation keeps its placeholders")
+ed521 = (source / "po/ed521/LINGUAS").read_text().split()
+checked(sorted(ed521) == sorted(["pt_BR", "pl", "de", "fr", "ja", "ko", "zh_CN", "zh_TW"]), "the Ed521 message ships in the edition's nine languages (English and eight translations)")
+ed521_wanted = set(re.findall(r'^msgid "(.+)"$', subprocess.run(["msgattrib", "--no-wrap", str(source / "po/ed521/sparky-ca-ed521.pot")], capture_output=True, text=True, check=True).stdout, re.M))
+for language in ed521:
+    path = source / f"po/ed521/{language}.po"
+    result = subprocess.run(["msgfmt", "--check-format", "--check-header", "--statistics", "-o", "/dev/null", str(path)], capture_output=True, text=True)
+    checked(result.returncode == 0 and "untranslated" not in result.stderr and "fuzzy" not in result.stderr, f"ed521 {language}: every message is translated and none is fuzzy ({result.stderr.strip().splitlines()[-1]})")
+    checked(ed521_wanted <= set(messages(path)), f"ed521 {language}: every message of the Ed521 catalogue has a translation")
+    text = subprocess.run(["msgattrib", "--no-wrap", "--translated", str(path)], capture_output=True, text=True, check=True).stdout
+    pairs = re.findall(r'^msgid "(.+)"\nmsgstr "(.*)"$', text, re.M)
+    checked(not [m for m, t in pairs if m == t], f"ed521 {language}: no message is left as its English source")
+    checked(all("openssl-provider-ed521" in t for m, t in pairs if "openssl-provider-ed521" in m), f"ed521 {language}: the package name stays as it is")
 with tempfile.TemporaryDirectory() as temporary:
     copy = Path(temporary) / "source"
     subprocess.run(["cp", "-r", str(source), str(copy)], check=True)
     subprocess.run(["sh", str(copy / "tools/update-translations.sh")], check=True)
     fresh = set(re.findall(r'^msgid "(.+)"$', subprocess.run(["msgattrib", "--no-wrap", str(copy / "po/sparky-ca.pot")], capture_output=True, text=True, check=True).stdout, re.M))
     checked(fresh == wanted, "the catalogue matches the strings in the sources")
+    fresh_ed521 = set(re.findall(r'^msgid "(.+)"$', subprocess.run(["msgattrib", "--no-wrap", str(copy / "po/ed521/sparky-ca-ed521.pot")], capture_output=True, text=True, check=True).stdout, re.M))
+    checked(fresh_ed521 == ed521_wanted and len(ed521_wanted) == 10, "the Ed521 catalogue matches the strings in the sources")
 print(f"{checks} checks passed", flush=True)
