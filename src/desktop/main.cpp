@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     KLocalizedString::setApplicationDomain("sparky-ca");
     KAboutData about("sparky-ca",
                      i18n("Certificates"),
-                     "2.0.3",
+                     "2.0.4",
                      i18n("Manage certificate trust and personal identities"),
                      KAboutLicense::GPL_V3,
                      i18n("© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"));

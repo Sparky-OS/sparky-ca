@@ -1,4 +1,9 @@
 -------------------------------------------------------------------------------
+  Version 2.0.4 (2026-10-30)
+-------------------------------------------------------------------------------
+  * Made the Ed521 provider's system-config call Debian's /usr/bin/openssl, so another OpenSSL first on PATH no longer hides the provider from status or refuses enable
+
+-------------------------------------------------------------------------------
   Version 2.0.3 (2026-10-29)
 -------------------------------------------------------------------------------
   * Added openssl-provider-ed521: Ed521 verification configured in OpenSSL system-wide beside the default provider, so ICP-Brasil v7 validates out of the box

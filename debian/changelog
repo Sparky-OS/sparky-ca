@@ -1,3 +1,12 @@
+sparky-ca (2.0.4) forky; urgency=medium
+
+  * openssl-provider-ed521: system-config calls /usr/bin/openssl, not the
+    first openssl on PATH; with another OpenSSL first on PATH (conda,
+    miniforge), "status" printed "enabled: default" without ed521 and
+    "enable" would refuse
+
+ -- Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>  Fri, 30 Oct 2026 01:50:00 +0000
+
 sparky-ca (2.0.3) forky; urgency=medium
 
   * New binary package openssl-provider-ed521: the Ed521 verification

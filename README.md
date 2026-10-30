@@ -38,7 +38,7 @@ The version 1 shell script and its placeholder locales are retired; git history 
 
 ## Package
 
-`debian/` builds `sparky-ca_2.0.3_amd64.deb` and `openssl-provider-ed521_2.0.3_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
+`debian/` builds `sparky-ca_2.0.4_amd64.deb` and `openssl-provider-ed521_2.0.4_amd64.deb` as a native Debian package: `dpkg-buildpackage -us -uc -b`.
 It needs only stock Debian KDE Frameworks, so it installs on every SparkyLinux edition; `gpgsm` and Kleopatra are recommended and suggested, not required.
 The package enables the machine timer and the user timer and path unit when it is installed.
 It never starts the update service on install or upgrade, and it never touches the switch files.
