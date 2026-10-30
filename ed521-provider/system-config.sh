@@ -24,6 +24,8 @@ DEBIAN_CONF=/etc/ssl/openssl.cnf
 SHARE=/usr/share/openssl-provider-ed521
 WRAPPER=$SHARE/openssl.cnf
 V7=$SHARE/ICP-Brasilv7.pem
+# Debian's own openssl, never another one found first on PATH (conda, miniforge)
+OPENSSL=/usr/bin/openssl
 CHOICE=/var/lib/$PACKAGE/disabled
 REFUSED=0
 
@@ -34,7 +36,7 @@ say() {
 }
 
 providers() {
-	OPENSSL_CONF=$1 openssl list -providers 2>/dev/null | awk '
+	OPENSSL_CONF=$1 "$OPENSSL" list -providers 2>/dev/null | awk '
 		/^  [^ ]/ { name = $1 }
 		/^    status: active$/ { print name }' | sort | tr '\n' ' '
 }
@@ -85,8 +87,8 @@ enable() {
 	*) refuse "The default provider is not active in $DEBIAN_CONF." ;;
 	esac
 	[ "$after" = "$expected" ] || refuse "The providers would change from '$before' to '$after'."
-	echo | OPENSSL_CONF=$WRAPPER openssl dgst -sha256 >/dev/null 2>&1 || refuse "SHA-256 fails with the new configuration."
-	OPENSSL_CONF=$WRAPPER openssl verify -check_ss_sig -CAfile "$V7" "$V7" >/dev/null 2>&1 \
+	echo | OPENSSL_CONF=$WRAPPER "$OPENSSL" dgst -sha256 >/dev/null 2>&1 || refuse "SHA-256 fails with the new configuration."
+	OPENSSL_CONF=$WRAPPER "$OPENSSL" verify -check_ss_sig -CAfile "$V7" "$V7" >/dev/null 2>&1 \
 		|| refuse "ITI's v7 root does not verify with the new configuration."
 	dpkg-divert --package "$PACKAGE" --add --no-rename --divert "$DIVERTED" "$LINK" >/dev/null
 	cp -a "$LINK" "$DIVERTED"
