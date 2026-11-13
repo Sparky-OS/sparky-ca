@@ -177,6 +177,12 @@ Two historical MRE entries fail OpenSSL's current explicit-ECC policy, and four 
 Their archive records and exclusions remain visible in the source index.
 See [VERIFICATION.md](VERIFICATION.md) for measured results and limits.
 
+## Maintainers
+
+Daniel Campos Ramos and Pedro F. Albanese maintain Sparky CA.
+GitHub asks both to review every change to the catalogue, the root pins and the Ed521 provider.
+That includes the pull request the daily refresh opens when ITI's bundle changes, so a new certificate is seen and approved by a maintainer before it ships.
+
 ## License and credits
 
 Sparky CA is GPL-3.0-or-later, without warranty.

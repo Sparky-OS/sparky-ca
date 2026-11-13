@@ -1,0 +1,5 @@
+# GitHub asks these maintainers to review a pull request that touches the paths below.
+# The daily catalogue refresh opens its pull requests against /data/, so both hear of
+# every certificate ITI adds or removes.
+/data/            @danielcamposramos @pedroalbanese
+/ed521-provider/  @pedroalbanese @danielcamposramos
