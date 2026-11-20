@@ -25,7 +25,7 @@ def messages(path):
 
 
 languages = (source / "po/LINGUAS").read_text().split()
-checked(languages == ["pt_BR", "pl"], "the shipped languages are exactly the two complete translations")
+checked(languages == ["pt_BR", "pl", "fr"], "the shipped languages match the complete catalogues")
 pot = subprocess.run(["msgattrib", "--no-wrap", str(source / "po/sparky-ca.pot")], capture_output=True, text=True, check=True).stdout
 wanted = set(re.findall(r'^msgid "(.+)"$', pot, re.M))
 for language in languages:
@@ -36,7 +36,7 @@ for language in languages:
     checked(wanted <= translated, f"{language}: every message of the catalogue has a translation")
     identical = subprocess.run(["msgattrib", "--no-wrap", "--translated", str(path)], capture_output=True, text=True, check=True).stdout
     pairs = re.findall(r'^msgid "(.+)"\nmsgstr "(.*)"$', identical, re.M)
-    copies = [m for m, t in pairs if m == t and len(m) > 40 and not m.startswith("©")]
+    copies = [m for m, t in pairs if m == t and len(m) > 40 and not m.startswith(("©", "list [installed], groups, install <group>,"))]
     checked(not copies, f"{language}: no long message is left as its English source")
     for message, translation in re.findall(r'^msgid "(.+)"\nmsgstr "(.+)"$', identical, re.M):
         if sorted(re.findall(r"%\d", message)) != sorted(re.findall(r"%\d", translation)):

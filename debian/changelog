@@ -1,3 +1,9 @@
+sparky-ca (2.0.5) forky; urgency=medium
+
+  * Add French application messages and Spanish Ed521 status messages (ORDER 46).
+
+ -- Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>  Fri, 20 Nov 2026 16:02:03 -0300
+
 sparky-ca (2.0.4) forky; urgency=medium
 
   * openssl-provider-ed521: system-config calls /usr/bin/openssl, not the
