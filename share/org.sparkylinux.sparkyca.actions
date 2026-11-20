@@ -4,16 +4,24 @@ Icon=security-high
 
 [org.sparkylinux.sparkyca.change]
 Name=Change system certificate trust
+Name[de]=Vertrauenseinstellungen für Systemzertifikate ändern
+Name[es]=Cambiar la confianza en los certificados del sistema
 Name[fr]=Modifier la confiance des certificats du système
 Description=Install or remove a chosen certificate group in the system trust store
+Description[de]=Eine ausgewählte Zertifikatsgruppe im Systemspeicher installieren oder entfernen
+Description[es]=Instalar o eliminar un grupo de certificados elegido en el almacén de confianza del sistema
 Description[fr]=Installer ou retirer un groupe de certificats choisi dans le magasin de confiance du système
 Policy=auth_admin
 Persistence=session
 
 [org.sparkylinux.sparkyca.automatic]
 Name=Turn automatic certificate updates on or off
+Name[de]=Automatische Zertifikatsaktualisierungen ein- oder ausschalten
+Name[es]=Activar o desactivar las actualizaciones automáticas de certificados
 Name[fr]=Activer ou désactiver les mises à jour automatiques des certificats
 Description=Change the machine's switch for the daily refresh of the chosen certificate groups
+Description[de]=Die tägliche Aktualisierung der ausgewählten Zertifikatsgruppen auf diesem Rechner ein- oder ausschalten
+Description[es]=Cambiar el ajuste de la actualización diaria de los grupos de certificados elegidos en este equipo
 Description[fr]=Modifier le réglage d’actualisation quotidienne des groupes de certificats choisis sur cet ordinateur
 Policy=auth_admin
 Persistence=session

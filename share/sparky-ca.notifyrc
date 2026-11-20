@@ -1,20 +1,32 @@
 [Global]
 IconName=security-high
 Name=Certificates
+Name[de]=Zertifikate
+Name[es]=Certificados
 Name[fr]=Certificats
 Comment=Certificate trust and expiry notifications
+Comment[de]=Benachrichtigungen zu Zertifikatsvertrauen und Ablaufdaten
+Comment[es]=Avisos de confianza y caducidad de certificados
 Comment[fr]=Notifications de confiance et d’expiration des certificats
 
 [Event/CertificateChanged]
 Name=Certificate status changed
+Name[de]=Zertifikatsstatus geändert
+Name[es]=Cambió el estado de un certificado
 Name[fr]=L’état du certificat a changé
 Comment=A certificate store changed or a certificate is expiring
+Comment[de]=Ein Zertifikatsspeicher hat sich geändert oder ein Zertifikat läuft ab
+Comment[es]=Cambió un almacén de certificados o un certificado está a punto de caducar
 Comment[fr]=Un magasin a changé ou un certificat arrive à expiration
 Action=Popup
 
 [Event/AutomaticUpdate]
 Name=Certificates updated automatically
+Name[de]=Zertifikate automatisch aktualisiert
+Name[es]=Certificados actualizados automáticamente
 Name[fr]=Certificats actualisés automatiquement
 Comment=Your chosen certificate groups were refreshed, or an automatic update needs attention
+Comment[de]=Die ausgewählten Zertifikatsgruppen wurden aktualisiert oder eine automatische Aktualisierung erfordert Ihre Aufmerksamkeit
+Comment[es]=Se actualizaron los grupos de certificados elegidos o una actualización automática requiere atención
 Comment[fr]=Les groupes de certificats choisis ont été actualisés ou une mise à jour automatique nécessite votre attention
 Action=Popup

@@ -25,7 +25,7 @@ def messages(path):
 
 
 languages = (source / "po/LINGUAS").read_text().split()
-checked(languages == ["pt_BR", "pl", "fr"], "the shipped languages match the complete catalogues")
+checked(languages == ["pt_BR", "pl", "fr", "de", "es"], "the shipped languages match the complete catalogues")
 pot = subprocess.run(["msgattrib", "--no-wrap", str(source / "po/sparky-ca.pot")], capture_output=True, text=True, check=True).stdout
 wanted = set(re.findall(r'^msgid "(.+)"$', pot, re.M))
 for language in languages:
