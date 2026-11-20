@@ -26,7 +26,9 @@ install(FILES share/sparky-ca.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 find_program(MSGFMT_PROGRAM msgfmt REQUIRED)
 file(STRINGS po/LINGUAS SPARKY_CA_LANGUAGES)
 set(SPARKY_CA_TRANSLATED)
+set(SPARKY_CA_PO_FILES)
 foreach(language ${SPARKY_CA_LANGUAGES})
+    list(APPEND SPARKY_CA_PO_FILES po/${language}.po)
     set(catalog ${CMAKE_CURRENT_BINARY_DIR}/locale/${language}/LC_MESSAGES/sparky-ca.mo)
     add_custom_command(OUTPUT ${catalog}
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/locale/${language}/LC_MESSAGES
@@ -52,12 +54,12 @@ foreach(template share/sparky-ca.desktop share/kservices/sparky-ca-preview.deskt
     get_filename_component(leaf ${template} NAME)
     add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${leaf}
         COMMAND ${MSGFMT_PROGRAM} --desktop --template ${CMAKE_CURRENT_SOURCE_DIR}/${template}.in -d ${CMAKE_CURRENT_SOURCE_DIR}/po -o ${CMAKE_CURRENT_BINARY_DIR}/${leaf}
-        DEPENDS ${template}.in po/LINGUAS)
+        DEPENDS ${template}.in po/LINGUAS ${SPARKY_CA_PO_FILES})
     list(APPEND SPARKY_CA_TRANSLATED ${CMAKE_CURRENT_BINARY_DIR}/${leaf})
 endforeach()
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/org.sparkylinux.sparkyca.metainfo.xml
     COMMAND ${MSGFMT_PROGRAM} --xml --template ${CMAKE_CURRENT_SOURCE_DIR}/share/org.sparkylinux.sparkyca.metainfo.xml.in -d ${CMAKE_CURRENT_SOURCE_DIR}/po -o ${CMAKE_CURRENT_BINARY_DIR}/org.sparkylinux.sparkyca.metainfo.xml
-    DEPENDS share/org.sparkylinux.sparkyca.metainfo.xml.in po/LINGUAS)
+    DEPENDS share/org.sparkylinux.sparkyca.metainfo.xml.in po/LINGUAS ${SPARKY_CA_PO_FILES})
 list(APPEND SPARKY_CA_TRANSLATED ${CMAKE_CURRENT_BINARY_DIR}/org.sparkylinux.sparkyca.metainfo.xml)
 add_custom_target(translations ALL DEPENDS ${SPARKY_CA_TRANSLATED})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.sparkylinux.sparkyca.metainfo.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)

@@ -6,7 +6,8 @@ Uploaders: Pedro F. Albanese <68971450+pedroalbanese@users.noreply.github.com>
 Standards-Version: 4.7.3
 Homepage: https://sparkylinux.org
 Rules-Requires-Root: no
-Build-Depends: cmake,
+Build-Depends: appstream,
+               cmake,
                debhelper-compat (= 13),
                extra-cmake-modules,
                gettext,

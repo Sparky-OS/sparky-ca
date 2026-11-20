@@ -2,6 +2,8 @@ sparky-ca (2.0.6) forky; urgency=medium
 
   * Translate the two terminal menus and the certificate tooltip.
 
+  * Declare the AppStream ITS data and regenerate metadata when a PO file changes.
+
  -- Daniel Ramos (Capitain Jack) <Capitain_Jack@yahoo.com>  Fri, 20 Nov 2026 16:30:26 -0300
 
 sparky-ca (2.0.5) forky; urgency=medium
