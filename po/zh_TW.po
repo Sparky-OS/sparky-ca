@@ -1,0 +1,1103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.5\n"
+"PO-Revision-Date: 2026-11-20 16:11-0300\n"
+"Last-Translator: Sparky Stereo OS\n"
+"Language-Team: Traditional Chinese\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: qml/CertificatePage.qml:20
+msgid "Open certificate or personal identity"
+msgstr "開啟憑證或個人身份"
+
+#: qml/CertificatePage.qml:21
+msgid "All files (*)"
+msgstr "所有檔案 (*)"
+
+#: qml/CertificatePage.qml:21
+msgid "Certificate files (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+msgstr "憑證檔案 (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+
+#: qml/CertificatePage.qml:34
+msgid "Open Certificate…"
+msgstr "開啟憑證…"
+
+#: qml/CertificatePage.qml:35
+msgid "Refresh"
+msgstr "重新整理"
+
+#: qml/CertificatePage.qml:36
+msgid "Check Expiries"
+msgstr "檢查到期日期"
+
+#: qml/CertificatePage.qml:39
+msgid "Keep Chosen Groups Current"
+msgstr "保持所選憑證組最新"
+
+#: qml/CertificatePage.qml:76
+msgid "Store:"
+msgstr "存放區："
+
+#: qml/CertificatePage.qml:80
+msgid "Certificate catalogue"
+msgstr "憑證目錄"
+
+#: qml/CertificatePage.qml:80
+msgid "GnuPG S/MIME (Kleopatra)"
+msgstr "GnuPG S/MIME (Kleopatra)"
+
+#: qml/CertificatePage.qml:80
+msgid "System trust"
+msgstr "系統信任"
+
+#: qml/CertificatePage.qml:84
+msgid "Search name, issuer or fingerprint"
+msgstr "依名稱、簽發者或指紋搜尋"
+
+#: qml/CertificatePage.qml:91
+msgid "Install Group…"
+msgstr "安裝憑證組…"
+
+#: qml/CertificatePage.qml:92
+msgid "Remove Group…"
+msgstr "移除憑證組…"
+
+#: qml/CertificatePage.qml:93
+msgid "Kleopatra…"
+msgstr "Kleopatra…"
+
+#: qml/CertificatePage.qml:95
+msgid "One certificate"
+msgid_plural "%1 certificates"
+msgstr[0] "%1 份憑證"
+
+#: qml/CertificatePage.qml:127
+msgid "Open in Kleopatra"
+msgstr "在 Kleopatra 中開啟"
+
+#: qml/CertificatePage.qml:132
+msgid "Detect Tokens"
+msgstr "檢測安全權杖"
+
+#: qml/CertificatePage.qml:133
+msgid "Register Token Module…"
+msgstr "註冊安全權杖模組…"
+
+#: qml/CertificatePage.qml:134
+msgid "A3 PINs are not stored. Install vendor middleware locally through APTus when required."
+msgstr "A3 PIN 不會儲存。需要時，請透過 APTus 在本機安裝廠商提供的中介軟體。"
+
+#: qml/CertificatePage.qml:138
+msgid "Within validity dates"
+msgstr "在有效期內"
+
+#: qml/CertificatePage.qml:139
+msgid "Expired"
+msgstr "已過期"
+
+#: qml/CertificatePage.qml:140
+msgid "Revoked"
+msgstr "已撤銷"
+
+#: qml/CertificatePage.qml:141
+msgid "Not yet valid"
+msgstr "尚未生效"
+
+#: qml/CertificatePage.qml:142
+msgid "Trusted: you confirmed it"
+msgstr "受信任：已由您確認"
+
+#: qml/CertificatePage.qml:143
+msgid "Imported, not trusted yet"
+msgstr "已匯入，尚未信任"
+
+#: qml/CertificatePage.qml:144
+msgid "Trusted through its root"
+msgstr "通過根憑證獲得信任"
+
+#: qml/CertificatePage.qml:145
+msgid "Invalid"
+msgstr "無效"
+
+#: qml/CertificatePage.qml:150
+msgid "Install chosen group"
+msgstr "安裝所選憑證組"
+
+#: qml/CertificatePage.qml:150
+msgid "Remove chosen group"
+msgstr "移除所選憑證組"
+
+#: qml/CertificatePage.qml:156
+msgid "Group: %1"
+msgstr "憑證組：%1"
+
+#: qml/CertificatePage.qml:157
+msgid "Close this browser before changing its NSS database."
+msgstr "更改此瀏覽器的 NSS 資料庫前，請先關閉瀏覽器。"
+
+#: qml/CertificatePage.qml:157
+msgid "This changes system trust and requests administrator authorization. Expired and revoked catalogue entries are excluded."
+msgstr "此操作會更改系統信任設定，並請求管理員授權。憑證目錄中已過期或已撤銷的條目不會安裝。"
+
+#: qml/CertificatePage.qml:158
+msgid "Choose Ed521 certificates when native chain verification is unavailable"
+msgstr "系統無法驗證憑證鏈時選擇 Ed521 憑證"
+
+#: qml/CertificatePage.qml:159 qml/CertificatePage.qml:175
+#: qml/CertificatePage.qml:212
+msgid "NSS database password"
+msgstr "NSS 資料庫密碼"
+
+#: qml/CertificatePage.qml:164
+msgid "Preview or import personal certificate"
+msgstr "預覽或匯入個人憑證"
+
+#: qml/CertificatePage.qml:170
+msgid "PKCS#12 passphrase (for .p12 or .pfx)"
+msgstr "PKCS#12 口令（適用於 .p12 或 .pfx）"
+
+#: qml/CertificatePage.qml:171
+msgid "Preview"
+msgstr "預覽"
+
+#: qml/CertificatePage.qml:174
+msgid "Okular can sign with a supported identity from this NSS directory. Browser TLS trust does not grant PDF certificate trust; that requires a separate S/MIME trust decision in NSS."
+msgstr "Okular 可以使用此 NSS 目錄中受支援的身份簽名。瀏覽器的 TLS 信任不會授予 PDF 憑證信任。請在 NSS 中單獨決定是否授予 S/MIME 信任。"
+
+#: qml/CertificatePage.qml:176
+msgid "Save A1 and NSS passwords in KDE Wallet"
+msgstr "將 A1 和 NSS 密碼儲存在 KDE 錢包中"
+
+#: qml/CertificatePage.qml:177
+msgid "Close the browser before import. Private keys remain in its NSS database. A3 PINs are never saved here."
+msgstr "匯入前請關閉瀏覽器。私密金鑰會保留在其 NSS 資料庫中。此處不會儲存 A3 PIN。"
+
+#: qml/CertificatePage.qml:179
+msgid "Import A1"
+msgstr "匯入 A1"
+
+#: qml/CertificatePage.qml:180
+msgid "Read from Wallet"
+msgstr "從錢包讀取"
+
+#: qml/CertificatePage.qml:181
+msgid "Forget Saved Passwords"
+msgstr "忘記已儲存的密碼"
+
+#: qml/CertificatePage.qml:188
+msgid "Kleopatra / GnuPG S/MIME"
+msgstr "Kleopatra / GnuPG S/MIME"
+
+#: qml/CertificatePage.qml:193
+msgid "Import the chosen group's certificates, with the chain up to their roots, into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by importing. You decide about each root yourself, in Kleopatra or when gpgsm asks. Ed521 certificates are not imported because gpgsm cannot validate them."
+msgstr "將所選組的憑證及其到根憑證的憑證鏈匯入 gpgsm，以供 Kleopatra 和 KMail 使用。匯入本身不授予信任。請在 Kleopatra 中或在 gpgsm 詢問時自行決定是否信任每個根憑證。gpgsm 無法驗證 Ed521 憑證，因此不會匯入它們。"
+
+#: qml/CertificatePage.qml:194
+msgid "Import Chosen Group"
+msgstr "匯入所選憑證組"
+
+#: qml/CertificatePage.qml:195
+msgid "Show What Was Imported"
+msgstr "顯示已匯入的內容"
+
+#: qml/CertificatePage.qml:196
+msgid "Ask gpgsm About Imported Roots"
+msgstr "向 gpgsm 查詢已匯入的根憑證"
+
+#: qml/CertificatePage.qml:197
+msgid "Remove What We Imported"
+msgstr "移除 Sparky CA 匯入的內容"
+
+#: qml/CertificatePage.qml:202
+msgid "Register a PKCS#11 module"
+msgstr "註冊 PKCS#11 模組"
+
+#: qml/CertificatePage.qml:208
+msgid "Close the browser first. Choose the installed p11-kit proxy to expose configured token modules. Loading a module runs its code as your user."
+msgstr "請先關閉瀏覽器。選擇已安裝的 p11-kit 代理來提供已配置的安全權杖模組。載入模組會以您的使用者身份執行其程式碼。"
+
+#: qml/CertificatePage.qml:210
+msgid "Absolute path to p11-kit-proxy.so"
+msgstr "p11-kit-proxy.so 的絕對路徑"
+
+#: qml/CertificatePage.qml:211
+msgid "Inspect This Module"
+msgstr "檢查此模組"
+
+#: qml/CertificatePage.qml:213
+msgid "Remove Our Module Registration"
+msgstr "取消 Sparky CA 註冊的模組"
+
+#: share/kservices/sparky-ca-preview.desktop.in:8
+msgid "View Certificate"
+msgstr "檢視憑證"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:6
+msgid "Sparky CA"
+msgstr "Sparky CA"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:7
+msgid "ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "ICP-Brasil 憑證、瀏覽器信任和個人憑證"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:9
+msgid "Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the system, in Waterfox, Firefox and Chromium, and keeps the groups you chose current."
+msgstr "Sparky CA 將巴西 ICP-Brasil 的憑證授權單位憑證安裝到系統以及 Waterfox、Firefox 和 Chromium 中，並保持您選擇的憑證組最新。"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:10
+msgid "It shows every certificate with its issuer, expiry and state, imports your A1 certificate, registers your A3 token, and works on a plain text console as well as on the desktop."
+msgstr "它可顯示每份憑證的簽發者、到期日期和狀態，匯入您的 A1 憑證，註冊您的 A3 安全權杖，並可在文本控制台和桌面中使用。"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:11
+msgid "Every download is checked against ITI's published hash and pinned roots, and certificates revoked by their authority are never installed."
+msgstr "每項下載都會根據 ITI 公佈的雜湊值和固定的根憑證進行驗證。頒發機構已撤銷的憑證不會安裝。"
+
+#: share/sparky-ca.desktop.in:3
+msgid "PJeOffice CA Certificates Installer"
+msgstr "PJeOffice CA 憑證安裝程式"
+
+#: share/sparky-ca.desktop.in:4
+msgid "Certificate Manager"
+msgstr "憑證管理器"
+
+#: share/sparky-ca.desktop.in:5
+msgid "Manage ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "管理 ICP-Brasil 憑證、瀏覽器信任和個人憑證"
+
+#: share/sparky-ca.desktop.in:6
+msgid "certificate;ICP-Brasil;PJeOffice;CA;token;A1;A3;"
+msgstr "憑證;ICP-Brasil;PJeOffice;CA;安全權杖;A1;A3;"
+
+#: src/cli/main.cpp:19
+msgid "Use a private password file with owner-only permissions."
+msgstr "請使用僅所有者有權訪問的私密密碼檔案。"
+
+#: src/cli/main.cpp:25
+msgid "Expected one password in a private file."
+msgstr "私密檔案中應當只有一個密碼。"
+
+#: src/cli/main.cpp:39
+msgid "Scope must be system or user."
+msgstr "作用範圍必須為 system 或 user。"
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are off."
+msgstr "自動更新已關閉。"
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are on."
+msgstr "自動更新已開啟。"
+
+#: src/cli/main.cpp:80
+msgid "Specify auto status, enable, disable or run."
+msgstr "請指定 auto status、enable、disable 或 run。"
+
+#: src/cli/main.cpp:82
+msgid "Automatic updates are turned off."
+msgstr "已關閉自動更新。"
+
+#: src/cli/main.cpp:85
+msgid "System updates require root."
+msgstr "系統更新需要 root 許可權。"
+
+#: src/cli/main.cpp:99
+msgid "Manage Brazilian CA certificates and browser trust."
+msgstr "管理巴西 CA 憑證與瀏覽器信任設定。"
+
+#: src/cli/main.cpp:103
+msgid "Package data directory."
+msgstr "軟體包資料目錄。"
+
+#: src/cli/main.cpp:104
+msgid "Verified catalogue file."
+msgstr "已驗證的憑證目錄檔案。"
+
+#: src/cli/main.cpp:105
+msgid "System certificate directory."
+msgstr "系統憑證目錄。"
+
+#: src/cli/main.cpp:106
+msgid "Derived system bundle; redirects the updater for isolated tests."
+msgstr "派生的系統憑證包，用於在隔離測試中重定向更新程式。"
+
+#: src/cli/main.cpp:107
+msgid "Operate on this NSS database instead of the system store. Close its browser first."
+msgstr "使用此 NSS 資料庫代替系統存放區。請先關閉使用該資料庫的瀏覽器。"
+
+#: src/cli/main.cpp:108
+msgid "Read the PKCS#12 passphrase from this private file."
+msgstr "從此私密檔案讀取 PKCS#12 口令。"
+
+#: src/cli/main.cpp:109
+msgid "Read the NSS database password from this private file."
+msgstr "從此私密檔案讀取 NSS 資料庫密碼。"
+
+#: src/cli/main.cpp:110
+msgid "GnuPG certificate directory."
+msgstr "GnuPG 憑證目錄。"
+
+#: src/cli/main.cpp:111
+msgid "Choose E-521 certificates despite unavailable Linux chain verification; requires programs with their own E-521 code."
+msgstr "即使 Linux 無法驗證憑證鏈，也選擇 E-521 憑證。需要自帶 E-521 實現的程式。"
+
+#: src/cli/main.cpp:112
+msgid "TLS trust root for an isolated HTTPS fixture."
+msgstr "隔離 HTTPS 測試使用的 TLS 信任根。"
+
+#: src/cli/main.cpp:113
+msgid "Missing TLS issuer, verified against the TLS trust roots."
+msgstr "缺少的 TLS 簽發者，已根據 TLS 信任根驗證。"
+
+#: src/cli/main.cpp:114
+msgid "HTTPS bundle URL."
+msgstr "憑證包的 HTTPS URL。"
+
+#: src/cli/main.cpp:115
+msgid "HTTPS SHA-512 URL."
+msgstr "SHA-512 值的 HTTPS URL。"
+
+#: src/cli/main.cpp:116
+msgid "Offline ZIP input for catalogue verification."
+msgstr "用於驗證憑證目錄的離線 ZIP 檔案。"
+
+#: src/cli/main.cpp:117
+msgid "Offline SHA-512 input."
+msgstr "離線提供的 SHA-512 值。"
+
+#: src/cli/main.cpp:118
+msgid "Write refreshed catalogue here."
+msgstr "將重新整理後的憑證目錄寫入此處。"
+
+#: src/cli/main.cpp:119
+msgid "Keep the downloaded bundle and its SHA-512 here, as received, so a failed refresh can be examined."
+msgstr "將下載的憑證包及其 SHA-512 值原樣儲存在此處，以便檢查重新整理失敗的原因。"
+
+#: src/cli/main.cpp:120
+msgid "Machine state: refreshed catalogue, revocation answers and update status."
+msgstr "本機狀態：已重新整理的憑證目錄、撤銷查詢結果和更新狀態。"
+
+#: src/cli/main.cpp:121
+msgid "Folder holding the switch for automatic updates."
+msgstr "儲存自動更新開關的資料夾。"
+
+#: src/cli/main.cpp:122
+msgid "Home folder whose browser databases are updated."
+msgstr "要更新其中的瀏覽器資料庫的主資料夾。"
+
+#: src/cli/main.cpp:123
+msgid "Automatic update scope: system or user."
+msgstr "自動更新範圍：system 或 user。"
+
+#: src/cli/main.cpp:124
+msgid "Run an automatic update although it is turned off."
+msgstr "即使已關閉自動更新也執行一次。"
+
+#: src/cli/main.cpp:125
+msgid "Do not use the Internet in an automatic update."
+msgstr "自動更新時不使用網際網路。"
+
+#: src/cli/main.cpp:127
+msgid "list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"
+msgstr "list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"
+
+#: src/cli/main.cpp:153
+msgid "Group: "
+msgstr "憑證組："
+
+#: src/cli/main.cpp:179
+msgid "Specify one group."
+msgstr "請指定一個憑證組。"
+
+#: src/cli/main.cpp:181
+msgid "NSS installations exclude Ed521 and Ed448 entries because NSS cannot import their key types."
+msgstr "NSS 無法匯入 Ed521 和 Ed448 的金鑰型別，因此安裝到 NSS 時會跳過這些條目。"
+
+#: src/cli/main.cpp:185
+msgid "E-521 entries are skipped. Use --allow-e521 to choose them explicitly."
+msgstr "已跳過 E-521 條目。請用 --allow-e521 明確選擇這些條目。"
+
+#: src/cli/main.cpp:192
+msgid "Certificate store updated."
+msgstr "憑證存放區已更新。"
+
+#: src/cli/main.cpp:194
+msgid "Specify --output for the refreshed catalogue."
+msgstr "請用 --output 指定重新整理後的憑證目錄的儲存位置。"
+
+#: src/cli/main.cpp:205
+msgid "Verified catalogue written."
+msgstr "已寫入驗證通過的憑證目錄。"
+
+#: src/cli/main.cpp:207
+msgid "Specify one certificate file."
+msgstr "請指定一個憑證檔案。"
+
+#: src/cli/main.cpp:213
+msgid "Specify at most one token module."
+msgstr "請最多指定一個安全權杖模組。"
+
+#: src/cli/main.cpp:216
+msgid "Specify an NSS database and one installed token module."
+msgstr "請指定一個 NSS 資料庫和一個已安裝的安全權杖模組。"
+
+#: src/cli/main.cpp:219
+msgid "Specify one root group."
+msgstr "請指定一個根憑證組。"
+
+#: src/cli/main.cpp:222 src/desktop/manager.cpp:347
+msgid "Trust entries that version 2.0.0 added to gpgsm without asking were removed."
+msgstr "已移除 2.0.0 版在沒有詢問時新增到 gpgsm 的信任條目。"
+
+#: src/cli/main.cpp:223
+msgid "Imported certificates are not trusted yet. Run gpgsm-confirm, or use Kleopatra's Trust Root Certificate, to decide."
+msgstr "匯入的憑證尚未獲得信任。請執行 gpgsm-confirm，或用 Kleopatra 的信任根憑證功能作出決定。"
+
+#: src/cli/main.cpp:228 src/desktop/manager.cpp:364
+msgid "No imported root is waiting for your confirmation."
+msgstr "沒有匯入的根憑證在等待您的確認。"
+
+#: src/cli/main.cpp:235 src/desktop/manager.cpp:370
+msgid "gpgsm could not check the root."
+msgstr "gpgsm 無法檢查根憑證。"
+
+#: src/cli/main.cpp:238
+msgid "Specify an NSS database."
+msgstr "請指定一個 NSS 資料庫。"
+
+#: src/cli/main.cpp:241
+msgid "Personal certificate import requires --nss and one PKCS#12 file."
+msgstr "匯入個人憑證需要 --nss 和一個 PKCS#12 檔案。"
+
+#: src/cli/main.cpp:250
+msgid "Personal certificate import failed."
+msgstr "無法匯入個人憑證。"
+
+#: src/cli/main.cpp:253
+msgid "Unknown command: %1"
+msgstr "未知命令：%1"
+
+#: src/core/automation.cpp:85
+msgid "Cannot turn automatic updates on."
+msgstr "無法開啟自動更新。"
+
+#: src/core/automation.cpp:88
+msgid "Cannot create the configuration folder."
+msgstr "無法建立配置資料夾。"
+
+#: src/core/automation.cpp:89
+msgid "Automatic certificate updates are turned off. Remove this file or run: sparky-ca auto enable\n"
+msgstr "自動憑證更新已關閉。請移除此檔案或執行：sparky-ca auto enable\n"
+
+#: src/core/automation.cpp:98 src/core/automation.cpp:144
+msgid "Cannot create the state folder."
+msgstr "無法建立狀態資料夾。"
+
+#: src/core/automation.cpp:113
+msgid "Automatic update failed: %1"
+msgstr "自動更新失敗：%1"
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed and changed."
+msgstr "已重新整理憑證目錄，內容有變化。"
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed; nothing changed."
+msgstr "已重新整理憑證目錄，內容沒有變化。"
+
+#: src/core/automation.cpp:116
+msgid "The catalogue could not be refreshed: %1"
+msgstr "無法重新整理憑證目錄：%1"
+
+#: src/core/automation.cpp:119
+msgid "Revocation: %1 certificates checked, %2 revoked, %3 without an answer."
+msgstr "撤銷情況：檢查了 %1 份憑證，%2 份已撤銷，%3 份未獲得結果。"
+
+#: src/core/automation.cpp:125
+msgid "%1: added %2"
+msgstr "%1：已新增 %2"
+
+#: src/core/automation.cpp:127
+msgid "%1: removed %2 (%3)"
+msgstr "%1：已移除 %2（%3）"
+
+#: src/core/automation.cpp:128
+msgid "%2: one new E-521 certificate needs your choice and was not installed."
+msgid_plural "%2: %1 new E-521 certificates need your choice and were not installed."
+msgstr[0] "%2：有 %1 份新的 E-521 憑證需要您決定，尚未安裝。"
+
+#: src/core/automation.cpp:129
+msgid "%1: %2"
+msgstr "%1：%2"
+
+#: src/core/automation.cpp:133
+msgid "Nothing to do."
+msgstr "無需操作。"
+
+#: src/core/automation.cpp:147
+msgid "Another automatic update is running."
+msgstr "已有另一項自動更新正在執行。"
+
+#: src/core/automation.cpp:185
+msgid "The catalogue has not been refreshed for %1 days."
+msgstr "憑證目錄已有 %1 天未重新整理。"
+
+#: src/core/automation.cpp:186
+msgid "The catalogue has never been refreshed from the Internet on this machine."
+msgstr "此裝置從未通過網際網路重新整理憑證目錄。"
+
+#: src/core/automation.cpp:209
+msgid "%1 is in use by a browser; it will be updated on a later run."
+msgstr "瀏覽器正在使用 %1，將在以後的一次執行中更新。"
+
+#: src/core/catalogue.cpp:20
+msgid "Invalid catalogue JSON."
+msgstr "憑證目錄的 JSON 無效。"
+
+#: src/core/catalogue.cpp:30
+msgid "Invalid root filename."
+msgstr "根憑證檔名無效。"
+
+#: src/core/catalogue.cpp:32
+msgid "Root fingerprint mismatch: %1"
+msgstr "根憑證指紋不匹配：%1"
+
+#: src/core/catalogue.cpp:40
+msgid "No pinned roots."
+msgstr "未固定任何根憑證。"
+
+#: src/core/catalogue.cpp:62
+msgid "Chain signature not verifiable on Linux (E-521). Linux's crypto libraries cannot use E-521 yet; these certificates help only programs that carry their own E-521 code."
+msgstr "Linux 無法驗證憑證鏈的簽名 (E-521)。Linux 加密庫尚不能使用 E-521。這些憑證只適用於自帶 E-521 實現的程式。"
+
+#: src/core/catalogue.cpp:76
+msgid "Root is not pinned: %1"
+msgstr "根憑證未固定：%1"
+
+#: src/core/catalogue.cpp:77
+msgid "Pinned certificate is not a CA."
+msgstr "固定的憑證不是 CA 憑證。"
+
+#: src/core/catalogue.cpp:78
+msgid "Root is expired, revoked or not yet valid."
+msgstr "根憑證已過期、已撤銷或尚未生效。"
+
+#: src/core/catalogue.cpp:83
+msgid "E-521 certificate lacks authenticated bundle integrity evidence."
+msgstr "E-521 憑證缺少經過認證的憑證包完整性證明。"
+
+#: src/core/catalogue.cpp:85
+msgid "E-521 root is not currently valid."
+msgstr "E-521 根憑證當前無效。"
+
+#: src/core/catalogue.cpp:86
+msgid "E-521 certificate is not currently valid."
+msgstr "E-521 憑證當前無效。"
+
+#: src/core/catalogue.cpp:118
+msgid "Certificate chain rejected: %1: %2"
+msgstr "憑證鏈已被拒絕：%1：%2"
+
+#: src/core/catalogue.cpp:119
+msgid "Certificate is expired, revoked or not yet valid: %1"
+msgstr "憑證已過期、已撤銷或尚未生效：%1"
+
+#: src/core/catalogue.cpp:132
+msgid "Invalid certificate count."
+msgstr "憑證數量無效。"
+
+#: src/core/catalogue.cpp:138
+msgid "Unsupported catalogue schema."
+msgstr "不支援此憑證目錄結構。"
+
+#: src/core/catalogue.cpp:148
+msgid "Unapproved E-521 source bundle."
+msgstr "E-521 憑證源包未獲批准。"
+
+#: src/core/catalogue.cpp:158
+msgid "Invalid catalogue groups."
+msgstr "憑證目錄中的憑證組無效。"
+
+#: src/core/catalogue.cpp:162
+msgid "Invalid catalogue group identifier."
+msgstr "憑證目錄的憑證組識別符號無效。"
+
+#: src/core/catalogue.cpp:180
+msgid "Bundle SHA-512 mismatch."
+msgstr "憑證包的 SHA-512 值不匹配。"
+
+#: src/core/catalogue.cpp:181
+msgid "Bundle is too large."
+msgstr "憑證包過大。"
+
+#: src/core/catalogue.cpp:185
+msgid "Cannot open ZIP bundle."
+msgstr "無法開啟 ZIP 憑證包。"
+
+#: src/core/catalogue.cpp:195
+msgid "Unsafe ZIP entry: %1"
+msgstr "ZIP 條目不安全：%1"
+
+#: src/core/catalogue.cpp:203
+msgid "Expanded bundle is too large."
+msgstr "解壓後的憑證包過大。"
+
+#: src/core/catalogue.cpp:205
+msgid "Corrupt ZIP entry: %1"
+msgstr "ZIP 條目已損壞：%1"
+
+#: src/core/catalogue.cpp:209
+msgid "Corrupt ZIP bundle."
+msgstr "ZIP 憑證包已損壞。"
+
+#: src/core/catalogue.cpp:215
+msgid "E-521 source bundle hash is not approved."
+msgstr "E-521 憑證源包的雜湊值未獲批准。"
+
+#: src/core/certificate.cpp:22
+msgid "Cannot read file: %1"
+msgstr "無法讀取檔案：%1"
+
+#: src/core/certificate.cpp:30
+msgid "Cannot write file: %1"
+msgstr "無法寫入檔案：%1"
+
+#: src/core/certificate.cpp:38
+msgid "Command failed: %1: %2"
+msgstr "命令執行失敗：%1：%2"
+
+#: src/core/certificate.cpp:53
+msgid "Expected exactly one certificate."
+msgstr "應當只有一份憑證。"
+
+#: src/core/certificate.cpp:60
+msgid "Invalid certificate encoding."
+msgstr "憑證編碼無效。"
+
+#: src/core/certificate.cpp:64
+msgid "Cannot parse certificate."
+msgstr "無法解析憑證。"
+
+#: src/core/certificate.cpp:83
+msgid "Cannot calculate certificate fingerprint."
+msgstr "無法計算憑證指紋。"
+
+#: src/core/certificate.cpp:130
+msgid "Invalid certificate expiry."
+msgstr "憑證到期日期無效。"
+
+#: src/core/download.cpp:18
+msgid "Downloads require HTTPS."
+msgstr "下載必須使用 HTTPS。"
+
+#: src/core/download.cpp:24
+msgid "Cannot parse TLS issuer chain."
+msgstr "無法解析 TLS 簽發者鏈。"
+
+#: src/core/download.cpp:43
+msgid "TLS issuer does not chain to a trusted root."
+msgstr "TLS 簽發者的憑證鏈未連線到受信任的根憑證。"
+
+#: src/core/download.cpp:66
+msgid "Download exceeds its size limit."
+msgstr "下載內容超出大小限制。"
+
+#: src/core/download.cpp:68
+msgid "HTTPS download failed: %1"
+msgstr "HTTPS 下載失敗：%1"
+
+#: src/core/personal.cpp:25
+msgid "Cannot encode certificate."
+msgstr "無法編碼憑證。"
+
+#: src/core/personal.cpp:39
+msgid "Invalid certificate input."
+msgstr "輸入的憑證無效。"
+
+#: src/core/personal.cpp:80
+msgid "Cannot parse certificate file."
+msgstr "無法解析憑證檔案。"
+
+#: src/core/personal.cpp:95
+msgid "Cannot unlock PKCS#12. Check its passphrase."
+msgstr "無法解鎖 PKCS#12。請檢查口令。"
+
+#: src/core/personal.cpp:101
+msgid "Passwords cannot contain null bytes or newlines."
+msgstr "密碼不能包含空位元組或換行符。"
+
+#: src/core/personal.cpp:103 src/core/stores.cpp:55
+msgid "Cannot create a private password file."
+msgstr "無法建立私密密碼檔案。"
+
+#: src/core/personal.cpp:113
+msgid "Cannot create NSS database directory."
+msgstr "無法建立 NSS 資料庫目錄。"
+
+#: src/core/personal.cpp:133
+msgid "Expected a PKCS#12 identity with its matching private key and passphrase."
+msgstr "應提供含有匹配私密金鑰和口令的 PKCS#12 身份。"
+
+#: src/core/personal.cpp:138
+msgid "Cannot create a private import file."
+msgstr "無法建立私密匯入檔案。"
+
+#: src/core/personal.cpp:143 src/core/personal.cpp:155
+#: src/core/personal.cpp:173 src/core/stores.cpp:91 src/core/stores.cpp:174
+msgid "Certificate store is busy."
+msgstr "憑證存放區正忙。"
+
+#: src/core/personal.cpp:149 src/core/personal.cpp:188
+msgid "Choose an installed PKCS#11 module."
+msgstr "請選擇一個已安裝的 PKCS#11 模組。"
+
+#: src/core/personal.cpp:158
+msgid "The token module is already registered. Inspect it before changing it."
+msgstr "已註冊該安全權杖模組。更改前請檢查模組。"
+
+#: src/core/personal.cpp:162
+msgid "An earlier token module record still exists."
+msgstr "早先的一條安全權杖模組記錄仍然存在。"
+
+#: src/core/personal.cpp:178
+msgid "The registered token module differs from our record."
+msgstr "已註冊的安全權杖模組與 Sparky CA 的記錄不同。"
+
+#: src/core/personal.cpp:181
+msgid "Cannot remove the token module record."
+msgstr "無法刪除安全權杖模組記錄。"
+
+#: src/core/personal.cpp:197 src/core/personal.cpp:200
+msgid "No token slots detected. Check the reader and installed middleware."
+msgstr "未偵測到安全權杖插槽。請檢查讀卡機與已安裝的中介軟體。"
+
+#: src/core/personal.cpp:224
+msgid "Invalid GnuPG import record."
+msgstr "GnuPG 匯入記錄無效。"
+
+#: src/core/personal.cpp:238
+msgid "Cannot calculate GnuPG's certificate identifier."
+msgstr "無法計算 GnuPG 的憑證識別符號。"
+
+#: src/core/personal.cpp:265
+msgid "Cannot prepare the GnuPG directory."
+msgstr "無法準備 GnuPG 目錄。"
+
+#: src/core/personal.cpp:298 src/core/personal.cpp:371
+msgid "GnuPG's gpgsm is not installed."
+msgstr "未安裝 GnuPG 的 gpgsm。"
+
+#: src/core/personal.cpp:300 src/core/stores.cpp:84
+#: src/core/systemchange.cpp:20
+msgid "Unknown certificate group: %1"
+msgstr "未知憑證組：%1"
+
+#: src/core/personal.cpp:304 src/core/personal.cpp:375
+msgid "GnuPG certificate store is busy."
+msgstr "GnuPG 憑證存放區正忙。"
+
+#: src/core/personal.cpp:342
+msgid "This group has no certificates gpgsm can use."
+msgstr "此憑證組中沒有 gpgsm 可用的憑證。"
+
+#: src/core/personal.cpp:394
+msgid "Invalid GnuPG certificate identifier."
+msgstr "GnuPG 憑證識別符號無效。"
+
+#: src/core/revocation.cpp:49
+msgid "Cannot parse CRL."
+msgstr "無法解析憑證撤銷列表 (CRL)。"
+
+#: src/core/revocation.cpp:61
+msgid "CRL issuer does not match."
+msgstr "CRL 簽發者不匹配。"
+
+#: src/core/revocation.cpp:63
+msgid "CRL signature is not valid."
+msgstr "CRL 簽名無效。"
+
+#: src/core/revocation.cpp:67
+msgid "CRL does not cover every certificate of its issuer."
+msgstr "CRL 未覆蓋其簽發者的所有憑證。"
+
+#: src/core/revocation.cpp:69
+msgid "CRL is not yet valid."
+msgstr "CRL 尚未生效。"
+
+#: src/core/revocation.cpp:70
+msgid "CRL is stale."
+msgstr "CRL 已過期。"
+
+#: src/core/revocation.cpp:90
+msgid "The CRL signature uses E-521, which Linux cannot verify."
+msgstr "CRL 使用 E-521 簽名，Linux 無法驗證。"
+
+#: src/core/revocation.cpp:92
+msgid "The certificate names no CRL."
+msgstr "此憑證未指定 CRL。"
+
+#: src/core/revocation.cpp:98
+msgid "No CRL could be fetched."
+msgstr "無法獲取 CRL。"
+
+#: src/core/revocation.cpp:101
+msgid "The issuer is not in the catalogue."
+msgstr "憑證目錄中沒有此簽發者。"
+
+#: src/core/revocation.cpp:106
+msgid "No network was used for this check."
+msgstr "這次檢查未使用網路。"
+
+#: src/core/stores.cpp:41
+msgid "Choose exactly one store."
+msgstr "請選擇且僅選擇一個存放區。"
+
+#: src/core/stores.cpp:47
+msgid "Refusing a symbolic link in store path: %1"
+msgstr "拒絕使用存放區路徑中的符號連結：%1"
+
+#: src/core/stores.cpp:53
+msgid "The NSS password cannot contain a newline or a null byte."
+msgstr "NSS 密碼不能包含換行符或空位元組。"
+
+#: src/core/stores.cpp:63
+msgid "Invalid store ownership manifest."
+msgstr "存放區的受管憑證清單無效。"
+
+#: src/core/stores.cpp:73
+msgid "Cannot create updater configuration."
+msgstr "無法建立更新程式配置。"
+
+#: src/core/stores.cpp:86 src/core/stores.cpp:169
+msgid "System changes require root. Run sparky-ca through sudo or pkexec."
+msgstr "更改系統需要 root 許可權。請通過 sudo 或 pkexec 執行 sparky-ca。"
+
+#: src/core/stores.cpp:89
+msgid "Cannot create store directory."
+msgstr "無法建立存放區目錄。"
+
+#: src/core/stores.cpp:111
+msgid "This group has no installable certificates."
+msgstr "此組沒有可安裝的憑證。"
+
+#: src/core/stores.cpp:123 src/core/stores.cpp:225 src/core/stores.cpp:230
+msgid "Owned certificate bytes have changed."
+msgstr "受管憑證的資料已更改。"
+
+#: src/core/stores.cpp:128
+msgid "Unowned certificate filename already exists."
+msgstr "已有非受管憑證使用這個檔名。"
+
+#: src/core/stores.cpp:148
+msgid "Unowned NSS nickname already exists."
+msgstr "已有非受管憑證使用這個 NSS 別名。"
+
+#: src/core/stores.cpp:202
+msgid "Invalid saved NSS trust decision."
+msgstr "儲存的 NSS 信任決定無效。"
+
+#: src/core/stores.cpp:204
+msgid "Existing certificate bytes have changed."
+msgstr "現有憑證的資料已更改。"
+
+#: src/core/stores.cpp:209
+msgid "Existing NSS trust settings changed outside this application."
+msgstr "現有的 NSS 信任設定已在此應用之外更改。"
+
+#: src/core/stores.cpp:220
+msgid "Invalid owned certificate fingerprint."
+msgstr "受管憑證的指紋無效。"
+
+#: src/core/stores.cpp:226
+msgid "Cannot remove certificate."
+msgstr "無法移除憑證。"
+
+#: src/core/stores.cpp:281
+msgid "Selected group %1 is no longer in the catalogue."
+msgstr "所選憑證組 %1 已不在憑證目錄中。"
+
+#: src/core/systemchange.cpp:12
+msgid "Invalid system certificate request."
+msgstr "系統憑證請求無效。"
+
+#: src/core/systemchange.cpp:17
+msgid "Unknown system certificate operation."
+msgstr "未知的系統憑證操作。"
+
+#: src/core/systemchange.cpp:30
+msgid "Invalid automatic update request."
+msgstr "自動更新請求無效。"
+
+#: src/desktop/dispatch.cpp:38
+msgid "Cannot find Sparky CA front end."
+msgstr "找不到 Sparky CA 的圖形介面。"
+
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:175
+#: src/desktop/notify.cpp:51
+msgid "Certificates"
+msgstr "憑證"
+
+#: src/desktop/main.cpp:24
+msgid "Manage certificate trust and personal identities"
+msgstr "管理憑證信任和個人身份"
+
+#: src/desktop/main.cpp:26
+msgid "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+msgstr "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:27
+msgid "Original author, 2018"
+msgstr "原作者，2018 年"
+
+#: src/desktop/main.cpp:27
+msgid "Paweł \"pavroo\" Pijanowski"
+msgstr "Paweł \"pavroo\" Pijanowski"
+
+#: src/desktop/main.cpp:28
+msgid "Brazilian certificates and KDE integration, 2020 and 2026"
+msgstr "巴西憑證及 KDE 整合，2020 年和 2026 年"
+
+#: src/desktop/main.cpp:28
+msgid "Daniel Campos Ramos"
+msgstr "Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:33
+msgid "Catalogue data directory."
+msgstr "憑證目錄的資料資料夾。"
+
+#: src/desktop/main.cpp:34
+msgid "Capture the window for an isolated UI test."
+msgstr "採集視窗影像，用於隔離的介面測試。"
+
+#: src/desktop/main.cpp:35
+msgid "Local certificate file to preview."
+msgstr "要預覽的本地憑證檔案。"
+
+#: src/desktop/manager.cpp:78
+msgid "No automatic update has run on this computer yet."
+msgstr "此裝置尚未執行過自動更新。"
+
+#: src/desktop/manager.cpp:83
+msgid "Last automatic update: %1. Everything is current."
+msgstr "上次自動更新：%1。當前已是最新狀態。"
+
+#: src/desktop/manager.cpp:84
+msgid "Last automatic update: %1. It needs your attention: see the system journal or run sparky-ca auto status."
+msgstr "上次自動更新：%1。需要您處理，請檢視系統日誌或執行 sparky-ca auto status。"
+
+#: src/desktop/manager.cpp:114
+msgid "Automatic certificate updates are off."
+msgstr "自動憑證更新已關閉。"
+
+#: src/desktop/manager.cpp:114
+msgid "Your chosen certificate groups will be kept current automatically."
+msgstr "您選擇的憑證組將自動保持最新。"
+
+#: src/desktop/manager.cpp:130
+msgid "Choose an existing browser profile."
+msgstr "請選擇現有的瀏覽器配置。"
+
+#: src/desktop/manager.cpp:150
+msgid "Ed448 validates through OpenSSL. NSS cannot import this key type, so browser installations exclude it."
+msgstr "OpenSSL 可以驗證 Ed448。NSS 無法匯入此類金鑰，因此不會在瀏覽器中安裝。"
+
+#: src/desktop/manager.cpp:233
+msgid "System certificate store updated. Restart applications to reload trust."
+msgstr "系統憑證存放區已更新。請重新啟動應用程式以重新載入信任設定。"
+
+#: src/desktop/manager.cpp:249
+msgid "Browser certificate store updated. Ed521 and Ed448 entries stay listed but are excluded because NSS does not support their key types."
+msgstr "瀏覽器憑證存放區已更新。Ed521 與 Ed448 項目仍會列出，但 NSS 不支援其金鑰類型，因此不會安裝。"
+
+#: src/desktop/manager.cpp:261
+msgid "Preview does not establish trust. Revocation status is unknown."
+msgstr "預覽不會授予憑證信任，撤銷狀態未知。"
+
+#: src/desktop/manager.cpp:274
+msgid "Choose a local PKCS#12 file and browser profile."
+msgstr "請選擇本地 PKCS#12 檔案和瀏覽器配置。"
+
+#: src/desktop/manager.cpp:282
+msgid "Personal certificate imported. Choose this NSS directory in Okular's PDF certificate settings."
+msgstr "個人憑證已匯入。請在 Okular 的 PDF 憑證設定中選擇此 NSS 目錄。"
+
+#: src/desktop/manager.cpp:303
+msgid "Saved certificate passwords removed."
+msgstr "儲存的憑證密碼已移除。"
+
+#: src/desktop/manager.cpp:313
+msgid "A3 PINs are not saved. Token retry limits and authentication policy apply. SafeSign or SafeNet middleware, when required, is installed on your machine through APTus."
+msgstr "A3 PIN 不會儲存。安全權杖的重試次數和認證策略仍然生效。需要 SafeSign 或 SafeNet 中介軟體時，可通過 APTus 安裝到此裝置。"
+
+#: src/desktop/manager.cpp:323
+msgid "PKCS#11 module registered for this browser profile."
+msgstr "已為此瀏覽器配置註冊 PKCS#11 模組。"
+
+#: src/desktop/manager.cpp:346
+msgid "Certificates imported for Kleopatra. They are not trusted until you confirm each root in Kleopatra or in gpgsm. Ed521 entries stay listed but are not imported because gpgsm cannot validate them."
+msgstr "已匯入供 Kleopatra 使用的憑證。只有在 Kleopatra 或 gpgsm 中確認各個根憑證後才會信任。Ed521 條目仍會列出，但 gpgsm 無法驗證它們，因此不會匯入。"
+
+#: src/desktop/manager.cpp:355
+msgid "Certificates that Sparky CA imported into gpgsm were removed. Trust you confirmed yourself stays in gpgsm's trust list until you remove it in Kleopatra."
+msgstr "已移除 Sparky CA 匯入到 gpgsm 的憑證。您自己確認的信任仍保留在 gpgsm 的信任列表中，直到您在 Kleopatra 中移除。"
+
+#: src/desktop/manager.cpp:372
+msgid "gpgsm asked about each imported root. Your answers are in its trust list."
+msgstr "gpgsm 已詢問每個匯入的根憑證。您的決定已記錄在它的信任列表中。"
+
+#: src/desktop/manager.cpp:378
+msgid "Kleopatra is not installed."
+msgstr "未安裝 Kleopatra。"
+
+#: src/desktop/manager.cpp:390
+msgid "Our PKCS#11 module registration was removed. Token certificates remain on the token."
+msgstr "已取消 Sparky CA 註冊的 PKCS#11 模組。安全權杖中的憑證仍儲存在權杖中。"
+
+#: src/desktop/manager.cpp:403
+msgid "One listed certificate expires within 30 days or has expired."
+msgid_plural "%1 listed certificates expire within 30 days or have expired."
+msgstr[0] "列出的憑證中有 %1 份將在 30 天內到期或已經過期。"
+
+#: src/desktop/notify.cpp:30
+msgid "Machine state folder."
+msgstr "本機狀態資料夾。"
+
+#: src/desktop/notify.cpp:31
+msgid "Home folder holding the user's status."
+msgstr "儲存使用者狀態的主資料夾。"
+
+#: src/desktop/wallet.cpp:20
+msgid "Cannot open KDE Wallet. Passwords were not saved."
+msgstr "無法開啟 KDE 錢包。密碼未儲存。"
+
+#: src/desktop/wallet.cpp:23
+msgid "Cannot create the certificate wallet folder."
+msgstr "無法建立錢包中的憑證資料夾。"
+
+#: src/desktop/wallet.cpp:27
+msgid "Cannot select the certificate wallet folder."
+msgstr "無法選擇錢包中的憑證資料夾。"
+
+#: src/desktop/wallet.cpp:34
+msgid "Cannot save certificate passwords in KDE Wallet."
+msgstr "無法在 KDE 錢包中儲存憑證密碼。"
+
+#: src/desktop/wallet.cpp:49
+msgid "Cannot read certificate passwords from KDE Wallet."
+msgstr "無法從 KDE 錢包讀取憑證密碼。"
+
+#: src/desktop/wallet.cpp:61
+msgid "Cannot remove a saved certificate password."
+msgstr "無法移除已儲存的憑證密碼。"
+
+#: src/helper/helper.cpp:31 src/helper/helper.cpp:44 src/helper/helper.cpp:74
+#: src/helper/helper.cpp:78
+msgid "The certificate helper requires root."
+msgstr "憑證輔助程式需要 root 許可權。"
+
+#: src/helper/helper.cpp:54
+msgid "Untrusted package certificate data."
+msgstr "軟體包中的憑證資料不受信任。"

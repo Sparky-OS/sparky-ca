@@ -1,20 +1,44 @@
 [Global]
 IconName=security-high
 Name=Certificates
+Name[pl]=Certyfikaty
+Name[pt_BR]=Certificados
+Name[ja]=証明書
+Name[ko]=인증서
+Name[zh_CN]=证书
+Name[zh_TW]=憑證
 Name[de]=Zertifikate
 Name[es]=Certificados
 Name[fr]=Certificats
 Comment=Certificate trust and expiry notifications
+Comment[pl]=Powiadomienia o zaufaniu i wygaśnięciu certyfikatów
+Comment[pt_BR]=Notificações sobre confiança e validade de certificados
+Comment[ja]=証明書の信頼設定と有効期限の通知
+Comment[ko]=인증서 신뢰 설정 및 만료 알림
+Comment[zh_CN]=证书信任和到期通知
+Comment[zh_TW]=憑證信任與到期通知
 Comment[de]=Benachrichtigungen zu Zertifikatsvertrauen und Ablaufdaten
 Comment[es]=Avisos de confianza y caducidad de certificados
 Comment[fr]=Notifications de confiance et d’expiration des certificats
 
 [Event/CertificateChanged]
 Name=Certificate status changed
+Name[pl]=Zmienił się stan certyfikatu
+Name[pt_BR]=O estado de um certificado mudou
+Name[ja]=証明書の状態が変更されました
+Name[ko]=인증서 상태 변경됨
+Name[zh_CN]=证书状态已更改
+Name[zh_TW]=憑證狀態已變更
 Name[de]=Zertifikatsstatus geändert
 Name[es]=Cambió el estado de un certificado
 Name[fr]=L’état du certificat a changé
 Comment=A certificate store changed or a certificate is expiring
+Comment[pl]=Zmienił się magazyn certyfikatów lub certyfikat wkrótce wygaśnie
+Comment[pt_BR]=Um repositório de certificados mudou ou um certificado está perto de vencer
+Comment[ja]=証明書ストアが変更されたか、証明書の有効期限が近づいています
+Comment[ko]=인증서 저장소가 변경되었거나 인증서가 곧 만료됩니다
+Comment[zh_CN]=证书存储区已更改或有证书即将到期
+Comment[zh_TW]=憑證存放區已變更或有憑證即將到期
 Comment[de]=Ein Zertifikatsspeicher hat sich geändert oder ein Zertifikat läuft ab
 Comment[es]=Cambió un almacén de certificados o un certificado está a punto de caducar
 Comment[fr]=Un magasin a changé ou un certificat arrive à expiration
@@ -22,10 +46,22 @@ Action=Popup
 
 [Event/AutomaticUpdate]
 Name=Certificates updated automatically
+Name[pl]=Certyfikaty zaktualizowano automatycznie
+Name[pt_BR]=Certificados atualizados automaticamente
+Name[ja]=証明書が自動で更新されました
+Name[ko]=인증서가 자동으로 업데이트됨
+Name[zh_CN]=证书已自动更新
+Name[zh_TW]=憑證已自動更新
 Name[de]=Zertifikate automatisch aktualisiert
 Name[es]=Certificados actualizados automáticamente
 Name[fr]=Certificats actualisés automatiquement
 Comment=Your chosen certificate groups were refreshed, or an automatic update needs attention
+Comment[pl]=Wybrane grupy certyfikatów zostały odświeżone lub automatyczna aktualizacja wymaga uwagi
+Comment[pt_BR]=Os grupos de certificados que você escolheu foram atualizados ou uma atualização automática precisa da sua atenção
+Comment[ja]=選択した証明書グループが更新されたか、自動更新に対応が必要です
+Comment[ko]=선택한 인증서 그룹을 새로 고쳤거나 자동 업데이트를 확인해야 합니다
+Comment[zh_CN]=所选证书组已刷新，或有自动更新需要您处理
+Comment[zh_TW]=選取的憑證群組已重新整理，或有自動更新需要處理
 Comment[de]=Die ausgewählten Zertifikatsgruppen wurden aktualisiert oder eine automatische Aktualisierung erfordert Ihre Aufmerksamkeit
 Comment[es]=Se actualizaron los grupos de certificados elegidos o una actualización automática requiere atención
 Comment[fr]=Les groupes de certificats choisis ont été actualisés ou une mise à jour automatique nécessite votre attention

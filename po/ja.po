@@ -1,0 +1,1103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.5\n"
+"PO-Revision-Date: 2026-11-20 16:13-0300\n"
+"Last-Translator: Sparky Stereo OS\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: qml/CertificatePage.qml:20
+msgid "Open certificate or personal identity"
+msgstr "証明書または個人 ID を開く"
+
+#: qml/CertificatePage.qml:21
+msgid "All files (*)"
+msgstr "すべてのファイル (*)"
+
+#: qml/CertificatePage.qml:21
+msgid "Certificate files (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+msgstr "証明書ファイル (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+
+#: qml/CertificatePage.qml:34
+msgid "Open Certificate…"
+msgstr "証明書を開く…"
+
+#: qml/CertificatePage.qml:35
+msgid "Refresh"
+msgstr "更新"
+
+#: qml/CertificatePage.qml:36
+msgid "Check Expiries"
+msgstr "有効期限を確認"
+
+#: qml/CertificatePage.qml:39
+msgid "Keep Chosen Groups Current"
+msgstr "選択したグループを最新に保つ"
+
+#: qml/CertificatePage.qml:76
+msgid "Store:"
+msgstr "ストア:"
+
+#: qml/CertificatePage.qml:80
+msgid "Certificate catalogue"
+msgstr "証明書カタログ"
+
+#: qml/CertificatePage.qml:80
+msgid "GnuPG S/MIME (Kleopatra)"
+msgstr "GnuPG S/MIME (Kleopatra)"
+
+#: qml/CertificatePage.qml:80
+msgid "System trust"
+msgstr "システムの信頼設定"
+
+#: qml/CertificatePage.qml:84
+msgid "Search name, issuer or fingerprint"
+msgstr "名前、発行者、フィンガープリントで検索"
+
+#: qml/CertificatePage.qml:91
+msgid "Install Group…"
+msgstr "グループをインストール…"
+
+#: qml/CertificatePage.qml:92
+msgid "Remove Group…"
+msgstr "グループを削除…"
+
+#: qml/CertificatePage.qml:93
+msgid "Kleopatra…"
+msgstr "Kleopatra…"
+
+#: qml/CertificatePage.qml:95
+msgid "One certificate"
+msgid_plural "%1 certificates"
+msgstr[0] "証明書 %1 件"
+
+#: qml/CertificatePage.qml:127
+msgid "Open in Kleopatra"
+msgstr "Kleopatra で開く"
+
+#: qml/CertificatePage.qml:132
+msgid "Detect Tokens"
+msgstr "トークンを検出"
+
+#: qml/CertificatePage.qml:133
+msgid "Register Token Module…"
+msgstr "トークンモジュールを登録…"
+
+#: qml/CertificatePage.qml:134
+msgid "A3 PINs are not stored. Install vendor middleware locally through APTus when required."
+msgstr "A3 の PIN は保存されません。必要な場合は、ベンダーのミドルウェアを APTus からこのコンピューターにインストールしてください。"
+
+#: qml/CertificatePage.qml:138
+msgid "Within validity dates"
+msgstr "有効期間内"
+
+#: qml/CertificatePage.qml:139
+msgid "Expired"
+msgstr "有効期限切れ"
+
+#: qml/CertificatePage.qml:140
+msgid "Revoked"
+msgstr "失効"
+
+#: qml/CertificatePage.qml:141
+msgid "Not yet valid"
+msgstr "まだ有効ではありません"
+
+#: qml/CertificatePage.qml:142
+msgid "Trusted: you confirmed it"
+msgstr "信頼済み: あなたが確認しました"
+
+#: qml/CertificatePage.qml:143
+msgid "Imported, not trusted yet"
+msgstr "インポート済み、信頼は未設定"
+
+#: qml/CertificatePage.qml:144
+msgid "Trusted through its root"
+msgstr "ルート証明書を通じて信頼済み"
+
+#: qml/CertificatePage.qml:145
+msgid "Invalid"
+msgstr "無効"
+
+#: qml/CertificatePage.qml:150
+msgid "Install chosen group"
+msgstr "選択したグループをインストール"
+
+#: qml/CertificatePage.qml:150
+msgid "Remove chosen group"
+msgstr "選択したグループを削除"
+
+#: qml/CertificatePage.qml:156
+msgid "Group: %1"
+msgstr "グループ: %1"
+
+#: qml/CertificatePage.qml:157
+msgid "Close this browser before changing its NSS database."
+msgstr "このブラウザーの NSS データベースを変更する前にブラウザーを閉じてください。"
+
+#: qml/CertificatePage.qml:157
+msgid "This changes system trust and requests administrator authorization. Expired and revoked catalogue entries are excluded."
+msgstr "システムの信頼設定を変更するため、管理者の承認が必要です。期限切れまたは失効したカタログ項目は対象外です。"
+
+#: qml/CertificatePage.qml:158
+msgid "Choose Ed521 certificates when native chain verification is unavailable"
+msgstr "システムが証明書チェーンを検証できない場合に Ed521 証明書を選択する"
+
+#: qml/CertificatePage.qml:159 qml/CertificatePage.qml:175
+#: qml/CertificatePage.qml:212
+msgid "NSS database password"
+msgstr "NSS データベースのパスワード"
+
+#: qml/CertificatePage.qml:164
+msgid "Preview or import personal certificate"
+msgstr "個人証明書をプレビューまたはインポート"
+
+#: qml/CertificatePage.qml:170
+msgid "PKCS#12 passphrase (for .p12 or .pfx)"
+msgstr "PKCS#12 パスフレーズ (.p12 または .pfx 用)"
+
+#: qml/CertificatePage.qml:171
+msgid "Preview"
+msgstr "プレビュー"
+
+#: qml/CertificatePage.qml:174
+msgid "Okular can sign with a supported identity from this NSS directory. Browser TLS trust does not grant PDF certificate trust; that requires a separate S/MIME trust decision in NSS."
+msgstr "Okular はこの NSS ディレクトリ内の対応する ID を使って署名できます。ブラウザーでの TLS の信頼設定は PDF 証明書には適用されません。NSS で S/MIME の信頼を別途設定してください。"
+
+#: qml/CertificatePage.qml:176
+msgid "Save A1 and NSS passwords in KDE Wallet"
+msgstr "A1 と NSS のパスワードを KDE ウォレットに保存する"
+
+#: qml/CertificatePage.qml:177
+msgid "Close the browser before import. Private keys remain in its NSS database. A3 PINs are never saved here."
+msgstr "インポート前にブラウザーを閉じてください。秘密鍵はブラウザーの NSS データベースに保存されます。A3 の PIN はここには保存されません。"
+
+#: qml/CertificatePage.qml:179
+msgid "Import A1"
+msgstr "A1 をインポート"
+
+#: qml/CertificatePage.qml:180
+msgid "Read from Wallet"
+msgstr "ウォレットから読み込む"
+
+#: qml/CertificatePage.qml:181
+msgid "Forget Saved Passwords"
+msgstr "保存済みのパスワードを削除"
+
+#: qml/CertificatePage.qml:188
+msgid "Kleopatra / GnuPG S/MIME"
+msgstr "Kleopatra / GnuPG S/MIME"
+
+#: qml/CertificatePage.qml:193
+msgid "Import the chosen group's certificates, with the chain up to their roots, into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by importing. You decide about each root yourself, in Kleopatra or when gpgsm asks. Ed521 certificates are not imported because gpgsm cannot validate them."
+msgstr "選択したグループの証明書をルートまでのチェーンとともに gpgsm にインポートし、Kleopatra と KMail で利用できるようにします。インポートしただけでは信頼されません。各ルート証明書を信頼するかは、Kleopatra で設定するか、gpgsm の確認に応答してください。gpgsm は Ed521 を検証できないため、Ed521 証明書はインポートしません。"
+
+#: qml/CertificatePage.qml:194
+msgid "Import Chosen Group"
+msgstr "選択したグループをインポート"
+
+#: qml/CertificatePage.qml:195
+msgid "Show What Was Imported"
+msgstr "インポートした内容を表示"
+
+#: qml/CertificatePage.qml:196
+msgid "Ask gpgsm About Imported Roots"
+msgstr "インポートしたルート証明書を gpgsm に照会"
+
+#: qml/CertificatePage.qml:197
+msgid "Remove What We Imported"
+msgstr "Sparky CA がインポートした内容を削除"
+
+#: qml/CertificatePage.qml:202
+msgid "Register a PKCS#11 module"
+msgstr "PKCS#11 モジュールを登録"
+
+#: qml/CertificatePage.qml:208
+msgid "Close the browser first. Choose the installed p11-kit proxy to expose configured token modules. Loading a module runs its code as your user."
+msgstr "先にブラウザーを閉じてください。設定済みのトークンモジュールを利用するには、インストール済みの p11-kit プロキシを選択してください。モジュールを読み込むと、そのコードがあなたのアカウントで実行されます。"
+
+#: qml/CertificatePage.qml:210
+msgid "Absolute path to p11-kit-proxy.so"
+msgstr "p11-kit-proxy.so への絶対パス"
+
+#: qml/CertificatePage.qml:211
+msgid "Inspect This Module"
+msgstr "このモジュールを調べる"
+
+#: qml/CertificatePage.qml:213
+msgid "Remove Our Module Registration"
+msgstr "Sparky CA によるモジュール登録を解除"
+
+#: share/kservices/sparky-ca-preview.desktop.in:8
+msgid "View Certificate"
+msgstr "証明書を表示"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:6
+msgid "Sparky CA"
+msgstr "Sparky CA"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:7
+msgid "ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "ICP-Brasil 証明書、ブラウザーの信頼設定、個人証明書"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:9
+msgid "Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the system, in Waterfox, Firefox and Chromium, and keeps the groups you chose current."
+msgstr "Sparky CA はブラジルの ICP-Brasil 認証局の証明書をシステムと Waterfox、Firefox、Chromium にインストールし、選択したグループを最新に保ちます。"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:10
+msgid "It shows every certificate with its issuer, expiry and state, imports your A1 certificate, registers your A3 token, and works on a plain text console as well as on the desktop."
+msgstr "証明書ごとに発行者、有効期限、状態を表示します。A1 証明書のインポートや A3 トークンの登録ができ、テキストコンソールとデスクトップの両方で使えます。"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:11
+msgid "Every download is checked against ITI's published hash and pinned roots, and certificates revoked by their authority are never installed."
+msgstr "ダウンロードはすべて、ITI が公開したハッシュと固定済みのルート証明書を使って検証されます。認証局が失効させた証明書はインストールされません。"
+
+#: share/sparky-ca.desktop.in:3
+msgid "PJeOffice CA Certificates Installer"
+msgstr "PJeOffice CA 証明書インストーラー"
+
+#: share/sparky-ca.desktop.in:4
+msgid "Certificate Manager"
+msgstr "証明書マネージャー"
+
+#: share/sparky-ca.desktop.in:5
+msgid "Manage ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "ICP-Brasil 証明書、ブラウザーの信頼設定、個人証明書を管理"
+
+#: share/sparky-ca.desktop.in:6
+msgid "certificate;ICP-Brasil;PJeOffice;CA;token;A1;A3;"
+msgstr "証明書;ICP-Brasil;PJeOffice;CA;トークン;A1;A3;"
+
+#: src/cli/main.cpp:19
+msgid "Use a private password file with owner-only permissions."
+msgstr "所有者だけがアクセスできる非公開のパスワードファイルを使用してください。"
+
+#: src/cli/main.cpp:25
+msgid "Expected one password in a private file."
+msgstr "非公開ファイルにパスワードを 1 つ指定してください。"
+
+#: src/cli/main.cpp:39
+msgid "Scope must be system or user."
+msgstr "適用範囲は system または user でなければなりません。"
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are off."
+msgstr "自動更新は無効です。"
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are on."
+msgstr "自動更新は有効です。"
+
+#: src/cli/main.cpp:80
+msgid "Specify auto status, enable, disable or run."
+msgstr "auto status、enable、disable、run のいずれかを指定してください。"
+
+#: src/cli/main.cpp:82
+msgid "Automatic updates are turned off."
+msgstr "自動更新を無効にしました。"
+
+#: src/cli/main.cpp:85
+msgid "System updates require root."
+msgstr "システムの更新には root 権限が必要です。"
+
+#: src/cli/main.cpp:99
+msgid "Manage Brazilian CA certificates and browser trust."
+msgstr "ブラジルの認証局証明書とブラウザーの信頼設定を管理します。"
+
+#: src/cli/main.cpp:103
+msgid "Package data directory."
+msgstr "パッケージのデータディレクトリ。"
+
+#: src/cli/main.cpp:104
+msgid "Verified catalogue file."
+msgstr "検証済みカタログファイル。"
+
+#: src/cli/main.cpp:105
+msgid "System certificate directory."
+msgstr "システム証明書ディレクトリ。"
+
+#: src/cli/main.cpp:106
+msgid "Derived system bundle; redirects the updater for isolated tests."
+msgstr "システム証明書から生成されたバンドル。隔離テストで更新先を切り替えます。"
+
+#: src/cli/main.cpp:107
+msgid "Operate on this NSS database instead of the system store. Close its browser first."
+msgstr "システムストアの代わりにこの NSS データベースを対象とします。先に関連するブラウザーを閉じてください。"
+
+#: src/cli/main.cpp:108
+msgid "Read the PKCS#12 passphrase from this private file."
+msgstr "この非公開ファイルから PKCS#12 のパスフレーズを読み込みます。"
+
+#: src/cli/main.cpp:109
+msgid "Read the NSS database password from this private file."
+msgstr "この非公開ファイルから NSS データベースのパスワードを読み込みます。"
+
+#: src/cli/main.cpp:110
+msgid "GnuPG certificate directory."
+msgstr "GnuPG の証明書ディレクトリ。"
+
+#: src/cli/main.cpp:111
+msgid "Choose E-521 certificates despite unavailable Linux chain verification; requires programs with their own E-521 code."
+msgstr "Linux で証明書チェーンを検証できなくても E-521 証明書を選択します。E-521 を独自に実装したプログラムが必要です。"
+
+#: src/cli/main.cpp:112
+msgid "TLS trust root for an isolated HTTPS fixture."
+msgstr "隔離 HTTPS テスト用の TLS 信頼ルート。"
+
+#: src/cli/main.cpp:113
+msgid "Missing TLS issuer, verified against the TLS trust roots."
+msgstr "不足している TLS 発行者。TLS 信頼ルートに照らして検証済みです。"
+
+#: src/cli/main.cpp:114
+msgid "HTTPS bundle URL."
+msgstr "バンドルの HTTPS URL。"
+
+#: src/cli/main.cpp:115
+msgid "HTTPS SHA-512 URL."
+msgstr "SHA-512 の HTTPS URL。"
+
+#: src/cli/main.cpp:116
+msgid "Offline ZIP input for catalogue verification."
+msgstr "カタログ検証用のオフライン ZIP ファイル。"
+
+#: src/cli/main.cpp:117
+msgid "Offline SHA-512 input."
+msgstr "オフラインで指定する SHA-512。"
+
+#: src/cli/main.cpp:118
+msgid "Write refreshed catalogue here."
+msgstr "更新したカタログをここに書き込みます。"
+
+#: src/cli/main.cpp:119
+msgid "Keep the downloaded bundle and its SHA-512 here, as received, so a failed refresh can be examined."
+msgstr "更新に失敗した原因を調べられるよう、ダウンロードしたバンドルとその SHA-512 を受け取ったまま保存します。"
+
+#: src/cli/main.cpp:120
+msgid "Machine state: refreshed catalogue, revocation answers and update status."
+msgstr "コンピューターの状態: 更新したカタログ、失効照会の結果、更新状況。"
+
+#: src/cli/main.cpp:121
+msgid "Folder holding the switch for automatic updates."
+msgstr "自動更新の有効・無効を保存するフォルダー。"
+
+#: src/cli/main.cpp:122
+msgid "Home folder whose browser databases are updated."
+msgstr "更新対象となるブラウザーのデータベースを含むホームフォルダー。"
+
+#: src/cli/main.cpp:123
+msgid "Automatic update scope: system or user."
+msgstr "自動更新の適用範囲: system または user。"
+
+#: src/cli/main.cpp:124
+msgid "Run an automatic update although it is turned off."
+msgstr "自動更新が無効でも一度実行します。"
+
+#: src/cli/main.cpp:125
+msgid "Do not use the Internet in an automatic update."
+msgstr "自動更新でインターネットを使いません。"
+
+#: src/cli/main.cpp:127
+msgid "list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"
+msgstr "list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"
+
+#: src/cli/main.cpp:153
+msgid "Group: "
+msgstr "グループ: "
+
+#: src/cli/main.cpp:179
+msgid "Specify one group."
+msgstr "グループを 1 つ指定してください。"
+
+#: src/cli/main.cpp:181
+msgid "NSS installations exclude Ed521 and Ed448 entries because NSS cannot import their key types."
+msgstr "NSS は Ed521 と Ed448 の鍵形式をインポートできないため、NSS へのインストールではこれらを除外します。"
+
+#: src/cli/main.cpp:185
+msgid "E-521 entries are skipped. Use --allow-e521 to choose them explicitly."
+msgstr "E-521 の項目はスキップされました。明示的に選択するには --allow-e521 を使用してください。"
+
+#: src/cli/main.cpp:192
+msgid "Certificate store updated."
+msgstr "証明書ストアを更新しました。"
+
+#: src/cli/main.cpp:194
+msgid "Specify --output for the refreshed catalogue."
+msgstr "更新したカタログの保存先を --output で指定してください。"
+
+#: src/cli/main.cpp:205
+msgid "Verified catalogue written."
+msgstr "検証済みカタログを書き込みました。"
+
+#: src/cli/main.cpp:207
+msgid "Specify one certificate file."
+msgstr "証明書ファイルを 1 つ指定してください。"
+
+#: src/cli/main.cpp:213
+msgid "Specify at most one token module."
+msgstr "指定できるトークンモジュールは 1 つまでです。"
+
+#: src/cli/main.cpp:216
+msgid "Specify an NSS database and one installed token module."
+msgstr "NSS データベースとインストール済みのトークンモジュールを 1 つずつ指定してください。"
+
+#: src/cli/main.cpp:219
+msgid "Specify one root group."
+msgstr "ルートグループを 1 つ指定してください。"
+
+#: src/cli/main.cpp:222 src/desktop/manager.cpp:347
+msgid "Trust entries that version 2.0.0 added to gpgsm without asking were removed."
+msgstr "バージョン 2.0.0 が確認せずに gpgsm に追加した信頼設定を削除しました。"
+
+#: src/cli/main.cpp:223
+msgid "Imported certificates are not trusted yet. Run gpgsm-confirm, or use Kleopatra's Trust Root Certificate, to decide."
+msgstr "インポートした証明書はまだ信頼されていません。gpgsm-confirm を実行するか、Kleopatra のルート証明書を信頼する機能で決めてください。"
+
+#: src/cli/main.cpp:228 src/desktop/manager.cpp:364
+msgid "No imported root is waiting for your confirmation."
+msgstr "確認を待っているインポート済みのルート証明書はありません。"
+
+#: src/cli/main.cpp:235 src/desktop/manager.cpp:370
+msgid "gpgsm could not check the root."
+msgstr "gpgsm がルート証明書を確認できませんでした。"
+
+#: src/cli/main.cpp:238
+msgid "Specify an NSS database."
+msgstr "NSS データベースを指定してください。"
+
+#: src/cli/main.cpp:241
+msgid "Personal certificate import requires --nss and one PKCS#12 file."
+msgstr "個人証明書のインポートには --nss と PKCS#12 ファイルが 1 つ必要です。"
+
+#: src/cli/main.cpp:250
+msgid "Personal certificate import failed."
+msgstr "個人証明書をインポートできませんでした。"
+
+#: src/cli/main.cpp:253
+msgid "Unknown command: %1"
+msgstr "不明なコマンド: %1"
+
+#: src/core/automation.cpp:85
+msgid "Cannot turn automatic updates on."
+msgstr "自動更新を有効にできません。"
+
+#: src/core/automation.cpp:88
+msgid "Cannot create the configuration folder."
+msgstr "設定フォルダーを作成できません。"
+
+#: src/core/automation.cpp:89
+msgid "Automatic certificate updates are turned off. Remove this file or run: sparky-ca auto enable\n"
+msgstr "証明書の自動更新は無効です。このファイルを削除するか、sparky-ca auto enable を実行してください。\n"
+
+#: src/core/automation.cpp:98 src/core/automation.cpp:144
+msgid "Cannot create the state folder."
+msgstr "状態フォルダーを作成できません。"
+
+#: src/core/automation.cpp:113
+msgid "Automatic update failed: %1"
+msgstr "自動更新に失敗しました: %1"
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed and changed."
+msgstr "証明書カタログを更新し、内容が変わりました。"
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed; nothing changed."
+msgstr "証明書カタログを更新しました。内容に変更はありません。"
+
+#: src/core/automation.cpp:116
+msgid "The catalogue could not be refreshed: %1"
+msgstr "証明書カタログを更新できませんでした: %1"
+
+#: src/core/automation.cpp:119
+msgid "Revocation: %1 certificates checked, %2 revoked, %3 without an answer."
+msgstr "失効確認: 検証済み %1 件、失効 %2 件、応答なし %3 件。"
+
+#: src/core/automation.cpp:125
+msgid "%1: added %2"
+msgstr "%1: %2 を追加しました"
+
+#: src/core/automation.cpp:127
+msgid "%1: removed %2 (%3)"
+msgstr "%1: %2 を削除しました (%3)"
+
+#: src/core/automation.cpp:128
+msgid "%2: one new E-521 certificate needs your choice and was not installed."
+msgid_plural "%2: %1 new E-521 certificates need your choice and were not installed."
+msgstr[0] "%2: 新しい E-521 証明書 %1 件は選択が必要なため、インストールされていません。"
+
+#: src/core/automation.cpp:129
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: src/core/automation.cpp:133
+msgid "Nothing to do."
+msgstr "実行する処理はありません。"
+
+#: src/core/automation.cpp:147
+msgid "Another automatic update is running."
+msgstr "別の自動更新が実行中です。"
+
+#: src/core/automation.cpp:185
+msgid "The catalogue has not been refreshed for %1 days."
+msgstr "カタログは %1 日間更新されていません。"
+
+#: src/core/automation.cpp:186
+msgid "The catalogue has never been refreshed from the Internet on this machine."
+msgstr "このコンピューターでは、インターネットからカタログを更新したことがありません。"
+
+#: src/core/automation.cpp:209
+msgid "%1 is in use by a browser; it will be updated on a later run."
+msgstr "ブラウザーが %1 を使用中です。後の実行時に更新します。"
+
+#: src/core/catalogue.cpp:20
+msgid "Invalid catalogue JSON."
+msgstr "カタログの JSON が無効です。"
+
+#: src/core/catalogue.cpp:30
+msgid "Invalid root filename."
+msgstr "ルート証明書のファイル名が無効です。"
+
+#: src/core/catalogue.cpp:32
+msgid "Root fingerprint mismatch: %1"
+msgstr "ルート証明書のフィンガープリントが一致しません: %1"
+
+#: src/core/catalogue.cpp:40
+msgid "No pinned roots."
+msgstr "固定済みのルート証明書がありません。"
+
+#: src/core/catalogue.cpp:62
+msgid "Chain signature not verifiable on Linux (E-521). Linux's crypto libraries cannot use E-521 yet; these certificates help only programs that carry their own E-521 code."
+msgstr "Linux では証明書チェーンの署名 (E-521) を検証できません。Linux の暗号ライブラリはまだ E-521 を使えないため、これらの証明書は E-521 を独自に実装したプログラムでのみ利用できます。"
+
+#: src/core/catalogue.cpp:76
+msgid "Root is not pinned: %1"
+msgstr "ルート証明書が固定されていません: %1"
+
+#: src/core/catalogue.cpp:77
+msgid "Pinned certificate is not a CA."
+msgstr "固定された証明書は認証局の証明書ではありません。"
+
+#: src/core/catalogue.cpp:78
+msgid "Root is expired, revoked or not yet valid."
+msgstr "ルート証明書は期限切れ、失効済み、または有効期間前です。"
+
+#: src/core/catalogue.cpp:83
+msgid "E-521 certificate lacks authenticated bundle integrity evidence."
+msgstr "E-521 証明書に、認証済みのバンドル完全性の証拠がありません。"
+
+#: src/core/catalogue.cpp:85
+msgid "E-521 root is not currently valid."
+msgstr "E-521 のルート証明書は現在有効ではありません。"
+
+#: src/core/catalogue.cpp:86
+msgid "E-521 certificate is not currently valid."
+msgstr "E-521 証明書は現在有効ではありません。"
+
+#: src/core/catalogue.cpp:118
+msgid "Certificate chain rejected: %1: %2"
+msgstr "証明書チェーンが拒否されました: %1: %2"
+
+#: src/core/catalogue.cpp:119
+msgid "Certificate is expired, revoked or not yet valid: %1"
+msgstr "証明書は期限切れ、失効済み、または有効期間前です: %1"
+
+#: src/core/catalogue.cpp:132
+msgid "Invalid certificate count."
+msgstr "証明書の件数が無効です。"
+
+#: src/core/catalogue.cpp:138
+msgid "Unsupported catalogue schema."
+msgstr "対応していないカタログ構造です。"
+
+#: src/core/catalogue.cpp:148
+msgid "Unapproved E-521 source bundle."
+msgstr "E-521 の配布元バンドルが承認されていません。"
+
+#: src/core/catalogue.cpp:158
+msgid "Invalid catalogue groups."
+msgstr "カタログのグループが無効です。"
+
+#: src/core/catalogue.cpp:162
+msgid "Invalid catalogue group identifier."
+msgstr "カタログのグループ ID が無効です。"
+
+#: src/core/catalogue.cpp:180
+msgid "Bundle SHA-512 mismatch."
+msgstr "バンドルの SHA-512 が一致しません。"
+
+#: src/core/catalogue.cpp:181
+msgid "Bundle is too large."
+msgstr "バンドルが大きすぎます。"
+
+#: src/core/catalogue.cpp:185
+msgid "Cannot open ZIP bundle."
+msgstr "ZIP バンドルを開けません。"
+
+#: src/core/catalogue.cpp:195
+msgid "Unsafe ZIP entry: %1"
+msgstr "安全でない ZIP エントリー: %1"
+
+#: src/core/catalogue.cpp:203
+msgid "Expanded bundle is too large."
+msgstr "展開後のバンドルが大きすぎます。"
+
+#: src/core/catalogue.cpp:205
+msgid "Corrupt ZIP entry: %1"
+msgstr "破損した ZIP エントリー: %1"
+
+#: src/core/catalogue.cpp:209
+msgid "Corrupt ZIP bundle."
+msgstr "ZIP バンドルが破損しています。"
+
+#: src/core/catalogue.cpp:215
+msgid "E-521 source bundle hash is not approved."
+msgstr "E-521 の配布元バンドルのハッシュが承認されていません。"
+
+#: src/core/certificate.cpp:22
+msgid "Cannot read file: %1"
+msgstr "ファイルを読み込めません: %1"
+
+#: src/core/certificate.cpp:30
+msgid "Cannot write file: %1"
+msgstr "ファイルに書き込めません: %1"
+
+#: src/core/certificate.cpp:38
+msgid "Command failed: %1: %2"
+msgstr "コマンドが失敗しました: %1: %2"
+
+#: src/core/certificate.cpp:53
+msgid "Expected exactly one certificate."
+msgstr "証明書は 1 件だけ指定してください。"
+
+#: src/core/certificate.cpp:60
+msgid "Invalid certificate encoding."
+msgstr "証明書のエンコードが無効です。"
+
+#: src/core/certificate.cpp:64
+msgid "Cannot parse certificate."
+msgstr "証明書を解析できません。"
+
+#: src/core/certificate.cpp:83
+msgid "Cannot calculate certificate fingerprint."
+msgstr "証明書のフィンガープリントを計算できません。"
+
+#: src/core/certificate.cpp:130
+msgid "Invalid certificate expiry."
+msgstr "証明書の有効期限が無効です。"
+
+#: src/core/download.cpp:18
+msgid "Downloads require HTTPS."
+msgstr "ダウンロードには HTTPS が必要です。"
+
+#: src/core/download.cpp:24
+msgid "Cannot parse TLS issuer chain."
+msgstr "TLS 発行者のチェーンを解析できません。"
+
+#: src/core/download.cpp:43
+msgid "TLS issuer does not chain to a trusted root."
+msgstr "TLS 発行者のチェーンが信頼済みルートに到達しません。"
+
+#: src/core/download.cpp:66
+msgid "Download exceeds its size limit."
+msgstr "ダウンロードがサイズ上限を超えています。"
+
+#: src/core/download.cpp:68
+msgid "HTTPS download failed: %1"
+msgstr "HTTPS ダウンロードに失敗しました: %1"
+
+#: src/core/personal.cpp:25
+msgid "Cannot encode certificate."
+msgstr "証明書をエンコードできません。"
+
+#: src/core/personal.cpp:39
+msgid "Invalid certificate input."
+msgstr "入力証明書が無効です。"
+
+#: src/core/personal.cpp:80
+msgid "Cannot parse certificate file."
+msgstr "証明書ファイルを解析できません。"
+
+#: src/core/personal.cpp:95
+msgid "Cannot unlock PKCS#12. Check its passphrase."
+msgstr "PKCS#12 のロックを解除できません。パスフレーズを確認してください。"
+
+#: src/core/personal.cpp:101
+msgid "Passwords cannot contain null bytes or newlines."
+msgstr "パスワードにヌルバイトや改行は使用できません。"
+
+#: src/core/personal.cpp:103 src/core/stores.cpp:55
+msgid "Cannot create a private password file."
+msgstr "非公開のパスワードファイルを作成できません。"
+
+#: src/core/personal.cpp:113
+msgid "Cannot create NSS database directory."
+msgstr "NSS データベースのディレクトリを作成できません。"
+
+#: src/core/personal.cpp:133
+msgid "Expected a PKCS#12 identity with its matching private key and passphrase."
+msgstr "PKCS#12 の ID と、それに対応する秘密鍵およびパスフレーズが必要です。"
+
+#: src/core/personal.cpp:138
+msgid "Cannot create a private import file."
+msgstr "非公開のインポートファイルを作成できません。"
+
+#: src/core/personal.cpp:143 src/core/personal.cpp:155
+#: src/core/personal.cpp:173 src/core/stores.cpp:91 src/core/stores.cpp:174
+msgid "Certificate store is busy."
+msgstr "証明書ストアは使用中です。"
+
+#: src/core/personal.cpp:149 src/core/personal.cpp:188
+msgid "Choose an installed PKCS#11 module."
+msgstr "インストール済みの PKCS#11 モジュールを選んでください。"
+
+#: src/core/personal.cpp:158
+msgid "The token module is already registered. Inspect it before changing it."
+msgstr "トークンモジュールは登録済みです。変更前にモジュールを確認してください。"
+
+#: src/core/personal.cpp:162
+msgid "An earlier token module record still exists."
+msgstr "以前のトークンモジュールの記録が残っています。"
+
+#: src/core/personal.cpp:178
+msgid "The registered token module differs from our record."
+msgstr "登録済みのトークンモジュールが Sparky CA の記録と異なります。"
+
+#: src/core/personal.cpp:181
+msgid "Cannot remove the token module record."
+msgstr "トークンモジュールの記録を削除できません。"
+
+#: src/core/personal.cpp:197 src/core/personal.cpp:200
+msgid "No token slots detected. Check the reader and installed middleware."
+msgstr "トークンスロットが検出されませんでした。リーダーとインストール済みのミドルウェアを確認してください。"
+
+#: src/core/personal.cpp:224
+msgid "Invalid GnuPG import record."
+msgstr "GnuPG のインポート記録が無効です。"
+
+#: src/core/personal.cpp:238
+msgid "Cannot calculate GnuPG's certificate identifier."
+msgstr "GnuPG で使う証明書の識別子を計算できません。"
+
+#: src/core/personal.cpp:265
+msgid "Cannot prepare the GnuPG directory."
+msgstr "GnuPG のディレクトリを準備できません。"
+
+#: src/core/personal.cpp:298 src/core/personal.cpp:371
+msgid "GnuPG's gpgsm is not installed."
+msgstr "GnuPG の gpgsm がインストールされていません。"
+
+#: src/core/personal.cpp:300 src/core/stores.cpp:84
+#: src/core/systemchange.cpp:20
+msgid "Unknown certificate group: %1"
+msgstr "不明な証明書グループ: %1"
+
+#: src/core/personal.cpp:304 src/core/personal.cpp:375
+msgid "GnuPG certificate store is busy."
+msgstr "GnuPG の証明書ストアは使用中です。"
+
+#: src/core/personal.cpp:342
+msgid "This group has no certificates gpgsm can use."
+msgstr "このグループには gpgsm が使用できる証明書がありません。"
+
+#: src/core/personal.cpp:394
+msgid "Invalid GnuPG certificate identifier."
+msgstr "GnuPG の証明書の識別子が無効です。"
+
+#: src/core/revocation.cpp:49
+msgid "Cannot parse CRL."
+msgstr "証明書失効リスト (CRL) を解析できません。"
+
+#: src/core/revocation.cpp:61
+msgid "CRL issuer does not match."
+msgstr "CRL の発行者が一致しません。"
+
+#: src/core/revocation.cpp:63
+msgid "CRL signature is not valid."
+msgstr "CRL の署名は無効です。"
+
+#: src/core/revocation.cpp:67
+msgid "CRL does not cover every certificate of its issuer."
+msgstr "CRL がその発行者のすべての証明書を対象としていません。"
+
+#: src/core/revocation.cpp:69
+msgid "CRL is not yet valid."
+msgstr "CRL はまだ有効ではありません。"
+
+#: src/core/revocation.cpp:70
+msgid "CRL is stale."
+msgstr "CRL が古くなっています。"
+
+#: src/core/revocation.cpp:90
+msgid "The CRL signature uses E-521, which Linux cannot verify."
+msgstr "CRL の署名は E-521 を使用しており、Linux では検証できません。"
+
+#: src/core/revocation.cpp:92
+msgid "The certificate names no CRL."
+msgstr "証明書には CRL が指定されていません。"
+
+#: src/core/revocation.cpp:98
+msgid "No CRL could be fetched."
+msgstr "CRL を取得できませんでした。"
+
+#: src/core/revocation.cpp:101
+msgid "The issuer is not in the catalogue."
+msgstr "発行者がカタログにありません。"
+
+#: src/core/revocation.cpp:106
+msgid "No network was used for this check."
+msgstr "この確認ではネットワークを使いませんでした。"
+
+#: src/core/stores.cpp:41
+msgid "Choose exactly one store."
+msgstr "ストアを 1 つだけ選択してください。"
+
+#: src/core/stores.cpp:47
+msgid "Refusing a symbolic link in store path: %1"
+msgstr "ストアのパスにあるシンボリックリンクを拒否しました: %1"
+
+#: src/core/stores.cpp:53
+msgid "The NSS password cannot contain a newline or a null byte."
+msgstr "NSS パスワードに改行やヌルバイトは使用できません。"
+
+#: src/core/stores.cpp:63
+msgid "Invalid store ownership manifest."
+msgstr "ストアで管理している証明書の一覧が無効です。"
+
+#: src/core/stores.cpp:73
+msgid "Cannot create updater configuration."
+msgstr "更新プログラムの設定を作成できません。"
+
+#: src/core/stores.cpp:86 src/core/stores.cpp:169
+msgid "System changes require root. Run sparky-ca through sudo or pkexec."
+msgstr "システムの変更には root 権限が必要です。sudo または pkexec を使って sparky-ca を実行してください。"
+
+#: src/core/stores.cpp:89
+msgid "Cannot create store directory."
+msgstr "ストアのディレクトリを作成できません。"
+
+#: src/core/stores.cpp:111
+msgid "This group has no installable certificates."
+msgstr "このグループにインストール可能な証明書はありません。"
+
+#: src/core/stores.cpp:123 src/core/stores.cpp:225 src/core/stores.cpp:230
+msgid "Owned certificate bytes have changed."
+msgstr "管理対象の証明書のデータが変更されています。"
+
+#: src/core/stores.cpp:128
+msgid "Unowned certificate filename already exists."
+msgstr "管理対象外の証明書がそのファイル名で既に存在します。"
+
+#: src/core/stores.cpp:148
+msgid "Unowned NSS nickname already exists."
+msgstr "管理対象外の証明書がその NSS ニックネームで既に存在します。"
+
+#: src/core/stores.cpp:202
+msgid "Invalid saved NSS trust decision."
+msgstr "NSS に保存された信頼設定が無効です。"
+
+#: src/core/stores.cpp:204
+msgid "Existing certificate bytes have changed."
+msgstr "既存の証明書のデータが変更されています。"
+
+#: src/core/stores.cpp:209
+msgid "Existing NSS trust settings changed outside this application."
+msgstr "既存の NSS の信頼設定がこのアプリケーションの外で変更されました。"
+
+#: src/core/stores.cpp:220
+msgid "Invalid owned certificate fingerprint."
+msgstr "管理対象の証明書のフィンガープリントが無効です。"
+
+#: src/core/stores.cpp:226
+msgid "Cannot remove certificate."
+msgstr "証明書を削除できません。"
+
+#: src/core/stores.cpp:281
+msgid "Selected group %1 is no longer in the catalogue."
+msgstr "選択したグループ %1 はカタログにありません。"
+
+#: src/core/systemchange.cpp:12
+msgid "Invalid system certificate request."
+msgstr "システム証明書への要求が無効です。"
+
+#: src/core/systemchange.cpp:17
+msgid "Unknown system certificate operation."
+msgstr "不明なシステム証明書の操作です。"
+
+#: src/core/systemchange.cpp:30
+msgid "Invalid automatic update request."
+msgstr "自動更新の要求が無効です。"
+
+#: src/desktop/dispatch.cpp:38
+msgid "Cannot find Sparky CA front end."
+msgstr "Sparky CA の画面が見つかりません。"
+
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:175
+#: src/desktop/notify.cpp:51
+msgid "Certificates"
+msgstr "証明書"
+
+#: src/desktop/main.cpp:24
+msgid "Manage certificate trust and personal identities"
+msgstr "証明書の信頼設定と個人 ID を管理"
+
+#: src/desktop/main.cpp:26
+msgid "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+msgstr "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:27
+msgid "Original author, 2018"
+msgstr "原作者、2018 年"
+
+#: src/desktop/main.cpp:27
+msgid "Paweł \"pavroo\" Pijanowski"
+msgstr "Paweł \"pavroo\" Pijanowski"
+
+#: src/desktop/main.cpp:28
+msgid "Brazilian certificates and KDE integration, 2020 and 2026"
+msgstr "ブラジルの証明書と KDE 統合、2020 年と 2026 年"
+
+#: src/desktop/main.cpp:28
+msgid "Daniel Campos Ramos"
+msgstr "Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:33
+msgid "Catalogue data directory."
+msgstr "カタログのデータディレクトリ。"
+
+#: src/desktop/main.cpp:34
+msgid "Capture the window for an isolated UI test."
+msgstr "隔離された画面テスト用にウィンドウをキャプチャーします。"
+
+#: src/desktop/main.cpp:35
+msgid "Local certificate file to preview."
+msgstr "プレビューするローカルの証明書ファイル。"
+
+#: src/desktop/manager.cpp:78
+msgid "No automatic update has run on this computer yet."
+msgstr "このコンピューターではまだ自動更新が実行されていません。"
+
+#: src/desktop/manager.cpp:83
+msgid "Last automatic update: %1. Everything is current."
+msgstr "前回の自動更新: %1。すべて最新です。"
+
+#: src/desktop/manager.cpp:84
+msgid "Last automatic update: %1. It needs your attention: see the system journal or run sparky-ca auto status."
+msgstr "前回の自動更新: %1。対応が必要です。システムジャーナルを確認するか、sparky-ca auto status を実行してください。"
+
+#: src/desktop/manager.cpp:114
+msgid "Automatic certificate updates are off."
+msgstr "証明書の自動更新は無効です。"
+
+#: src/desktop/manager.cpp:114
+msgid "Your chosen certificate groups will be kept current automatically."
+msgstr "選択した証明書グループは自動で最新に保たれます。"
+
+#: src/desktop/manager.cpp:130
+msgid "Choose an existing browser profile."
+msgstr "既存のブラウザープロファイルを選択してください。"
+
+#: src/desktop/manager.cpp:150
+msgid "Ed448 validates through OpenSSL. NSS cannot import this key type, so browser installations exclude it."
+msgstr "Ed448 は OpenSSL で検証できます。NSS はこの鍵形式をインポートできないため、ブラウザーへのインストールでは除外されます。"
+
+#: src/desktop/manager.cpp:233
+msgid "System certificate store updated. Restart applications to reload trust."
+msgstr "システムの証明書ストアが更新されました。アプリケーションを再起動して信頼設定を読み直してください。"
+
+#: src/desktop/manager.cpp:249
+msgid "Browser certificate store updated. Ed521 and Ed448 entries stay listed but are excluded because NSS does not support their key types."
+msgstr "ブラウザーの証明書ストアが更新されました。Ed521 と Ed448 の項目は一覧に残りますが、NSS が鍵形式に対応していないためインストールされません。"
+
+#: src/desktop/manager.cpp:261
+msgid "Preview does not establish trust. Revocation status is unknown."
+msgstr "プレビューでは証明書は信頼されません。失効状態は不明です。"
+
+#: src/desktop/manager.cpp:274
+msgid "Choose a local PKCS#12 file and browser profile."
+msgstr "ローカルの PKCS#12 ファイルとブラウザープロファイルを選択してください。"
+
+#: src/desktop/manager.cpp:282
+msgid "Personal certificate imported. Choose this NSS directory in Okular's PDF certificate settings."
+msgstr "個人証明書をインポートしました。Okular の PDF 証明書の設定でこの NSS ディレクトリを選択してください。"
+
+#: src/desktop/manager.cpp:303
+msgid "Saved certificate passwords removed."
+msgstr "保存済みの証明書パスワードを削除しました。"
+
+#: src/desktop/manager.cpp:313
+msgid "A3 PINs are not saved. Token retry limits and authentication policy apply. SafeSign or SafeNet middleware, when required, is installed on your machine through APTus."
+msgstr "A3 の PIN は保存されません。トークンの試行回数の上限と認証方針が適用されます。SafeSign または SafeNet のミドルウェアが必要な場合は、APTus を通じてこのコンピューターにインストールします。"
+
+#: src/desktop/manager.cpp:323
+msgid "PKCS#11 module registered for this browser profile."
+msgstr "このブラウザープロファイルに PKCS#11 モジュールを登録しました。"
+
+#: src/desktop/manager.cpp:346
+msgid "Certificates imported for Kleopatra. They are not trusted until you confirm each root in Kleopatra or in gpgsm. Ed521 entries stay listed but are not imported because gpgsm cannot validate them."
+msgstr "Kleopatra 用に証明書をインポートしました。Kleopatra または gpgsm で各ルート証明書を確認するまで信頼されません。Ed521 の項目は一覧に残りますが、gpgsm で検証できないためインポートされません。"
+
+#: src/desktop/manager.cpp:355
+msgid "Certificates that Sparky CA imported into gpgsm were removed. Trust you confirmed yourself stays in gpgsm's trust list until you remove it in Kleopatra."
+msgstr "Sparky CA が gpgsm にインポートした証明書を削除しました。ご自身で確認した信頼設定は、Kleopatra で削除するまで gpgsm の信頼リストに残ります。"
+
+#: src/desktop/manager.cpp:372
+msgid "gpgsm asked about each imported root. Your answers are in its trust list."
+msgstr "gpgsm はインポートした各ルート証明書について確認しました。回答は信頼リストに記録されています。"
+
+#: src/desktop/manager.cpp:378
+msgid "Kleopatra is not installed."
+msgstr "Kleopatra がインストールされていません。"
+
+#: src/desktop/manager.cpp:390
+msgid "Our PKCS#11 module registration was removed. Token certificates remain on the token."
+msgstr "Sparky CA による PKCS#11 モジュールの登録を解除しました。トークンの証明書はトークンに残っています。"
+
+#: src/desktop/manager.cpp:403
+msgid "One listed certificate expires within 30 days or has expired."
+msgid_plural "%1 listed certificates expire within 30 days or have expired."
+msgstr[0] "一覧の証明書のうち %1 件が 30 日以内に期限切れになるか、既に期限切れです。"
+
+#: src/desktop/notify.cpp:30
+msgid "Machine state folder."
+msgstr "コンピューターの状態フォルダー。"
+
+#: src/desktop/notify.cpp:31
+msgid "Home folder holding the user's status."
+msgstr "ユーザーの状態を保存するホームフォルダー。"
+
+#: src/desktop/wallet.cpp:20
+msgid "Cannot open KDE Wallet. Passwords were not saved."
+msgstr "KDE ウォレットを開けません。パスワードは保存されませんでした。"
+
+#: src/desktop/wallet.cpp:23
+msgid "Cannot create the certificate wallet folder."
+msgstr "ウォレットの証明書フォルダーを作成できません。"
+
+#: src/desktop/wallet.cpp:27
+msgid "Cannot select the certificate wallet folder."
+msgstr "ウォレットの証明書フォルダーを選択できません。"
+
+#: src/desktop/wallet.cpp:34
+msgid "Cannot save certificate passwords in KDE Wallet."
+msgstr "KDE ウォレットに証明書パスワードを保存できません。"
+
+#: src/desktop/wallet.cpp:49
+msgid "Cannot read certificate passwords from KDE Wallet."
+msgstr "KDE ウォレットから証明書パスワードを読み込めません。"
+
+#: src/desktop/wallet.cpp:61
+msgid "Cannot remove a saved certificate password."
+msgstr "保存済みの証明書パスワードを削除できません。"
+
+#: src/helper/helper.cpp:31 src/helper/helper.cpp:44 src/helper/helper.cpp:74
+#: src/helper/helper.cpp:78
+msgid "The certificate helper requires root."
+msgstr "証明書の補助プログラムには root 権限が必要です。"
+
+#: src/helper/helper.cpp:54
+msgid "Untrusted package certificate data."
+msgstr "パッケージの証明書データは信頼されていません。"

@@ -4,10 +4,22 @@ Icon=security-high
 
 [org.sparkylinux.sparkyca.change]
 Name=Change system certificate trust
+Name[pl]=Zmień ustawienia zaufania do certyfikatów systemowych
+Name[pt_BR]=Alterar a confiança nos certificados do sistema
+Name[ja]=システム証明書の信頼設定を変更
+Name[ko]=시스템 인증서 신뢰 설정 변경
+Name[zh_CN]=更改系统证书信任设置
+Name[zh_TW]=變更系統憑證信任設定
 Name[de]=Vertrauenseinstellungen für Systemzertifikate ändern
 Name[es]=Cambiar la confianza en los certificados del sistema
 Name[fr]=Modifier la confiance des certificats du système
 Description=Install or remove a chosen certificate group in the system trust store
+Description[pl]=Zainstaluj lub usuń wybraną grupę certyfikatów w systemowym magazynie zaufania
+Description[pt_BR]=Instalar ou remover um grupo de certificados escolhido no repositório de confiança do sistema
+Description[ja]=選択した証明書グループをシステムの信頼ストアにインストールまたは削除
+Description[ko]=시스템 신뢰 저장소에 선택한 인증서 그룹을 설치하거나 제거
+Description[zh_CN]=在系统信任存储区安装或移除所选证书组
+Description[zh_TW]=在系統信任存放區安裝或移除選取的憑證群組
 Description[de]=Eine ausgewählte Zertifikatsgruppe im Systemspeicher installieren oder entfernen
 Description[es]=Instalar o eliminar un grupo de certificados elegido en el almacén de confianza del sistema
 Description[fr]=Installer ou retirer un groupe de certificats choisi dans le magasin de confiance du système
@@ -16,10 +28,22 @@ Persistence=session
 
 [org.sparkylinux.sparkyca.automatic]
 Name=Turn automatic certificate updates on or off
+Name[pl]=Włącz lub wyłącz automatyczne aktualizacje certyfikatów
+Name[pt_BR]=Ativar ou desativar as atualizações automáticas de certificados
+Name[ja]=証明書の自動更新を切り替え
+Name[ko]=인증서 자동 업데이트 켜기 또는 끄기
+Name[zh_CN]=开启或关闭证书自动更新
+Name[zh_TW]=開啟或關閉憑證自動更新
 Name[de]=Automatische Zertifikatsaktualisierungen ein- oder ausschalten
 Name[es]=Activar o desactivar las actualizaciones automáticas de certificados
 Name[fr]=Activer ou désactiver les mises à jour automatiques des certificats
 Description=Change the machine's switch for the daily refresh of the chosen certificate groups
+Description[pl]=Zmień ustawienie codziennego odświeżania wybranych grup certyfikatów na tym komputerze
+Description[pt_BR]=Alterar o ajuste que controla a atualização diária dos grupos de certificados escolhidos neste computador
+Description[ja]=選択した証明書グループをこのコンピューターで毎日更新するか設定
+Description[ko]=이 컴퓨터에서 선택한 인증서 그룹을 매일 새로 고칠지 설정
+Description[zh_CN]=更改此电脑每日刷新所选证书组的设置
+Description[zh_TW]=變更此電腦每日重新整理選取憑證群組的設定
 Description[de]=Die tägliche Aktualisierung der ausgewählten Zertifikatsgruppen auf diesem Rechner ein- oder ausschalten
 Description[es]=Cambiar el ajuste de la actualización diaria de los grupos de certificados elegidos en este equipo
 Description[fr]=Modifier le réglage d’actualisation quotidienne des groupes de certificats choisis sur cet ordinateur

@@ -1,0 +1,1103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sparky-ca 2.0.5\n"
+"PO-Revision-Date: 2026-11-20 16:14-0300\n"
+"Last-Translator: Sparky Stereo OS\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: qml/CertificatePage.qml:20
+msgid "Open certificate or personal identity"
+msgstr "인증서 또는 개인 ID 열기"
+
+#: qml/CertificatePage.qml:21
+msgid "All files (*)"
+msgstr "모든 파일 (*)"
+
+#: qml/CertificatePage.qml:21
+msgid "Certificate files (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+msgstr "인증서 파일 (*.crt *.cer *.pem *.p7b *.pfx *.p12)"
+
+#: qml/CertificatePage.qml:34
+msgid "Open Certificate…"
+msgstr "인증서 열기…"
+
+#: qml/CertificatePage.qml:35
+msgid "Refresh"
+msgstr "새로 고침"
+
+#: qml/CertificatePage.qml:36
+msgid "Check Expiries"
+msgstr "만료 날짜 확인"
+
+#: qml/CertificatePage.qml:39
+msgid "Keep Chosen Groups Current"
+msgstr "선택한 그룹을 최신 상태로 유지"
+
+#: qml/CertificatePage.qml:76
+msgid "Store:"
+msgstr "저장소:"
+
+#: qml/CertificatePage.qml:80
+msgid "Certificate catalogue"
+msgstr "인증서 목록"
+
+#: qml/CertificatePage.qml:80
+msgid "GnuPG S/MIME (Kleopatra)"
+msgstr "GnuPG S/MIME (Kleopatra)"
+
+#: qml/CertificatePage.qml:80
+msgid "System trust"
+msgstr "시스템 신뢰 설정"
+
+#: qml/CertificatePage.qml:84
+msgid "Search name, issuer or fingerprint"
+msgstr "이름, 발급자 또는 지문으로 검색"
+
+#: qml/CertificatePage.qml:91
+msgid "Install Group…"
+msgstr "그룹 설치…"
+
+#: qml/CertificatePage.qml:92
+msgid "Remove Group…"
+msgstr "그룹 제거…"
+
+#: qml/CertificatePage.qml:93
+msgid "Kleopatra…"
+msgstr "Kleopatra…"
+
+#: qml/CertificatePage.qml:95
+msgid "One certificate"
+msgid_plural "%1 certificates"
+msgstr[0] "인증서 %1개"
+
+#: qml/CertificatePage.qml:127
+msgid "Open in Kleopatra"
+msgstr "Kleopatra에서 열기"
+
+#: qml/CertificatePage.qml:132
+msgid "Detect Tokens"
+msgstr "토큰 감지"
+
+#: qml/CertificatePage.qml:133
+msgid "Register Token Module…"
+msgstr "토큰 모듈 등록…"
+
+#: qml/CertificatePage.qml:134
+msgid "A3 PINs are not stored. Install vendor middleware locally through APTus when required."
+msgstr "A3 PIN은 저장되지 않습니다. 필요한 경우 APTus에서 제조사의 미들웨어를 이 컴퓨터에 설치하십시오."
+
+#: qml/CertificatePage.qml:138
+msgid "Within validity dates"
+msgstr "유효 기간 이내"
+
+#: qml/CertificatePage.qml:139
+msgid "Expired"
+msgstr "만료됨"
+
+#: qml/CertificatePage.qml:140
+msgid "Revoked"
+msgstr "폐기됨"
+
+#: qml/CertificatePage.qml:141
+msgid "Not yet valid"
+msgstr "아직 유효하지 않음"
+
+#: qml/CertificatePage.qml:142
+msgid "Trusted: you confirmed it"
+msgstr "신뢰함: 사용자가 확인함"
+
+#: qml/CertificatePage.qml:143
+msgid "Imported, not trusted yet"
+msgstr "가져왔지만 아직 신뢰하지 않음"
+
+#: qml/CertificatePage.qml:144
+msgid "Trusted through its root"
+msgstr "루트 인증서를 통해 신뢰함"
+
+#: qml/CertificatePage.qml:145
+msgid "Invalid"
+msgstr "유효하지 않음"
+
+#: qml/CertificatePage.qml:150
+msgid "Install chosen group"
+msgstr "선택한 그룹 설치"
+
+#: qml/CertificatePage.qml:150
+msgid "Remove chosen group"
+msgstr "선택한 그룹 제거"
+
+#: qml/CertificatePage.qml:156
+msgid "Group: %1"
+msgstr "그룹: %1"
+
+#: qml/CertificatePage.qml:157
+msgid "Close this browser before changing its NSS database."
+msgstr "이 브라우저의 NSS 데이터베이스를 변경하기 전에 브라우저를 닫으십시오."
+
+#: qml/CertificatePage.qml:157
+msgid "This changes system trust and requests administrator authorization. Expired and revoked catalogue entries are excluded."
+msgstr "시스템 신뢰 설정이 변경되며 관리자 인증이 필요합니다. 목록에서 만료되었거나 폐기된 항목은 제외됩니다."
+
+#: qml/CertificatePage.qml:158
+msgid "Choose Ed521 certificates when native chain verification is unavailable"
+msgstr "시스템에서 인증서 체인을 검증할 수 없을 때 Ed521 인증서 선택"
+
+#: qml/CertificatePage.qml:159 qml/CertificatePage.qml:175
+#: qml/CertificatePage.qml:212
+msgid "NSS database password"
+msgstr "NSS 데이터베이스 암호"
+
+#: qml/CertificatePage.qml:164
+msgid "Preview or import personal certificate"
+msgstr "개인 인증서 미리 보거나 가져오기"
+
+#: qml/CertificatePage.qml:170
+msgid "PKCS#12 passphrase (for .p12 or .pfx)"
+msgstr "PKCS#12 암호 구문 (.p12 또는 .pfx용)"
+
+#: qml/CertificatePage.qml:171
+msgid "Preview"
+msgstr "미리 보기"
+
+#: qml/CertificatePage.qml:174
+msgid "Okular can sign with a supported identity from this NSS directory. Browser TLS trust does not grant PDF certificate trust; that requires a separate S/MIME trust decision in NSS."
+msgstr "Okular는 이 NSS 디렉터리의 지원되는 ID로 서명할 수 있습니다. 브라우저의 TLS 신뢰 설정은 PDF 인증서에 적용되지 않습니다. NSS에서 S/MIME 신뢰 여부를 따로 결정하십시오."
+
+#: qml/CertificatePage.qml:176
+msgid "Save A1 and NSS passwords in KDE Wallet"
+msgstr "KDE 지갑에 A1 및 NSS 암호 저장"
+
+#: qml/CertificatePage.qml:177
+msgid "Close the browser before import. Private keys remain in its NSS database. A3 PINs are never saved here."
+msgstr "가져오기 전에 브라우저를 닫으십시오. 개인 키는 브라우저의 NSS 데이터베이스에 보관됩니다. A3 PIN은 여기에 저장되지 않습니다."
+
+#: qml/CertificatePage.qml:179
+msgid "Import A1"
+msgstr "A1 가져오기"
+
+#: qml/CertificatePage.qml:180
+msgid "Read from Wallet"
+msgstr "지갑에서 읽기"
+
+#: qml/CertificatePage.qml:181
+msgid "Forget Saved Passwords"
+msgstr "저장한 암호 삭제"
+
+#: qml/CertificatePage.qml:188
+msgid "Kleopatra / GnuPG S/MIME"
+msgstr "Kleopatra / GnuPG S/MIME"
+
+#: qml/CertificatePage.qml:193
+msgid "Import the chosen group's certificates, with the chain up to their roots, into gpgsm so that Kleopatra and KMail see them. Nothing is trusted by importing. You decide about each root yourself, in Kleopatra or when gpgsm asks. Ed521 certificates are not imported because gpgsm cannot validate them."
+msgstr "선택한 그룹의 인증서와 루트까지의 체인을 gpgsm으로 가져와 Kleopatra와 KMail에서 사용할 수 있게 합니다. 가져오기만으로는 인증서를 신뢰하지 않습니다. 각 루트 인증서를 신뢰할지 Kleopatra에서 결정하거나 gpgsm의 질문에 답하십시오. gpgsm은 Ed521 인증서를 검증할 수 없으므로 이 인증서를 가져오지 않습니다."
+
+#: qml/CertificatePage.qml:194
+msgid "Import Chosen Group"
+msgstr "선택한 그룹 가져오기"
+
+#: qml/CertificatePage.qml:195
+msgid "Show What Was Imported"
+msgstr "가져온 내용 보기"
+
+#: qml/CertificatePage.qml:196
+msgid "Ask gpgsm About Imported Roots"
+msgstr "gpgsm에 가져온 루트 인증서 조회"
+
+#: qml/CertificatePage.qml:197
+msgid "Remove What We Imported"
+msgstr "Sparky CA에서 가져온 내용 제거"
+
+#: qml/CertificatePage.qml:202
+msgid "Register a PKCS#11 module"
+msgstr "PKCS#11 모듈 등록"
+
+#: qml/CertificatePage.qml:208
+msgid "Close the browser first. Choose the installed p11-kit proxy to expose configured token modules. Loading a module runs its code as your user."
+msgstr "브라우저를 먼저 닫으십시오. 구성된 토큰 모듈을 사용하려면 설치된 p11-kit 프록시를 선택하십시오. 모듈을 불러오면 해당 코드가 사용자 계정으로 실행됩니다."
+
+#: qml/CertificatePage.qml:210
+msgid "Absolute path to p11-kit-proxy.so"
+msgstr "p11-kit-proxy.so의 절대 경로"
+
+#: qml/CertificatePage.qml:211
+msgid "Inspect This Module"
+msgstr "이 모듈 검사"
+
+#: qml/CertificatePage.qml:213
+msgid "Remove Our Module Registration"
+msgstr "Sparky CA에서 등록한 모듈 등록 해제"
+
+#: share/kservices/sparky-ca-preview.desktop.in:8
+msgid "View Certificate"
+msgstr "인증서 보기"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:6
+msgid "Sparky CA"
+msgstr "Sparky CA"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:7
+msgid "ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "ICP-Brasil 인증서, 브라우저 신뢰 설정 및 개인 인증서"
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:9
+msgid "Sparky CA installs the certificate authorities of Brazil's ICP-Brasil in the system, in Waterfox, Firefox and Chromium, and keeps the groups you chose current."
+msgstr "Sparky CA는 브라질의 ICP-Brasil 인증 기관 인증서를 시스템과 Waterfox, Firefox 및 Chromium에 설치하고 선택한 그룹을 최신 상태로 유지합니다."
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:10
+msgid "It shows every certificate with its issuer, expiry and state, imports your A1 certificate, registers your A3 token, and works on a plain text console as well as on the desktop."
+msgstr "각 인증서의 발급자, 만료 날짜 및 상태를 표시합니다. A1 인증서를 가져오고 A3 토큰을 등록할 수 있으며 텍스트 콘솔과 데스크톱에서 모두 실행됩니다."
+
+#: share/org.sparkylinux.sparkyca.metainfo.xml.in:11
+msgid "Every download is checked against ITI's published hash and pinned roots, and certificates revoked by their authority are never installed."
+msgstr "모든 다운로드는 ITI가 공개한 해시와 고정된 루트 인증서를 사용해 검증합니다. 발급 기관이 폐기한 인증서는 설치하지 않습니다."
+
+#: share/sparky-ca.desktop.in:3
+msgid "PJeOffice CA Certificates Installer"
+msgstr "PJeOffice CA 인증서 설치 관리자"
+
+#: share/sparky-ca.desktop.in:4
+msgid "Certificate Manager"
+msgstr "인증서 관리자"
+
+#: share/sparky-ca.desktop.in:5
+msgid "Manage ICP-Brasil certificates, browser trust and personal certificates"
+msgstr "ICP-Brasil 인증서, 브라우저 신뢰 설정 및 개인 인증서 관리"
+
+#: share/sparky-ca.desktop.in:6
+msgid "certificate;ICP-Brasil;PJeOffice;CA;token;A1;A3;"
+msgstr "인증서;ICP-Brasil;PJeOffice;CA;토큰;A1;A3;"
+
+#: src/cli/main.cpp:19
+msgid "Use a private password file with owner-only permissions."
+msgstr "소유자만 접근할 수 있는 비공개 암호 파일을 사용하십시오."
+
+#: src/cli/main.cpp:25
+msgid "Expected one password in a private file."
+msgstr "비공개 파일에는 암호가 하나만 있어야 합니다."
+
+#: src/cli/main.cpp:39
+msgid "Scope must be system or user."
+msgstr "범위는 system 또는 user여야 합니다."
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are off."
+msgstr "자동 업데이트가 꺼져 있습니다."
+
+#: src/cli/main.cpp:56
+msgid "Automatic updates are on."
+msgstr "자동 업데이트가 켜져 있습니다."
+
+#: src/cli/main.cpp:80
+msgid "Specify auto status, enable, disable or run."
+msgstr "auto status, enable, disable 또는 run을 지정하십시오."
+
+#: src/cli/main.cpp:82
+msgid "Automatic updates are turned off."
+msgstr "자동 업데이트를 껐습니다."
+
+#: src/cli/main.cpp:85
+msgid "System updates require root."
+msgstr "시스템을 업데이트하려면 root 권한이 필요합니다."
+
+#: src/cli/main.cpp:99
+msgid "Manage Brazilian CA certificates and browser trust."
+msgstr "브라질 CA 인증서와 브라우저 신뢰 설정을 관리합니다."
+
+#: src/cli/main.cpp:103
+msgid "Package data directory."
+msgstr "패키지 데이터 디렉터리입니다."
+
+#: src/cli/main.cpp:104
+msgid "Verified catalogue file."
+msgstr "검증된 인증서 목록 파일입니다."
+
+#: src/cli/main.cpp:105
+msgid "System certificate directory."
+msgstr "시스템 인증서 디렉터리입니다."
+
+#: src/cli/main.cpp:106
+msgid "Derived system bundle; redirects the updater for isolated tests."
+msgstr "시스템 인증서에서 만든 번들입니다. 격리된 테스트에서 업데이트 프로그램의 대상을 바꿉니다."
+
+#: src/cli/main.cpp:107
+msgid "Operate on this NSS database instead of the system store. Close its browser first."
+msgstr "시스템 저장소 대신 이 NSS 데이터베이스를 사용합니다. 먼저 이 데이터베이스를 사용하는 브라우저를 닫으십시오."
+
+#: src/cli/main.cpp:108
+msgid "Read the PKCS#12 passphrase from this private file."
+msgstr "이 비공개 파일에서 PKCS#12 암호 구문을 읽습니다."
+
+#: src/cli/main.cpp:109
+msgid "Read the NSS database password from this private file."
+msgstr "이 비공개 파일에서 NSS 데이터베이스 암호를 읽습니다."
+
+#: src/cli/main.cpp:110
+msgid "GnuPG certificate directory."
+msgstr "GnuPG 인증서 디렉터리입니다."
+
+#: src/cli/main.cpp:111
+msgid "Choose E-521 certificates despite unavailable Linux chain verification; requires programs with their own E-521 code."
+msgstr "Linux에서 인증서 체인을 검증할 수 없는 경우에도 E-521 인증서를 선택합니다. 자체 E-521 구현이 있는 프로그램이 필요합니다."
+
+#: src/cli/main.cpp:112
+msgid "TLS trust root for an isolated HTTPS fixture."
+msgstr "격리된 HTTPS 테스트를 위한 TLS 신뢰 루트입니다."
+
+#: src/cli/main.cpp:113
+msgid "Missing TLS issuer, verified against the TLS trust roots."
+msgstr "누락된 TLS 발급자입니다. TLS 신뢰 루트로 검증했습니다."
+
+#: src/cli/main.cpp:114
+msgid "HTTPS bundle URL."
+msgstr "번들의 HTTPS URL입니다."
+
+#: src/cli/main.cpp:115
+msgid "HTTPS SHA-512 URL."
+msgstr "SHA-512의 HTTPS URL입니다."
+
+#: src/cli/main.cpp:116
+msgid "Offline ZIP input for catalogue verification."
+msgstr "인증서 목록을 검증하기 위한 오프라인 ZIP 파일입니다."
+
+#: src/cli/main.cpp:117
+msgid "Offline SHA-512 input."
+msgstr "오프라인으로 제공하는 SHA-512입니다."
+
+#: src/cli/main.cpp:118
+msgid "Write refreshed catalogue here."
+msgstr "새로 고친 인증서 목록을 여기에 기록합니다."
+
+#: src/cli/main.cpp:119
+msgid "Keep the downloaded bundle and its SHA-512 here, as received, so a failed refresh can be examined."
+msgstr "새로 고치기에 실패한 원인을 확인할 수 있도록 다운로드한 번들과 SHA-512를 받은 그대로 여기에 저장합니다."
+
+#: src/cli/main.cpp:120
+msgid "Machine state: refreshed catalogue, revocation answers and update status."
+msgstr "컴퓨터 상태: 새로 고친 인증서 목록, 폐기 조회 결과 및 업데이트 상태입니다."
+
+#: src/cli/main.cpp:121
+msgid "Folder holding the switch for automatic updates."
+msgstr "자동 업데이트 설정을 저장하는 폴더입니다."
+
+#: src/cli/main.cpp:122
+msgid "Home folder whose browser databases are updated."
+msgstr "업데이트할 브라우저 데이터베이스가 있는 홈 폴더입니다."
+
+#: src/cli/main.cpp:123
+msgid "Automatic update scope: system or user."
+msgstr "자동 업데이트 범위: system 또는 user입니다."
+
+#: src/cli/main.cpp:124
+msgid "Run an automatic update although it is turned off."
+msgstr "자동 업데이트가 꺼져 있어도 한 번 실행합니다."
+
+#: src/cli/main.cpp:125
+msgid "Do not use the Internet in an automatic update."
+msgstr "자동 업데이트 중 인터넷을 사용하지 않습니다."
+
+#: src/cli/main.cpp:127
+msgid "list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"
+msgstr "list [installed], groups, install <group>, remove <group|all>, update, auto <status|enable|disable|run>, status, profiles, preview <file>, import <file>, tokens, register-token <module>, unregister-token, gpgsm-import <group>, gpgsm-remove <group|all>, gpgsm-status, gpgsm-confirm"
+
+#: src/cli/main.cpp:153
+msgid "Group: "
+msgstr "그룹: "
+
+#: src/cli/main.cpp:179
+msgid "Specify one group."
+msgstr "그룹을 하나 지정하십시오."
+
+#: src/cli/main.cpp:181
+msgid "NSS installations exclude Ed521 and Ed448 entries because NSS cannot import their key types."
+msgstr "NSS에서 Ed521 및 Ed448 키 유형을 가져올 수 없으므로 NSS에 설치할 때는 해당 항목을 제외합니다."
+
+#: src/cli/main.cpp:185
+msgid "E-521 entries are skipped. Use --allow-e521 to choose them explicitly."
+msgstr "E-521 항목을 건너뛰었습니다. 명시적으로 선택하려면 --allow-e521을 사용하십시오."
+
+#: src/cli/main.cpp:192
+msgid "Certificate store updated."
+msgstr "인증서 저장소를 업데이트했습니다."
+
+#: src/cli/main.cpp:194
+msgid "Specify --output for the refreshed catalogue."
+msgstr "새로 고친 인증서 목록의 저장 위치를 --output으로 지정하십시오."
+
+#: src/cli/main.cpp:205
+msgid "Verified catalogue written."
+msgstr "검증된 인증서 목록을 기록했습니다."
+
+#: src/cli/main.cpp:207
+msgid "Specify one certificate file."
+msgstr "인증서 파일을 하나 지정하십시오."
+
+#: src/cli/main.cpp:213
+msgid "Specify at most one token module."
+msgstr "토큰 모듈을 최대 하나만 지정하십시오."
+
+#: src/cli/main.cpp:216
+msgid "Specify an NSS database and one installed token module."
+msgstr "NSS 데이터베이스와 설치된 토큰 모듈을 하나씩 지정하십시오."
+
+#: src/cli/main.cpp:219
+msgid "Specify one root group."
+msgstr "루트 인증서 그룹을 하나 지정하십시오."
+
+#: src/cli/main.cpp:222 src/desktop/manager.cpp:347
+msgid "Trust entries that version 2.0.0 added to gpgsm without asking were removed."
+msgstr "2.0.0 버전이 사용자 확인 없이 gpgsm에 추가한 신뢰 항목을 제거했습니다."
+
+#: src/cli/main.cpp:223
+msgid "Imported certificates are not trusted yet. Run gpgsm-confirm, or use Kleopatra's Trust Root Certificate, to decide."
+msgstr "가져온 인증서는 아직 신뢰하지 않습니다. gpgsm-confirm을 실행하거나 Kleopatra의 루트 인증서 신뢰 옵션에서 결정하십시오."
+
+#: src/cli/main.cpp:228 src/desktop/manager.cpp:364
+msgid "No imported root is waiting for your confirmation."
+msgstr "확인을 기다리는 가져온 루트 인증서가 없습니다."
+
+#: src/cli/main.cpp:235 src/desktop/manager.cpp:370
+msgid "gpgsm could not check the root."
+msgstr "gpgsm에서 루트 인증서를 확인할 수 없습니다."
+
+#: src/cli/main.cpp:238
+msgid "Specify an NSS database."
+msgstr "NSS 데이터베이스를 지정하십시오."
+
+#: src/cli/main.cpp:241
+msgid "Personal certificate import requires --nss and one PKCS#12 file."
+msgstr "개인 인증서를 가져오려면 --nss와 PKCS#12 파일 하나가 필요합니다."
+
+#: src/cli/main.cpp:250
+msgid "Personal certificate import failed."
+msgstr "개인 인증서를 가져오지 못했습니다."
+
+#: src/cli/main.cpp:253
+msgid "Unknown command: %1"
+msgstr "알 수 없는 명령: %1"
+
+#: src/core/automation.cpp:85
+msgid "Cannot turn automatic updates on."
+msgstr "자동 업데이트를 켤 수 없습니다."
+
+#: src/core/automation.cpp:88
+msgid "Cannot create the configuration folder."
+msgstr "구성 폴더를 만들 수 없습니다."
+
+#: src/core/automation.cpp:89
+msgid "Automatic certificate updates are turned off. Remove this file or run: sparky-ca auto enable\n"
+msgstr "인증서 자동 업데이트가 꺼져 있습니다. 이 파일을 삭제하거나 다음을 실행하십시오: sparky-ca auto enable\n"
+
+#: src/core/automation.cpp:98 src/core/automation.cpp:144
+msgid "Cannot create the state folder."
+msgstr "상태 폴더를 만들 수 없습니다."
+
+#: src/core/automation.cpp:113
+msgid "Automatic update failed: %1"
+msgstr "자동 업데이트 실패: %1"
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed and changed."
+msgstr "인증서 목록을 새로 고쳤으며 내용이 변경되었습니다."
+
+#: src/core/automation.cpp:115
+msgid "The certificate catalogue was refreshed; nothing changed."
+msgstr "인증서 목록을 새로 고쳤으며 변경 사항이 없습니다."
+
+#: src/core/automation.cpp:116
+msgid "The catalogue could not be refreshed: %1"
+msgstr "인증서 목록을 새로 고칠 수 없습니다: %1"
+
+#: src/core/automation.cpp:119
+msgid "Revocation: %1 certificates checked, %2 revoked, %3 without an answer."
+msgstr "폐기 확인: 인증서 %1개 확인, %2개 폐기됨, %3개 응답 없음."
+
+#: src/core/automation.cpp:125
+msgid "%1: added %2"
+msgstr "%1: %2 추가됨"
+
+#: src/core/automation.cpp:127
+msgid "%1: removed %2 (%3)"
+msgstr "%1: %2 제거됨 (%3)"
+
+#: src/core/automation.cpp:128
+msgid "%2: one new E-521 certificate needs your choice and was not installed."
+msgid_plural "%2: %1 new E-521 certificates need your choice and were not installed."
+msgstr[0] "%2: 새 E-521 인증서 %1개는 사용자가 선택해야 하므로 설치하지 않았습니다."
+
+#: src/core/automation.cpp:129
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: src/core/automation.cpp:133
+msgid "Nothing to do."
+msgstr "수행할 작업이 없습니다."
+
+#: src/core/automation.cpp:147
+msgid "Another automatic update is running."
+msgstr "다른 자동 업데이트가 실행 중입니다."
+
+#: src/core/automation.cpp:185
+msgid "The catalogue has not been refreshed for %1 days."
+msgstr "인증서 목록을 %1일 동안 새로 고치지 않았습니다."
+
+#: src/core/automation.cpp:186
+msgid "The catalogue has never been refreshed from the Internet on this machine."
+msgstr "이 컴퓨터에서 인터넷을 통해 인증서 목록을 새로 고친 적이 없습니다."
+
+#: src/core/automation.cpp:209
+msgid "%1 is in use by a browser; it will be updated on a later run."
+msgstr "브라우저에서 %1을(를) 사용하고 있습니다. 이후 실행 시 업데이트됩니다."
+
+#: src/core/catalogue.cpp:20
+msgid "Invalid catalogue JSON."
+msgstr "인증서 목록의 JSON이 잘못되었습니다."
+
+#: src/core/catalogue.cpp:30
+msgid "Invalid root filename."
+msgstr "루트 인증서 파일 이름이 잘못되었습니다."
+
+#: src/core/catalogue.cpp:32
+msgid "Root fingerprint mismatch: %1"
+msgstr "루트 인증서 지문이 일치하지 않습니다: %1"
+
+#: src/core/catalogue.cpp:40
+msgid "No pinned roots."
+msgstr "고정된 루트 인증서가 없습니다."
+
+#: src/core/catalogue.cpp:62
+msgid "Chain signature not verifiable on Linux (E-521). Linux's crypto libraries cannot use E-521 yet; these certificates help only programs that carry their own E-521 code."
+msgstr "Linux에서 인증서 체인의 서명(E-521)을 검증할 수 없습니다. Linux 암호화 라이브러리는 아직 E-521을 사용할 수 없습니다. 이 인증서는 자체 E-521 구현이 있는 프로그램에서만 사용할 수 있습니다."
+
+#: src/core/catalogue.cpp:76
+msgid "Root is not pinned: %1"
+msgstr "루트 인증서가 고정되지 않았습니다: %1"
+
+#: src/core/catalogue.cpp:77
+msgid "Pinned certificate is not a CA."
+msgstr "고정된 인증서가 CA 인증서가 아닙니다."
+
+#: src/core/catalogue.cpp:78
+msgid "Root is expired, revoked or not yet valid."
+msgstr "루트 인증서가 만료되었거나 폐기되었거나 아직 유효하지 않습니다."
+
+#: src/core/catalogue.cpp:83
+msgid "E-521 certificate lacks authenticated bundle integrity evidence."
+msgstr "E-521 인증서에 인증된 번들 무결성 증거가 없습니다."
+
+#: src/core/catalogue.cpp:85
+msgid "E-521 root is not currently valid."
+msgstr "E-521 루트 인증서가 현재 유효하지 않습니다."
+
+#: src/core/catalogue.cpp:86
+msgid "E-521 certificate is not currently valid."
+msgstr "E-521 인증서가 현재 유효하지 않습니다."
+
+#: src/core/catalogue.cpp:118
+msgid "Certificate chain rejected: %1: %2"
+msgstr "인증서 체인이 거부되었습니다: %1: %2"
+
+#: src/core/catalogue.cpp:119
+msgid "Certificate is expired, revoked or not yet valid: %1"
+msgstr "인증서가 만료되었거나 폐기되었거나 아직 유효하지 않습니다: %1"
+
+#: src/core/catalogue.cpp:132
+msgid "Invalid certificate count."
+msgstr "인증서 개수가 잘못되었습니다."
+
+#: src/core/catalogue.cpp:138
+msgid "Unsupported catalogue schema."
+msgstr "지원하지 않는 인증서 목록 스키마입니다."
+
+#: src/core/catalogue.cpp:148
+msgid "Unapproved E-521 source bundle."
+msgstr "승인되지 않은 E-521 원본 번들입니다."
+
+#: src/core/catalogue.cpp:158
+msgid "Invalid catalogue groups."
+msgstr "인증서 목록의 그룹이 잘못되었습니다."
+
+#: src/core/catalogue.cpp:162
+msgid "Invalid catalogue group identifier."
+msgstr "인증서 목록의 그룹 식별자가 잘못되었습니다."
+
+#: src/core/catalogue.cpp:180
+msgid "Bundle SHA-512 mismatch."
+msgstr "번들의 SHA-512가 일치하지 않습니다."
+
+#: src/core/catalogue.cpp:181
+msgid "Bundle is too large."
+msgstr "번들이 너무 큽니다."
+
+#: src/core/catalogue.cpp:185
+msgid "Cannot open ZIP bundle."
+msgstr "ZIP 번들을 열 수 없습니다."
+
+#: src/core/catalogue.cpp:195
+msgid "Unsafe ZIP entry: %1"
+msgstr "안전하지 않은 ZIP 항목: %1"
+
+#: src/core/catalogue.cpp:203
+msgid "Expanded bundle is too large."
+msgstr "압축을 푼 번들이 너무 큽니다."
+
+#: src/core/catalogue.cpp:205
+msgid "Corrupt ZIP entry: %1"
+msgstr "손상된 ZIP 항목: %1"
+
+#: src/core/catalogue.cpp:209
+msgid "Corrupt ZIP bundle."
+msgstr "ZIP 번들이 손상되었습니다."
+
+#: src/core/catalogue.cpp:215
+msgid "E-521 source bundle hash is not approved."
+msgstr "E-521 원본 번들의 해시가 승인되지 않았습니다."
+
+#: src/core/certificate.cpp:22
+msgid "Cannot read file: %1"
+msgstr "파일을 읽을 수 없습니다: %1"
+
+#: src/core/certificate.cpp:30
+msgid "Cannot write file: %1"
+msgstr "파일에 쓸 수 없습니다: %1"
+
+#: src/core/certificate.cpp:38
+msgid "Command failed: %1: %2"
+msgstr "명령 실패: %1: %2"
+
+#: src/core/certificate.cpp:53
+msgid "Expected exactly one certificate."
+msgstr "인증서는 정확히 하나여야 합니다."
+
+#: src/core/certificate.cpp:60
+msgid "Invalid certificate encoding."
+msgstr "인증서 인코딩이 잘못되었습니다."
+
+#: src/core/certificate.cpp:64
+msgid "Cannot parse certificate."
+msgstr "인증서를 분석할 수 없습니다."
+
+#: src/core/certificate.cpp:83
+msgid "Cannot calculate certificate fingerprint."
+msgstr "인증서 지문을 계산할 수 없습니다."
+
+#: src/core/certificate.cpp:130
+msgid "Invalid certificate expiry."
+msgstr "인증서 만료 날짜가 잘못되었습니다."
+
+#: src/core/download.cpp:18
+msgid "Downloads require HTTPS."
+msgstr "다운로드에는 HTTPS가 필요합니다."
+
+#: src/core/download.cpp:24
+msgid "Cannot parse TLS issuer chain."
+msgstr "TLS 발급자 체인을 분석할 수 없습니다."
+
+#: src/core/download.cpp:43
+msgid "TLS issuer does not chain to a trusted root."
+msgstr "TLS 발급자 체인이 신뢰하는 루트 인증서로 이어지지 않습니다."
+
+#: src/core/download.cpp:66
+msgid "Download exceeds its size limit."
+msgstr "다운로드가 크기 제한을 초과합니다."
+
+#: src/core/download.cpp:68
+msgid "HTTPS download failed: %1"
+msgstr "HTTPS 다운로드 실패: %1"
+
+#: src/core/personal.cpp:25
+msgid "Cannot encode certificate."
+msgstr "인증서를 인코딩할 수 없습니다."
+
+#: src/core/personal.cpp:39
+msgid "Invalid certificate input."
+msgstr "입력한 인증서가 잘못되었습니다."
+
+#: src/core/personal.cpp:80
+msgid "Cannot parse certificate file."
+msgstr "인증서 파일을 분석할 수 없습니다."
+
+#: src/core/personal.cpp:95
+msgid "Cannot unlock PKCS#12. Check its passphrase."
+msgstr "PKCS#12의 잠금을 해제할 수 없습니다. 암호 구문을 확인하십시오."
+
+#: src/core/personal.cpp:101
+msgid "Passwords cannot contain null bytes or newlines."
+msgstr "암호에는 널 바이트나 줄바꿈을 넣을 수 없습니다."
+
+#: src/core/personal.cpp:103 src/core/stores.cpp:55
+msgid "Cannot create a private password file."
+msgstr "비공개 암호 파일을 만들 수 없습니다."
+
+#: src/core/personal.cpp:113
+msgid "Cannot create NSS database directory."
+msgstr "NSS 데이터베이스 디렉터리를 만들 수 없습니다."
+
+#: src/core/personal.cpp:133
+msgid "Expected a PKCS#12 identity with its matching private key and passphrase."
+msgstr "PKCS#12 ID와 이에 대응하는 개인 키 및 암호 구문이 필요합니다."
+
+#: src/core/personal.cpp:138
+msgid "Cannot create a private import file."
+msgstr "비공개 가져오기 파일을 만들 수 없습니다."
+
+#: src/core/personal.cpp:143 src/core/personal.cpp:155
+#: src/core/personal.cpp:173 src/core/stores.cpp:91 src/core/stores.cpp:174
+msgid "Certificate store is busy."
+msgstr "인증서 저장소가 사용 중입니다."
+
+#: src/core/personal.cpp:149 src/core/personal.cpp:188
+msgid "Choose an installed PKCS#11 module."
+msgstr "설치된 PKCS#11 모듈을 선택하십시오."
+
+#: src/core/personal.cpp:158
+msgid "The token module is already registered. Inspect it before changing it."
+msgstr "토큰 모듈이 이미 등록되어 있습니다. 변경하기 전에 검사하십시오."
+
+#: src/core/personal.cpp:162
+msgid "An earlier token module record still exists."
+msgstr "이전 토큰 모듈 기록이 아직 남아 있습니다."
+
+#: src/core/personal.cpp:178
+msgid "The registered token module differs from our record."
+msgstr "등록된 토큰 모듈이 Sparky CA의 기록과 다릅니다."
+
+#: src/core/personal.cpp:181
+msgid "Cannot remove the token module record."
+msgstr "토큰 모듈 기록을 제거할 수 없습니다."
+
+#: src/core/personal.cpp:197 src/core/personal.cpp:200
+msgid "No token slots detected. Check the reader and installed middleware."
+msgstr "토큰 슬롯을 찾을 수 없습니다. 리더와 설치된 미들웨어를 확인하십시오."
+
+#: src/core/personal.cpp:224
+msgid "Invalid GnuPG import record."
+msgstr "GnuPG 가져오기 기록이 잘못되었습니다."
+
+#: src/core/personal.cpp:238
+msgid "Cannot calculate GnuPG's certificate identifier."
+msgstr "GnuPG용 인증서 식별자를 계산할 수 없습니다."
+
+#: src/core/personal.cpp:265
+msgid "Cannot prepare the GnuPG directory."
+msgstr "GnuPG 디렉터리를 준비할 수 없습니다."
+
+#: src/core/personal.cpp:298 src/core/personal.cpp:371
+msgid "GnuPG's gpgsm is not installed."
+msgstr "GnuPG의 gpgsm이 설치되어 있지 않습니다."
+
+#: src/core/personal.cpp:300 src/core/stores.cpp:84
+#: src/core/systemchange.cpp:20
+msgid "Unknown certificate group: %1"
+msgstr "알 수 없는 인증서 그룹: %1"
+
+#: src/core/personal.cpp:304 src/core/personal.cpp:375
+msgid "GnuPG certificate store is busy."
+msgstr "GnuPG 인증서 저장소가 사용 중입니다."
+
+#: src/core/personal.cpp:342
+msgid "This group has no certificates gpgsm can use."
+msgstr "이 그룹에 gpgsm에서 사용할 수 있는 인증서가 없습니다."
+
+#: src/core/personal.cpp:394
+msgid "Invalid GnuPG certificate identifier."
+msgstr "GnuPG 인증서 식별자가 잘못되었습니다."
+
+#: src/core/revocation.cpp:49
+msgid "Cannot parse CRL."
+msgstr "인증서 폐기 목록(CRL)을 분석할 수 없습니다."
+
+#: src/core/revocation.cpp:61
+msgid "CRL issuer does not match."
+msgstr "CRL 발급자가 일치하지 않습니다."
+
+#: src/core/revocation.cpp:63
+msgid "CRL signature is not valid."
+msgstr "CRL 서명이 유효하지 않습니다."
+
+#: src/core/revocation.cpp:67
+msgid "CRL does not cover every certificate of its issuer."
+msgstr "CRL에 해당 발급자의 모든 인증서가 포함되어 있지 않습니다."
+
+#: src/core/revocation.cpp:69
+msgid "CRL is not yet valid."
+msgstr "CRL이 아직 유효하지 않습니다."
+
+#: src/core/revocation.cpp:70
+msgid "CRL is stale."
+msgstr "CRL이 최신 상태가 아닙니다."
+
+#: src/core/revocation.cpp:90
+msgid "The CRL signature uses E-521, which Linux cannot verify."
+msgstr "CRL의 서명이 E-521을 사용하여 Linux에서 검증할 수 없습니다."
+
+#: src/core/revocation.cpp:92
+msgid "The certificate names no CRL."
+msgstr "인증서에 CRL이 지정되어 있지 않습니다."
+
+#: src/core/revocation.cpp:98
+msgid "No CRL could be fetched."
+msgstr "가져올 수 있는 CRL이 없습니다."
+
+#: src/core/revocation.cpp:101
+msgid "The issuer is not in the catalogue."
+msgstr "인증서 목록에 발급자가 없습니다."
+
+#: src/core/revocation.cpp:106
+msgid "No network was used for this check."
+msgstr "이 확인에는 네트워크를 사용하지 않았습니다."
+
+#: src/core/stores.cpp:41
+msgid "Choose exactly one store."
+msgstr "저장소를 정확히 하나 선택하십시오."
+
+#: src/core/stores.cpp:47
+msgid "Refusing a symbolic link in store path: %1"
+msgstr "저장소 경로의 심볼릭 링크를 거부했습니다: %1"
+
+#: src/core/stores.cpp:53
+msgid "The NSS password cannot contain a newline or a null byte."
+msgstr "NSS 암호에는 줄바꿈이나 널 바이트를 넣을 수 없습니다."
+
+#: src/core/stores.cpp:63
+msgid "Invalid store ownership manifest."
+msgstr "저장소에서 관리하는 인증서 목록이 잘못되었습니다."
+
+#: src/core/stores.cpp:73
+msgid "Cannot create updater configuration."
+msgstr "업데이트 프로그램 구성을 만들 수 없습니다."
+
+#: src/core/stores.cpp:86 src/core/stores.cpp:169
+msgid "System changes require root. Run sparky-ca through sudo or pkexec."
+msgstr "시스템을 변경하려면 root 권한이 필요합니다. sudo 또는 pkexec로 sparky-ca를 실행하십시오."
+
+#: src/core/stores.cpp:89
+msgid "Cannot create store directory."
+msgstr "저장소 디렉터리를 만들 수 없습니다."
+
+#: src/core/stores.cpp:111
+msgid "This group has no installable certificates."
+msgstr "이 그룹에 설치 가능한 인증서가 없습니다."
+
+#: src/core/stores.cpp:123 src/core/stores.cpp:225 src/core/stores.cpp:230
+msgid "Owned certificate bytes have changed."
+msgstr "관리하는 인증서의 데이터가 변경되었습니다."
+
+#: src/core/stores.cpp:128
+msgid "Unowned certificate filename already exists."
+msgstr "이 파일 이름을 사용하는 관리 대상 외 인증서가 이미 있습니다."
+
+#: src/core/stores.cpp:148
+msgid "Unowned NSS nickname already exists."
+msgstr "이 NSS 별칭을 사용하는 관리 대상 외 인증서가 이미 있습니다."
+
+#: src/core/stores.cpp:202
+msgid "Invalid saved NSS trust decision."
+msgstr "NSS에 저장한 신뢰 설정이 잘못되었습니다."
+
+#: src/core/stores.cpp:204
+msgid "Existing certificate bytes have changed."
+msgstr "기존 인증서의 데이터가 변경되었습니다."
+
+#: src/core/stores.cpp:209
+msgid "Existing NSS trust settings changed outside this application."
+msgstr "기존 NSS 신뢰 설정이 이 프로그램 외부에서 변경되었습니다."
+
+#: src/core/stores.cpp:220
+msgid "Invalid owned certificate fingerprint."
+msgstr "관리하는 인증서의 지문이 잘못되었습니다."
+
+#: src/core/stores.cpp:226
+msgid "Cannot remove certificate."
+msgstr "인증서를 제거할 수 없습니다."
+
+#: src/core/stores.cpp:281
+msgid "Selected group %1 is no longer in the catalogue."
+msgstr "선택한 그룹 %1이(가) 인증서 목록에 더 이상 없습니다."
+
+#: src/core/systemchange.cpp:12
+msgid "Invalid system certificate request."
+msgstr "시스템 인증서 요청이 잘못되었습니다."
+
+#: src/core/systemchange.cpp:17
+msgid "Unknown system certificate operation."
+msgstr "알 수 없는 시스템 인증서 작업입니다."
+
+#: src/core/systemchange.cpp:30
+msgid "Invalid automatic update request."
+msgstr "자동 업데이트 요청이 잘못되었습니다."
+
+#: src/desktop/dispatch.cpp:38
+msgid "Cannot find Sparky CA front end."
+msgstr "Sparky CA의 그래픽 인터페이스를 찾을 수 없습니다."
+
+#: src/desktop/main.cpp:22 src/desktop/manager.cpp:175
+#: src/desktop/notify.cpp:51
+msgid "Certificates"
+msgstr "인증서"
+
+#: src/desktop/main.cpp:24
+msgid "Manage certificate trust and personal identities"
+msgstr "인증서 신뢰 설정 및 개인 ID 관리"
+
+#: src/desktop/main.cpp:26
+msgid "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+msgstr "© 2018 Paweł Pijanowski; © 2020, 2026 Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:27
+msgid "Original author, 2018"
+msgstr "원작자, 2018년"
+
+#: src/desktop/main.cpp:27
+msgid "Paweł \"pavroo\" Pijanowski"
+msgstr "Paweł \"pavroo\" Pijanowski"
+
+#: src/desktop/main.cpp:28
+msgid "Brazilian certificates and KDE integration, 2020 and 2026"
+msgstr "브라질 인증서 및 KDE 통합, 2020년과 2026년"
+
+#: src/desktop/main.cpp:28
+msgid "Daniel Campos Ramos"
+msgstr "Daniel Campos Ramos"
+
+#: src/desktop/main.cpp:33
+msgid "Catalogue data directory."
+msgstr "인증서 목록의 데이터 디렉터리입니다."
+
+#: src/desktop/main.cpp:34
+msgid "Capture the window for an isolated UI test."
+msgstr "격리된 인터페이스 테스트를 위해 창을 캡처합니다."
+
+#: src/desktop/main.cpp:35
+msgid "Local certificate file to preview."
+msgstr "미리 볼 로컬 인증서 파일입니다."
+
+#: src/desktop/manager.cpp:78
+msgid "No automatic update has run on this computer yet."
+msgstr "이 컴퓨터에서 아직 자동 업데이트를 실행한 적이 없습니다."
+
+#: src/desktop/manager.cpp:83
+msgid "Last automatic update: %1. Everything is current."
+msgstr "마지막 자동 업데이트: %1. 모두 최신 상태입니다."
+
+#: src/desktop/manager.cpp:84
+msgid "Last automatic update: %1. It needs your attention: see the system journal or run sparky-ca auto status."
+msgstr "마지막 자동 업데이트: %1. 확인이 필요합니다. 시스템 저널을 확인하거나 sparky-ca auto status를 실행하십시오."
+
+#: src/desktop/manager.cpp:114
+msgid "Automatic certificate updates are off."
+msgstr "인증서 자동 업데이트가 꺼져 있습니다."
+
+#: src/desktop/manager.cpp:114
+msgid "Your chosen certificate groups will be kept current automatically."
+msgstr "선택한 인증서 그룹이 자동으로 최신 상태로 유지됩니다."
+
+#: src/desktop/manager.cpp:130
+msgid "Choose an existing browser profile."
+msgstr "기존 브라우저 프로필을 선택하십시오."
+
+#: src/desktop/manager.cpp:150
+msgid "Ed448 validates through OpenSSL. NSS cannot import this key type, so browser installations exclude it."
+msgstr "OpenSSL에서 Ed448을 검증할 수 있습니다. NSS에서 이 키 유형을 가져올 수 없으므로 브라우저에 설치할 때 제외합니다."
+
+#: src/desktop/manager.cpp:233
+msgid "System certificate store updated. Restart applications to reload trust."
+msgstr "시스템 인증서 저장소를 업데이트했습니다. 신뢰 설정을 다시 불러오려면 프로그램을 다시 시작하십시오."
+
+#: src/desktop/manager.cpp:249
+msgid "Browser certificate store updated. Ed521 and Ed448 entries stay listed but are excluded because NSS does not support their key types."
+msgstr "브라우저 인증서 저장소를 업데이트했습니다. Ed521 및 Ed448은 목록에 남지만 NSS가 해당 키 유형을 지원하지 않으므로 설치하지 않습니다."
+
+#: src/desktop/manager.cpp:261
+msgid "Preview does not establish trust. Revocation status is unknown."
+msgstr "미리 보기에서는 인증서를 신뢰하도록 설정하지 않습니다. 폐기 상태는 알 수 없습니다."
+
+#: src/desktop/manager.cpp:274
+msgid "Choose a local PKCS#12 file and browser profile."
+msgstr "로컬 PKCS#12 파일과 브라우저 프로필을 선택하십시오."
+
+#: src/desktop/manager.cpp:282
+msgid "Personal certificate imported. Choose this NSS directory in Okular's PDF certificate settings."
+msgstr "개인 인증서를 가져왔습니다. Okular의 PDF 인증서 설정에서 이 NSS 디렉터리를 선택하십시오."
+
+#: src/desktop/manager.cpp:303
+msgid "Saved certificate passwords removed."
+msgstr "저장한 인증서 암호를 삭제했습니다."
+
+#: src/desktop/manager.cpp:313
+msgid "A3 PINs are not saved. Token retry limits and authentication policy apply. SafeSign or SafeNet middleware, when required, is installed on your machine through APTus."
+msgstr "A3 PIN은 저장되지 않습니다. 토큰의 재시도 횟수와 인증 정책이 적용됩니다. SafeSign 또는 SafeNet 미들웨어가 필요한 경우 APTus를 통해 이 컴퓨터에 설치합니다."
+
+#: src/desktop/manager.cpp:323
+msgid "PKCS#11 module registered for this browser profile."
+msgstr "이 브라우저 프로필에 PKCS#11 모듈을 등록했습니다."
+
+#: src/desktop/manager.cpp:346
+msgid "Certificates imported for Kleopatra. They are not trusted until you confirm each root in Kleopatra or in gpgsm. Ed521 entries stay listed but are not imported because gpgsm cannot validate them."
+msgstr "Kleopatra에서 사용할 인증서를 가져왔습니다. Kleopatra 또는 gpgsm에서 각 루트 인증서를 확인할 때까지 인증서를 신뢰하지 않습니다. Ed521 항목은 목록에 남지만 gpgsm에서 검증할 수 없으므로 가져오지 않습니다."
+
+#: src/desktop/manager.cpp:355
+msgid "Certificates that Sparky CA imported into gpgsm were removed. Trust you confirmed yourself stays in gpgsm's trust list until you remove it in Kleopatra."
+msgstr "Sparky CA가 gpgsm으로 가져온 인증서를 제거했습니다. 직접 확인한 신뢰 설정은 Kleopatra에서 제거할 때까지 gpgsm의 신뢰 목록에 남습니다."
+
+#: src/desktop/manager.cpp:372
+msgid "gpgsm asked about each imported root. Your answers are in its trust list."
+msgstr "gpgsm이 가져온 각 루트 인증서에 관해 확인을 요청했습니다. 응답은 gpgsm의 신뢰 목록에 기록되어 있습니다."
+
+#: src/desktop/manager.cpp:378
+msgid "Kleopatra is not installed."
+msgstr "Kleopatra가 설치되어 있지 않습니다."
+
+#: src/desktop/manager.cpp:390
+msgid "Our PKCS#11 module registration was removed. Token certificates remain on the token."
+msgstr "Sparky CA에서 등록한 PKCS#11 모듈을 등록 해제했습니다. 토큰의 인증서는 토큰에 남아 있습니다."
+
+#: src/desktop/manager.cpp:403
+msgid "One listed certificate expires within 30 days or has expired."
+msgid_plural "%1 listed certificates expire within 30 days or have expired."
+msgstr[0] "목록의 인증서 %1개가 30일 안에 만료되거나 이미 만료되었습니다."
+
+#: src/desktop/notify.cpp:30
+msgid "Machine state folder."
+msgstr "컴퓨터 상태 폴더입니다."
+
+#: src/desktop/notify.cpp:31
+msgid "Home folder holding the user's status."
+msgstr "사용자 상태를 저장하는 홈 폴더입니다."
+
+#: src/desktop/wallet.cpp:20
+msgid "Cannot open KDE Wallet. Passwords were not saved."
+msgstr "KDE 지갑을 열 수 없습니다. 암호를 저장하지 않았습니다."
+
+#: src/desktop/wallet.cpp:23
+msgid "Cannot create the certificate wallet folder."
+msgstr "지갑에 인증서 폴더를 만들 수 없습니다."
+
+#: src/desktop/wallet.cpp:27
+msgid "Cannot select the certificate wallet folder."
+msgstr "지갑에서 인증서 폴더를 선택할 수 없습니다."
+
+#: src/desktop/wallet.cpp:34
+msgid "Cannot save certificate passwords in KDE Wallet."
+msgstr "KDE 지갑에 인증서 암호를 저장할 수 없습니다."
+
+#: src/desktop/wallet.cpp:49
+msgid "Cannot read certificate passwords from KDE Wallet."
+msgstr "KDE 지갑에서 인증서 암호를 읽을 수 없습니다."
+
+#: src/desktop/wallet.cpp:61
+msgid "Cannot remove a saved certificate password."
+msgstr "저장한 인증서 암호를 삭제할 수 없습니다."
+
+#: src/helper/helper.cpp:31 src/helper/helper.cpp:44 src/helper/helper.cpp:74
+#: src/helper/helper.cpp:78
+msgid "The certificate helper requires root."
+msgstr "인증서 도우미를 사용하려면 root 권한이 필요합니다."
+
+#: src/helper/helper.cpp:54
+msgid "Untrusted package certificate data."
+msgstr "패키지의 인증서 데이터를 신뢰할 수 없습니다."
