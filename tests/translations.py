@@ -43,7 +43,7 @@ for language in languages:
             raise AssertionError(f"{language}: placeholders differ: {message}")
     checked(True, f"{language}: every translation keeps its placeholders")
 ed521 = (source / "po/ed521/LINGUAS").read_text().split()
-checked(sorted(ed521) == sorted(["pt_BR", "pl", "de", "fr", "ja", "ko", "zh_CN", "zh_TW"]), "the Ed521 message ships in the edition's nine languages (English and eight translations)")
+checked(sorted(ed521) == sorted(["pt_BR", "pl", "de", "es", "fr", "ja", "ko", "zh_CN", "zh_TW"]), "the Ed521 message ships in the edition's ten languages (English and nine translations)")
 ed521_wanted = set(re.findall(r'^msgid "(.+)"$', subprocess.run(["msgattrib", "--no-wrap", str(source / "po/ed521/sparky-ca-ed521.pot")], capture_output=True, text=True, check=True).stdout, re.M))
 for language in ed521:
     path = source / f"po/ed521/{language}.po"
